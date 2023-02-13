@@ -1,2 +1,20 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import Map from './Map.svelte';
+</script>
+
+<main>
+    <Map />
+</main>
+
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    :global(body) {
+        background-color: rgb(106, 110, 113);
+    }
+</style>
