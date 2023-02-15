@@ -14,6 +14,9 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/kit": "^1.0.0",
+		"@types/d3": "^7.4.0",
+		"@types/d3-geo": "^3.0.3",
+		"@types/topojson-client": "^3.1.1",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"eslint": "^8.28.0",
@@ -29,8 +32,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"csv-parser": "^3.0.0",
 		"d3": "^7.8.2",
+		"d3-fetch": "^3.0.1",
 		"d3-geo": "^3.1.0",
+		"jquery-csv": "^1.0.21",
 		"topojson": "^3.0.2",
 		"topojson-client": "^3.1.0"
 	}

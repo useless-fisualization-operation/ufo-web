@@ -1,22 +1,26 @@
 <script>
+// @ts-nocheck
+
     import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
+	import { getAirportData } from '../routes/data.js';
 
-	const projection = geoAlbersUsa().scale(1300).translate([487.5, 305])
+	var airports = getAirportData();
+	const projection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
 	const path = geoPath().projection(null);
 	
 	let states = [];
 	let selected;
+	let selectedAirport;
     
     let width = 975;
     let height = 610;
 
-	const points = [
-		{ lat: 38.91102, long: -77.03339 },
-		{ lat: 36.14674, long: -115.14811 },
-	].map(p => projection([p.long, p.lat]))
-	
+	airports.forEach(airport => {
+		airport.coordinates = projection([airport.longitude_deg, airport.latitude_deg]);
+	});
+
 	onMount(async () => {
 		const us = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json')
 			.then(d => d.json())
@@ -26,7 +30,8 @@
 
 <svg {width} {height}>
 	<g>
-		{#each states as feature, i}
+		{#each states as feature}
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<path d={path(feature)} on:click={() => selected = feature} class="state"/>
 		{/each}
 	</g>
@@ -35,12 +40,15 @@
 		<path d={path(selected)} class="selected" />
 	{/if}
 	
-	{#each points as [cx, cy]}
-		<circle {cx} {cy} r={4} fill="orange" />
+	{#each airports as airport}
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<circle cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1.5} fill="orange" on:click={() => selectedAirport = airport.name}/>
 	{/each}
 </svg>
 
-<div class="selectedName">{selected?.properties.name ?? ''}</div>
+<div class="selectedName">{selected?.properties.name ?? 'State'}</div>
+<div class="selectedName">{selectedAirport ?? 'Airport'}</div>
+<div class="legend"><circle r={1.5} fill="orange"/></div>
 	
 <style>
 	.state:hover {
@@ -56,7 +64,7 @@
 	}
 
     .selected {
-        fill: rgb(78, 128, 185);
+        fill: rgb(40, 98, 224);
     }
 
     path {
