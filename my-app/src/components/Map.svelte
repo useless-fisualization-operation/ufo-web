@@ -28,6 +28,14 @@
 	})
 </script>
 
+<div class="sidebar">
+	<p class="logo">Useless Fisualization Operation</p>
+	<p class="description">State</p>
+	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
+	<p class="description">Airport</p>
+	<div class="selectedName">{selectedAirport ?? '-'}</div>
+</div>
+
 <svg {width} {height}>
 	<g>
 		{#each states as feature}
@@ -45,22 +53,44 @@
 		<circle cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1.5} fill="orange" on:click={() => selectedAirport = airport.name}/>
 	{/each}
 </svg>
-
-<div class="selectedName">{selected?.properties.name ?? 'State'}</div>
-<div class="selectedName">{selectedAirport ?? 'Airport'}</div>
-<div class="legend"><circle r={1.5} fill="orange"/></div>
 	
 <style>
 	.state:hover {
 		fill: rgb(86, 92, 99);
     }
+
+	.description {
+		color: gray;
+		margin-bottom: 0.1rem;
+	}
 	
 	.selectedName {
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
 		text-align: center;
-		margin-top: 8px;
-		font-size: 1.5rem;
-        font-family: Helvetica;
-        color: white;
+	}
+
+	.logo {
+		color: orange;
+		font-weight: bold;
+		font-size: 130%;
+	}
+
+	svg {
+		margin: auto;
+	}
+
+	.sidebar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 20%;
+		background-color: white;
+		color: black;
+		border-radius: 1rem;
+		height: 90vh;
+		margin: 1rem;
+		padding: 1rem;
 	}
 
     .selected {
