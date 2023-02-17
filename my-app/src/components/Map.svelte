@@ -54,10 +54,8 @@
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
-	<p> Inner Width: {innerWidth} </p>
-	<p> Inner Height: {innerHeight} </p>
 </div>
-<svg bind:this={bindInitZoom} {width} {height}>
+<svg bind:this={bindInitZoom} {width} {height} viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
 	<g bind:this={bindHandleZoom}>
 		{#each states as feature}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -76,18 +74,18 @@
 </svg>
 	
 <style>
-	:global(body) { /* this will apply to <body> */ margin: 0; padding: 0; }
 	.state:hover {
 		fill: rgb(86, 92, 99);
     }
 
 	.description {
 		color: gray;
+		font-size: 1.5vh;
 		margin-bottom: 0.1rem;
 	}
 	
 	.selectedName {
-		font-size: 1.2rem;
+		font-size: 2vh;
 		margin-bottom: 0.5rem;
 		text-align: center;
 	}
@@ -95,38 +93,32 @@
 	.logo {
 		color: orange;
 		font-weight: bold;
-		font-size: 130%;
+		font-size: 2vh;
+		text-align: center;
 	}
 
 	svg {
-		padding: 0; 
-   		margin: 0;
-		position: relative;
+		overflow: visible;
+		display: inline-block;
+		position: absolute;
+		top: 10vh;
+		left: 8vw;
 	}
 
 	.sidebar {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 20%;
-		background-color: white;
-		color: black;
-		height: 100vh;
-		font-size: 1.5em;
-		/*
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 20%;
 		background-color: white;
 		color: black;
 		border-radius: 1rem;
+		margin: 1vw;
+		padding: 1vh;
 		height: 90vh;
-		margin: 1rem;
-		padding: 1rem;
-		z-index:10;
-		position: absolute;
-		*/
+		min-width: 20vw;
+		max-width: 20vw;
+		width: 20vw;
+		z-index: 10;
 	}
 
     .selected {
