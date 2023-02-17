@@ -14,9 +14,10 @@
 	let states = [];
 	let selected;
 	let selectedAirport;
-    
-    let width = 975;
-    let height = 610;
+    let innerWidth = 0;
+	let innerHeight = 0;
+    $: width = innerWidth;
+    $: height = innerHeight;
 
 	airports.forEach(airport => {
 		airport.coordinates = projection([airport.longitude_deg, airport.latitude_deg]);
@@ -33,8 +34,8 @@
 	let bindHandleZoom, bindInitZoom;
 
 	$: zoomX = zoom()
-    	.scaleExtent([1, 10])
-    	.translateExtent([[0, 0],[width, height],])
+    	.scaleExtent([1, 50])
+    	.translateExtent([[0, 0],[width, height]])
     	.on("zoom", handleZoom);
 
 	function handleZoom(e) {
@@ -46,13 +47,15 @@
     	select(bindInitZoom).call(zoomX);
   	}
 </script>
-
+<svelte:window bind:innerWidth bind:innerHeight />
 <div class="sidebar">
 	<p class="logo">Useless Fisualization Operation</p>
 	<p class="description">State</p>
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
+	<p> Inner Width: {innerWidth} </p>
+	<p> Inner Height: {innerHeight} </p>
 </div>
 
 <svg bind:this={bindInitZoom} {width} {height}>
