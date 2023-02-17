@@ -14,12 +14,15 @@
         width: 100%;
     }
 
-    :global(body) {
+    :global(body, html) {
         height: 100%;
         width: 100%;
+        margin: 0;
+        padding: 0;
         background-color: rgb(106, 110, 113);
         font-size: 12px;
         font-family: Helvetica, sans-serif;
         color:rgb(30, 30, 30);
+        overflow: hidden;
     }
 </style>
