@@ -57,7 +57,6 @@
 	<p> Inner Width: {innerWidth} </p>
 	<p> Inner Height: {innerHeight} </p>
 </div>
-
 <svg bind:this={bindInitZoom} {width} {height}>
 	<g bind:this={bindHandleZoom}>
 		{#each states as feature}
@@ -74,10 +73,10 @@
 			<circle cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1} fill="orange" on:click={() => selectedAirport = airport.name}/>
 		{/each}
 	</g>
-
 </svg>
 	
 <style>
+	:global(body) { /* this will apply to <body> */ margin: 0; padding: 0; }
 	.state:hover {
 		fill: rgb(86, 92, 99);
     }
@@ -100,8 +99,8 @@
 	}
 
 	svg {
-		margin: auto;
-		z-index: 2;
+		padding: 0; 
+   		margin: 0;
 		position: relative;
 	}
 
@@ -112,10 +111,22 @@
 		width: 20%;
 		background-color: white;
 		color: black;
+		height: 100vh;
+		font-size: 1.5em;
+		/*
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 20%;
+		background-color: white;
+		color: black;
 		border-radius: 1rem;
 		height: 90vh;
 		margin: 1rem;
 		padding: 1rem;
+		z-index:10;
+		position: absolute;
+		*/
 	}
 
     .selected {
