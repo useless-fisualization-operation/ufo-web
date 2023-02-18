@@ -4,7 +4,7 @@
     import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
-	import { getAirportData } from '../routes/data.js';
+	import { getAirportData, getUfoData } from '../routes/data.js';
 	import { zoom, select } from "d3";
 
 	var airports = getAirportData();
@@ -12,9 +12,10 @@
 	const path = geoPath().projection(null);
 	
 	let states = [];
+	let ufoData;
 	let selected;
 	let selectedAirport;
-	let selectedUfo;
+	let selectedUfoSummary;
 
     let innerWidth = 0;
 	let innerHeight = 0;
@@ -29,7 +30,9 @@
 		const us = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json')
 			.then(d => d.json())
 		states = topojson.feature(us, us.objects.states).features;
-	})
+
+		getUfoData(projection).then((response) => ufoData = response);
+	});
 	
 	// Zoom and Pan - Jonathan:
 	// From the tutorial: https://visualsvelte.com/d3/api/d3-zoom
@@ -41,7 +44,7 @@
     	.on("zoom", handleZoom);
 
 	function handleZoom(e) {
-    	console.log("ev", e.transform);
+    	//console.log("ev", e.transform);
     	select(bindHandleZoom).attr("transform", e.transform);
   	}
 
@@ -49,11 +52,15 @@
     	select(bindInitZoom).call(zoomX);
   	}
 </script>
+
 <svelte:window bind:innerWidth bind:innerHeight />
+
 <div class="sidebar">
 	<p class="logo">Useless Fisualization Operation</p>
 	<p class="description">State</p>
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
+	<p class="description">UFO Sighting</p>
+	<div class="selectedName">{selectedUfoSummary ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
 	<div class="legend">
@@ -65,9 +72,9 @@
 			<div class="ufo_legend"></div>
 			<p class="desc">UFO sighting</p>
 		</div>
-
 	</div>
 </div>
+
 <svg bind:this={bindInitZoom} {width} {height} viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
 	<g bind:this={bindHandleZoom}>
 		{#each states as feature}
@@ -76,13 +83,22 @@
 		{/each}
 		
 		{#if selected}
-		<path d={path(selected)} class="selected" />
+			<path d={path(selected)} class="selected" />
 		{/if}
 
 		{#each airports as airport}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1} on:click={() => selectedAirport = airport.name}/>
 		{/each}
+
+		{#if ufoData}
+			{#each ufoData as ufo}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				{#if (ufo.Longitude != "" && ufo.Latitude != "" && ufo.Longitude != "0" && ufo.Latitude != "0" && ufo.coordinates[0] != 0 && ufo.coordinates[1] != 0)}
+					<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={1} on:click={() => selectedUfoSummary = ufo.Summary}/>
+				{/if}
+			{/each}
+		{/if}
 	</g>
 </svg>
 	
@@ -144,6 +160,10 @@
 
 	.airportdot:hover {
 		fill: rgb(253, 203, 111);
+	}
+
+	.ufodot {
+		fill: cyan;
 	}
 
 	svg {

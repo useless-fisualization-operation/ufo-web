@@ -1,4 +1,5 @@
 import * as airportData from './us_airports_cleaned.json';
+import * as d3 from 'd3';
 
 export function getAirportData() {
     var c = [];
@@ -11,4 +12,19 @@ export function getAirportData() {
     });
 
     return c;
+}
+
+function getData(link) {
+    return d3.csv(link);
+}
+
+export async function getUfoData(projection) {
+    const ufoSource = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/Data.csv";
+    
+    await getData(ufoSource).then((data) => {
+        data.forEach(ufo => {
+            ufo.coordinates = projection([ufo.Longitude, ufo.Latitude]);
+        });
+        return data;
+    });
 }
