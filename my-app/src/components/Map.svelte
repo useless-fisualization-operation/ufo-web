@@ -6,13 +6,12 @@
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { getAirportData, getUfoData } from '../routes/data.js';
 	import { zoom, select } from "d3";
-
+	
 	var airports = getAirportData();
 	const projection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
 	const path = geoPath().projection(null);
-	
+	var ufoData =[];
 	let states = [];
-	let ufoData;
 	let selected;
 	let selectedAirport;
 	let selectedUfoSummary;
@@ -21,20 +20,21 @@
 	let innerHeight = 0;
     $: width = innerWidth;
     $: height = innerHeight;
-
+	
+		
 	airports.forEach(airport => {
 		airport.coordinates = projection([airport.longitude_deg, airport.latitude_deg]);
 	});
-
+	
 	onMount(async () => {
 		const us = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json')
 			.then(d => d.json())
 		states = topojson.feature(us, us.objects.states).features;
-
-		getUfoData(projection).then((response) => ufoData = response);
+		await getUfoData(projection).then(r=>ufoData=r);	
+		
 	});
-	
-	// Zoom and Pan - Jonathan:
+
+	// Zoom and Pan:
 	// From the tutorial: https://visualsvelte.com/d3/api/d3-zoom
 	let bindHandleZoom, bindInitZoom;
 
@@ -87,18 +87,22 @@
 		{/if}
 
 		{#each airports as airport}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1} on:click={() => selectedAirport = airport.name}/>
+			<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1.5} on:click={() => selectedAirport = airport.name}/>
 		{/each}
-
+		
+		{#each ufoData as ufo}
+			<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={0.5} on:click={() => selectedUfoSummary = ufo.State}/>
+		{/each}
+		
+		<!--
 		{#if ufoData}
 			{#each ufoData as ufo}
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				{#if (ufo.Longitude != "" && ufo.Latitude != "" && ufo.Longitude != "0" && ufo.Latitude != "0" && ufo.coordinates[0] != 0 && ufo.coordinates[1] != 0)}
 					<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={1} on:click={() => selectedUfoSummary = ufo.Summary}/>
 				{/if}
 			{/each}
 		{/if}
+		-->
 	</g>
 </svg>
 	
