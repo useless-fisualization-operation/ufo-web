@@ -6,6 +6,7 @@
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { getAirportData } from '../routes/data.js';
 	import { zoom, select } from "d3";
+	import { debug } from 'svelte/internal';
 
 	var airports = getAirportData();
 	const projection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
@@ -48,6 +49,9 @@
 	$:if (bindInitZoom) {
     	select(bindInitZoom).call(zoomX);
   	}
+
+	let us_states =  ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+	let us_states_short = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
 </script>
 <svelte:window bind:innerWidth bind:innerHeight />
 <div class="sidebar">
@@ -72,7 +76,12 @@
 	<g bind:this={bindHandleZoom}>
 		{#each states as feature}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<path d={path(feature)} on:click={() => selected = feature} class="state"/>
+			<path d={path(feature)} 
+				on:click={() => {
+					selected = feature;
+					selectedAirport = null;
+					}} 
+				class="state"/>
 		{/each}
 		
 		{#if selected}
@@ -81,7 +90,18 @@
 
 		{#each airports as airport}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1} on:click={() => selectedAirport = airport.name}/>
+			<circle class="airportdot" 
+			cx={airport.coordinates[0]} 
+			cy={airport.coordinates[1]} 
+			r={1} 
+			on:click={() => {
+				selectedAirport = airport.name;
+				let i = us_states_short.indexOf(airport.state)
+				console.log("i:"+i);
+				console.log("state_short:"+us_states_short[i]);
+				console.log("state:"+us_states[i]);
+				selected = states.filter(o=>o.properties.name==us_states[i])[0];
+				}}/>
 		{/each}
 	</g>
 </svg>
