@@ -19,8 +19,8 @@
         width: 100%;
         margin: 0;
         padding: 0;
-        background-color: rgb(106, 110, 113);
-        font-size: 12px;
+        background-color: rgb(124, 128, 132);
+        font-size: 1.2vh;
         font-family: Helvetica, sans-serif;
         color:rgb(30, 30, 30);
         overflow: hidden;

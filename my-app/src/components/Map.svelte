@@ -14,6 +14,8 @@
 	let states = [];
 	let selected;
 	let selectedAirport;
+	let selectedUfo;
+
     let innerWidth = 0;
 	let innerHeight = 0;
     $: width = innerWidth;
@@ -54,6 +56,17 @@
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
+	<div class="legend">
+		<div class="item">
+			<div class="airport_legend"></div>
+			<p class="desc">Airport</p>
+		</div>
+		<div class="item">
+			<div class="ufo_legend"></div>
+			<p class="desc">UFO sighting</p>
+		</div>
+
+	</div>
 </div>
 <svg bind:this={bindInitZoom} {width} {height} viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
 	<g bind:this={bindHandleZoom}>
@@ -68,7 +81,7 @@
 
 		{#each airports as airport}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<circle cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1} fill="orange" on:click={() => selectedAirport = airport.name}/>
+			<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1} on:click={() => selectedAirport = airport.name}/>
 		{/each}
 	</g>
 </svg>
@@ -91,10 +104,46 @@
 	}
 
 	.logo {
-		color: orange;
 		font-weight: bold;
 		font-size: 2vh;
 		text-align: center;
+	}
+
+	.legend {
+		margin-top: 8vh;
+		width: 80%;
+		padding: 1vh;
+		border-style: solid;
+		border-color: rgb(231, 231, 231);
+		border-radius: 1vh;
+	}
+
+	.legend .item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.airport_legend {
+		background-color: orange;
+		width: 1vh;
+		height: 1vh;
+		border-radius: 100%;
+	}
+
+	.ufo_legend {
+		background-color: rgb(0, 229, 255);
+		width: 1vh;
+		height: 1vh;
+		border-radius: 100%;
+	}
+
+	.airportdot {
+		fill: orange;
+	}
+
+	.airportdot:hover {
+		fill: rgb(253, 203, 111);
 	}
 
 	svg {
@@ -111,7 +160,7 @@
 		align-items: center;
 		background-color: white;
 		color: black;
-		border-radius: 1rem;
+		border-radius: 1vh;
 		margin: 1vw;
 		padding: 1vh;
 		height: 90vh;
