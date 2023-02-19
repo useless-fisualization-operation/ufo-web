@@ -106,13 +106,37 @@
 
 		{#if displayUfos}
 			{#each ufoData as ufo}
-				<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={0.4} on:click={() => selectedUfoSummary = ufo.Summary}/>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<circle class="ufodot" 
+				cx={ufo.coordinates[0]} 
+				cy={ufo.coordinates[1]} 
+				r={0.4} 
+				on:click={() => {
+					selectedUfoSummary = ufo.Summary
+					let i = us_states_short.indexOf(ufo.State)
+					console.log("i:"+i);
+					console.log("state_short:"+us_states_short[i]);
+					console.log("state:"+us_states[i]);
+					selected = states.filter(o=>o.properties.name==us_states[i])[0];
+					}}/>
 			{/each}
 		{/if}
 
 		{#if displayAirports}
 			{#each airports as airport}
-				<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={0.6} on:click={() => selectedAirport = airport.name}/>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<circle class="airportdot" 
+				cx={airport.coordinates[0]} 
+				cy={airport.coordinates[1]} 
+				r={0.6} 
+				on:click={() => {
+					selectedAirport = airport.name;
+					let i = us_states_short.indexOf(airport.state)
+					console.log("i:"+i);
+					console.log("state_short:"+us_states_short[i]);
+					console.log("state:"+us_states[i]);
+					selected = states.filter(o=>o.properties.name==us_states[i])[0];
+					}}/>	
 			{/each}
 		{/if}
 		
