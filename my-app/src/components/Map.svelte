@@ -16,6 +16,7 @@
 	let selected;
 	let selectedAirport;
 	let selectedUfoSummary;
+	let selectedUfoPlace;
 	let displayAirports = false;
 	let displayUfos = true;
 
@@ -65,7 +66,9 @@
 	<p class="logo">Useless Fisualization Operation</p>
 	<p class="description">State</p>
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
-	<p class="description">UFO Sighting</p>
+	<p class="description">UFO: Location</p>
+	<div class="selectedName">{selectedUfoPlace ?? '-'}</div>
+	<p class="description">UFO: Summary of the Event</p>
 	<div class="selectedName">{selectedUfoSummary ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
@@ -112,11 +115,9 @@
 				cy={ufo.coordinates[1]} 
 				r={0.4} 
 				on:click={() => {
-					selectedUfoSummary = ufo.Summary
-					let i = us_states_short.indexOf(ufo.State)
-					console.log("i:"+i);
-					console.log("state_short:"+us_states_short[i]);
-					console.log("state:"+us_states[i]);
+					selectedUfoSummary = ufo.Summary;
+					selectedUfoPlace = ufo.City;
+					let i = us_states_short.indexOf(ufo.State);
 					selected = states.filter(o=>o.properties.name==us_states[i])[0];
 					}}/>
 			{/each}
@@ -131,10 +132,7 @@
 				r={0.6} 
 				on:click={() => {
 					selectedAirport = airport.name;
-					let i = us_states_short.indexOf(airport.state)
-					console.log("i:"+i);
-					console.log("state_short:"+us_states_short[i]);
-					console.log("state:"+us_states[i]);
+					let i = us_states_short.indexOf(airport.state);
 					selected = states.filter(o=>o.properties.name==us_states[i])[0];
 					}}/>	
 			{/each}
