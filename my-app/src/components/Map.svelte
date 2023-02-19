@@ -4,35 +4,40 @@
     import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
-	import { getAirportData } from '../routes/data.js';
+	import { getAirportData, getUfoData } from '../routes/data.js';
 	import { zoom, select } from "d3";
 	import { debug } from 'svelte/internal';
-
+  
 	var airports = getAirportData();
 	const projection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
 	const path = geoPath().projection(null);
-	
+	var ufoData =[];
 	let states = [];
 	let selected;
 	let selectedAirport;
-	let selectedUfo;
+	let selectedUfoSummary;
+	let displayAirports = false;
+	let displayUfos = true;
 
     let innerWidth = 0;
 	let innerHeight = 0;
     $: width = innerWidth;
     $: height = innerHeight;
-
+	
+		
 	airports.forEach(airport => {
 		airport.coordinates = projection([airport.longitude_deg, airport.latitude_deg]);
 	});
-
+	
 	onMount(async () => {
 		const us = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json')
 			.then(d => d.json())
 		states = topojson.feature(us, us.objects.states).features;
-	})
-	
-	// Zoom and Pan - Jonathan:
+		await getUfoData(projection).then(r=>ufoData=r);	
+		
+	});
+
+	// Zoom and Pan:
 	// From the tutorial: https://visualsvelte.com/d3/api/d3-zoom
 	let bindHandleZoom, bindInitZoom;
 
@@ -42,7 +47,7 @@
     	.on("zoom", handleZoom);
 
 	function handleZoom(e) {
-    	console.log("ev", e.transform);
+    	//console.log("ev", e.transform);
     	select(bindHandleZoom).attr("transform", e.transform);
   	}
 
@@ -53,25 +58,36 @@
 	let us_states =  ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
 	let us_states_short = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
 </script>
+
 <svelte:window bind:innerWidth bind:innerHeight />
+
 <div class="sidebar">
 	<p class="logo">Useless Fisualization Operation</p>
 	<p class="description">State</p>
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
+	<p class="description">UFO Sighting</p>
+	<div class="selectedName">{selectedUfoSummary ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
 	<div class="legend">
 		<div class="item">
-			<div class="airport_legend"></div>
-			<p class="desc">Airport</p>
-		</div>
-		<div class="item">
+			<input type=checkbox bind:checked={displayUfos}>
 			<div class="ufo_legend"></div>
 			<p class="desc">UFO sighting</p>
 		</div>
-
+		<div class="item">
+			<input type=checkbox bind:checked={displayAirports}>
+			<div class="airport_legend"></div>
+			<p class="desc">Airport</p>
+		</div>
 	</div>
 </div>
+
+{#if ufoData.length === 0}
+	<div class="loadingbg"></div>
+	<div class="loadingscreen">Looking for UFOs ...</div>
+{/if}
+
 <svg bind:this={bindInitZoom} {width} {height} viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
 	<g bind:this={bindHandleZoom}>
 		{#each states as feature}
@@ -85,24 +101,31 @@
 		{/each}
 		
 		{#if selected}
-		<path d={path(selected)} class="selected" />
+			<path d={path(selected)} class="selected" />
 		{/if}
 
-		{#each airports as airport}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<circle class="airportdot" 
-			cx={airport.coordinates[0]} 
-			cy={airport.coordinates[1]} 
-			r={1} 
-			on:click={() => {
-				selectedAirport = airport.name;
-				let i = us_states_short.indexOf(airport.state)
-				console.log("i:"+i);
-				console.log("state_short:"+us_states_short[i]);
-				console.log("state:"+us_states[i]);
-				selected = states.filter(o=>o.properties.name==us_states[i])[0];
-				}}/>
-		{/each}
+		{#if displayUfos}
+			{#each ufoData as ufo}
+				<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={0.4} on:click={() => selectedUfoSummary = ufo.Summary}/>
+			{/each}
+		{/if}
+
+		{#if displayAirports}
+			{#each airports as airport}
+				<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={0.6} on:click={() => selectedAirport = airport.name}/>
+			{/each}
+		{/if}
+		
+		<!--
+		{#if ufoData}
+			{#each ufoData as ufo}
+				{#if (ufo.Longitude != "" && ufo.Latitude != "" && ufo.Longitude != "0" && ufo.Latitude != "0" && ufo.coordinates[0] != 0 && ufo.coordinates[1] != 0)}
+					<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={1} on:click={() => selectedUfoSummary = ufo.Summary}/>
+				{/if}
+			{/each}
+		{/if}
+		-->
+    
 	</g>
 </svg>
 	
@@ -140,30 +163,49 @@
 
 	.legend .item {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 	}
 
 	.airport_legend {
-		background-color: orange;
+		background-color: rgb(58, 230, 227);
 		width: 1vh;
 		height: 1vh;
 		border-radius: 100%;
 	}
 
 	.ufo_legend {
-		background-color: rgb(0, 229, 255);
+		background-color: rgb(255, 98, 0);
 		width: 1vh;
 		height: 1vh;
 		border-radius: 100%;
 	}
 
 	.airportdot {
-		fill: orange;
+		fill: rgb(58, 230, 227);
+		opacity: 0.9;
 	}
 
 	.airportdot:hover {
-		fill: rgb(253, 203, 111);
+		fill: rgb(159, 255, 253);
+		opacity: 1;
+	}
+
+	.ufodot {
+		fill: rgb(255, 98, 0);
+		opacity: 0.9;
+	}
+
+	.ufodot:hover {
+		fill: rgb(255, 170, 118);
+		opacity: 1;
+	}
+
+	.desc {
+		margin-left: 1vw;
+	}
+
+	.item input {
+		margin-right: 1vw;
 	}
 
 	svg {
@@ -182,7 +224,7 @@
 		color: black;
 		border-radius: 1vh;
 		margin: 1vw;
-		padding: 1vh;
+		padding: 2vh;
 		height: 90vh;
 		min-width: 20vw;
 		max-width: 20vw;
@@ -191,8 +233,28 @@
 	}
 
     .selected {
-        fill: rgb(40, 98, 224);
+        fill: rgb(47, 80, 150);
     }
+
+	.loadingbg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(46, 46, 46);
+		opacity: 0.9;
+		z-index: 6;
+	}
+
+	.loadingscreen {
+		font-size: 6vh;
+		position: absolute;
+		color: white;
+		left: 40%;
+		top: 40%;
+		z-index: 1000;
+		border-radius: 1vh;
+		padding: 4vh;
+	}
 
     path {
         stroke: white;
