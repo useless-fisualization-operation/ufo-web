@@ -17,6 +17,9 @@
 	let selectedAirport;
 	let selectedUfoSummary;
 	let selectedUfoPlace;
+	let selectedUfoDate;
+	let selectedUfoShape;
+	let selectedUfoDuration;
 	let displayAirports = false;
 	let displayUfos = true;
 
@@ -68,6 +71,12 @@
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
 	<p class="description">UFO: Location</p>
 	<div class="selectedName">{selectedUfoPlace ?? '-'}</div>
+	<p class="description">UFO: Date</p>
+	<div class="selectedName">{selectedUfoDate ?? '-'}</div>
+	<p class="description">UFO: Shape</p>
+	<div class="selectedName">{selectedUfoShape ?? '-'}</div>
+	<p class="description">UFO: Duration of the Event</p>
+	<div class="selectedName">{selectedUfoDuration ?? '-'}</div>
 	<p class="description">UFO: Summary of the Event</p>
 	<div class="selectedName">{selectedUfoSummary ?? '-'}</div>
 	<p class="description">Airport</p>
@@ -117,6 +126,9 @@
 				on:click={() => {
 					selectedUfoSummary = ufo.Summary;
 					selectedUfoPlace = ufo.City;
+					selectedUfoDate = ufo.Date;
+					selectedUfoDuration = ufo.Duration;
+					selectedUfoShape = ufo.Shape;
 					let i = us_states_short.indexOf(ufo.State);
 					selected = states.filter(o=>o.properties.name==us_states[i])[0];
 					}}/>
