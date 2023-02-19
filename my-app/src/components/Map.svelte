@@ -15,6 +15,8 @@
 	let selected;
 	let selectedAirport;
 	let selectedUfoSummary;
+	let displayAirports = false;
+	let displayUfos = true;
 
     let innerWidth = 0;
 	let innerHeight = 0;
@@ -65,15 +67,22 @@
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
 	<div class="legend">
 		<div class="item">
-			<div class="airport_legend"></div>
-			<p class="desc">Airport</p>
-		</div>
-		<div class="item">
+			<input type=checkbox bind:checked={displayUfos}>
 			<div class="ufo_legend"></div>
 			<p class="desc">UFO sighting</p>
 		</div>
+		<div class="item">
+			<input type=checkbox bind:checked={displayAirports}>
+			<div class="airport_legend"></div>
+			<p class="desc">Airport</p>
+		</div>
 	</div>
 </div>
+
+{#if ufoData.length === 0}
+	<div class="loadingbg"></div>
+	<div class="loadingscreen">Looking for UFOs ...</div>
+{/if}
 
 <svg bind:this={bindInitZoom} {width} {height} viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
 	<g bind:this={bindHandleZoom}>
@@ -86,13 +95,17 @@
 			<path d={path(selected)} class="selected" />
 		{/if}
 
-		{#each airports as airport}
-			<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={1.5} on:click={() => selectedAirport = airport.name}/>
-		{/each}
-		
-		{#each ufoData as ufo}
-			<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={0.5} on:click={() => selectedUfoSummary = ufo.State}/>
-		{/each}
+		{#if displayUfos}
+			{#each ufoData as ufo}
+				<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={0.4} on:click={() => selectedUfoSummary = ufo.Summary}/>
+			{/each}
+		{/if}
+
+		{#if displayAirports}
+			{#each airports as airport}
+				<circle class="airportdot" cx={airport.coordinates[0]} cy={airport.coordinates[1]} r={0.6} on:click={() => selectedAirport = airport.name}/>
+			{/each}
+		{/if}
 		
 		<!--
 		{#if ufoData}
@@ -140,34 +153,49 @@
 
 	.legend .item {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 	}
 
 	.airport_legend {
-		background-color: orange;
+		background-color: rgb(58, 230, 227);
 		width: 1vh;
 		height: 1vh;
 		border-radius: 100%;
 	}
 
 	.ufo_legend {
-		background-color: rgb(0, 229, 255);
+		background-color: rgb(255, 98, 0);
 		width: 1vh;
 		height: 1vh;
 		border-radius: 100%;
 	}
 
 	.airportdot {
-		fill: orange;
+		fill: rgb(58, 230, 227);
+		opacity: 0.9;
 	}
 
 	.airportdot:hover {
-		fill: rgb(253, 203, 111);
+		fill: rgb(159, 255, 253);
+		opacity: 1;
 	}
 
 	.ufodot {
-		fill: cyan;
+		fill: rgb(255, 98, 0);
+		opacity: 0.9;
+	}
+
+	.ufodot:hover {
+		fill: rgb(255, 170, 118);
+		opacity: 1;
+	}
+
+	.desc {
+		margin-left: 1vw;
+	}
+
+	.item input {
+		margin-right: 1vw;
 	}
 
 	svg {
@@ -186,7 +214,7 @@
 		color: black;
 		border-radius: 1vh;
 		margin: 1vw;
-		padding: 1vh;
+		padding: 2vh;
 		height: 90vh;
 		min-width: 20vw;
 		max-width: 20vw;
@@ -195,8 +223,28 @@
 	}
 
     .selected {
-        fill: rgb(40, 98, 224);
+        fill: rgb(47, 80, 150);
     }
+
+	.loadingbg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(46, 46, 46);
+		opacity: 0.9;
+		z-index: 6;
+	}
+
+	.loadingscreen {
+		font-size: 6vh;
+		position: absolute;
+		color: white;
+		left: 40%;
+		top: 40%;
+		z-index: 1000;
+		border-radius: 1vh;
+		padding: 4vh;
+	}
 
     path {
         stroke: white;
