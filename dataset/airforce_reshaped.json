@@ -1,0 +1,662 @@
+[
+  {
+    "Name": "Joint Base Charleston",
+    "Location": "Charleston",
+    "State": "South Carolina",
+    "lat": 32.5355,
+    "long": -80.0226,
+    "command": "Air Mobility Command",
+    "host wing": "628th Air Base Wing",
+    "primary missions and units": "USAF operated joint base. The 437th Airlift Wing and 315th Airlift Wing operate the C-17A Globemaster III."
+  },
+  {
+    "Name": "Joint Base Andrews-Naval Air Facility Washington",
+    "Location": "Camp Springs",
+    "State": "Maryland",
+    "lat": 38.4839,
+    "long": -76.5201,
+    "command": "Air Force District of Washington",
+    "host wing": "316th Wing",
+    "primary missions and units": "USAF operated joint base. The 316th Wing provides administrative and operational support in the National Capital Region and operates the UH-1N Iroquois. The 89th Airlift Wing is assigned a variety of aircraft including two VC-25A (Air Force One) in the Special Air Mission role, providing support to US political and military leaders. Other USAF flying units include the 459th Air Refueling Wing (KC-135R Stratotanker) and the D.C. Air National Guard's 113th Wing (F-16C/D Fighting Falcon, C-38A Courier and C-40C).[6]"
+  },
+  {
+    "Name": "Joint Base McGuire�Dix�Lakehurst",
+    "Location": "Trenton",
+    "State": "New Jersey",
+    "lat": 40.0109,
+    "long": -74.3122,
+    "command": "Air Mobility Command",
+    "host wing": "87th Air Base Wing",
+    "primary missions and units": "USAF operated joint base. The 305th Air Mobility Wing and 514th Air Mobility Wing operate the C-17A Globemaster III and KC-10A Extender. Also home to the New Jersey Air National Guard's 108th Wing operating the KC-135R Stratotanker. The 621st Contingency Response Wing is part of the USAF Expeditionary Center which is also based there."
+  },
+  {
+    "Name": "Joint Base Anacostia-Bolling",
+    "Location": "Southwest",
+    "State": "Washington, D.C.",
+    "lat": 38.5034,
+    "long": -77.0058,
+    "command": "Air Force District of Washington",
+    "host wing": "11th Wing",
+    "primary missions and units": "USAF operated joint base. The 11th Wing provides base administration and support to tenants including the USAF Honor Guard and USAF Band, which support ceremonial operations in the National Capital Region.[5]"
+  },
+  {
+    "Name": "Joint Base Langley�Eustis",
+    "Location": "Hampton",
+    "State": "Virginia",
+    "lat": 37.0458,
+    "long": -76.2138,
+    "command": "Air Combat Command",
+    "host wing": "633rd Air Base Wing",
+    "primary missions and units": "USAF operated joint base. Home to the 1st Fighter Wing and the Virginia Air National Guard's 192d Fighter Wing, both flying the F-22A Raptor. The base also hosts the headquarters of Air Combat Command, the 363rd Intelligence, Surveillance, and Reconnaissance (ISR) Wing and the 480th ISR Wing.[33]"
+  },
+  {
+    "Name": "Joint Base San Antonio",
+    "Location": "San Antonio",
+    "State": "Texas",
+    "lat": 29.2656,
+    "long": -98.2656,
+    "command": "Air Education and Training Command",
+    "host wing": "502nd Air Base Wing",
+    "primary missions and units": "USAF operated joint base across several sites. JBSA-Randolph is home to the 12th Flying Training Wing and provides s undergraduate pilot training, flying the T-6A Texan II, T-1A Jayhawk and T-38C Talon. JBSA-Lackland is a non-flying facility that provides basic and technical training and Kelly Field Annex is home to the 149th Fighter Wing (F-16C/D Fighting Falcon) 433rd Airlift Wing (C-5M Galaxy).[55]"
+  },
+  {
+    "Name": "Patrick Space Force Base",
+    "Location": "Brevard County",
+    "State": "Florida",
+    "lat": 28.1406,
+    "long": -80.3636,
+    "command": "Various",
+    "host wing": "nan",
+    "primary missions and units": "US Space Force installation hosting the Air Force Technical Applications Center.[48] Also home to the Air Force Reserve Commands 920th Rescue Wing which operates the HC-130N Combat King and HH-60G Pave Hawk, as well as the Florida Air National Guard's 114th Space Control Squadron.[49]"
+  },
+  {
+    "Name": "Vandenberg Space Force Base",
+    "Location": "Lompoc",
+    "State": "California",
+    "lat": 34.4357,
+    "long": -120.3405,
+    "command": "Various",
+    "host wing": "nan",
+    "primary missions and units": "US Space Force installation hosting the 532nd Training Squadron and 576th Flight Test Squadron.[70]"
+  },
+  {
+    "Name": "Peterson Space Force Base",
+    "Location": "Colorado Springs",
+    "State": "Colorado",
+    "lat": 38.4925,
+    "long": -104.4142,
+    "command": "Air Combat Command",
+    "host wing": "561st Network Operations Squadron",
+    "primary missions and units": "US Space Force installation hosting a Geographically Separate Unit of the 690th Cyberspace Operations Group.[51]"
+  },
+  {
+    "Name": "Naval Air Station Pensacola",
+    "Location": "Pensacola",
+    "State": "Florida",
+    "lat": 30.2109,
+    "long": -87.1904,
+    "command": "Air Education and Training Command",
+    "host wing": "479th Flying Training Group",
+    "primary missions and units": "US Navy operated installation hosting the USAF's 479th Flying Training Group (part of the 12th Flying Training Wing) which operates the T-1A Jayhawk and T-6A Texan II.[50]"
+  },
+  {
+    "Name": "Joint Base Lewis-McChord",
+    "Location": "Tacoma",
+    "State": "Washington",
+    "lat": 47.0851,
+    "long": -122.2846,
+    "command": "Air Mobility Command",
+    "host wing": "627th Air Base Group",
+    "primary missions and units": "US Army operated joint base. The 62nd Airlift Wing and 446th Airlift Wing operate the C-17A Globemaster III. The Washington Air National Guard operates the Western Air Defense Sector.[35]"
+  },
+  {
+    "Name": "Fort George G. Meade",
+    "Location": "Odenton",
+    "State": "Maryland",
+    "lat": 39.625,
+    "long": -76.4435,
+    "command": "Air Combat Command",
+    "host wing": "70th Intelligence, Surveillance and Reconnaissance Wing",
+    "primary missions and units": "US Army installation hosting USAF intelligence units carrying out signals intelligence and cryptologic operations.[22]"
+  },
+  {
+    "Name": "Pope Field",
+    "Location": "Fayetteville",
+    "State": "North Carolina",
+    "lat": 35.1015,
+    "long": -79.0052,
+    "command": "Air Mobility Command",
+    "host wing": "43rd Air Mobility Operations Group",
+    "primary missions and units": "US Army installation (part of Fort Bragg) hosting the USAF's 43rd Air Mobility Operations Group, 18th Air Support Operations Group and several units of Air Force Special Operations Command.[52]"
+  },
+  {
+    "Name": "Robins Air Force Base",
+    "Location": "Warner Robins",
+    "State": "Georgia",
+    "lat": 32.3824,
+    "long": -83.353,
+    "command": "Air Force Materiel Command",
+    "host wing": "78th Air Base Wing",
+    "primary missions and units": "The Warner Robins Air Logistics Complex is the primary logistics support depot for the F-15 Eagle, C-130 Hercules, C-5M Galaxy and C-17A Globemaster III. Robins is also home to various directorates of the Air Force Life Cycle Management Center, the headquarters of Air Force Reserve Command and the 461st Air Control Wing & 116th Air Control Wing (Georgia Air National Guard) both operating the E-8C JSTARS.[53]"
+  },
+  {
+    "Name": "Eglin Air Force Base",
+    "Location": "Valparaiso",
+    "State": "Florida",
+    "lat": 30.29,
+    "long": -86.32,
+    "command": "Air Force Materiel Command",
+    "host wing": "96th Test Wing",
+    "primary missions and units": "The USAF's test and evaluation center for air-delivered weapons, navigation and guidance systems, command and control systems, and Air Force Special Operations Command systems (96th Test Wing) as well as electronic warfare, armament and avionics, chemical defense, reconnaissance, and aircrew training devices (53rd Wing). Both wings operates the A-10C Thunderbolt II, F-15C/D/E Eagle and F-16C/D Fighting Falcon. The 33rd Fighter Wing trains F-35A Lightning II pilots from US and foreign air-arms.[18]"
+  },
+  {
+    "Name": "Hill Air Force Base",
+    "Location": "Ogden",
+    "State": "Utah",
+    "lat": 41.0726,
+    "long": -111.5822,
+    "command": "Air Force Materiel Command",
+    "host wing": "75th Air Base Wing",
+    "primary missions and units": "The USAF's second largest base, home to the Ogden Air Logistics Complex, the 748th Supply Chain Management Group and several directorates of the Air Force Life Cycle Management Center and Air Force Nuclear Weapons Center. The 388th Fighter Wing and 419th Fighter Wing operate the F-35A Lightning II.[27]"
+  },
+  {
+    "Name": "Edwards Air Force Base",
+    "Location": "Edwards",
+    "State": "California",
+    "lat": 34.542,
+    "long": -117.5301,
+    "command": "Air Force Materiel Command",
+    "host wing": "412th Test Wing",
+    "primary missions and units": "The USAF's primary test and evaluation base and home of the Air Force Test Center. A wide range of aircraft are operated by the 412th Test Wing, Air Force Test Pilot School, 31st Test and Evaluation Squadron and Air Force Operational Test and Evaluation Center. Edwards also hosts NASA's Armstrong Flight Research Center.[17]"
+  },
+  {
+    "Name": "Creech Air Force Base",
+    "Location": "Indian Springs",
+    "State": "Nevada",
+    "lat": 36.3514,
+    "long": -115.4024,
+    "command": "Air Combat Command",
+    "host wing": "432nd Wing",
+    "primary missions and units": "The USAF's primary remotely piloted aircraft system (drone) base. The 432nd Wing is supported by the Air Force Reserve's 926th Wing and the Nevada Air National Guard's 232nd Operations Squadron, all operating the MQ-9A Reaper.[12]"
+  },
+  {
+    "Name": "Beale Air Force Base",
+    "Location": "Marysville",
+    "State": "California",
+    "lat": 39.081,
+    "long": -121.2611,
+    "command": "Air Combat Command",
+    "host wing": "9th Reconnaissance Wing",
+    "primary missions and units": "The USAF's high-altitude Intelligence, Surveillance and Reconnaissance hub, operating the U-2S Dragon Lady, RQ-180, RQ-4B Global Hawk and T-38A Talon. The 940th Air Refueling Wing operates the KC-135R Stratotanker.[9]"
+  },
+  {
+    "Name": "Tinker Air Force Base",
+    "Location": "Oklahoma City",
+    "State": "Oklahoma",
+    "lat": 35.2453,
+    "long": -97.2312,
+    "command": "Air Force Materiel Command",
+    "host wing": "72nd Air Base Wing",
+    "primary missions and units": "The Oklahoma City Air Logistics Complex is the primary logistics support depot for B-1B Lancer, B-2A Spirit, B-52H Stratofortress, KC-135R Stratotanker and E-3 Sentry. The 552nd Air Control Wing and 513th Air Control Group operate the E-3 Sentry and the 507th Air Refueling Wing the KC-135R Stratotanker.[60][61][62]"
+  },
+  {
+    "Name": "Ellsworth Air Force Base",
+    "Location": "Box Elder",
+    "State": "South Dakota",
+    "lat": 44.0842,
+    "long": -103.0613,
+    "command": "Air Force Global Strike Command",
+    "host wing": "28th Bomb Wing",
+    "primary missions and units": "The B-1B Lancer strategic bomber is operated by the 28th Bomb Wing. Ellsworth also hosts the 89th Attack Squadron which flies the MQ-9A Reaper.[19]"
+  },
+  {
+    "Name": "Dyess Air Force Base",
+    "Location": "Abilene",
+    "State": "Texas",
+    "lat": 32.2515,
+    "long": -99.5117,
+    "command": "Air Force Global Strike Command",
+    "host wing": "7th Bomb Wing",
+    "primary missions and units": "The B-1B Lancer strategic bomber is operated by the 7th Bomb Wing and 307th Bomb Wing. Dyess is also home to the 317th Airlift Wing flying the C-130J Super Hercules.[16]"
+  },
+  {
+    "Name": "Whiteman Air Force Base",
+    "Location": "Knob Noster",
+    "State": "Missouri",
+    "lat": 38.4349,
+    "long": -93.3253,
+    "command": "Air Force Global Strike Command",
+    "host wing": "509th Bomb Wing",
+    "primary missions and units": "The 509th Bomb Wing and the Missouri Air National Guard's 131st Bomb Wing operates the B-2A Spirit, T-38A Talon. Other units include the 442nd Fighter Wing (A-10C Thunderbolt II) and the 20th Attack Squadron (MQ-9A Reaper).[71]"
+  },
+  {
+    "Name": "Dover Air Force Base",
+    "Location": "Dover",
+    "State": "Delaware",
+    "lat": 39.0742,
+    "long": -75.2753,
+    "command": "Air Mobility Command",
+    "host wing": "436th Airlift Wing",
+    "primary missions and units": "The 436th Airlift Wing and 512th Airlift Wing operate the C-17A Globemaster III and C-5M Super Galaxy in the tactical and strategic airlift role. The base also hosts the Charles C. Carson Center for Mortuary Affairs.[15]"
+  },
+  {
+    "Name": "Scott Air Force Base",
+    "Location": "Belleville",
+    "State": "Illinois",
+    "lat": 38.3243,
+    "long": -89.5007,
+    "command": "Air Mobility Command",
+    "host wing": "375th Air Mobility Wing",
+    "primary missions and units": "The 375th Air Mobility Wing operates the C-21A Learjet, C-40C Clipper and KC-135R Stratotanker. The Illinois Air National Guard's 126th Air Refueling Wing also operates the KC-135R and the 932nd Airlift Wing the C-40C. Also home to the headquarters of Air Mobility Command and the Eighteenth Air Force.[56]"
+  },
+  {
+    "Name": "Mountain Home Air Force Base",
+    "Location": "Mountain Home",
+    "State": "Idaho",
+    "lat": 43.0237,
+    "long": -115.5221,
+    "command": "Air Combat Command",
+    "host wing": "366th Fighter Wing",
+    "primary missions and units": "The 366th Fighter Wing operates the F-15E Strike Eagle.[44]"
+  },
+  {
+    "Name": "Davis�Monthan Air Force Base",
+    "Location": "Tucson",
+    "State": "Arizona",
+    "lat": 32.0959,
+    "long": -110.5259,
+    "command": "Air Combat Command",
+    "host wing": "355th Fighter Wing",
+    "primary missions and units": "The 355th Fighter Wing operates the A-10C Thunderbolt II (both for training and operationally), the HH-60G Pave Hawk and HC-130J Combat King II. Other flying units include the 55th Electronic Combat Group (EC-130H Compass Call), 920th Rescue Wing (HH-60G), 924th Fighter Group (A-10C) and the Arizona Air National Guard's 214th Attack Group (MQ-9A Reaper).[13] The base is known for its aircraft storage facility, operated by the 309th Aerospace Maintenance and Regeneration Group and is also the headquarters of the Twelfth Air Force (Air Forces Southern).[14]"
+  },
+  {
+    "Name": "Tyndall Air Force Base",
+    "Location": "Panama City",
+    "State": "Florida",
+    "lat": 30.443,
+    "long": -85.3435,
+    "command": "Air Combat Command",
+    "host wing": "325th Fighter Wing",
+    "primary missions and units": "The 325th Fighter Wing and 44th Fighter Group operate the F-22A Raptor and T-38A/B/C Talon and the 82nd Aerial Targets Squadron a range of drone targets. Also home to the headquarters of the First Air Force and the 601st Air and Space Operations Center, providing Command and control for air defense, homeland security and civil support missions for North American Aerospace Defense Command (NORAD).[65]"
+  },
+  {
+    "Name": "Grand Forks Air Force Base",
+    "Location": "Grand Forks",
+    "State": "North Dakota",
+    "lat": 47.574,
+    "long": -97.2404,
+    "command": "Air Combat Command",
+    "host wing": "319th Reconnaissance Wing",
+    "primary missions and units": "The 319th Reconnaissance Wing operates the RQ-4B Global Hawk in the high-altitude intelligence, surveillance and reconnaissance role.[25]"
+  },
+  {
+    "Name": "Little Rock Air Force Base",
+    "Location": "Jacksonville",
+    "State": "Arkansas",
+    "lat": 34.5501,
+    "long": -92.0847,
+    "command": "Air Mobility Command",
+    "host wing": "19th Airlift Wing",
+    "primary missions and units": "The 189th Airlift Wing and the Arkansas Air National Guard's 314th Airlift Wing deliver training to C-130 Hercules aircrews from across the US military and allied nations, whereas the 19th Airlift Wing and 913th Airlift Group fly the Hercules operationally.[36]"
+  },
+  {
+    "Name": "Altus Air Force Base",
+    "Location": "Altus",
+    "State": "Oklahoma",
+    "lat": 34.3959,
+    "long": -99.1605,
+    "command": "Air Education and Training Command",
+    "host wing": "97th Air Mobility Wing",
+    "primary missions and units": "The 97th Air Mobility Wing trains crews to operate the C-17A Globemaster III, KC-135R Stratotanker and KC-46A Pegasus.[4]"
+  },
+  {
+    "Name": "Fairchild Air Force Base",
+    "Location": "Spokane",
+    "State": "Washington",
+    "lat": 47.3654,
+    "long": -117.392,
+    "command": "Air Mobility Command",
+    "host wing": "92nd Air Refueling Wing",
+    "primary missions and units": "The 92nd Air Refueling Wing and the 141st Air Refueling Wing of the Washington Air National Guard operate the KC-135R Stratotanker. Also hosts the USAF Survival, Evasion, Resistance and Escape (SERE) School, which is supported by UH-1N Iroquois operated by the 36th Rescue Squadron.[21]"
+  },
+  {
+    "Name": "Sheppard Air Force Base",
+    "Location": "Wichita Falls",
+    "State": "Texas",
+    "lat": 33.592,
+    "long": -98.2931,
+    "command": "Air Education and Training Command",
+    "host wing": "82nd Training Wing",
+    "primary missions and units": "The 82nd Training Wing provides ground technical training, whilst the 80th Flying Training Wing and 340th Flying Training Group provide flying training and operate the T-6A Texan II and T-38C Talon.[59]"
+  },
+  {
+    "Name": "Keesler Air Force Base",
+    "Location": "Biloxi",
+    "State": "Mississippi",
+    "lat": 30.2441,
+    "long": -88.5525,
+    "command": "Air Education and Training Command",
+    "host wing": "81st Training Wing",
+    "primary missions and units": "The 81st Training Wing provides a wide range of non-flying technical training. Also home to the 403rd Wing operating the WC-130J Super Hercules & C-130J Super Hercules and the Headquarters of the Second Air Force.[30]"
+  },
+  {
+    "Name": "Travis Air Force Base",
+    "Location": "Fairfield",
+    "State": "California",
+    "lat": 38.1546,
+    "long": -121.5539,
+    "command": "Air Mobility Command",
+    "host wing": "60th Air Mobility Wing",
+    "primary missions and units": "The 60th Air Mobility Wing and 349th Air Mobility Wing operate the C-5M Galaxy, C-17A Globemaster III and KC-10A Extender. Also home to the David Grant USAF Medical Center.[64]"
+  },
+  {
+    "Name": "Luke Air Force Base",
+    "Location": "Glendale",
+    "State": "Arizona",
+    "lat": 33.3206,
+    "long": -112.2259,
+    "command": "Air Education and Training Command",
+    "host wing": "56th Fighter Wing",
+    "primary missions and units": "The 56th Fighter Wing (the largest fighter wing in the USAF) and the 944th Fighter Wing train pilots to operate the F-16 Fighting Falcon and F-35A Lightning II.[37]"
+  },
+  {
+    "Name": "Offutt Air Force Base",
+    "Location": "Bellevue",
+    "State": "Nebraska",
+    "lat": 41.071,
+    "long": -95.5431,
+    "command": "Air Combat Command",
+    "host wing": "55th Wing",
+    "primary missions and units": "The 55th Wing and Nebraska Air National Guard's 170th Group operate a range of OC-135, RC-135 and WC-135 aircraft in the intelligence gathering, reconnaissance and surveillance roles. Offut is also home to the 557th Weather Wing and 595th Command and Control Group operating the E-4B Advanced Airborne Command Post and the headquarters of US Strategic Command.[47]"
+  },
+  {
+    "Name": "Holloman Air Force Base",
+    "Location": "Alamogordo",
+    "State": "New Mexico",
+    "lat": 32.5109,
+    "long": -106.0623,
+    "command": "Air Combat Command",
+    "host wing": "49th Wing",
+    "primary missions and units": "The 49th Wing trains crews to operate the MQ-9A Reaper and F-16C/D Fighting Falcon. Also home to the 704th Test Group which performs high speed sled track testing, navigation and guidance system testing, radar signature measurements and weapon systems flight testing. The group also operates the C-12J Huron and T-38C Talon.[29]"
+  },
+  {
+    "Name": "Tonopah Test Range Airport",
+    "Location": "Tonopah",
+    "State": "Nevada",
+    "lat": 37.4741,
+    "long": -116.4643,
+    "command": "Air Combat Command",
+    "host wing": "30th Reconnaissance Squadron",
+    "primary missions and units": "The 30th Reconnaissance Squadron is a Geographically Separate Unit of the 432nd Wing and operates the RQ-170 Sentinel UAV.[63]"
+  },
+  {
+    "Name": "Moody Air Force Base",
+    "Location": "Valdosta",
+    "State": "Georgia",
+    "lat": 30.584,
+    "long": -83.1134,
+    "command": "Air Combat Command",
+    "host wing": "23rd Wing",
+    "primary missions and units": "The 23rd Wing operates the A-10C Thunderbolt II, HC-130J Combat King II and HH-60G Pave Hawk in the close air support and combat search and rescue roles. Other units include The 476th Fighter Group also operates the A-10A and the 93rd Air Ground Operations Wing provides force protection capability.[43]"
+  },
+  {
+    "Name": "McConnell Air Force Base",
+    "Location": "Wichita",
+    "State": "Kansas",
+    "lat": 37.3723,
+    "long": -97.1602,
+    "command": "Air Mobility Command",
+    "host wing": "22d Air Refueling Wing",
+    "primary missions and units": "The 22nd Air Refueling Wing and 931st Air Refueling Wing operate the KC-135R/T Stratotanker. The Kansas Air National Guard's 184th Wing performs a variety of roles including intelligence, surveillance and reconnaissance and cyber warfare.[41]"
+  },
+  {
+    "Name": "Shaw Air Force Base",
+    "Location": "Sumter",
+    "State": "South Carolina",
+    "lat": 33.5823,
+    "long": -80.2822,
+    "command": "Air Combat Command",
+    "host wing": "20th Fighter Wing",
+    "primary missions and units": "The 20th Fighter Wing operates the F-16C/D Fighting Falcon and the 25th Attack Group the MQ-9A Reaper. Also home to the headquarters of the Ninth Air Force.[58]"
+  },
+  {
+    "Name": "Minot Air Force Base",
+    "Location": "Minot",
+    "State": "North Dakota",
+    "lat": 48.2457,
+    "long": -101.2129,
+    "command": "Air Force Global Strike Command",
+    "host wing": "5th Bomb Wing",
+    "primary missions and units": "The 5th Bomb Wing operate the B-52H Stratofortress. The 91st Missile Wing man LGM-30G Minuteman III launch facilities throughout North Dakota, supported by the 582nd Helicopter Group's UH-1N Iroquois helicopters[42]"
+  },
+  {
+    "Name": "Seymour Johnson Air Force Base",
+    "Location": "Goldsboro",
+    "State": "North Carolina",
+    "lat": 35.2022,
+    "long": -77.5738,
+    "command": "Air Combat Command",
+    "host wing": "4th Fighter Wing",
+    "primary missions and units": "The 4th Fighter Wing and 414th Fighter Group operate the F-15E Strike Eagle and the 916th Air Refueling Wing the KC-135R Stratotanker.[57]"
+  },
+  {
+    "Name": "Barksdale Air Force Base",
+    "Location": "Bossier City",
+    "State": "Louisiana",
+    "lat": 32.3007,
+    "long": -93.3946,
+    "command": "Air Force Global Strike Command",
+    "host wing": "2nd Bomb Wing",
+    "primary missions and units": "The 2nd Bomb Wing and 307th Bomb Wing operate the B-52H Stratofortress. Also home to the headquarters of Air Force Global Strike Command and the Eighth Air Force.[8]"
+  },
+  {
+    "Name": "Columbus Air Force Base",
+    "Location": "Columbus",
+    "State": "Mississippi",
+    "lat": 33.3838,
+    "long": -88.2638,
+    "command": "Air Education and Training Command",
+    "host wing": "14th Flying Training Wing",
+    "primary missions and units": "Provides specialized undergraduate pilot training in the T-1A Jayhawk, T-6A Texan II and T-38C Talon[11]"
+  },
+  {
+    "Name": "Laughlin Air Force Base",
+    "Location": "Del Rio",
+    "State": "Texas",
+    "lat": 29.2134,
+    "long": -100.4641,
+    "command": "Air Education and Training Command",
+    "host wing": "47th Flying Training Wing",
+    "primary missions and units": "Operates the T-1A Jayhawk, T-38C Talon and T-6A Texan II in the pilot training role.[34]"
+  },
+  {
+    "Name": "Cannon Air Force Base",
+    "Location": "Clovis",
+    "State": "New Mexico",
+    "lat": 34.2258,
+    "long": -103.192,
+    "command": "Air Force Special Operations Command",
+    "host wing": "27th Special Operations Wing",
+    "primary missions and units": "One of four active duty special operations wings, operating the AC-130W Stinger II, CV-22B Osprey, MQ-9A Reaper, MC-130J Commando II and U-28A.[10]"
+  },
+  {
+    "Name": "Arnold Air Force Base",
+    "Location": "Tullahoma",
+    "State": "Tennessee",
+    "lat": 35.2333,
+    "long": -86.0509,
+    "command": "Air Force Materiel Command",
+    "host wing": "Arnold Engineering Development Complex",
+    "primary missions and units": "Non-flying installation, part of the Air Force Test Center. It operates more than 68 aerodynamic and propulsion wind tunnels, rocket and turbine engine test cells, space environmental chambers, arc heaters, and ballistic ranges.[7]"
+  },
+  {
+    "Name": "Hanscom Air Force Base",
+    "Location": "Lincoln",
+    "State": "Massachusetts",
+    "lat": 42.2812,
+    "long": -71.1721,
+    "command": "Air Force Materiel Command",
+    "host wing": "66th Air Base Group",
+    "primary missions and units": "Non-flying installation, hosting the Electronic Systems Center, part of the Air Force Life Cycle Management Center.[26]"
+  },
+  {
+    "Name": "Rome Research Site",
+    "Location": "Rome",
+    "State": "New York",
+    "lat": "43.1316.9",
+    "long": "-75.2430.8",
+    "command": "Air Force Materiel Command",
+    "host wing": "AFRL Information Directorate",
+    "primary missions and units": "Non-flying installation, home to the Information Directorate of Air Force Research Laboratory (AFRL).[54]"
+  },
+  {
+    "Name": "Goodfellow Air Force Base",
+    "Location": "San Angelo",
+    "State": "Texas",
+    "lat": 31.2546,
+    "long": -100.2356,
+    "command": "Air Education and Training Command",
+    "host wing": "17th Training Wing",
+    "primary missions and units": "Non-flying installation delivering cryptologic, intelligence, and other training to US and allied military and US government students.[24]"
+  },
+  {
+    "Name": "United States Air Force Academy",
+    "Location": "Colorado Springs",
+    "State": "Colorado",
+    "lat": 38.5925,
+    "long": -104.513,
+    "command": "Chief of Staff of the Air Force",
+    "host wing": "10th Air Base Wing",
+    "primary missions and units": "Military academy for the US Air Force and US Space Force. It is both a military organization and a university, much of which is set up like most other Air Force bases, but the Superintendent, Commandant, Dean of Faculty and cadet wing are set up like a civilian university. The 306th Flying Training Group operates a variety of light training aircraft and gliders.[66][67]"
+  },
+  {
+    "Name": "Francis E. Warren Air Force Base",
+    "Location": "Cheyenne",
+    "State": "Wyoming",
+    "lat": 41.0759,
+    "long": -104.5201,
+    "command": "Air Force Global Strike Command",
+    "host wing": "90th Missile Wing",
+    "primary missions and units": "LGM-30G Minuteman III base with launch facilities throughout south-east Wyoming, western Nebraska, and northern Colorado, supported by the wing's UH-1N Iroquois helicopters. It hosts the headquarters of the Twentieth Air Force, which is responsible for the USAF's Intercontinental Ballistic Missiles (ICBMs).[20]"
+  },
+  {
+    "Name": "Malmstrom Air Force Base",
+    "Location": "Great Falls",
+    "State": "Montana",
+    "lat": 47.3017,
+    "long": -111.1114,
+    "command": "Air Force Global Strike Command",
+    "host wing": "341st Missile Wing",
+    "primary missions and units": "LGM-30G Minuteman III base with launch facilities throughout central Montana, supported by the 582nd Helicopter Group's UH-1N Iroquois helicopters.[39]"
+  },
+  {
+    "Name": "MacDill Air Force Base",
+    "Location": "Tampa",
+    "State": "Florida",
+    "lat": 27.5058,
+    "long": -82.3116,
+    "command": "Air Combat Command",
+    "host wing": "6th Air Refueling Wing",
+    "primary missions and units": "Home to the 6th Air Refueling Wing and 927th Air Refueling Wing operating the KC-135R Stratotanker. Also home to the headquarters of US Central Command and US Special Operations Command.[38]"
+  },
+  {
+    "Name": "Hurlburt Field",
+    "Location": "Mary Esther",
+    "State": "Florida",
+    "lat": 30.254,
+    "long": -86.4122,
+    "command": "Air Force Special Operations Command",
+    "host wing": "1st Special Operations Wing",
+    "primary missions and units": "Home to the 1st Special Operations Wing, 24th Special Operations Wing, 492nd Special Operations Wing, Headquarters Air Force Special Operations Command and several special forces training and test & evaluation units. Aircraft flown includes the AC-130U Spooky, AC-130W Stinger II, AC-130J Ghostrider, CV-22B Osprey, MC-130H Combat Talon II, MC-130J Commando II, MQ-9A Reaper and U-28A Draco. 505th Command and Control Wing provides training and testing for command and control systems."
+  },
+  {
+    "Name": "Nellis Air Force Base",
+    "Location": "Las Vegas",
+    "State": "Nevada",
+    "lat": 36.141,
+    "long": -115.0203,
+    "command": "Air Combat Command",
+    "host wing": "99th Air Base Wing",
+    "primary missions and units": "Home of the USAF Warfare Center, the air force's advanced air combat training center, comprising the 53rd Test and Evaluation Group, the 57th Wing and US Air Force Weapons School. The 563rd Rescue Group, 926th Wing and the USAF Air Demonstration Squadron (Thunderbirds) are also based at Nellis.[45]"
+  },
+  {
+    "Name": "Wright-Patterson Air Force Base",
+    "Location": "Dayton",
+    "State": "Ohio",
+    "lat": 39.4923,
+    "long": -84.0258,
+    "command": "Air Force Materiel Command",
+    "host wing": "88th Air Base Wing",
+    "primary missions and units": "Headquarters of Air Force Materiel Command, supporting a wide range of logistics, research & development and acquisition activities. Organisations include the Air Force Life Cycle Management Center, Air Force Research Laboratory, Air Force Institute of Technology and the National Air and Space Intelligence Center. The 445th Airlift Wing operates the C-17A Globemaster III. Also home to the National Museum of the US Air Force.[72]"
+  },
+  {
+    "Name": "Maxwell Air Force Base",
+    "Location": "Montgomery",
+    "State": "Alabama",
+    "lat": 32.2245,
+    "long": -86.2145,
+    "command": "Air Education and Training Command",
+    "host wing": "42nd Air Base Wing",
+    "primary missions and units": "Headquarters of Air Education and Training Command and home to the Air University. The 908th Airlift Wing operates the C-130H Hercules.[40]"
+  },
+  {
+    "Name": "North Auxiliary Airfield",
+    "Location": "North",
+    "State": "South Carolina",
+    "lat": 33.3701,
+    "long": -81.0459,
+    "command": "Air Mobility Command",
+    "host wing": "628th Civil Engineer Squadron",
+    "primary missions and units": "Geographically Separate Unit of the 628th Air Base Wing at Joint Base Charleston, utilised for training by C-17A Globemaster III aircraft of the 437th and 315th Airlift Wings.[46]"
+  },
+  {
+    "Name": "Gila Bend Air Force Auxiliary Field",
+    "Location": "Gila Bend",
+    "State": "Arizona",
+    "lat": 32.5315,
+    "long": -112.4312,
+    "command": "Air Education and Training Command",
+    "host wing": "56th Range Management Office",
+    "primary missions and units": "Geographically Separate Unit of the 56th Fighter Wing at Luke AFB, located within the Barry M. Goldwater Air Force Range.[23]"
+  },
+  {
+    "Name": "Homey Airport",
+    "Location": "Groom Lake",
+    "State": "Nevada",
+    "lat": 37.14,
+    "long": -115.483,
+    "command": "Air Force Materiel Command",
+    "host wing": "Air Force Test Center (Detachment 3)",
+    "primary missions and units": "Classified test facility popularly known as Area 51, located within the Nevada Test and Training Range.[28]"
+  },
+  {
+    "Name": "Kirtland Air Force Base",
+    "Location": "Albuquerque",
+    "State": "New Mexico",
+    "lat": 35.0225,
+    "long": -106.3633,
+    "command": "Air Force Materiel Command",
+    "host wing": "377th Air Base Wing",
+    "primary missions and units": "Center for research, development and testing of non-conventional weapons, space and missile technology and laser warfare. Home to the Air Force Nuclear Weapons Center, Air Force Safety Center and Air Force Operational Test and Evaluation Center. The 58th Special Operations Wing and the New Mexico Air National Guard's 150th Special Operations Wing train special operations crews to operate the CV-22B Osprey, HC-130J Combat King II, MC-130J Commando II, HH-60G Pave Hawk and UH-1N Iroquois.[32]"
+  },
+  {
+    "Name": "Kegelman Air Force Auxiliary Field",
+    "Location": "Cherokee",
+    "State": "Oklahoma",
+    "lat": 36.4417,
+    "long": -98.0734,
+    "command": "Air Education and Training Command",
+    "host wing": "71st Flying Training Wing",
+    "primary missions and units": "Airfield used for training by T-1A Jayhawk, T-6A Texan II and T-38C Talon aircraft of the 71st Flying Training Wing at Vance AFB.[31]"
+  },
+  {
+    "Name": "Vance Air Force Base",
+    "Location": "Enid",
+    "State": "Oklahoma",
+    "lat": 36.2022,
+    "long": -97.5502,
+    "command": "Air Education and Training Command",
+    "host wing": "71st Flying Training Wing",
+    "primary missions and units": "71st Flying Training Wing and 5th Flying Training Squadron provide undergraduate pilot training, flying the T-1A Jayhawk, T-6A Texan II and T-38C Talon. T-38C Talon.[68][69]"
+  }
+]
