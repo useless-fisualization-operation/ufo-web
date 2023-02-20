@@ -1,0 +1,461 @@
+[
+  {
+    "State": "AL",
+    "Very important": 0.77,
+    "Somewhat important": 0.13,
+    "Not too important": 0.06,
+    "Not at all important": 0.04,
+    "Don't know": 0,
+    "Sample size": 511
+  },
+  {
+    "State": "AK",
+    "Very important": 0.41,
+    "Somewhat important": 0.29,
+    "Not too important": 0.13,
+    "Not at all important": 0.16,
+    "Don't know": 0.01,
+    "Sample size": 310
+  },
+  {
+    "State": "AZ",
+    "Very important": 0.51,
+    "Somewhat important": 0.24,
+    "Not too important": 0.13,
+    "Not at all important": 0.11,
+    "Don't know": 0.01,
+    "Sample size": 653
+  },
+  {
+    "State": "AR",
+    "Very important": 0.7,
+    "Somewhat important": 0.16,
+    "Not too important": 0.07,
+    "Not at all important": 0.05,
+    "Don't know": 0.01,
+    "Sample size": 311
+  },
+  {
+    "State": "CA",
+    "Very important": 0.47,
+    "Somewhat important": 0.26,
+    "Not too important": 0.13,
+    "Not at all important": 0.14,
+    "Don't know": 0.01,
+    "Sample size": 3697
+  },
+  {
+    "State": "CO",
+    "Very important": 0.47,
+    "Somewhat important": 0.28,
+    "Not too important": 0.12,
+    "Not at all important": 0.13,
+    "Don't know": 0.01,
+    "Sample size": 504
+  },
+  {
+    "State": "CT",
+    "Very important": 0.42,
+    "Somewhat important": 0.27,
+    "Not too important": 0.17,
+    "Not at all important": 0.14,
+    "Don't know": 0,
+    "Sample size": 377
+  },
+  {
+    "State": "DE",
+    "Very important": 0.46,
+    "Somewhat important": 0.31,
+    "Not too important": 0.1,
+    "Not at all important": 0.11,
+    "Don't know": 0.01,
+    "Sample size": 301
+  },
+  {
+    "State": "DC",
+    "Very important": 0.5,
+    "Somewhat important": 0.21,
+    "Not too important": 0.14,
+    "Not at all important": 0.14,
+    "Don't know": 0.01,
+    "Sample size": 303
+  },
+  {
+    "State": "FL",
+    "Very important": 0.53,
+    "Somewhat important": 0.25,
+    "Not too important": 0.11,
+    "Not at all important": 0.11,
+    "Don't know": 0.01,
+    "Sample size": 2020
+  },
+  {
+    "State": "GA",
+    "Very important": 0.64,
+    "Somewhat important": 0.2,
+    "Not too important": 0.07,
+    "Not at all important": 0.08,
+    "Don't know": 0.01,
+    "Sample size": 968
+  },
+  {
+    "State": "HI",
+    "Very important": 0.44,
+    "Somewhat important": 0.32,
+    "Not too important": 0.13,
+    "Not at all important": 0.1,
+    "Don't know": 0.01,
+    "Sample size": 312
+  },
+  {
+    "State": "ID",
+    "Very important": 0.51,
+    "Somewhat important": 0.25,
+    "Not too important": 0.12,
+    "Not at all important": 0.13,
+    "Don't know": 0,
+    "Sample size": 320
+  },
+  {
+    "State": "IL",
+    "Very important": 0.5,
+    "Somewhat important": 0.27,
+    "Not too important": 0.13,
+    "Not at all important": 0.1,
+    "Don't know": 0,
+    "Sample size": 1326
+  },
+  {
+    "State": "IN",
+    "Very important": 0.53,
+    "Somewhat important": 0.25,
+    "Not too important": 0.11,
+    "Not at all important": 0.1,
+    "Don't know": 0.01,
+    "Sample size": 654
+  },
+  {
+    "State": "IA",
+    "Very important": 0.53,
+    "Somewhat important": 0.26,
+    "Not too important": 0.11,
+    "Not at all important": 0.09,
+    "Don't know": 0,
+    "Sample size": 330
+  },
+  {
+    "State": "KS",
+    "Very important": 0.5,
+    "Somewhat important": 0.29,
+    "Not too important": 0.14,
+    "Not at all important": 0.07,
+    "Don't know": 0.01,
+    "Sample size": 307
+  },
+  {
+    "State": "KY",
+    "Very important": 0.63,
+    "Somewhat important": 0.23,
+    "Not too important": 0.07,
+    "Not at all important": 0.07,
+    "Don't know": 0,
+    "Sample size": 439
+  },
+  {
+    "State": "LA",
+    "Very important": 0.71,
+    "Somewhat important": 0.19,
+    "Not too important": 0.04,
+    "Not at all important": 0.06,
+    "Don't know": 0,
+    "Sample size": 465
+  },
+  {
+    "State": "ME",
+    "Very important": 0.34,
+    "Somewhat important": 0.29,
+    "Not too important": 0.15,
+    "Not at all important": 0.21,
+    "Don't know": 0.01,
+    "Sample size": 303
+  },
+  {
+    "State": "MD",
+    "Very important": 0.5,
+    "Somewhat important": 0.25,
+    "Not too important": 0.12,
+    "Not at all important": 0.12,
+    "Don't know": 0.01,
+    "Sample size": 644
+  },
+  {
+    "State": "MA",
+    "Very important": 0.33,
+    "Somewhat important": 0.3,
+    "Not too important": 0.16,
+    "Not at all important": 0.2,
+    "Don't know": 0.01,
+    "Sample size": 704
+  },
+  {
+    "State": "MI",
+    "Very important": 0.5,
+    "Somewhat important": 0.27,
+    "Not too important": 0.11,
+    "Not at all important": 0.11,
+    "Don't know": 0.01,
+    "Sample size": 982
+  },
+  {
+    "State": "MN",
+    "Very important": 0.46,
+    "Somewhat important": 0.28,
+    "Not too important": 0.13,
+    "Not at all important": 0.13,
+    "Don't know": 0.01,
+    "Sample size": 563
+  },
+  {
+    "State": "MS",
+    "Very important": 0.74,
+    "Somewhat important": 0.15,
+    "Not too important": 0.06,
+    "Not at all important": 0.04,
+    "Don't know": 0.01,
+    "Sample size": 309
+  },
+  {
+    "State": "MO",
+    "Very important": 0.56,
+    "Somewhat important": 0.26,
+    "Not too important": 0.1,
+    "Not at all important": 0.07,
+    "Don't know": 0.01,
+    "Sample size": 642
+  },
+  {
+    "State": "MT",
+    "Very important": 0.44,
+    "Somewhat important": 0.25,
+    "Not too important": 0.15,
+    "Not at all important": 0.15,
+    "Don't know": 0.01,
+    "Sample size": 312
+  },
+  {
+    "State": "NV",
+    "Very important": 0.54,
+    "Somewhat important": 0.25,
+    "Not too important": 0.12,
+    "Not at all important": 0.08,
+    "Don't know": 0.01,
+    "Sample size": 312
+  },
+  {
+    "State": "NE",
+    "Very important": 0.44,
+    "Somewhat important": 0.29,
+    "Not too important": 0.1,
+    "Not at all important": 0.16,
+    "Don't know": 0.01,
+    "Sample size": 314
+  },
+  {
+    "State": "NH",
+    "Very important": 0.33,
+    "Somewhat important": 0.27,
+    "Not too important": 0.23,
+    "Not at all important": 0.15,
+    "Don't know": 0.01,
+    "Sample size": 303
+  },
+  {
+    "State": "NJ",
+    "Very important": 0.5,
+    "Somewhat important": 0.28,
+    "Not too important": 0.11,
+    "Not at all important": 0.09,
+    "Don't know": 0.01,
+    "Sample size": 886
+  },
+  {
+    "State": "NM",
+    "Very important": 0.59,
+    "Somewhat important": 0.2,
+    "Not too important": 0.06,
+    "Not at all important": 0.13,
+    "Don't know": 0.01,
+    "Sample size": 312
+  },
+  {
+    "State": "NY",
+    "Very important": 0.45,
+    "Somewhat important": 0.27,
+    "Not too important": 0.12,
+    "Not at all important": 0.15,
+    "Don't know": 0.01,
+    "Sample size": 1966
+  },
+  {
+    "State": "NC",
+    "Very important": 0.62,
+    "Somewhat important": 0.22,
+    "Not too important": 0.08,
+    "Not at all important": 0.08,
+    "Don't know": 0.01,
+    "Sample size": 1022
+  },
+  {
+    "State": "ND",
+    "Very important": 0.53,
+    "Somewhat important": 0.23,
+    "Not too important": 0.15,
+    "Not at all important": 0.09,
+    "Don't know": 0,
+    "Sample size": 338
+  },
+  {
+    "State": "OH",
+    "Very important": 0.56,
+    "Somewhat important": 0.25,
+    "Not too important": 0.09,
+    "Not at all important": 0.1,
+    "Don't know": 0.01,
+    "Sample size": 1132
+  },
+  {
+    "State": "OK",
+    "Very important": 0.64,
+    "Somewhat important": 0.23,
+    "Not too important": 0.04,
+    "Not at all important": 0.08,
+    "Don't know": 0.01,
+    "Sample size": 391
+  },
+  {
+    "State": "OR",
+    "Very important": 0.45,
+    "Somewhat important": 0.25,
+    "Not too important": 0.12,
+    "Not at all important": 0.17,
+    "Don't know": 0.01,
+    "Sample size": 419
+  },
+  {
+    "State": "PA",
+    "Very important": 0.51,
+    "Somewhat important": 0.26,
+    "Not too important": 0.12,
+    "Not at all important": 0.11,
+    "Don't know": 0.01,
+    "Sample size": 1366
+  },
+  {
+    "State": "RI",
+    "Very important": 0.48,
+    "Somewhat important": 0.25,
+    "Not too important": 0.1,
+    "Not at all important": 0.18,
+    "Don't know": 0,
+    "Sample size": 305
+  },
+  {
+    "State": "SC",
+    "Very important": 0.69,
+    "Somewhat important": 0.16,
+    "Not too important": 0.08,
+    "Not at all important": 0.06,
+    "Don't know": 0.01,
+    "Sample size": 495
+  },
+  {
+    "State": "SD",
+    "Very important": 0.57,
+    "Somewhat important": 0.24,
+    "Not too important": 0.09,
+    "Not at all important": 0.09,
+    "Don't know": 0,
+    "Sample size": 305
+  },
+  {
+    "State": "TN",
+    "Very important": 0.71,
+    "Somewhat important": 0.18,
+    "Not too important": 0.05,
+    "Not at all important": 0.06,
+    "Don't know": 0.01,
+    "Sample size": 661
+  },
+  {
+    "State": "TX",
+    "Very important": 0.63,
+    "Somewhat important": 0.23,
+    "Not too important": 0.07,
+    "Not at all important": 0.08,
+    "Don't know": 0,
+    "Sample size": 2535
+  },
+  {
+    "State": "UT",
+    "Very important": 0.58,
+    "Somewhat important": 0.15,
+    "Not too important": 0.14,
+    "Not at all important": 0.11,
+    "Don't know": 0.02,
+    "Sample size": 315
+  },
+  {
+    "State": "VT",
+    "Very important": 0.32,
+    "Somewhat important": 0.25,
+    "Not too important": 0.21,
+    "Not at all important": 0.22,
+    "Don't know": 0.01,
+    "Sample size": 306
+  },
+  {
+    "State": "VA",
+    "Very important": 0.6,
+    "Somewhat important": 0.21,
+    "Not too important": 0.1,
+    "Not at all important": 0.08,
+    "Don't know": 0.01,
+    "Sample size": 882
+  },
+  {
+    "State": "WA",
+    "Very important": 0.44,
+    "Somewhat important": 0.23,
+    "Not too important": 0.17,
+    "Not at all important": 0.16,
+    "Don't know": 0.01,
+    "Sample size": 714
+  },
+  {
+    "State": "WV",
+    "Very important": 0.64,
+    "Somewhat important": 0.22,
+    "Not too important": 0.07,
+    "Not at all important": 0.05,
+    "Don't know": 0.02,
+    "Sample size": 309
+  },
+  {
+    "State": "WI",
+    "Very important": 0.44,
+    "Somewhat important": 0.31,
+    "Not too important": 0.12,
+    "Not at all important": 0.12,
+    "Don't know": 0.01,
+    "Sample size": 600
+  },
+  {
+    "State": "WY",
+    "Very important": 0.49,
+    "Somewhat important": 0.28,
+    "Not too important": 0.13,
+    "Not at all important": 0.09,
+    "Don't know": 0,
+    "Sample size": 316
+  }
+]
