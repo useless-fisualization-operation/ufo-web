@@ -4,63 +4,84 @@
     import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
-	import { getAirportData, getUfoData } from '../routes/data.js';
+	import { getAirportData, getReligionData, getUfoData } from '../routes/data.js';
+	import * as d3 from 'd3';
 	import { zoom, select } from "d3";
-	import { debug } from 'svelte/internal';
-  
-	var airports = getAirportData();
+	import { check_outros, debug } from 'svelte/internal';
+	
+	// ----------- Map: ----------- 
+	let us_states =  ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+	let us_states_short = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
 	const projection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
 	const path = geoPath().projection(null);
-	var ufoData =[];
-	let states = [];
-	let selected;
-	let selectedAirport;
-	let selectedUfoSummary;
-	let selectedUfoPlace;
-	let selectedUfoDate;
-	let selectedUfoShape;
-	let selectedUfoDuration;
-	let displayAirports = false;
-	let displayUfos = true;
 
-    let innerWidth = 0;
-	let innerHeight = 0;
-    $: width = innerWidth;
-    $: height = innerHeight;
+	// ----------- Data: ----------- 
+	var airports = getAirportData(projection);
+	var seaplane_base = getAirportData(projection, seaplane_base);
+	var ufoData = [];
+	let states = [];
+	var religion = getReligionData();
 	
-		
-	airports.forEach(airport => {
-		airport.coordinates = projection([airport.longitude_deg, airport.latitude_deg]);
-	});
+	// ----------- Airports: -----------
+	var airport_types = ["large_airport","medium_airport","small_airport","heliport","seaplane_base","balloonport"]; 
+	const airportTypes = {
+		large_airport:airports.filter(o=>o.type=="large_airport"),
+		medium_airport:airports.filter(o=>o.type=="medium_airport"),
+		small_airport:airports.filter(o=>o.type=="small_airport"),
+		heliport:airports.filter(o=>o.type=="heliport"),
+		seaplane_base:airports.filter(o=>o.type=="seaplane_base"),
+		balloonport:airports.filter(o=>o.type=="balloonport")
+	}
+	const displayAirport = {
+		large_airport:false,
+		medium_airport:false,
+		small_airport:false,
+		heliport:false,
+		seaplane_base:false,
+		balloonport:false
+	}
 	
+	// ----------- Sidebar Info: ----------- 
+	let selected;
+	let selectedUfo;
+	let selectedAirport;
+
+	// -----------  Legend checkmarks: ----------- 
+	let displayUfos = true;
+	let displayReligion = true;
+	
+	// ----------- Load Data: ----------- 
 	onMount(async () => {
 		const us = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json')
 			.then(d => d.json())
 		states = topojson.feature(us, us.objects.states).features;
 		await getUfoData(projection).then(r=>ufoData=r);	
-		
 	});
+	
+	// ----------- Style: ----------- 
+    let radialScale = d3.scaleLinear().domain([0, 1]).range(["#f7fcf5","#00441b"]);
+	//.range(["#fff5eb","#7f2704"]);
+	//.range(["#fff5f0","#67000d"]);
+	function colorStates(name){
+		let i = us_states.indexOf(name);
+		let t = us_states_short[i];
+		let r = religion.filter(o=>o.State==t)[0];
+		if(typeof r !== "undefined") return radialScale(r["Very important"]);
+		return "blue"
+	}
 
-	// Zoom and Pan:
-	// From the tutorial: https://visualsvelte.com/d3/api/d3-zoom
+	// ----------- Zoom and Pan: ----------- 
 	let bindHandleZoom, bindInitZoom;
-
+	let innerWidth = 0;
+	let innerHeight = 0;
+    $: width = innerWidth;
+    $: height = innerHeight;
 	$: zoomX = zoom()
     	.scaleExtent([1, 50])
     	.translateExtent([[0, 0],[width, height]])
     	.on("zoom", handleZoom);
-
-	function handleZoom(e) {
-    	//console.log("ev", e.transform);
-    	select(bindHandleZoom).attr("transform", e.transform);
-  	}
-
-	$:if (bindInitZoom) {
-    	select(bindInitZoom).call(zoomX);
-  	}
-
-	let us_states =  ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
-	let us_states_short = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+	function handleZoom(e) {select(bindHandleZoom).attr("transform", e.transform);}
+	$:if (bindInitZoom) {select(bindInitZoom).call(zoomX);}
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -70,15 +91,15 @@
 	<p class="description">State</p>
 	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
 	<p class="description">UFO: Location</p>
-	<div class="selectedName">{selectedUfoPlace ?? '-'}</div>
+	<div class="selectedName">{selectedUfo?.City ?? '-'}</div>
 	<p class="description">UFO: Date</p>
-	<div class="selectedName">{selectedUfoDate ?? '-'}</div>
+	<div class="selectedName">{selectedUfo?.Date ?? '-'}</div>
 	<p class="description">UFO: Shape</p>
-	<div class="selectedName">{selectedUfoShape ?? '-'}</div>
+	<div class="selectedName">{selectedUfo?.Shape ?? '-'}</div>
 	<p class="description">UFO: Duration of the Event</p>
-	<div class="selectedName">{selectedUfoDuration ?? '-'}</div>
+	<div class="selectedName">{selectedUfo?.Duration ?? '-'}</div>
 	<p class="description">UFO: Summary of the Event</p>
-	<div class="selectedName">{selectedUfoSummary ?? '-'}</div>
+	<div class="selectedName">{selectedUfo?.Summary ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
 	<div class="legend">
@@ -87,12 +108,30 @@
 			<div class="ufo_legend"></div>
 			<p class="desc">UFO sighting</p>
 		</div>
+		{#each airport_types as airport_type}
+			<div class="item">
+				<input type=checkbox bind:checked={displayAirport[airport_type]}>
+				<div class="airport_legend"></div>
+				<p class="desc">{airport_type}</p>
+			</div>
+		{/each}
 		<div class="item">
-			<input type=checkbox bind:checked={displayAirports}>
-			<div class="airport_legend"></div>
-			<p class="desc">Airport</p>
+			<input type=checkbox bind:checked={displayReligion}>
+			<div class="religion_legend" style="background-color: {radialScale(0.75)}"></div>
+			<p class="desc">Importance of Religion</p>
 		</div>
 	</div>
+</div>
+<div class="color_legend">
+	{#if displayReligion}
+	<div class="legend" style="background-color: rgba(255,255,255,0.5)">
+		<section>
+			{#each Array(5) as _,i}
+			<div class="section_div" style="background-color:{radialScale(i/4)}">{(i/4)*100}%</div>
+			{/each}
+		</section>
+	</div>
+	{/if}
 </div>
 
 {#if ufoData.length === 0}
@@ -104,39 +143,34 @@
 	<g bind:this={bindHandleZoom}>
 		{#each states as feature}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<path d={path(feature)} 
+			<path d={path(feature)}
 				on:click={() => {
 					selected = feature;
 					selectedAirport = null;
 					}} 
+				fill="{displayReligion ? colorStates(feature.properties.name) : 'rgb(54, 57, 61)'}" 
 				class="state"/>
 		{/each}
-		
 		{#if selected}
-			<path d={path(selected)} class="selected" />
+			<path d={path(selected)} on:click={()=>selected = null} class="selected" />
 		{/if}
-
 		{#if displayUfos}
 			{#each ufoData as ufo}
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<circle class="ufodot" 
+			<!-- svelte-ignore a11y-click-events-have-key-events -->	
+			<circle class="ufodot" 
 				cx={ufo.coordinates[0]} 
 				cy={ufo.coordinates[1]} 
 				r={0.4} 
 				on:click={() => {
-					selectedUfoSummary = ufo.Summary;
-					selectedUfoPlace = ufo.City;
-					selectedUfoDate = ufo.Date;
-					selectedUfoDuration = ufo.Duration;
-					selectedUfoShape = ufo.Shape;
+					selectedUfo = ufo;
 					let i = us_states_short.indexOf(ufo.State);
 					selected = states.filter(o=>o.properties.name==us_states[i])[0];
 					}}/>
 			{/each}
 		{/if}
-
-		{#if displayAirports}
-			{#each airports as airport}
+		{#each airport_types as airport_type, i}
+			{#each airportTypes[airport_type] as airport}
+				{#if displayAirport[airport_type]}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<circle class="airportdot" 
 				cx={airport.coordinates[0]} 
@@ -146,24 +180,19 @@
 					selectedAirport = airport.name;
 					let i = us_states_short.indexOf(airport.state);
 					selected = states.filter(o=>o.properties.name==us_states[i])[0];
-					}}/>	
+					}}/>
+				{/if}	
 			{/each}
-		{/if}
-		
-		<!--
-		{#if ufoData}
-			{#each ufoData as ufo}
-				{#if (ufo.Longitude != "" && ufo.Latitude != "" && ufo.Longitude != "0" && ufo.Latitude != "0" && ufo.coordinates[0] != 0 && ufo.coordinates[1] != 0)}
-					<circle class="ufodot" cx={ufo.coordinates[0]} cy={ufo.coordinates[1]} r={1} on:click={() => selectedUfoSummary = ufo.Summary}/>
-				{/if}
-			{/each}
-		{/if}
-		-->
-    
+		{/each}
 	</g>
 </svg>
 	
 <style>
+	:root{
+		--ufo: rgb(255, 98, 0);
+		--airport: rgb(58, 230, 227);
+	}
+
 	.state:hover {
 		fill: rgb(86, 92, 99);
     }
@@ -187,7 +216,6 @@
 	}
 
 	.legend {
-		margin-top: 8vh;
 		width: 80%;
 		padding: 1vh;
 		border-style: solid;
@@ -201,21 +229,26 @@
 	}
 
 	.airport_legend {
-		background-color: rgb(58, 230, 227);
+		background-color: var(--airport);
 		width: 1vh;
 		height: 1vh;
 		border-radius: 100%;
 	}
 
+	.religion_legend {
+		width: 1vh;
+		height: 1vh;
+	}
+
 	.ufo_legend {
-		background-color: rgb(255, 98, 0);
+		background-color: var(--ufo);
 		width: 1vh;
 		height: 1vh;
 		border-radius: 100%;
 	}
 
 	.airportdot {
-		fill: rgb(58, 230, 227);
+		fill: var(--airport);
 		opacity: 0.9;
 	}
 
@@ -225,7 +258,7 @@
 	}
 
 	.ufodot {
-		fill: rgb(255, 98, 0);
+		fill: var(--ufo);
 		opacity: 0.9;
 	}
 
@@ -250,6 +283,22 @@
 		left: 8vw;
 	}
 
+	.color_legend{
+		margin-bottom: 1vh;
+		position: absolute;
+    	bottom: 0;
+		right:0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: black;
+		border-radius: 1vh;
+		height: 5vh;
+		min-width: 20vw;
+		max-width: 20vw;
+		width: 20vw;
+		z-index: 10;
+	}
 	.sidebar {
 		display: flex;
 		flex-direction: column;
@@ -293,6 +342,17 @@
     path {
         stroke: white;
 		stroke-width: 0.5px;
-        fill: rgb(54, 57, 61);
     }
+
+	section {
+    box-sizing: border-box;
+    height: 100%;
+	width:100%;
+	}
+	.section_div {
+		display: inline-block;
+		text-align: center;
+		height: 100%;
+		width: 18.4%;
+	}
 </style>
