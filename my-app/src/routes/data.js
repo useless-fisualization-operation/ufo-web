@@ -8,7 +8,7 @@ export function getAirportData(projection) {
     airportData.default.forEach(airport => {
         airport.coordinates = projection([airport.longitude_deg, airport.latitude_deg]);
         if(airport.coordinates!==null) c.push(airport);
-        else console.log(airport)
+        //else console.log(airport)
     });
     return c;
 }
@@ -22,13 +22,21 @@ function getData(link) {
 }
 
 export async function getUfoData(projection) {
-    const ufoSource = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/Data.csv";
+    const ufoSource = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/UfoDataWithImagesCleaned.csv";
     var u = [];
     await getData(ufoSource).then((data) => {
-        data.forEach(ufo => {
+        let count = 0;
+        data.forEach((ufo,i) => {
             ufo.coordinates = projection([ufo.Longitude, ufo.Latitude]);
-            if(ufo.coordinates!==null) u.push(ufo);
+            if(ufo.coordinates!==null && ufo.Images=="Yes") u.push(ufo);
+            /*
+            else{
+                console.log(i+ ": "+ ufo.Url);
+                count++;
+            }*/
         });
+        console.log("Total errors: "+ count);
     });
     return u;
 }
+

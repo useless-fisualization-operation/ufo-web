@@ -1,14 +1,18 @@
 <script>
 // @ts-nocheck
-
     import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
-	import { getAirportData, getReligionData, getUfoData } from '../routes/data.js';
+	import { getAirportData, getReligionData, getUfoData} from '../routes/data.js';
+	//import {scrape_NUFORC} from '../routes/scraper.mjs'; 
 	import * as d3 from 'd3';
 	import { zoom, select } from "d3";
 	import { check_outros, debug } from 'svelte/internal';
-	
+	import Modal from './Modal.svelte';
+	import ufoSVG from '/src/static/UFO_try-cropped.svg';
+	let showModal = false;
+
+	//const puppeteer = require(['puppeteer']);
 	// ----------- Map: ----------- 
 	let us_states =  ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
 	let us_states_short = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
@@ -33,7 +37,7 @@
 		balloonport:airports.filter(o=>o.type=="balloonport")
 	}
 	const displayAirport = {
-		large_airport:false,
+		large_airport:true,
 		medium_airport:false,
 		small_airport:false,
 		heliport:false,
@@ -48,7 +52,7 @@
 
 	// -----------  Legend checkmarks: ----------- 
 	let displayUfos = true;
-	let displayReligion = true;
+	let displayReligion = false;
 	
 	// ----------- Load Data: ----------- 
 	onMount(async () => {
@@ -94,16 +98,11 @@
 	<div class="selectedName">{selectedUfo?.City ?? '-'}</div>
 	<p class="description">UFO: Date</p>
 	<div class="selectedName">{selectedUfo?.Date ?? '-'}</div>
-	<p class="description">UFO: Shape</p>
-	<div class="selectedName">{selectedUfo?.Shape ?? '-'}</div>
-	<p class="description">UFO: Duration of the Event</p>
-	<div class="selectedName">{selectedUfo?.Duration ?? '-'}</div>
-	<p class="description">UFO: Summary of the Event</p>
-	<div class="selectedName">{selectedUfo?.Summary ?? '-'}</div>
 	<p class="description">Airport</p>
-	<div class="selectedName">{selectedAirport ?? '-'}</div>
+	<div class="selectedName">{selectedAirport?.name ?? '-'}</div>
 	<div class="legend">
-		<div class="item">
+		<!--<img src="https://nuforc.org/wp-content/uploads/wpforms/624-c824613929464448a7e062112379f845/4CE93866-484F-456E-B8AA-84840A3EB6EC-2aa57680e38166928b0dc3a9df49c674.jpeg", height:1vh, width:1vw>
+		--><div class="item">
 			<input type=checkbox bind:checked={displayUfos}>
 			<div class="ufo_legend"></div>
 			<p class="desc">UFO sighting</p>
@@ -150,25 +149,28 @@
 					}} 
 				fill="{displayReligion ? colorStates(feature.properties.name) : 'rgb(54, 57, 61)'}" 
 				class="state"/>
-		{/each}
+		{/each}		
 		{#if selected}
 			<path d={path(selected)} on:click={()=>selected = null} class="selected" />
 		{/if}
 		{#if displayUfos}
 			{#each ufoData as ufo}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->	
-			<circle class="ufodot" 
+			<circle class="ufodot"
 				cx={ufo.coordinates[0]} 
 				cy={ufo.coordinates[1]} 
 				r={0.4} 
 				on:click={() => {
+					showModal = true;
 					selectedUfo = ufo;
 					let i = us_states_short.indexOf(ufo.State);
 					selected = states.filter(o=>o.properties.name==us_states[i])[0];
 					}}/>
 			{/each}
-		{/if}
-		{#each airport_types as airport_type, i}
+		{/if}	
+		<image href="{ufoSVG}" width={10} x={selectedUfo?.coordinates[0]-5} y={selectedUfo?.coordinates[1]-9}/>
+		<!--<image href="{ufoSVG}" width={10} x={selectedUfo?.coordinates[0]-10} y={selectedUfo?.coordinates[1]-17}/>
+		-->{#each airport_types as airport_type, i}
 			{#each airportTypes[airport_type] as airport}
 				{#if displayAirport[airport_type]}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -177,7 +179,7 @@
 				cy={airport.coordinates[1]} 
 				r={0.6} 
 				on:click={() => {
-					selectedAirport = airport.name;
+					selectedAirport = airport;
 					let i = us_states_short.indexOf(airport.state);
 					selected = states.filter(o=>o.properties.name==us_states[i])[0];
 					}}/>
@@ -186,7 +188,28 @@
 		{/each}
 	</g>
 </svg>
+<Modal bind:showModal>
+	<h2 slot="header">
+		<center>{selectedUfo?.City} - {selectedUfo?.Date}</center>  
+	</h2>
+
+	<ol>
+		<li><b>Shape:</b> {selectedUfo?.Shape}</li>
+		<li><b>Duration of the event:</b> {selectedUfo?.Duration}</li>
+		<li><b>Summary:</b> {selectedUfo?.Summary}</li>
+		{#if Array.isArray(selectedUfo?.UrlImage)}
+			{#each selectedUfo?.UrlImage as img}
+				<img src="{img}" alt="Ufo" width="80%"/>
+			{/each}
+		{:else}
+			<img src="{selectedUfo?.UrlImage}" alt="Ufo" width="80%"/>
+		{/if}
+		
+	</ol>
 	
+	<a href="{selectedUfo?.Url}">NUFORC Report</a>
+</Modal>
+
 <style>
 	:root{
 		--ufo: rgb(255, 98, 0);

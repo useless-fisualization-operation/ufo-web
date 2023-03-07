@@ -1,4 +1,5 @@
 <script>
+	//export let data
 	import Map from '../components/Map.svelte';
 </script>
 
