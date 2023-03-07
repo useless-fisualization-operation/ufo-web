@@ -1,4 +1,4 @@
-export type USState =
+export type USState = // TODO: Enum?
     'Alabama' |
     'Alaska' |
     'Arizona' |
@@ -103,7 +103,7 @@ export type USStateShort =
     'WY';
 
 
-export const USStates: USState[] = [
+export const us_states: USState[] = [
     'Alabama',
     'Alaska',
     'Arizona',
@@ -156,7 +156,7 @@ export const USStates: USState[] = [
     'Wyoming'
 ];
 
-export const USStatesShort: USStateShort[] = [
+export const us_states_short: USStateShort[] = [
     'AL',
     'AK',
     'AZ',
@@ -208,3 +208,11 @@ export const USStatesShort: USStateShort[] = [
     'WI',
     'WY'
 ];
+
+export function stringToUSStateShort(state: string): USStateShort {
+    return state.toUpperCase() as USStateShort;
+}
+
+export function stringToUSState(state: string): USState {
+    return state as USState;
+}

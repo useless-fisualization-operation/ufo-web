@@ -2,14 +2,48 @@ import { default as airportData } from '../data/us_airports_cleaned.json';
 import { default as religionData } from '../data/importance_of_religion_by_us_state_cleaned.json';
 import * as d3 from 'd3';
 import type { DSVRowArray } from 'd3';
+import type { USStateShort } from './states';
+import { stringToUSStateShort } from './states';
 
-type Airport = {
+
+export type Airport = {
     name: string,
-    type: string,
+    type: AirportType,
     latitude_deg: number,
     longitude_deg: number,
-    state: string,
+    state: USStateShort,
     coordinates: [number, number]
+}
+
+export enum AirportType {
+    'large_airport',
+    'medium_airport',
+    'small_airport',
+    'heliport',
+    'seaplane_base',
+    'balloonport',
+    'closed'
+}
+
+function stringToAirportType(type: string): AirportType {
+    switch (type) {
+        case "large_airport":
+            return AirportType.large_airport;
+        case "medium_airport":
+            return AirportType.medium_airport;
+        case "small_airport":
+            return AirportType.small_airport;
+        case "heliport":
+            return AirportType.heliport;
+        case "seaplane_base":
+            return AirportType.seaplane_base;
+        case "balloonport":
+            return AirportType.balloonport;
+        case "closed":
+            return AirportType.closed;
+        default:
+            throw new Error("Unknown airport type: " + type);
+    }
 }
 
 type RawUfo = {
@@ -25,10 +59,10 @@ type RawUfo = {
     url: string,
 }
 
-type Ufo = {
+export type Ufo = {
     date: string,
     city: string,
-    state: string,
+    state: USStateShort,
     latitude: number,
     longitude: number,
     shape: string,
@@ -59,10 +93,10 @@ export function getAirportData(projection: d3.GeoProjection): Airport[] {
             airports.push(
                 {
                     name: raw_airport.name,
-                    type: raw_airport.type,
+                    type: stringToAirportType(raw_airport.type),
                     latitude_deg: raw_airport.latitude_deg,
                     longitude_deg: raw_airport.longitude_deg,
-                    state: raw_airport.state,
+                    state: stringToUSStateShort(raw_airport.state),
                     coordinates: coordinates
                 }
             );
@@ -79,18 +113,19 @@ export function getReligionData(): ReligionData[] {
 }
 
 
-export async function getUfoData(projection: d3.GeoProjection, source: string = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/Data.csv") {
+export async function getUfoData(projection: d3.GeoProjection, source: string = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/Data.csv"): Promise<Ufo[]> {
     var ufos: Ufo[] = [];
     await d3.csv(source).then(data => {
         data.forEach(row => {
-            const raw_ufo: RawUfo = row as unknown as RawUfo;
+            const raw_ufo: RawUfo = row as any as RawUfo;
+            console.log(raw_ufo);
             const coordinates = projection([raw_ufo.longitude, raw_ufo.latitude]); // TODO: pre-calculate?
             if (coordinates !== null) {     // TODO: Errors
                 ufos.push(
                     {
                         date: raw_ufo.date,
                         city: raw_ufo.city,
-                        state: raw_ufo.state,
+                        state: stringToUSStateShort(raw_ufo.state),
                         latitude: raw_ufo.latitude,
                         longitude: raw_ufo.longitude,
                         shape: raw_ufo.shape,
