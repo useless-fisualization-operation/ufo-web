@@ -11,6 +11,7 @@
 	import { get } from 'svelte/store';
 
 	const projection: d3.GeoProjection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
+
 	const path = geoPath().projection(null);
 
 	// ----------- Data: -----------
@@ -25,7 +26,8 @@
 		small_airport: airports.filter((o) => o.type == AirportType.small_airport),
 		heliport: airports.filter((o) => o.type == AirportType.heliport),
 		seaplane_base: airports.filter((o) => o.type == AirportType.seaplane_base),
-		balloonport: airports.filter((o) => o.type == AirportType.balloonport)
+		balloonport: airports.filter((o) => o.type == AirportType.balloonport),
+		closed: airports.filter((o) => o.type == AirportType.closed)
 	};
 
 	// TODO: Move
@@ -38,24 +40,12 @@
 		small_airport: false,
 		heliport: false,
 		seaplane_base: false,
-		balloonport: false
+		balloonport: false,
+		closed: false
 	};
 
 	function isAirportTypeDisplayed(airport_type: AirportType) {
-		switch (airport_type) {
-			case AirportType.large_airport:
-				return displayOptions.large_airport;
-			case AirportType.medium_airport:
-				return displayOptions.medium_airport;
-			case AirportType.small_airport:
-				return displayOptions.small_airport;
-			case AirportType.heliport:
-				return displayOptions.heliport;
-			case AirportType.seaplane_base:
-				return displayOptions.seaplane_base;
-			case AirportType.balloonport:
-				return displayOptions.balloonport;
-		}
+		return displayOptions[AirportType[airport_type]];
 	}
 
 	// ----------- Sidebar Info: -----------
@@ -127,7 +117,6 @@
 	<div class="selectedName">{selectedUfo?.Summary ?? '-'}</div>
 	<p class="description">Airport</p>
 	<div class="selectedName">{selectedAirport ?? '-'}</div>
-
 	<!-- TODO: Seaparate component -->
 	<div class="legend">
 		<div class="item">
@@ -208,7 +197,7 @@
 				/>
 			{/each}
 		{/if}
-		{#each Object.keys(airports_by_type) as airport_type}
+		{#each Object.keys(AirportType) as airport_type}
 			{#each airports_by_type[airport_type] as airport}
 				{#if displayOptions[airport_type]}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
