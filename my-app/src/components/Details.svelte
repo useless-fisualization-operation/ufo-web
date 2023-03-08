@@ -17,6 +17,4 @@
 </div>
 
 <style lang="scss">
-	.details {
-	}
 </style>

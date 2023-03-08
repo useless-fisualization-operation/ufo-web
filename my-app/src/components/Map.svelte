@@ -4,8 +4,6 @@
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { getUfoData, type Ufo } from './ufo_data';
 	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
-	// @ts-ignore
-	import * as d3 from 'd3';
 	import { zoom, select } from 'd3';
 	import type { SharedState } from './shared';
 	import { getReligionData } from './region_data';
@@ -123,7 +121,6 @@
 	{/if}
 </div>
 -->
-
 {#if ufoData.length === 0}
 	<div class="loadingbg" />
 	<div class="loadingscreen">Looking for UFOs ...</div>
@@ -152,7 +149,7 @@
 		{#if selected}
 			<path d={path(selected)} on:click={() => (selected = null)} class="selected" />
 		{/if}
-		{#if displayUfos}
+		{#if shared_state.display_options.display_ufos}
 			{#each ufoData as ufo}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<circle

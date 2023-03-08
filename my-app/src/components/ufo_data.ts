@@ -37,11 +37,18 @@ function parse_ufo_row(row: d3.DSVRowString<string>): RawUfo | null {
         return null;
     }
 
+    let state = null;
+    try {
+        state = StatesShort[row["State"]].short;
+    } catch {
+        console.log("UFO row has invalid state: " + row["State"]);
+        return null;
+    }
 
     return {
         date: row["Date"],
         city: row["City"],
-        state: row["State"],
+        state: state,
         latitude: parseFloat(row["Latitude"]),
         longitude: parseFloat(row["Longitude"]),
         shape: row["Shape"],
@@ -53,6 +60,7 @@ function parse_ufo_row(row: d3.DSVRowString<string>): RawUfo | null {
 }
 
 export async function getUfoData(projection: d3.GeoProjection, source: string = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/Data.csv"): Promise<Ufo[]> {
+    console.log("Loading UFO data from: " + source);
     var ufos: Ufo[] = [];
     await d3.csv(source).then(data => {
         data.forEach(row => {

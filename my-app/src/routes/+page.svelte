@@ -16,7 +16,7 @@
 			display_seaplane_bases: false,
 			display_balloonports: false,
 			display_closed_airports: false,
-			display_ufos: true,
+			display_ufos: false,
 			display_religion: true
 		},
 		selected: null,
