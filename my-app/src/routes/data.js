@@ -28,7 +28,7 @@ export async function getUfoData(projection) {
         let count = 0;
         data.forEach((ufo,i) => {
             ufo.coordinates = projection([ufo.Longitude, ufo.Latitude]);
-            if(ufo.coordinates!==null && ufo.Images=="Yes") u.push(ufo);
+            if(ufo.coordinates!==null) u.push(ufo);
             /*
             else{
                 console.log(i+ ": "+ ufo.Url);
