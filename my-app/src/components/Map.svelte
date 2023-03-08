@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
-	import { geoPath, geoAlbersUsa } from 'd3-geo';
+	import { geoPath, geoAlbersUsa, type ExtendedFeatureCollection } from 'd3-geo';
 	import { AirportType, getAirportData, getReligionData, getUfoData } from './data';
 	import type { Ufo, Airport } from './data';
 	import * as d3 from 'd3';
@@ -62,7 +62,10 @@
 		const us = await fetch(
 			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
 		).then((d) => d.json());
-		states = topojson.feature(us, us.objects.states).features; // TODO: Fix?
+
+		// @ts-ignore
+		states = topojson.feature(us, us.objects.states).features;
+
 		ufoData = await getUfoData(projection);
 	});
 
