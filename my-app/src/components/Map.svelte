@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
-	import { geoPath, geoAlbersUsa, type ExtendedFeatureCollection } from 'd3-geo';
+	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { AirportType, getAirportData, getReligionData, getUfoData } from './data';
 	import type { Ufo, Airport } from './data';
 	import * as d3 from 'd3';
 	import { zoom, select } from 'd3';
-	import { check_outros, debug } from 'svelte/internal';
-	import { us_states, us_states_short, type USState } from './states';
-	import { get } from 'svelte/store';
+	import type { SharedState } from './shared';
+
+	export let shared_state: SharedState;
 
 	const projection: d3.GeoProjection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
 
@@ -54,7 +54,7 @@
 	let selectedAirport: any; // TODO
 
 	// -----------  Legend checkmarks: -----------
-	let displayUfos = true;
+	let displayUfos = false;
 	let displayReligion = true;
 
 	// ----------- Load Data: -----------
@@ -73,12 +73,13 @@
 	let radialScale = d3.scaleLinear().domain([0, 1]).range(['#f7fcf5', '#00441b']); // FIX: not sure this is working
 	//.range(["#fff5eb","#7f2704"]);
 	//.range(["#fff5f0","#67000d"]);
-	function colorStates(name: USState) {
-		let i = us_states.indexOf(name);
-		let t = us_states_short[i];
-		let r = religion.filter((o) => o.State == t)[0];
-		if (typeof r !== 'undefined') return radialScale(r['Very important']).toString(); // Fix: I dont think this works
-		return 'blue';
+	function colorState(name: State) {
+		let state = religion.find((o) => o.state == name);
+		if (state) {
+			return radialScale(state.religion);
+		} else {
+			return '#ccc';
+		}
 	}
 
 	// ----------- Zoom and Pan: -----------
@@ -177,7 +178,7 @@
 					selected = state;
 					selectedAirport = null;
 				}}
-				fill={displayReligion ? colorStates(state.properties.name) : 'rgb(54, 57, 61)'}
+				fill={displayReligion ? colorState(state.properties.name) : 'rgb(54, 57, 61)'}
 				class="state"
 			/>
 		{/each}
