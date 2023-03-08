@@ -24,8 +24,11 @@
 	};
 </script>
 
-<main>
+<div>
 	<Header {shared_state} />
+</div>
+
+<main>
 	<Map {shared_state} />
 	<Details {shared_state} />
 	<DisplayOptions {shared_state} />

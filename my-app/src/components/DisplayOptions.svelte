@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { DISPLAY } from '$env/static/private';
 	import { AirportTypes } from './airport_data';
 	import type { SharedState } from './shared';
 

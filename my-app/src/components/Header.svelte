@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SharedState } from './shared';
 
-	export let shared_state: SharedState;
+	export let shared_state;
 </script>
 
 <div />

@@ -49,7 +49,13 @@ export const States: { [key: string]: { name: State, short: StateShort } } = {
     'Washington': { name: 'Washington', short: 'WA' },
     'West Virginia': { name: 'West Virginia', short: 'WV' },
     'Wisconsin': { name: 'Wisconsin', short: 'WI' },
-    'Wyoming': { name: 'Wyoming', short: 'WY' }
+    'Wyoming': { name: 'Wyoming', short: 'WY' },
+    'District of Columbia': { name: 'District of Columbia', short: 'DC' },
+    'Puerto Rico': { name: 'Puerto Rico', short: 'PR' },
+    'Guam': { name: 'Guam', short: 'GU' },
+    'American Samoa': { name: 'American Samoa', short: 'AS' },
+    'Northern Mariana Islands': { name: 'Northern Mariana Islands', short: 'MP' },
+    'United States Armed Forces - Americas': { name: 'United States Armed Forces - Americas', short: 'U-A' },
 }
 
 
@@ -103,11 +109,17 @@ export const StatesShort: { [key: string]: { name: State, short: StateShort } } 
     'WA': { name: 'Washington', short: 'WA' },
     'WV': { name: 'West Virginia', short: 'WV' },
     'WI': { name: 'Wisconsin', short: 'WI' },
-    'WY': { name: 'Wyoming', short: 'WY' }
+    'WY': { name: 'Wyoming', short: 'WY' },
+    'DC': { name: 'District of Columbia', short: 'DC' },
+    'PR': { name: 'Puerto Rico', short: 'PR' },
+    'GU': { name: 'Guam', short: 'GU' },
+    'AS': { name: 'American Samoa', short: 'AS' },
+    'MP': { name: 'Northern Mariana Islands', short: 'MP' },
+    'U-A': { name: 'United States Armed Forces - Americas', short: 'U-A' }
 }
 
 export type State =
-    'Alabama' | 'Alaska' | 'Arizona' | 'Arkansas' | 'California' | 'Colorado' | 'Connecticut' | 'Delaware' | 'Florida' | 'Georgia' | 'Hawaii' | 'Idaho' | 'Illinois' | 'Indiana' | 'Iowa' | 'Kansas' | 'Kentucky' | 'Louisiana' | 'Maine' | 'Maryland' | 'Massachusetts' | 'Michigan' | 'Minnesota' | 'Mississippi' | 'Missouri' | 'Montana' | 'Nebraska' | 'Nevada' | 'New Hampshire' | 'New Jersey' | 'New Mexico' | 'New York' | 'North Carolina' | 'North Dakota' | 'Ohio' | 'Oklahoma' | 'Oregon' | 'Pennsylvania' | 'Rhode Island' | 'South Carolina' | 'South Dakota' | 'Tennessee' | 'Texas' | 'Utah' | 'Vermont' | 'Virginia' | 'Washington' | 'West Virginia' | 'Wisconsin' | 'Wyoming';
+    'Alabama' | 'Alaska' | 'Arizona' | 'Arkansas' | 'California' | 'Colorado' | 'Connecticut' | 'Delaware' | 'Florida' | 'Georgia' | 'Hawaii' | 'Idaho' | 'Illinois' | 'Indiana' | 'Iowa' | 'Kansas' | 'Kentucky' | 'Louisiana' | 'Maine' | 'Maryland' | 'Massachusetts' | 'Michigan' | 'Minnesota' | 'Mississippi' | 'Missouri' | 'Montana' | 'Nebraska' | 'Nevada' | 'New Hampshire' | 'New Jersey' | 'New Mexico' | 'New York' | 'North Carolina' | 'North Dakota' | 'Ohio' | 'Oklahoma' | 'Oregon' | 'Pennsylvania' | 'Rhode Island' | 'South Carolina' | 'South Dakota' | 'Tennessee' | 'Texas' | 'Utah' | 'Vermont' | 'Virginia' | 'Washington' | 'West Virginia' | 'Wisconsin' | 'Wyoming' | 'District of Columbia' | 'Puerto Rico' | 'Guam' | 'American Samoa' | 'Northern Mariana Islands' | 'United States Armed Forces - Americas';
 
 export type StateShort =
-    'AL' | 'AK' | 'AZ' | 'AR' | 'CA' | 'CO' | 'CT' | 'DE' | 'FL' | 'GA' | 'HI' | 'ID' | 'IL' | 'IN' | 'IA' | 'KS' | 'KY' | 'LA' | 'ME' | 'MD' | 'MA' | 'MI' | 'MN' | 'MS' | 'MO' | 'MT' | 'NE' | 'NV' | 'NH' | 'NJ' | 'NM' | 'NY' | 'NC' | 'ND' | 'OH' | 'OK' | 'OR' | 'PA' | 'RI' | 'SC' | 'SD' | 'TN' | 'TX' | 'UT' | 'VT' | 'VA' | 'WA' | 'WV' | 'WI' | 'WY';
+    'AL' | 'AK' | 'AZ' | 'AR' | 'CA' | 'CO' | 'CT' | 'DE' | 'FL' | 'GA' | 'HI' | 'ID' | 'IL' | 'IN' | 'IA' | 'KS' | 'KY' | 'LA' | 'ME' | 'MD' | 'MA' | 'MI' | 'MN' | 'MS' | 'MO' | 'MT' | 'NE' | 'NV' | 'NH' | 'NJ' | 'NM' | 'NY' | 'NC' | 'ND' | 'OH' | 'OK' | 'OR' | 'PA' | 'RI' | 'SC' | 'SD' | 'TN' | 'TX' | 'UT' | 'VT' | 'VA' | 'WA' | 'WV' | 'WI' | 'WY' | 'DC' | 'PR' | 'GU' | 'AS' | 'MP' | 'U-A';
