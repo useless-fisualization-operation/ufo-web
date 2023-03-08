@@ -8,15 +8,19 @@
 	import type { SharedState } from '../components/shared';
 
 	const shared_state: SharedState = {
-		large_airport: false,
-		medium_airport: false,
-		small_airport: false,
-		heliport: false,
-		seaplane_base: false,
-		balloonport: false,
-		closed: false,
-		display_ufos: true,
-		display_religion: true
+		display_options: {
+			display_large_airports: false,
+			display_medium_airports: false,
+			display_small_airports: false,
+			display_heliports: false,
+			display_seaplane_bases: false,
+			display_balloonports: false,
+			display_closed_airports: false,
+			display_ufos: true,
+			display_religion: true
+		},
+		selected: null,
+		selected_type: 'none'
 	};
 </script>
 

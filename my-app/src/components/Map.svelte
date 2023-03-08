@@ -2,11 +2,13 @@
 	import { onMount } from 'svelte';
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
-	import { AirportType, getAirportData, getReligionData, getUfoData } from './data';
-	import type { Ufo, Airport } from './data';
+	import { getUfoData, type Ufo } from './ufo_data';
+	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
+	// @ts-ignore
 	import * as d3 from 'd3';
 	import { zoom, select } from 'd3';
 	import type { SharedState } from './shared';
+	import { getReligionData } from './region_data';
 
 	export let shared_state: SharedState;
 
@@ -21,13 +23,13 @@
 	let states: any[] = []; // TODO: Fix?
 
 	const airports_by_type: { [key: string]: Airport[] } = {
-		large_airport: airports.filter((o) => o.type == AirportType.large_airport),
-		medium_airport: airports.filter((o) => o.type == AirportType.medium_airport),
-		small_airport: airports.filter((o) => o.type == AirportType.small_airport),
-		heliport: airports.filter((o) => o.type == AirportType.heliport),
-		seaplane_base: airports.filter((o) => o.type == AirportType.seaplane_base),
-		balloonport: airports.filter((o) => o.type == AirportType.balloonport),
-		closed: airports.filter((o) => o.type == AirportType.closed)
+		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
+		medium_airport: airports.filter((o) => o.type == AirportTypes.medium_airport),
+		small_airport: airports.filter((o) => o.type == AirportTypes.small_airport),
+		heliport: airports.filter((o) => o.type == AirportTypes.heliport),
+		seaplane_base: airports.filter((o) => o.type == AirportTypes.seaplane_base),
+		balloonport: airports.filter((o) => o.type == AirportTypes.balloonport),
+		closed: airports.filter((o) => o.type == AirportTypes.closed)
 	};
 
 	// TODO: Move
@@ -45,7 +47,7 @@
 	};
 
 	function isAirportTypeDisplayed(airport_type: AirportType) {
-		return displayOptions[AirportType[airport_type]];
+		return displayOptions[AirportTypes[airport_type]];
 	}
 
 	// ----------- Sidebar Info: -----------
@@ -70,17 +72,17 @@
 	});
 
 	// ----------- Style: -----------
-	let radialScale = d3.scaleLinear().domain([0, 1]).range(['#f7fcf5', '#00441b']); // FIX: not sure this is working
-	//.range(["#fff5eb","#7f2704"]);
-	//.range(["#fff5f0","#67000d"]);
-	function colorState(name: State) {
-		let state = religion.find((o) => o.state == name);
-		if (state) {
-			return radialScale(state.religion);
-		} else {
-			return '#ccc';
-		}
-	}
+	// let radialScale = d3.scaleLinear().domain([0, 1]).range(['#f7fcf5', '#00441b']); // FIX: not sure this is working
+	// //.range(["#fff5eb","#7f2704"]);
+	// //.range(["#fff5f0","#67000d"]);
+	// function colorState(name: State) {
+	// 	let state = religion.find((o) => o.state == name);
+	// 	if (state) {
+	// 		return radialScale(state.religion);
+	// 	} else {
+	// 		return '#ccc';
+	// 	}
+	// }
 
 	// ----------- Zoom and Pan: -----------
 	let bindHandleZoom: any, bindInitZoom: any; // TODO: Fix?
@@ -105,44 +107,8 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<div class="sidebar">
-	<p class="logo">Useless Fisualization Operation</p>
-	<p class="description">State</p>
-	<div class="selectedName">{selected?.properties.name ?? '-'}</div>
-	<p class="description">UFO: Location</p>
-	<div class="selectedName">{selectedUfo?.City ?? '-'}</div>
-	<p class="description">UFO: Date</p>
-	<div class="selectedName">{selectedUfo?.Date ?? '-'}</div>
-	<p class="description">UFO: Shape</p>
-	<div class="selectedName">{selectedUfo?.Shape ?? '-'}</div>
-	<p class="description">UFO: Duration of the Event</p>
-	<div class="selectedName">{selectedUfo?.Duration ?? '-'}</div>
-	<p class="description">UFO: Summary of the Event</p>
-	<div class="selectedName">{selectedUfo?.Summary ?? '-'}</div>
-	<p class="description">Airport</p>
-	<div class="selectedName">{selectedAirport ?? '-'}</div>
-	<!-- TODO: Seaparate component -->
-	<div class="legend">
-		<div class="item">
-			<input type="checkbox" bind:checked={displayUfos} />
-			<div class="ufo_legend" />
-			<p class="desc">UFO sighting</p>
-		</div>
-		{#each Object.keys(AirportType) as airport_type}
-			<div class="item">
-				<input type="checkbox" bind:checked={displayOptions[airport_type]} />
-				<div class="airport_legend" />
-				<p class="desc">{airport_type}</p>
-			</div>
-		{/each}
-		<div class="item">
-			<input type="checkbox" bind:checked={displayReligion} />
-			<div class="religion_legend" style="background-color: {radialScale(0.75)}" />
-			<p class="desc">Importance of Religion</p>
-		</div>
-	</div>
-</div>
 <!-- TODO: Seaparate component -->
+<!--
 <div class="color_legend">
 	{#if displayReligion}
 		<div class="legend" style="background-color: rgba(255,255,255,0.5)">
@@ -156,6 +122,7 @@
 		</div>
 	{/if}
 </div>
+-->
 
 {#if ufoData.length === 0}
 	<div class="loadingbg" />
@@ -178,7 +145,7 @@
 					selected = state;
 					selectedAirport = null;
 				}}
-				fill={displayReligion ? colorState(state.properties.name) : 'rgb(54, 57, 61)'}
+				fill={'rgb(54, 57, 61)'}
 				class="state"
 			/>
 		{/each}
@@ -190,30 +157,30 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<circle
 					class="ufodot"
-					cx={ufo.coordinates[0]}
-					cy={ufo.coordinates[1]}
+					cx={ufo.projection[0]}
+					cy={ufo.projection[1]}
 					r={0.4}
 					on:click={() => {
-						selectedUfo = ufo;
-						let i = us_states_short.indexOf(ufo.state);
-						selected = states.filter((o) => o.properties.name == us_states[i])[0];
+						// selectedUfo = ufo;
+						// let i = us_states_short.indexOf(ufo.state);
+						// Selected = states.filter((o) => o.properties.name == us_states[i])[0];
 					}}
 				/>
 			{/each}
 		{/if}
-		{#each Object.keys(AirportType) as airport_type}
+		{#each Object.keys(AirportTypes) as airport_type}
 			{#each airports_by_type[airport_type] as airport}
 				{#if displayOptions[airport_type]}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<circle
 						class="airportdot"
-						cx={airport.coordinates[0]}
-						cy={airport.coordinates[1]}
+						cx={airport.projection[0]}
+						cy={airport.projection[1]}
 						r={0.6}
 						on:click={() => {
-							selectedAirport = airport.name;
-							let i = us_states_short.indexOf(airport.state);
-							selected = states.filter((o) => o.properties.name == us_states[i])[0];
+							// selectedAirport = airport.name;
+							// let i = us_states_short.indexOf(airport.state);
+							// selected = states.filter((o) => o.properties.name == us_states[i])[0];
 						}}
 					/>
 				{/if}
