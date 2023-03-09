@@ -17,4 +17,7 @@
 </div>
 
 <style lang="scss">
+	.details {
+		z-index: 1;
+	}
 </style>

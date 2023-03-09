@@ -21,4 +21,7 @@
 </div>
 
 <style lang="scss">
+	.legend {
+		z-index: 1;
+	}
 </style>

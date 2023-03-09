@@ -6,6 +6,7 @@
 	import TimeSlider from '../components/TimeSlider.svelte';
 	import Footer from '../components/Footer.svelte';
 	import type { SharedState } from '../components/shared';
+	import Legend from '../components/Legend.svelte';
 
 	const shared_state: SharedState = {
 		display_options: {
@@ -24,16 +25,14 @@
 	};
 </script>
 
-<div>
-	<Header {shared_state} />
-</div>
-
 <main>
+	<Header {shared_state} />
 	<Map {shared_state} />
 	<Details {shared_state} />
 	<DisplayOptions {shared_state} />
 	<TimeSlider {shared_state} />
 	<Footer {shared_state} />
+	<Legend {shared_state} />
 </main>
 
 <style lang="scss">

@@ -10,11 +10,9 @@
 		getReligionData,
 		getStateColor,
 		religionDataToStateData,
-		type ReligionData,
-		type StateData
+		type ReligionData
 	} from './state_data';
 	import { States, type State } from './states';
-	import { prop_dev } from 'svelte/internal';
 
 	export let shared_state: SharedState;
 
@@ -203,30 +201,6 @@
 		border-radius: 1vh;
 	}
 
-	.legend .item {
-		display: flex;
-		align-items: center;
-	}
-
-	.airport_legend {
-		background-color: var(--airport);
-		width: 1vh;
-		height: 1vh;
-		border-radius: 100%;
-	}
-
-	.religion_legend {
-		width: 1vh;
-		height: 1vh;
-	}
-
-	.ufo_legend {
-		background-color: var(--ufo);
-		width: 1vh;
-		height: 1vh;
-		border-radius: 100%;
-	}
-
 	.airportdot {
 		fill: var(--airport);
 		opacity: 0.9;
@@ -247,52 +221,13 @@
 		opacity: 1;
 	}
 
-	.desc {
-		margin-left: 1vw;
-	}
-
-	.item input {
-		margin-right: 1vw;
-	}
-
+	// map
 	svg {
 		overflow: visible;
 		display: inline-block;
 		position: absolute;
 		top: 10vh;
 		left: 8vw;
-	}
-
-	.color_legend {
-		margin-bottom: 1vh;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		color: black;
-		border-radius: 1vh;
-		height: 5vh;
-		min-width: 20vw;
-		max-width: 20vw;
-		width: 20vw;
-		z-index: 10;
-	}
-	.sidebar {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		background-color: white;
-		color: black;
-		border-radius: 1vh;
-		margin: 1vw;
-		padding: 2vh;
-		height: 90vh;
-		min-width: 20vw;
-		max-width: 20vw;
-		width: 20vw;
-		z-index: 10;
 	}
 
 	.selected {
@@ -322,17 +257,5 @@
 	path {
 		stroke: white;
 		stroke-width: 0.5px;
-	}
-
-	section {
-		box-sizing: border-box;
-		height: 100%;
-		width: 100%;
-	}
-	.section_div {
-		display: inline-block;
-		text-align: center;
-		height: 100%;
-		width: 18.4%;
 	}
 </style>
