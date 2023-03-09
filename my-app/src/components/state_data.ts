@@ -2,7 +2,7 @@ import { default as airportData } from '../data/us_airports_cleaned.json';
 import { default as religionData } from '../data/importance_of_religion_by_us_state_cleaned.json';
 import * as d3 from 'd3';
 import type { DSVRowArray } from 'd3';
-import { States, StatesShort, type State, type StateShort } from './states';
+import { states, states_short, type State, type StateShort } from './states';
 
 // from 0 to 1
 export type ZeroToOne = number;
@@ -37,7 +37,7 @@ export function getReligionData(): ReligionData[] {
 export function religionDataToStateData(religion_data: ReligionData[]): { [key: string]: StateData } {
     const state_data: { [key: string]: StateData } = {};
     religion_data.forEach((row) => {
-        const state = StatesShort[row.State].short;
+        const state = states_short[row.State].short;
         const value = row["Very important"];
         state_data[state] = { state, value };
     });

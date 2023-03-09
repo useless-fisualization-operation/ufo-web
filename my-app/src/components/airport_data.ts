@@ -1,6 +1,6 @@
 import { default as airportData } from '../data/us_airports_cleaned.json';
 import type { StateShort } from './states';
-import { StatesShort } from './states';
+import { states_short } from './states';
 
 export type Airport = {
     name: string,
@@ -34,7 +34,7 @@ export function getAirportData(projection: d3.GeoProjection): Airport[] {
                     type: AirportTypes[raw_airport.type],
                     latitude_deg: raw_airport.latitude_deg,
                     longitude_deg: raw_airport.longitude_deg,
-                    state: StatesShort[raw_airport.state].short,
+                    state: states_short[raw_airport.state].short,
                     projection: map_coordinates
                 }
             );

@@ -12,7 +12,7 @@
 		religionDataToStateData,
 		type ReligionData
 	} from './state_data';
-	import { States, type State } from './states';
+	import { states, states_short, type State } from './states';
 
 	export let shared_state: SharedState;
 
@@ -26,14 +26,14 @@
 	var state_data = religionDataToStateData(religion);
 
 	var ufoData: Ufo[] = [];
-	let states: any[] = [];
+	let map_states: any[] = [];
 	onMount(async () => {
 		const us = await fetch(
 			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
 		).then((d) => d.json());
 
 		// @ts-ignore
-		states = topojson.feature(us, us.objects.states).features;
+		map_states = topojson.feature(us, us.objects.states).features;
 		ufoData = await getUfoData(projection);
 	});
 
@@ -111,14 +111,14 @@
 	preserveAspectRatio="xMidYMid meet"
 >
 	<g bind:this={bindHandleZoom}>
-		{#each states as state}
-			{@const state_short = States[state.properties.name].short}
+		{#each map_states as map_state}
+			{@const state_short = states[map_state.properties.name].short}
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<path
-				d={path(state)}
+				d={path(map_state)}
 				on:click={() => {
-					selected = state;
+					selected = map_state;
 					selectedAirport = null;
 				}}
 				fill={getStateColor(state_data[state_short])}
@@ -154,9 +154,9 @@
 						cy={airport.projection[1]}
 						r={0.6}
 						on:click={() => {
-							// selectedAirport = airport.name;
-							// let i = us_states_short.indexOf(airport.state);
-							// selected = states.filter((o) => o.properties.name == us_states[i])[0];
+							//selectedAirport = airport.name;
+							//let i = states_short.indexOf(airport.state);
+							//selected = states.filter((o) => o.properties.name == us_states[i])[0];
 						}}
 					/>
 				{/if}

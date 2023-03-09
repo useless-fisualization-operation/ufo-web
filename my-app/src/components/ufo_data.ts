@@ -1,7 +1,7 @@
 
 import * as d3 from 'd3';
 import type { StateShort } from './states';
-import { StatesShort } from './states';
+import { states_short } from './states';
 
 
 type RawUfo = {
@@ -39,7 +39,7 @@ function parse_ufo_row(row: d3.DSVRowString<string>): RawUfo | null {
 
     let state = null;
     try {
-        state = StatesShort[row["State"]].short;
+        state = states_short[row["State"]].short;
     } catch {
         console.log("UFO row has invalid state: " + row["State"]);
         return null;
@@ -75,7 +75,7 @@ export async function getUfoData(projection: d3.GeoProjection, source: string = 
                     {
                         date: raw_ufo.date,
                         city: raw_ufo.city,
-                        state: StatesShort[raw_ufo.state].short,
+                        state: states_short[raw_ufo.state].short,
                         latitude: raw_ufo.latitude,
                         longitude: raw_ufo.longitude,
                         shape: raw_ufo.shape,

@@ -1,5 +1,5 @@
 
-export const States: { [key: string]: { name: State, short: StateShort } } = {
+export const states: { [key: string]: { name: State, short: StateShort } } = {
     'Alabama': { name: 'Alabama', short: 'AL' },
     'Alaska': { name: 'Alaska', short: 'AK' },
     'Arizona': { name: 'Arizona', short: 'AZ' },
@@ -59,7 +59,7 @@ export const States: { [key: string]: { name: State, short: StateShort } } = {
 }
 
 
-export const StatesShort: { [key: string]: { name: State, short: StateShort } } = {
+export const states_short: { [key: string]: { name: State, short: StateShort } } = {
     'AL': { name: 'Alabama', short: 'AL' },
     'AK': { name: 'Alaska', short: 'AK' },
     'AZ': { name: 'Arizona', short: 'AZ' },
