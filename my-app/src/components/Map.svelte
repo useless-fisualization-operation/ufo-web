@@ -6,7 +6,15 @@
 	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
 	import { zoom, select } from 'd3';
 	import type { SharedState } from './shared';
-	import { getReligionData } from './region_data';
+	import {
+		getReligionData,
+		getStateColor,
+		religionDataToStateData,
+		type ReligionData,
+		type StateData
+	} from './state_data';
+	import { States, type State } from './states';
+	import { prop_dev } from 'svelte/internal';
 
 	export let shared_state: SharedState;
 
@@ -16,9 +24,20 @@
 
 	// ----------- Data: -----------
 	var airports = getAirportData(projection);
-	var religion = getReligionData();
+	var religion: ReligionData[] = getReligionData();
+	var state_data = religionDataToStateData(religion);
+
 	var ufoData: Ufo[] = [];
-	let states: any[] = []; // TODO: Fix?
+	let states: any[] = [];
+	onMount(async () => {
+		const us = await fetch(
+			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
+		).then((d) => d.json());
+
+		// @ts-ignore
+		states = topojson.feature(us, us.objects.states).features;
+		ufoData = await getUfoData(projection);
+	});
 
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
@@ -56,31 +75,7 @@
 	// -----------  Legend checkmarks: -----------
 	let displayUfos = false;
 	let displayReligion = true;
-
-	// ----------- Load Data: -----------
-	onMount(async () => {
-		const us = await fetch(
-			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
-		).then((d) => d.json());
-
-		// @ts-ignore
-		states = topojson.feature(us, us.objects.states).features;
-
-		ufoData = await getUfoData(projection);
-	});
-
-	// ----------- Style: -----------
-	// let radialScale = d3.scaleLinear().domain([0, 1]).range(['#f7fcf5', '#00441b']); // FIX: not sure this is working
-	// //.range(["#fff5eb","#7f2704"]);
-	// //.range(["#fff5f0","#67000d"]);
-	// function colorState(name: State) {
-	// 	let state = religion.find((o) => o.state == name);
-	// 	if (state) {
-	// 		return radialScale(state.religion);
-	// 	} else {
-	// 		return '#ccc';
-	// 	}
-	// }
+	//let state_data: StateData[] = religionDataToStateData(religion);
 
 	// ----------- Zoom and Pan: -----------
 	let bindHandleZoom: any, bindInitZoom: any; // TODO: Fix?
@@ -105,22 +100,6 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<!-- TODO: Seaparate component -->
-<!--
-<div class="color_legend">
-	{#if displayReligion}
-		<div class="legend" style="background-color: rgba(255,255,255,0.5)">
-			<section>
-				{#each Array(5) as _, i}
-					<div class="section_div" style="background-color:{radialScale(i / 4)}">
-						{(i / 4) * 100}%
-					</div>
-				{/each}
-			</section>
-		</div>
-	{/if}
-</div>
--->
 {#if ufoData.length === 0}
 	<div class="loadingbg" />
 	<div class="loadingscreen">Looking for UFOs ...</div>
@@ -135,6 +114,8 @@
 >
 	<g bind:this={bindHandleZoom}>
 		{#each states as state}
+			{@const state_short = States[state.properties.name].short}
+
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<path
 				d={path(state)}
@@ -142,7 +123,7 @@
 					selected = state;
 					selectedAirport = null;
 				}}
-				fill={'rgb(54, 57, 61)'}
+				fill={getStateColor(state_data[state_short])}
 				class="state"
 			/>
 		{/each}
