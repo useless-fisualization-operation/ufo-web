@@ -13,7 +13,7 @@
 </script>
 
 <div class="legend">
-	{#if shared_state.display_options.display_religion}
+	{#if shared_state.display_options.religion}
 		{#each Array(5) as _, i}
 			<div style="background-color:{radialScale(i / 4)}">{(i / 4) * 100}%</div>
 		{/each}

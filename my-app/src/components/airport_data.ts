@@ -11,7 +11,7 @@ export type Airport = {
     projection: [number, number]
 }
 
-export const AirportTypes: { [key: string]: AirportType } = {
+export const AirportTypes: { [key: string]: string } = {
     'large_airport': 'Large Airport',
     'medium_airport': 'Medium Airport',
     'small_airport': 'Small Airport',
@@ -21,7 +21,7 @@ export const AirportTypes: { [key: string]: AirportType } = {
     'closed': 'Closed'
 }
 
-export type AirportType = 'Large Airport' | 'Medium Airport' | 'Small Airport' | 'Heliport' | 'Seaplane Base' | 'Balloonport' | 'Closed';
+export type AirportType = 'large_airport' | 'medium_airport' | 'small_airport' | 'heliport' | 'seaplane_base' | 'balloonport' | 'closed';
 
 export function getAirportData(projection: d3.GeoProjection): Airport[] {
     var airports: Airport[] = [];
@@ -31,7 +31,7 @@ export function getAirportData(projection: d3.GeoProjection): Airport[] {
             airports.push(
                 {
                     name: raw_airport.name,
-                    type: AirportTypes[raw_airport.type],
+                    type: AirportTypes[raw_airport.type] as AirportType,
                     latitude_deg: raw_airport.latitude_deg,
                     longitude_deg: raw_airport.longitude_deg,
                     state: states_short[raw_airport.state].short,

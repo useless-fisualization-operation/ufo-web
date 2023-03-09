@@ -10,15 +10,15 @@
 
 	const shared_state: SharedState = {
 		display_options: {
-			display_large_airports: false,
-			display_medium_airports: false,
-			display_small_airports: false,
-			display_heliports: false,
-			display_seaplane_bases: false,
-			display_balloonports: false,
-			display_closed_airports: false,
-			display_ufos: false,
-			display_religion: true
+			large_airports: false,
+			medium_airports: false,
+			small_airports: false,
+			heliports: false,
+			seaplane_bases: false,
+			balloonports: false,
+			closed_airports: false,
+			ufos: false,
+			religion: true
 		},
 		selected: null,
 		selected_type: 'none'

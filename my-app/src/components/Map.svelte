@@ -13,6 +13,7 @@
 		type ReligionData
 	} from './state_data';
 	import { states, states_short, type State } from './states';
+	import { bind } from 'svelte/internal';
 
 	export let shared_state: SharedState;
 
@@ -49,20 +50,9 @@
 
 	// TODO: Move
 	// [key: string]: boolean
-	type DisplayOptions = { [key: string]: boolean };
 
-	const displayOptions: DisplayOptions = {
-		large_airport: false,
-		medium_airport: false,
-		small_airport: false,
-		heliport: false,
-		seaplane_base: false,
-		balloonport: false,
-		closed: false
-	};
-
-	function isAirportTypeDisplayed(airport_type: AirportType) {
-		return displayOptions[AirportTypes[airport_type]];
+	function isAirportTypeDisplayed(airport_type: string) {
+		return shared_state.display_options[airport_type as AirportType];
 	}
 
 	// ----------- Sidebar Info: -----------
@@ -128,7 +118,7 @@
 		{#if selected}
 			<path d={path(selected)} on:click={() => (selected = null)} class="selected" />
 		{/if}
-		{#if shared_state.display_options.display_ufos}
+		{#if shared_state.display_options.ufos}
 			{#each ufoData as ufo}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<circle
@@ -146,7 +136,7 @@
 		{/if}
 		{#each Object.keys(AirportTypes) as airport_type}
 			{#each airports_by_type[airport_type] as airport}
-				{#if displayOptions[airport_type]}
+				{#if isAirportTypeDisplayed(airport_type)}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<circle
 						class="airportdot"
@@ -154,7 +144,7 @@
 						cy={airport.projection[1]}
 						r={0.6}
 						on:click={() => {
-							//selectedAirport = airport.name;
+							selectedAirport = airport.name;
 							//let i = states_short.indexOf(airport.state);
 							//selected = states.filter((o) => o.properties.name == us_states[i])[0];
 						}}
