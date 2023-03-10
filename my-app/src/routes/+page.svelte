@@ -1,12 +1,25 @@
-<script>
+<script lang="ts">
 	import Map from '../components/Map.svelte';
+	import Header from '../components/Header.svelte';
+	import Details from '../components/Details.svelte';
+	import DisplayOptions from '../components/DisplayOptions.svelte';
+	import TimeSlider from '../components/TimeSlider.svelte';
+	import Footer from '../components/Footer.svelte';
+	import type { SharedState } from '../components/shared';
+	import Legend from '../components/Legend.svelte';
 </script>
 
 <main>
+	<Header />
 	<Map />
+	<Details />
+	<DisplayOptions />
+	<TimeSlider />
+	<Footer />
+	<Legend />
 </main>
 
-<style>
+<style lang="scss">
 	main {
 		display: flex;
 		align-items: center;

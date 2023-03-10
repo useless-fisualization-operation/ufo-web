@@ -18,6 +18,9 @@
 		"@sveltejs/kit": "^1.0.0",
 		"@types/d3": "^7.4.0",
 		"@types/d3-geo": "^3.0.3",
+		"@types/d3-scale": "^4.0.3",
+		"@types/geojson": "^7946.0.7",
+		"@types/topojson": "^3.0.2",
 		"@types/topojson-client": "^3.1.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
@@ -32,9 +35,7 @@
 		"svelte-check": "^3.0.1",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
-		"vite": "^4.0.0",
-		"@types/topojson": "^3.0.2",
-		"@types/geojson": "^7946.0.7"
+		"vite": "^4.0.0"
 	},
 	"type": "module",
 	"dependencies": {

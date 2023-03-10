@@ -1,218 +1,125 @@
-export type USState = // TODO: Enum?
-    'Alabama' |
-    'Alaska' |
-    'Arizona' |
-    'Arkansas' |
-    'California' |
-    'Colorado' |
-    'Connecticut' |
-    'Delaware' |
-    'Florida' |
-    'Georgia' |
-    'Hawaii' |
-    'Idaho' |
-    'Illinois' |
-    'Indiana' |
-    'Iowa' |
-    'Kansas' |
-    'Kentucky' |
-    'Louisiana' |
-    'Maine' |
-    'Maryland' |
-    'Massachusetts' |
-    'Michigan' |
-    'Minnesota' |
-    'Mississippi' |
-    'Missouri' |
-    'Montana' |
-    'Nebraska' |
-    'Nevada' |
-    'New Hampshire' |
-    'New Jersey' |
-    'New Mexico' |
-    'New York' |
-    'North Carolina' |
-    'North Dakota' |
-    'Ohio' |
-    'Oklahoma' |
-    'Oregon' |
-    'Pennsylvania' |
-    'Rhode Island' |
-    'South Carolina' |
-    'South Dakota' |
-    'Tennessee' |
-    'Texas' |
-    'Utah' |
-    'Vermont' |
-    'Virginia' |
-    'Washington' |
-    'West Virginia' |
-    'Wisconsin' |
-    'Wyoming';
 
-export type USStateShort =
-    'AL' |
-    'AK' |
-    'AZ' |
-    'AR' |
-    'CA' |
-    'CO' |
-    'CT' |
-    'DE' |
-    'FL' |
-    'GA' |
-    'HI' |
-    'ID' |
-    'IL' |
-    'IN' |
-    'IA' |
-    'KS' |
-    'KY' |
-    'LA' |
-    'ME' |
-    'MD' |
-    'MA' |
-    'MI' |
-    'MN' |
-    'MS' |
-    'MO' |
-    'MT' |
-    'NE' |
-    'NV' |
-    'NH' |
-    'NJ' |
-    'NM' |
-    'NY' |
-    'NC' |
-    'ND' |
-    'OH' |
-    'OK' |
-    'OR' |
-    'PA' |
-    'RI' |
-    'SC' |
-    'SD' |
-    'TN' |
-    'TX' |
-    'UT' |
-    'VT' |
-    'VA' |
-    'WA' |
-    'WV' |
-    'WI' |
-    'WY';
-
-
-export const us_states: USState[] = [
-    'Alabama',
-    'Alaska',
-    'Arizona',
-    'Arkansas',
-    'California',
-    'Colorado',
-    'Connecticut',
-    'Delaware',
-    'Florida',
-    'Georgia',
-    'Hawaii',
-    'Idaho',
-    'Illinois',
-    'Indiana',
-    'Iowa',
-    'Kansas',
-    'Kentucky',
-    'Louisiana',
-    'Maine',
-    'Maryland',
-    'Massachusetts',
-    'Michigan',
-    'Minnesota',
-    'Mississippi',
-    'Missouri',
-    'Montana',
-    'Nebraska',
-    'Nevada',
-    'New Hampshire',
-    'New Jersey',
-    'New Mexico',
-    'New York',
-    'North Carolina',
-    'North Dakota',
-    'Ohio',
-    'Oklahoma',
-    'Oregon',
-    'Pennsylvania',
-    'Rhode Island',
-    'South Carolina',
-    'South Dakota',
-    'Tennessee',
-    'Texas',
-    'Utah',
-    'Vermont',
-    'Virginia',
-    'Washington',
-    'West Virginia',
-    'Wisconsin',
-    'Wyoming'
-];
-
-export const us_states_short: USStateShort[] = [
-    'AL',
-    'AK',
-    'AZ',
-    'AR',
-    'CA',
-    'CO',
-    'CT',
-    'DE',
-    'FL',
-    'GA',
-    'HI',
-    'ID',
-    'IL',
-    'IN',
-    'IA',
-    'KS',
-    'KY',
-    'LA',
-    'ME',
-    'MD',
-    'MA',
-    'MI',
-    'MN',
-    'MS',
-    'MO',
-    'MT',
-    'NE',
-    'NV',
-    'NH',
-    'NJ',
-    'NM',
-    'NY',
-    'NC',
-    'ND',
-    'OH',
-    'OK',
-    'OR',
-    'PA',
-    'RI',
-    'SC',
-    'SD',
-    'TN',
-    'TX',
-    'UT',
-    'VT',
-    'VA',
-    'WA',
-    'WV',
-    'WI',
-    'WY'
-];
-
-export function stringToUSStateShort(state: string): USStateShort {
-    return state.toUpperCase() as USStateShort;
+export const states: { [key: string]: { name: State, short: StateShort } } = {
+    'Alabama': { name: 'Alabama', short: 'AL' },
+    'Alaska': { name: 'Alaska', short: 'AK' },
+    'Arizona': { name: 'Arizona', short: 'AZ' },
+    'Arkansas': { name: 'Arkansas', short: 'AR' },
+    'California': { name: 'California', short: 'CA' },
+    'Colorado': { name: 'Colorado', short: 'CO' },
+    'Connecticut': { name: 'Connecticut', short: 'CT' },
+    'Delaware': { name: 'Delaware', short: 'DE' },
+    'Florida': { name: 'Florida', short: 'FL' },
+    'Georgia': { name: 'Georgia', short: 'GA' },
+    'Hawaii': { name: 'Hawaii', short: 'HI' },
+    'Idaho': { name: 'Idaho', short: 'ID' },
+    'Illinois': { name: 'Illinois', short: 'IL' },
+    'Indiana': { name: 'Indiana', short: 'IN' },
+    'Iowa': { name: 'Iowa', short: 'IA' },
+    'Kansas': { name: 'Kansas', short: 'KS' },
+    'Kentucky': { name: 'Kentucky', short: 'KY' },
+    'Louisiana': { name: 'Louisiana', short: 'LA' },
+    'Maine': { name: 'Maine', short: 'ME' },
+    'Maryland': { name: 'Maryland', short: 'MD' },
+    'Massachusetts': { name: 'Massachusetts', short: 'MA' },
+    'Michigan': { name: 'Michigan', short: 'MI' },
+    'Minnesota': { name: 'Minnesota', short: 'MN' },
+    'Mississippi': { name: 'Mississippi', short: 'MS' },
+    'Missouri': { name: 'Missouri', short: 'MO' },
+    'Montana': { name: 'Montana', short: 'MT' },
+    'Nebraska': { name: 'Nebraska', short: 'NE' },
+    'Nevada': { name: 'Nevada', short: 'NV' },
+    'New Hampshire': { name: 'New Hampshire', short: 'NH' },
+    'New Jersey': { name: 'New Jersey', short: 'NJ' },
+    'New Mexico': { name: 'New Mexico', short: 'NM' },
+    'New York': { name: 'New York', short: 'NY' },
+    'North Carolina': { name: 'North Carolina', short: 'NC' },
+    'North Dakota': { name: 'North Dakota', short: 'ND' },
+    'Ohio': { name: 'Ohio', short: 'OH' },
+    'Oklahoma': { name: 'Oklahoma', short: 'OK' },
+    'Oregon': { name: 'Oregon', short: 'OR' },
+    'Pennsylvania': { name: 'Pennsylvania', short: 'PA' },
+    'Rhode Island': { name: 'Rhode Island', short: 'RI' },
+    'South Carolina': { name: 'South Carolina', short: 'SC' },
+    'South Dakota': { name: 'South Dakota', short: 'SD' },
+    'Tennessee': { name: 'Tennessee', short: 'TN' },
+    'Texas': { name: 'Texas', short: 'TX' },
+    'Utah': { name: 'Utah', short: 'UT' },
+    'Vermont': { name: 'Vermont', short: 'VT' },
+    'Virginia': { name: 'Virginia', short: 'VA' },
+    'Washington': { name: 'Washington', short: 'WA' },
+    'West Virginia': { name: 'West Virginia', short: 'WV' },
+    'Wisconsin': { name: 'Wisconsin', short: 'WI' },
+    'Wyoming': { name: 'Wyoming', short: 'WY' },
+    'District of Columbia': { name: 'District of Columbia', short: 'DC' },
+    'Puerto Rico': { name: 'Puerto Rico', short: 'PR' },
+    'Guam': { name: 'Guam', short: 'GU' },
+    'American Samoa': { name: 'American Samoa', short: 'AS' },
+    'Northern Mariana Islands': { name: 'Northern Mariana Islands', short: 'MP' },
+    'United States Armed Forces - Americas': { name: 'United States Armed Forces - Americas', short: 'U-A' },
 }
 
-export function stringToUSState(state: string): USState {
-    return state as USState;
+
+export const states_short: { [key: string]: { name: State, short: StateShort } } = {
+    'AL': { name: 'Alabama', short: 'AL' },
+    'AK': { name: 'Alaska', short: 'AK' },
+    'AZ': { name: 'Arizona', short: 'AZ' },
+    'AR': { name: 'Arkansas', short: 'AR' },
+    'CA': { name: 'California', short: 'CA' },
+    'CO': { name: 'Colorado', short: 'CO' },
+    'CT': { name: 'Connecticut', short: 'CT' },
+    'DE': { name: 'Delaware', short: 'DE' },
+    'FL': { name: 'Florida', short: 'FL' },
+    'GA': { name: 'Georgia', short: 'GA' },
+    'HI': { name: 'Hawaii', short: 'HI' },
+    'ID': { name: 'Idaho', short: 'ID' },
+    'IL': { name: 'Illinois', short: 'IL' },
+    'IN': { name: 'Indiana', short: 'IN' },
+    'IA': { name: 'Iowa', short: 'IA' },
+    'KS': { name: 'Kansas', short: 'KS' },
+    'KY': { name: 'Kentucky', short: 'KY' },
+    'LA': { name: 'Louisiana', short: 'LA' },
+    'ME': { name: 'Maine', short: 'ME' },
+    'MD': { name: 'Maryland', short: 'MD' },
+    'MA': { name: 'Massachusetts', short: 'MA' },
+    'MI': { name: 'Michigan', short: 'MI' },
+    'MN': { name: 'Minnesota', short: 'MN' },
+    'MS': { name: 'Mississippi', short: 'MS' },
+    'MO': { name: 'Missouri', short: 'MO' },
+    'MT': { name: 'Montana', short: 'MT' },
+    'NE': { name: 'Nebraska', short: 'NE' },
+    'NV': { name: 'Nevada', short: 'NV' },
+    'NH': { name: 'New Hampshire', short: 'NH' },
+    'NJ': { name: 'New Jersey', short: 'NJ' },
+    'NM': { name: 'New Mexico', short: 'NM' },
+    'NY': { name: 'New York', short: 'NY' },
+    'NC': { name: 'North Carolina', short: 'NC' },
+    'ND': { name: 'North Dakota', short: 'ND' },
+    'OH': { name: 'Ohio', short: 'OH' },
+    'OK': { name: 'Oklahoma', short: 'OK' },
+    'OR': { name: 'Oregon', short: 'OR' },
+    'PA': { name: 'Pennsylvania', short: 'PA' },
+    'RI': { name: 'Rhode Island', short: 'RI' },
+    'SC': { name: 'South Carolina', short: 'SC' },
+    'SD': { name: 'South Dakota', short: 'SD' },
+    'TN': { name: 'Tennessee', short: 'TN' },
+    'TX': { name: 'Texas', short: 'TX' },
+    'UT': { name: 'Utah', short: 'UT' },
+    'VT': { name: 'Vermont', short: 'VT' },
+    'VA': { name: 'Virginia', short: 'VA' },
+    'WA': { name: 'Washington', short: 'WA' },
+    'WV': { name: 'West Virginia', short: 'WV' },
+    'WI': { name: 'Wisconsin', short: 'WI' },
+    'WY': { name: 'Wyoming', short: 'WY' },
+    'DC': { name: 'District of Columbia', short: 'DC' },
+    'PR': { name: 'Puerto Rico', short: 'PR' },
+    'GU': { name: 'Guam', short: 'GU' },
+    'AS': { name: 'American Samoa', short: 'AS' },
+    'MP': { name: 'Northern Mariana Islands', short: 'MP' },
+    'U-A': { name: 'United States Armed Forces - Americas', short: 'U-A' }
 }
+
+export type State =
+    'Alabama' | 'Alaska' | 'Arizona' | 'Arkansas' | 'California' | 'Colorado' | 'Connecticut' | 'Delaware' | 'Florida' | 'Georgia' | 'Hawaii' | 'Idaho' | 'Illinois' | 'Indiana' | 'Iowa' | 'Kansas' | 'Kentucky' | 'Louisiana' | 'Maine' | 'Maryland' | 'Massachusetts' | 'Michigan' | 'Minnesota' | 'Mississippi' | 'Missouri' | 'Montana' | 'Nebraska' | 'Nevada' | 'New Hampshire' | 'New Jersey' | 'New Mexico' | 'New York' | 'North Carolina' | 'North Dakota' | 'Ohio' | 'Oklahoma' | 'Oregon' | 'Pennsylvania' | 'Rhode Island' | 'South Carolina' | 'South Dakota' | 'Tennessee' | 'Texas' | 'Utah' | 'Vermont' | 'Virginia' | 'Washington' | 'West Virginia' | 'Wisconsin' | 'Wyoming' | 'District of Columbia' | 'Puerto Rico' | 'Guam' | 'American Samoa' | 'Northern Mariana Islands' | 'United States Armed Forces - Americas';
+
+export type StateShort =
+    'AL' | 'AK' | 'AZ' | 'AR' | 'CA' | 'CO' | 'CT' | 'DE' | 'FL' | 'GA' | 'HI' | 'ID' | 'IL' | 'IN' | 'IA' | 'KS' | 'KY' | 'LA' | 'ME' | 'MD' | 'MA' | 'MI' | 'MN' | 'MS' | 'MO' | 'MT' | 'NE' | 'NV' | 'NH' | 'NJ' | 'NM' | 'NY' | 'NC' | 'ND' | 'OH' | 'OK' | 'OR' | 'PA' | 'RI' | 'SC' | 'SD' | 'TN' | 'TX' | 'UT' | 'VT' | 'VA' | 'WA' | 'WV' | 'WI' | 'WY' | 'DC' | 'PR' | 'GU' | 'AS' | 'MP' | 'U-A';
