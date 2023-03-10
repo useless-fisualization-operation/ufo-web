@@ -10,21 +10,83 @@
 </script>
 
 <main>
-	<Header />
-	<Map />
-	<Details />
-	<DisplayOptions />
-	<TimeSlider />
-	<Footer />
-	<Legend />
+	<div class="header">
+		<Header />
+	</div>
+	<div class="details">
+		<Details />
+	</div>
+	<div class="display_options">
+		<DisplayOptions />
+	</div>
+	<div class="time_slider">
+		<TimeSlider />
+	</div>
+	<div class="footer">
+		<Footer />
+	</div>
+	<div class="legend">
+		<Legend />
+	</div>
+	<div class="map">
+		<Map />
+	</div>
 </main>
 
 <style lang="scss">
 	main {
-		display: flex;
+		height: 100vh;
+		width: 100vw;
+		display: grid;
+
 		align-items: center;
-		height: 100%;
-		width: 100%;
+		grid-template-areas:
+			'header  			header 		header 		header'
+			'details 			map 		map 		time_slider'
+			'display_options 	map 		map 		legend'
+			'footer 			footer 		footer 		footer';
+
+		grid-template-rows: 20px 2fr 1fr 20px;
+		grid-template-columns: 1fr 2fr 2fr 1fr;
+
+		& > div {
+			z-index: 10;
+		}
+	}
+
+	.header {
+		grid-area: header;
+		height: 20px;
+	}
+
+	.map {
+		z-index: 1;
+		grid-area: map;
+	}
+
+	.details {
+		padding: 20px;
+		grid-area: details;
+	}
+
+	.display_options {
+		padding: 20px;
+		grid-area: display_options;
+	}
+
+	.time_slider {
+		padding: 20px;
+		grid-area: time_slider;
+	}
+
+	.footer {
+		grid-area: footer;
+		height: 20px;
+	}
+
+	.legend {
+		padding: 20px;
+		grid-area: legend;
 	}
 
 	:global(body, html) {
@@ -32,10 +94,14 @@
 		width: 100%;
 		margin: 0;
 		padding: 0;
-		background-color: rgb(124, 128, 132);
 		font-size: 1.2vh;
-		font-family: Helvetica, sans-serif;
-		color: rgb(30, 30, 30);
+		font-family: 'Roboto', sans-serif;
 		overflow: hidden;
+	}
+
+	:global(:root) {
+		--surface-0: #f7fcf5;
+		--surface-1: #e5f5e0;
+		--accent: #00441b;
 	}
 </style>

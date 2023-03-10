@@ -8,6 +8,8 @@ export type SharedState = {
     display_options: DisplayOptions;
     selected: Airport | Ufo | State | null;
     selected_type: "airport" | "ufo" | "state" | "none";
+    start_date: Date | null;
+    end_date: Date | null;
 };
 
 export type DisplayOptions = {
@@ -26,8 +28,10 @@ export const shared: Writable<SharedState> = writable(
             balloonport: false,
             closed_airport: false,
             ufo: false,
-            religion: true
+            religion: true,
         },
+        start_date: new Date(2014, 0, 1),
+        end_date: new Date(2018, 0, 1),
         selected: null,
         selected_type: 'none'
     });

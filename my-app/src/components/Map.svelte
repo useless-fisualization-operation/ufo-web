@@ -16,20 +16,23 @@
 	import { shared } from './shared';
 	import LoadingScreen from './LoadingScreen.svelte';
 
+	let clazz = '';
+	export { clazz as class };
+
+	// ----------- Shared State: -----------
 	let shared_state: SharedState | null = null;
 	shared.subscribe((v) => {
 		shared_state = v;
 	});
 
+	// ----------- Map: -----------
 	const projection: d3.GeoProjection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
-
 	const path = geoPath().projection(null);
 
 	// ----------- Data: -----------
 	var airports = getAirportData(projection);
 	var religion: ReligionData[] = getReligionData();
 	var state_data = religionDataToStateData(religion);
-
 	var ufoData: Ufo[] = [];
 	let map_states: any[] = [];
 	onMount(async () => {
@@ -39,9 +42,11 @@
 
 		// @ts-ignore
 		map_states = topojson.feature(us, us.objects.states).features;
-		ufoData = await getUfoData(projection);
+		if (!shared_state) {
+			throw new Error('Shared state is null');
+		}
+		ufoData = await getUfoData(projection, shared_state.start_date, shared_state.end_date);
 	});
-
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
 		medium_airport: airports.filter((o) => o.type == AirportTypes.medium_airport),
@@ -52,13 +57,8 @@
 		closed: airports.filter((o) => o.type == AirportTypes.closed)
 	};
 
-	function isAirportTypeDisplayed(airport_type: string) {
-		return shared_state?.display_options[airport_type];
-	}
-
 	// ----------- Sidebar Info: -----------
 	let selected_map_state: any; // TODO
-	let selectedAirport: any; // TODO
 
 	// ----------- Zoom and Pan: -----------
 	let bindHandleZoom: any, bindInitZoom: any; // TODO: Fix?
@@ -83,94 +83,105 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<LoadingScreen display={ufoData.length === 0} />
+<div class="loading-screen">
+	<LoadingScreen display={ufoData.length === 0} />
+</div>
 
-<svg
-	bind:this={bindInitZoom}
-	{width}
-	{height}
-	viewBox="0 0 800 800"
-	preserveAspectRatio="xMidYMid meet"
->
-	<g bind:this={bindHandleZoom}>
-		{#each map_states as map_state}
-			{@const state_short = states[map_state.properties.name].short}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<path
-				d={path(map_state)}
-				on:click={() => {
-					selected_map_state = map_state;
-					// write to the store
-					shared.update((v) => {
-						v.selected_type = 'state';
-						v.selected = states[map_state.properties.name].name;
-						return v;
-					});
-				}}
-				fill={getStateColor(state_data[state_short])}
-				class="state"
-			/>
-		{/each}
-		{#if shared_state?.display_options.ufos}
-			{#each ufoData as ufo}
+<div class={clazz}>
+	<svg
+		bind:this={bindInitZoom}
+		{width}
+		{height}
+		viewBox="0 0 800 800"
+		preserveAspectRatio="xMidYMid meet"
+	>
+		<g bind:this={bindHandleZoom}>
+			{#each map_states as map_state}
+				{@const state_short = states[map_state.properties.name].short}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<circle
-					class="ufodot"
-					cx={ufo.projection[0]}
-					cy={ufo.projection[1]}
-					r={0.4}
+				<path
+					d={path(map_state)}
 					on:click={() => {
+						selected_map_state = map_state;
 						shared.update((v) => {
-							v.selected_type = 'ufo';
-							v.selected = ufo;
+							v.selected_type = 'state';
+							v.selected = states[map_state.properties.name].name;
 							return v;
 						});
-
-						selected_map_state = null;
 					}}
+					fill={getStateColor(state_data[state_short])}
+					class="state"
 				/>
 			{/each}
-		{/if}
-		{#each Object.keys(AirportTypes) as airport_type}
-			{#if isAirportTypeDisplayed(airport_type)}
-				{#each airports_by_type[airport_type] as airport}
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<circle
-						class="airportdot"
-						cx={airport.projection[0]}
-						cy={airport.projection[1]}
-						r={0.6}
-						on:click={() => {
-							selectedAirport = airport;
-							shared.update((v) => {
-								v.selected_type = 'airport';
-								v.selected = airport;
-								return v;
-							});
-							selected_map_state = null;
-						}}
-					/>
-				{/each}
-			{/if}
 			{#if selected_map_state}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<path
 					d={path(selected_map_state)}
 					on:click={() => (selected_map_state = null)}
 					class="selected"
 				/>
 			{/if}
-		{/each}
-	</g>
-</svg>
+			{#if shared_state?.display_options.ufo}
+				{#each ufoData as ufo}
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<circle
+						class="ufodot"
+						cx={ufo.projection[0]}
+						cy={ufo.projection[1]}
+						r={0.4}
+						on:click={() => {
+							shared.update((v) => {
+								v.selected_type = 'ufo';
+								v.selected = ufo;
+								return v;
+							});
+
+							selected_map_state = null;
+						}}
+					/>
+				{/each}
+			{/if}
+			{#each Object.keys(AirportTypes) as airport_type}
+				{#if shared_state?.display_options[airport_type]}
+					{#each airports_by_type[airport_type] as airport}
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<circle
+							class="airportdot"
+							cx={airport.projection[0]}
+							cy={airport.projection[1]}
+							r={0.6}
+							on:click={() => {
+								shared.update((v) => {
+									v.selected_type = 'airport';
+									v.selected = airport;
+									return v;
+								});
+								selected_map_state = null;
+							}}
+						/>
+					{/each}
+				{/if}
+			{/each}
+		</g>
+	</svg>
+</div>
 
 <style lang="scss">
 	:root {
 		--ufo: rgb(255, 98, 0);
 		--airport: rgb(58, 230, 227);
+		--state-fill: rgb(117, 143, 169);
 	}
 
+	.loading-screen {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1000;
+	}
 	.state:hover {
-		fill: rgb(86, 92, 99);
+		fill: var(--state-fill);
 	}
 
 	.airportdot {
@@ -178,36 +189,24 @@
 		opacity: 0.9;
 	}
 
-	.airportdot:hover {
-		fill: rgb(159, 255, 253);
-		opacity: 1;
-	}
-
 	.ufodot {
 		fill: var(--ufo);
-		opacity: 0.9;
-	}
-
-	.ufodot:hover {
-		fill: rgb(255, 170, 118);
-		opacity: 1;
 	}
 
 	svg {
-		overflow: visible;
+		overflow: hidden;
 		display: inline-block;
 		position: absolute;
-		top: 10vh;
-		left: 8vw;
+		top: 0vh;
+		left: 0vw;
 	}
 
 	.selected {
-		fill: rgb(47, 80, 150);
+		fill: var(--state-fill);
 	}
 
 	path {
 		stroke: white;
-
-		stroke-width: 0.5px;
+		stroke-width: 0.1px;
 	}
 </style>
