@@ -6,6 +6,9 @@
 
 	import { shared } from './shared';
 
+	let clazz = '';
+	export { clazz as class };
+
 	let shared_state: SharedState | null;
 	let selected_type: 'state' | 'airport' | 'ufo' | 'none';
 	let selected_state: State | null;
@@ -21,8 +24,10 @@
 	});
 </script>
 
-<div class="details">
-	{#if selected_type == 'state'}
+<div class="{clazz} details">
+	{#if selected_type == 'none'}
+		<p class="description">Click on a state, airport, or UFO to see more information.</p>
+	{:else if selected_type == 'state'}
 		<p class="description">State: {selected_state}</p>
 		<p class="description">Population: TODO</p>
 		<p class="description">Religion: TODO</p>

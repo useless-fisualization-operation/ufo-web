@@ -5,6 +5,9 @@
 	import { getStateColor } from './state_data';
 	import { shared } from './shared';
 
+	let clazz = '';
+	export { clazz as class };
+
 	// @ts-ignore
 	let radialScale = d3.scaleLinear().domain([0, 1]).range(['#f7fcf5', '#00441b']); // FIX: not sure this is working
 
@@ -14,7 +17,7 @@
 	});
 </script>
 
-<div class="legend">
+<div class="{clazz} legend">
 	{#if shared_state?.display_options.religion}
 		{#each Array(5) as _, i}
 			<div style="background-color:{radialScale(i / 4)}">{(i / 4) * 100}%</div>
