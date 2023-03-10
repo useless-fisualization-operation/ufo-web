@@ -42,7 +42,10 @@
 
 		// @ts-ignore
 		map_states = topojson.feature(us, us.objects.states).features;
-		ufoData = await getUfoData(projection);
+		if (!shared_state) {
+			throw new Error('Shared state is null');
+		}
+		ufoData = await getUfoData(projection, shared_state.start_date, shared_state.end_date);
 	});
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),

@@ -18,7 +18,7 @@ type RawUfo = {
 }
 
 export type Ufo = {
-    date: string,
+    date: Date,
     city: string,
     state: StateShort,
     latitude: number,
@@ -59,7 +59,10 @@ function parse_ufo_row(row: d3.DSVRowString<string>): RawUfo | null {
     }
 }
 
-export async function getUfoData(projection: d3.GeoProjection, source: string = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/Data.csv"): Promise<Ufo[]> {
+export async function getUfoData(projection: d3.GeoProjection,
+    start_date: Date | null,
+    end_date: Date | null,
+    source: string = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/Data.csv"): Promise<Ufo[]> {
     console.log("Loading UFO data from: " + source);
     var ufos: Ufo[] = [];
     await d3.csv(source).then(data => {
@@ -69,11 +72,22 @@ export async function getUfoData(projection: d3.GeoProjection, source: string = 
                 return;
             }
 
+            const ufo_date = new Date(raw_ufo.date);
+
+            if (start_date !== null && ufo_date < start_date) {
+                return;
+            }
+
+            if (end_date !== null && ufo_date > end_date) {
+                return;
+            }
+
+
             const map_coordinates = projection([raw_ufo.longitude, raw_ufo.latitude]); // TODO: pre-calculate?
             if (map_coordinates !== null) {     // TODO: Errors
                 ufos.push(
                     {
-                        date: raw_ufo.date,
+                        date: ufo_date,
                         city: raw_ufo.city,
                         state: states_short[raw_ufo.state].short,
                         latitude: raw_ufo.latitude,
@@ -92,5 +106,8 @@ export async function getUfoData(projection: d3.GeoProjection, source: string = 
             }
         });
     });
+    console.log(ufos.length + " UFOs loaded.")
     return ufos;
+
+
 }

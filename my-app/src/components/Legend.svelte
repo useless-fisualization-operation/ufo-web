@@ -30,8 +30,9 @@
 		display: flex;
 
 		& > div {
+			font-size: 0.8em;
 			width: 20%;
-			height: 100%;
+			height: 20px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
