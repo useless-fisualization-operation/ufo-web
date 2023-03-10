@@ -15,6 +15,7 @@
 	import { states } from './states';
 	import { shared } from './shared';
 	import LoadingScreen from './LoadingScreen.svelte';
+	import UfoSvg from './UfoSvg.svelte' // The svelte svg
 
 	let clazz = '';
 	export { clazz as class };
@@ -130,6 +131,10 @@
 						cy={ufo.projection[1]}
 						r={0.4}
 						on:click={() => {
+							if(shared_state.selected_type=='ufo'){
+								console.log("Hello this works just fine")
+								console.log(shared_state.selected)
+							}
 							shared.update((v) => {
 								v.selected_type = 'ufo';
 								v.selected = ufo;
@@ -162,6 +167,11 @@
 					{/each}
 				{/if}
 			{/each}
+			<!------------------  DISPLAY SELECTED UFO ---------------- -->
+			{#if shared_state?.selected_type=='ufo'}
+				<UfoSvg x_pos={shared_state.selected.projection[0]} y_pos={shared_state.selected.projection[1]}/>	
+				<circle cx={shared_state.selected.projection[0]} cy={shared_state.selected.projection[1]} r={0.4} fill="white"/>
+			{/if}
 		</g>
 	</svg>
 </div>
