@@ -12,10 +12,14 @@
 		religionDataToStateData,
 		type ReligionData
 	} from './state_data';
-	import { states, states_short, type State } from './states';
-	import { bind } from 'svelte/internal';
+	import { states } from './states';
+	import { shared } from './shared';
+	import LoadingScreen from './LoadingScreen.svelte';
 
-	export let shared_state: SharedState;
+	let shared_state: SharedState | null = null;
+	shared.subscribe((v) => {
+		shared_state = v;
+	});
 
 	const projection: d3.GeoProjection = geoAlbersUsa().scale(1300).translate([487.5, 305]);
 
@@ -48,22 +52,13 @@
 		closed: airports.filter((o) => o.type == AirportTypes.closed)
 	};
 
-	// TODO: Move
-	// [key: string]: boolean
-
 	function isAirportTypeDisplayed(airport_type: string) {
-		return shared_state.display_options[airport_type as AirportType];
+		return shared_state?.display_options[airport_type];
 	}
 
 	// ----------- Sidebar Info: -----------
-	let selected: any; // TODO
-	let selectedUfo: any; // TODO
+	let selected_map_state: any; // TODO
 	let selectedAirport: any; // TODO
-
-	// -----------  Legend checkmarks: -----------
-	let displayUfos = false;
-	let displayReligion = true;
-	//let state_data: StateData[] = religionDataToStateData(religion);
 
 	// ----------- Zoom and Pan: -----------
 	let bindHandleZoom: any, bindInitZoom: any; // TODO: Fix?
@@ -88,10 +83,7 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-{#if ufoData.length === 0}
-	<div class="loadingbg" />
-	<div class="loadingscreen">Looking for UFOs ...</div>
-{/if}
+<LoadingScreen display={ufoData.length === 0} />
 
 <svg
 	bind:this={bindInitZoom}
@@ -103,22 +95,23 @@
 	<g bind:this={bindHandleZoom}>
 		{#each map_states as map_state}
 			{@const state_short = states[map_state.properties.name].short}
-
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<path
 				d={path(map_state)}
 				on:click={() => {
-					selected = map_state;
-					selectedAirport = null;
+					selected_map_state = map_state;
+					// write to the store
+					shared.update((v) => {
+						v.selected_type = 'state';
+						v.selected = states[map_state.properties.name].name;
+						return v;
+					});
 				}}
 				fill={getStateColor(state_data[state_short])}
 				class="state"
 			/>
 		{/each}
-		{#if selected}
-			<path d={path(selected)} on:click={() => (selected = null)} class="selected" />
-		{/if}
-		{#if shared_state.display_options.ufos}
+		{#if shared_state?.display_options.ufos}
 			{#each ufoData as ufo}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<circle
@@ -127,16 +120,20 @@
 					cy={ufo.projection[1]}
 					r={0.4}
 					on:click={() => {
-						// selectedUfo = ufo;
-						// let i = us_states_short.indexOf(ufo.state);
-						// Selected = states.filter((o) => o.properties.name == us_states[i])[0];
+						shared.update((v) => {
+							v.selected_type = 'ufo';
+							v.selected = ufo;
+							return v;
+						});
+
+						selected_map_state = null;
 					}}
 				/>
 			{/each}
 		{/if}
 		{#each Object.keys(AirportTypes) as airport_type}
-			{#each airports_by_type[airport_type] as airport}
-				{#if isAirportTypeDisplayed(airport_type)}
+			{#if isAirportTypeDisplayed(airport_type)}
+				{#each airports_by_type[airport_type] as airport}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<circle
 						class="airportdot"
@@ -144,13 +141,24 @@
 						cy={airport.projection[1]}
 						r={0.6}
 						on:click={() => {
-							selectedAirport = airport.name;
-							//let i = states_short.indexOf(airport.state);
-							//selected = states.filter((o) => o.properties.name == us_states[i])[0];
+							selectedAirport = airport;
+							shared.update((v) => {
+								v.selected_type = 'airport';
+								v.selected = airport;
+								return v;
+							});
+							selected_map_state = null;
 						}}
 					/>
-				{/if}
-			{/each}
+				{/each}
+			{/if}
+			{#if selected_map_state}
+				<path
+					d={path(selected_map_state)}
+					on:click={() => (selected_map_state = null)}
+					class="selected"
+				/>
+			{/if}
 		{/each}
 	</g>
 </svg>
@@ -163,32 +171,6 @@
 
 	.state:hover {
 		fill: rgb(86, 92, 99);
-	}
-
-	.description {
-		color: gray;
-		font-size: 1.5vh;
-		margin-bottom: 0.1rem;
-	}
-
-	.selectedName {
-		font-size: 2vh;
-		margin-bottom: 0.5rem;
-		text-align: center;
-	}
-
-	.logo {
-		font-weight: bold;
-		font-size: 2vh;
-		text-align: center;
-	}
-
-	.legend {
-		width: 80%;
-		padding: 1vh;
-		border-style: solid;
-		border-color: rgb(231, 231, 231);
-		border-radius: 1vh;
 	}
 
 	.airportdot {
@@ -211,7 +193,6 @@
 		opacity: 1;
 	}
 
-	// map
 	svg {
 		overflow: visible;
 		display: inline-block;
@@ -224,28 +205,9 @@
 		fill: rgb(47, 80, 150);
 	}
 
-	.loadingbg {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		background-color: rgb(46, 46, 46);
-		opacity: 0.9;
-		z-index: 6;
-	}
-
-	.loadingscreen {
-		font-size: 6vh;
-		position: absolute;
-		color: white;
-		left: 40%;
-		top: 40%;
-		z-index: 1000;
-		border-radius: 1vh;
-		padding: 4vh;
-	}
-
 	path {
 		stroke: white;
+
 		stroke-width: 0.5px;
 	}
 </style>

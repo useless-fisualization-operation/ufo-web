@@ -3,17 +3,19 @@
 	import type { SharedState } from './shared';
 	import type { State } from './states';
 	import { getStateColor } from './state_data';
-
-	export let shared_state: SharedState;
-
-	let selected = shared_state.selected;
+	import { shared } from './shared';
 
 	// @ts-ignore
 	let radialScale = d3.scaleLinear().domain([0, 1]).range(['#f7fcf5', '#00441b']); // FIX: not sure this is working
+
+	let shared_state: SharedState | null = null;
+	shared.subscribe((v) => {
+		shared_state = v;
+	});
 </script>
 
 <div class="legend">
-	{#if shared_state.display_options.religion}
+	{#if shared_state?.display_options.religion}
 		{#each Array(5) as _, i}
 			<div style="background-color:{radialScale(i / 4)}">{(i / 4) * 100}%</div>
 		{/each}

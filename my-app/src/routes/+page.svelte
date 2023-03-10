@@ -7,32 +7,16 @@
 	import Footer from '../components/Footer.svelte';
 	import type { SharedState } from '../components/shared';
 	import Legend from '../components/Legend.svelte';
-
-	const shared_state: SharedState = {
-		display_options: {
-			large_airports: false,
-			medium_airports: false,
-			small_airports: false,
-			heliports: false,
-			seaplane_bases: false,
-			balloonports: false,
-			closed_airports: false,
-			ufos: false,
-			religion: true
-		},
-		selected: null,
-		selected_type: 'none'
-	};
 </script>
 
 <main>
-	<Header {shared_state} />
-	<Map {shared_state} />
-	<Details {shared_state} />
-	<DisplayOptions {shared_state} />
-	<TimeSlider {shared_state} />
-	<Footer {shared_state} />
-	<Legend {shared_state} />
+	<Header />
+	<Map />
+	<Details />
+	<DisplayOptions />
+	<TimeSlider />
+	<Footer />
+	<Legend />
 </main>
 
 <style lang="scss">
