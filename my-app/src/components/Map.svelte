@@ -80,7 +80,9 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<LoadingScreen display={ufoData.length === 0} />
+<div class="loading-screen">
+	<LoadingScreen display={ufoData.length === 0} />
+</div>
 
 <div class={clazz}>
 	<svg
@@ -168,6 +170,13 @@
 		--state-fill: rgb(117, 143, 169);
 	}
 
+	.loading-screen {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1000;
+	}
 	.state:hover {
 		fill: var(--state-fill);
 	}

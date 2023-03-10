@@ -4,7 +4,11 @@
 	export { clazz as class };
 </script>
 
-<div class={clazz} />
+<div class="header {clazz}">header</div>
 
 <style lang="scss">
+	.header {
+		background-color: var(--surface-1);
+		height: 20px;
+	}
 </style>

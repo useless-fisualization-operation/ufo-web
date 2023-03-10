@@ -35,7 +35,6 @@
 <style lang="scss">
 	.display_options {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		z-index: 1;
+		grid-template-columns: 20px 1fr;
 	}
 </style>

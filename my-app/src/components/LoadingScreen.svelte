@@ -10,13 +10,6 @@
 </div>
 
 <style lang="scss">
-	.lds-ring {
-		position: absolute;
-		z-index: 1000;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
 	.lds-ring div {
 		box-sizing: border-box;
 		display: block;
@@ -24,10 +17,10 @@
 		width: 64px;
 		height: 64px;
 		margin: 8px;
-		border: 8px solid #fff;
+		border: 8px solid white;
 		border-radius: 50%;
 		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-		border-color: #fff transparent transparent transparent;
+		border-color: white transparent transparent transparent;
 	}
 	.lds-ring div:nth-child(1) {
 		animation-delay: -0.45s;

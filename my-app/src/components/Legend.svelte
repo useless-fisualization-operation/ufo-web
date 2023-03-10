@@ -27,6 +27,14 @@
 
 <style lang="scss">
 	.legend {
-		z-index: 1;
+		display: flex;
+
+		& > div {
+			width: 20%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 </style>

@@ -10,57 +10,82 @@
 </script>
 
 <main>
-	<Header class="header" />
-	<Map class="map" />
-	<Details class="details" />
-	<DisplayOptions class="display_options" />
-	<TimeSlider class="time_slider" />
-	<Footer class="footer" />
-	<Legend class="legend" />
+	<div class="header">
+		<Header />
+	</div>
+	<div class="details">
+		<Details />
+	</div>
+	<div class="display_options">
+		<DisplayOptions />
+	</div>
+	<div class="time_slider">
+		<TimeSlider />
+	</div>
+	<div class="footer">
+		<Footer />
+	</div>
+	<div class="legend">
+		<Legend />
+	</div>
+	<div class="map">
+		<Map />
+	</div>
 </main>
 
 <style lang="scss">
 	main {
+		height: 100vh;
+		width: 100vw;
 		display: grid;
 
 		align-items: center;
-		height: 100%;
-		width: 100%;
 		grid-template-areas:
-			'header header header header header'
-			'details display_options map time_slider legend'
-			'footer footer footer footer footer';
+			'header  			header 		header 		header'
+			'details 			map 		map 		time_slider'
+			'display_options 	map 		map 		legend'
+			'footer 			footer 		footer 		footer';
+
+		grid-template-rows: 20px 2fr 1fr 20px;
+		grid-template-columns: 1fr 2fr 2fr 1fr;
+
+		& > div {
+			z-index: 10;
+		}
 	}
 
-	:global(.header) {
+	.header {
 		grid-area: header;
 		height: 20px;
-		background-color: red;
 	}
 
-	:global(.map) {
+	.map {
+		z-index: 1;
 		grid-area: map;
 	}
 
-	:global(.details) {
+	.details {
+		padding: 20px;
 		grid-area: details;
 	}
 
-	:global(.display_options) {
+	.display_options {
+		padding: 20px;
 		grid-area: display_options;
 	}
 
-	:global(.time_slider) {
+	.time_slider {
+		padding: 20px;
 		grid-area: time_slider;
 	}
 
-	:global(.footer) {
+	.footer {
 		grid-area: footer;
 		height: 20px;
-		background-color: blue;
 	}
 
-	:global(.legend) {
+	.legend {
+		padding: 20px;
 		grid-area: legend;
 	}
 
@@ -72,5 +97,11 @@
 		font-size: 1.2vh;
 		font-family: 'Roboto', sans-serif;
 		overflow: hidden;
+	}
+
+	:global(:root) {
+		--surface-0: #f7fcf5;
+		--surface-1: #e5f5e0;
+		--accent: #00441b;
 	}
 </style>

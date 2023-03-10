@@ -45,5 +45,8 @@
 <style lang="scss">
 	.details {
 		z-index: 1;
+		background-color: var(--surface-1);
+		min-width: 100%;
+		height: 100%;
 	}
 </style>
