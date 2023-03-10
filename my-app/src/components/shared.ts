@@ -30,7 +30,7 @@ export const shared: Writable<SharedState> = writable(
             ufo: false,
             religion: true,
         },
-        start_date: new Date(20160, 0, 1),
+        start_date: new Date(2014, 0, 1),
         end_date: new Date(2018, 0, 1),
         selected: null,
         selected_type: 'none'
