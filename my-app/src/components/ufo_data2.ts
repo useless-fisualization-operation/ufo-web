@@ -15,6 +15,8 @@ export type Ufo2 = {
 export type Ufos = {
     ufos: Ufo2[],
     location: string,
+    state: string,
+    projection: [number, number]
     tot: number
 }
 

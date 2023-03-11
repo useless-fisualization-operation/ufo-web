@@ -1,6 +1,6 @@
 import type { Airport, AirportType } from "./airport_data";
 import type { State } from "./states";
-import type { Ufo } from "./ufo_data";
+import { allShapes } from "./ufo_shapes";
 import type { Ufos } from "./ufo_data2";
 import type { UfoLocation } from "./ufo_locations";
 import { writable, type Writable } from 'svelte/store';
@@ -14,13 +14,15 @@ export type SharedState = {
 };
 
 export type DisplayOptions = {
-    [key: string]: boolean
+    [key: string]: boolean | unknown
 };
 
 
 export const shared: Writable<SharedState> = writable(
     {
         display_options: {
+            // For Airports: 
+            airport: false,
             large_airport: true,
             medium_airport: false,
             small_airport: false,
@@ -28,8 +30,14 @@ export const shared: Writable<SharedState> = writable(
             seaplane_base: false,
             balloonport: false,
             closed_airport: false,
-            ufo: false,
+            // Others:
             religion: true,
+            // For Ufos:
+            ufo: false,
+            ufo_images: true,
+            ufo_no_images: false,
+            shapes: allShapes
+            // --- For Ufo Shapes:
         },
         start_date: new Date(2014, 0, 1),
         end_date: new Date(2018, 0, 1),

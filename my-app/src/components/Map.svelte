@@ -3,7 +3,10 @@
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { getUfoData, type Ufo } from './ufo_data';
+	import { getUfoShapes, type Shape } from './ufo_shapes';
+	import { allShapes} from './ufo_shapes';
 	import { getUfoData2, type Ufo2 } from './ufo_data2';
+	import type { Ufos } from './ufo_data2';
 	import { getUfoLocations, type UfoLocation } from './ufo_locations';
 	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
 	import { zoom, select } from 'd3';
@@ -38,8 +41,27 @@
 	var state_data = religionDataToStateData(religion);
 	var ufoData: Ufo[] = [];
 	var ufoData2: Ufo2[] = [];
+	var ufoShapes: Shape[] = [];
 	var ufoLocations: UfoLocation[] = [];
 	let map_states: any[] = [];
+
+	$: filteredUfoData = ufoData2.filter(o=>{
+		let con1 = false;
+		let con2 = false;
+		if(shared_state?.display_options.ufo_images && o.images=="Yes") con1 = true;
+		if(shared_state?.display_options.ufo_no_images && o.images!="Yes") con1 = true;
+		if(con1){
+			Object.keys(shared_state?.display_options.shapes).forEach(shape=>{
+				if(shared_state?.display_options.shapes[shape]) con2 = true;
+			});
+		}
+		if(con1 && con2) return o;
+	});
+	$: filteredUfoLocations = ufoLocations.filter(o=>{
+		if(filteredUfoData.find(u=>u.id_ref_loc==o.id) !== undefined) return o
+	})
+
+	$: shapes = ufoShapes.map(o=>o.type);
 	onMount(async () => {
 		const us = await fetch(
 			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
@@ -53,7 +75,11 @@
 		ufoLocations = await getUfoLocations(projection, false);
 		ufoData = await getUfoData(projection, false);
 		ufoData2 = await getUfoData2(true);
+		ufoShapes = await getUfoShapes(false);
+		//console.log(ufoShapes.map(o=>o.type));
+		console.log(allShapes)
 	});
+
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
 		medium_airport: airports.filter((o) => o.type == AirportTypes.medium_airport),
@@ -63,7 +89,6 @@
 		balloonport: airports.filter((o) => o.type == AirportTypes.balloonport),
 		closed: airports.filter((o) => o.type == AirportTypes.closed)
 	};
-
 	// ----------- Sidebar Info: -----------
 	let selected_map_state: any; // TODO
 
@@ -116,9 +141,11 @@
 							return v;
 						});
 					}}
-					fill={getStateColor(state_data[state_short])}
+					fill= "{shared_state.display_options.religion ? getStateColor(state_data[state_short]) : 'rgb(54, 57, 61)'}"
 					class="state"
 				/>
+				<!--
+					-->
 			{/each}
 			{#if selected_map_state}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -129,7 +156,7 @@
 				/>
 			{/if}
 			{#if shared_state?.display_options.ufo}
-				{#each ufoLocations as ufo}
+				{#each filteredUfoLocations as ufo}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<circle
 						class="ufodot"
@@ -137,13 +164,20 @@
 						cy={ufo.projection[1]}
 						r={0.4}
 						on:click={() => {
-							let test = ufoData2.filter(o=>o.id_ref_loc==ufo.id)
+							let ufo_on_location = filteredUfoData.filter(o=>o.id_ref_loc==ufo.id);
+							let ufo_shape = ufoShapes.filter(o=>o.id=ufo.id)
 							console.log("ID: "+ufo.id);
-							console.log(test);
-							if(test.length>0){
+							console.log(ufo_on_location);
+							if(ufo_on_location.length>0){
 							shared.update((v) => {
 								v.selected_type = 'ufos';
-								v.selected = {ufos:test, location:ufo.city, tot: test.length};
+								v.selected = {
+									ufos:ufo_on_location, 
+									location:ufo.city, 
+									state:ufo.state,
+									projection:ufo.projection,
+									tot: ufo_on_location.length
+								};
 								return v;
 							});}else{console.log("ERROR from split file!")}
 							
@@ -174,7 +208,7 @@
 				{/if}
 			{/each}
 			<!------------------  DISPLAY SELECTED UFO ---------------- -->
-			{#if shared_state?.selected_type=='ufoLocation'}
+			{#if shared_state?.selected_type=='ufos'}
 				<UfoSvg x_pos={shared_state.selected.projection[0]} y_pos={shared_state.selected.projection[1]}/>	
 				<circle cx={shared_state.selected.projection[0]} cy={shared_state.selected.projection[1]} r={0.4} fill="white"/>
 			{/if}
