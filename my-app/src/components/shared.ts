@@ -22,6 +22,7 @@ export const shared: Writable<SharedState> = writable(
     {
         display_options: {
             // For Airports: 
+            airport: false,
             large_airport: true,
             medium_airport: false,
             small_airport: false,
