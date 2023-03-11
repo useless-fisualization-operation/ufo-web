@@ -16,42 +16,7 @@
 	let filterUfoImages = false;
 	let filterUfoShapes = false;
 </script>
-<div class="{clazz} display_options card">
-	<input type="checkbox" bind:checked={display_options.large_airport} />
-	<label for="display_large_airports">Large Airports</label>
-	<input type="checkbox" bind:checked={display_options.medium_airport} />
-	<label for="display_medium_airports">Medium Airports</label>
-	<input type="checkbox" bind:checked={display_options.small_airport} />
-	<label for="display_small_airports">Small Airports</label>
-	<input type="checkbox" bind:checked={display_options.heliport} />
-	<label for="display_heliports">Heliports</label>
-	<input type="checkbox" bind:checked={display_options.seaplane_base} />
-	<label for="display_seaplane_bases">Seaplane Bases</label>
-	<input type="checkbox" bind:checked={display_options.balloonport} />
-	<label for="display_balloonports">Balloonports</label>
-	<input type="checkbox" bind:checked={display_options.closed_airport} />
-	<label for="display_closed_airports">Closed Airports</label>
-	<input type="checkbox" bind:checked={display_options.ufo} />
-	<label for="display_ufos">UFOs</label>
-	<input type="checkbox" bind:checked={display_options.ufo_images} />
-	<label for="display_ufos">UFOs Images</label>
-	<input type="checkbox" bind:checked={display_options.ufo_no_images} />
-	<label for="display_ufos">UFOs No Images</label>
-	<input type="checkbox" bind:checked={display_options.religion} />
-	<label for="display_religion">Religion</label>
-	{#each Object.keys(display_options.shapes) as shape}
-		<input type="checkbox" bind:checked={display_options.shapes[shape]} />
-		<label for="display_religion">{shape}</label>	
-	{/each}
-</div>
 
-<style lang="scss">
-	.display_options {
-		display: grid;
-		grid-template-columns: 20px 1fr;
-	}
-</style>
--->
 <div class="{clazz} sidebar2">
 	<div class="legend">
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
