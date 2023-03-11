@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { SharedState } from './shared';
 	import { shared } from './shared';
+	import { allShapes } from './ufo_shapes';
 
 	let clazz = '';
 	export { clazz as class };
@@ -28,8 +29,16 @@
 	<label for="display_closed_airports">Closed Airports</label>
 	<input type="checkbox" bind:checked={display_options.ufo} />
 	<label for="display_ufos">UFOs</label>
+	<input type="checkbox" bind:checked={display_options.ufo_images} />
+	<label for="display_ufos">UFOs Images</label>
+	<input type="checkbox" bind:checked={display_options.ufo_no_images} />
+	<label for="display_ufos">UFOs No Images</label>
 	<input type="checkbox" bind:checked={display_options.religion} />
 	<label for="display_religion">Religion</label>
+	{#each Object.keys(display_options.shapes) as shape}
+		<input type="checkbox" bind:checked={display_options.shapes[shape]} />
+		<label for="display_religion">{shape}</label>	
+	{/each}
 </div>
 
 <style lang="scss">
