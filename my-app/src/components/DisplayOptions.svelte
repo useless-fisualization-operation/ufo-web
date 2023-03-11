@@ -11,7 +11,7 @@
 	});
 </script>
 
-<div class="{clazz} display_options card">
+<div class="{clazz} display_options">
 	<input type="checkbox" bind:checked={display_options.large_airport} />
 	<label for="display_large_airports">Large Airports</label>
 	<input type="checkbox" bind:checked={display_options.medium_airport} />
