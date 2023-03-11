@@ -140,11 +140,12 @@
 							let test = ufoData2.filter(o=>o.id_ref_loc==ufo.id)
 							console.log("ID: "+ufo.id);
 							console.log(test);
+							if(test.length>0){
 							shared.update((v) => {
 								v.selected_type = 'ufos';
 								v.selected = {ufos:test, location:ufo.city, tot: test.length};
 								return v;
-							});
+							});}else{console.log("ERROR from split file!")}
 							
 							selected_map_state = null;
 						}}

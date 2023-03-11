@@ -39,8 +39,7 @@ export async function getUfoData2(verbose:boolean,
                         summary: row.Summary,
                         images: row.Images,
                         url: row.Url,
-                        urlImage: row.UrlImage,
-                        city: ''
+                        urlImage: row.UrlImage
                     }
                 );
         });
