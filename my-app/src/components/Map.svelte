@@ -3,6 +3,8 @@
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { getUfoData, type Ufo } from './ufo_data';
+	import { getUfoData2, type Ufo2 } from './ufo_data2';
+	import { getUfoLocations, type UfoLocation } from './ufo_locations';
 	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
 	import { zoom, select } from 'd3';
 	import type { SharedState } from './shared';
@@ -15,6 +17,7 @@
 	import { states } from './states';
 	import { shared } from './shared';
 	import LoadingScreen from './LoadingScreen.svelte';
+	import UfoSvg from './UfoSvg.svelte' // The svelte svg
 
 	let clazz = '';
 	export { clazz as class };
@@ -34,6 +37,8 @@
 	var religion: ReligionData[] = getReligionData();
 	var state_data = religionDataToStateData(religion);
 	var ufoData: Ufo[] = [];
+	var ufoData2: Ufo2[] = [];
+	var ufoLocations: UfoLocation[] = [];
 	let map_states: any[] = [];
 	onMount(async () => {
 		const us = await fetch(
@@ -45,7 +50,9 @@
 		if (!shared_state) {
 			throw new Error('Shared state is null');
 		}
-		ufoData = await getUfoData(projection, shared_state.start_date, shared_state.end_date);
+		ufoLocations = await getUfoLocations(projection, false);
+		ufoData = await getUfoData(projection, false);
+		ufoData2 = await getUfoData2(true);
 	});
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
@@ -122,7 +129,7 @@
 				/>
 			{/if}
 			{#if shared_state?.display_options.ufo}
-				{#each ufoData as ufo}
+				{#each ufoLocations as ufo}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<circle
 						class="ufodot"
@@ -130,12 +137,16 @@
 						cy={ufo.projection[1]}
 						r={0.4}
 						on:click={() => {
+							let test = ufoData2.filter(o=>o.id_ref_loc==ufo.id)
+							console.log("ID: "+ufo.id);
+							console.log(test);
+							if(test.length>0){
 							shared.update((v) => {
-								v.selected_type = 'ufo';
-								v.selected = ufo;
+								v.selected_type = 'ufos';
+								v.selected = {ufos:test, location:ufo.city, tot: test.length};
 								return v;
-							});
-
+							});}else{console.log("ERROR from split file!")}
+							
 							selected_map_state = null;
 						}}
 					/>
@@ -162,6 +173,11 @@
 					{/each}
 				{/if}
 			{/each}
+			<!------------------  DISPLAY SELECTED UFO ---------------- -->
+			{#if shared_state?.selected_type=='ufoLocation'}
+				<UfoSvg x_pos={shared_state.selected.projection[0]} y_pos={shared_state.selected.projection[1]}/>	
+				<circle cx={shared_state.selected.projection[0]} cy={shared_state.selected.projection[1]} r={0.4} fill="white"/>
+			{/if}
 		</g>
 	</svg>
 </div>
@@ -207,6 +223,6 @@
 
 	path {
 		stroke: white;
-		stroke-width: 0.1px;
+		stroke-width: 0.5px;
 	}
 </style>
