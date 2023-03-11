@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<script>
+    //tut: https://stackoverflow.com/questions/29640110/d3-histogram-number-of-occurrences-of-date-from-time-stamp
+
+
+  // set the dimensions and margins of the graph
+  var margin = {top: 10, right: 30, bottom: 80, left: 70},
+      width = 860 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
+  
+  // append the svg object to the body of the page
+  var svg = d3.select("#my_dataviz")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("text")      // text label for the x axis
+      .attr("x", width / 2 )
+      .attr("y", height + 0.8*margin.bottom )
+      .style("text-anchor", "middle")
+      .text("Shape");
+
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Number of UFO sightings");
+
+  // get the data
+  d3.csv("https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/UFO_dates_shape.csv", function(data) {
+    // X axis: scale and draw:
+    console.log(data);
+
+    var tally = {};
+    var last_Date='';
+    data.forEach(function(line) {
+        var shape = line['Shape'];
+        //console.log(shape);//parts 0 has date, parts 1 has time
+        //var datetime = formatDate.parse(parts[0]);
+        //console.log(datetime);
+        //var date = formatDate(datetime).split(' ')[0];
+        tally[shape] = (tally[shape]||0) + 1;
+        last_shape=shape;
+    });
+    //console.log(last_Date)
+    //console.log(tally[last_Date])
+    //console.log(tally)
+
+    var data_ref = [];
+
+    for (var shape in tally) {
+        if (tally.hasOwnProperty(shape)) {
+            data_ref.push({
+                shape: shape,
+                frequency: tally[shape]
+            });
+        }
+    }
+
+    console.log("this is data ref");
+    console.log(data_ref);
+
+    // X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data_ref.map(function(d) { return d.shape; }))
+  .padding(0.2);
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([0, d3.max(data_ref, d => d.frequency)])
+  .range([ height, 0]);
+svg.append("g")
+  .call(d3.axisLeft(y));
+
+// Bars
+svg.selectAll("mybar")
+  .data(data_ref)
+  .enter()
+  .append("rect")
+    .attr("x", function(d) { return x(d.shape); })
+    .attr("y", function(d) { return y(d.frequency); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d.frequency); })
+    .attr("fill", "#ff9100")
+  
+  });
+  </script>
