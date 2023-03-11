@@ -16,8 +16,7 @@
 	let filterUfoImages = false;
 	let filterUfoShapes = false;
 </script>
-<!--
-<div class="{clazz} display_options">
+<div class="{clazz} display_options card">
 	<input type="checkbox" bind:checked={display_options.large_airport} />
 	<label for="display_large_airports">Large Airports</label>
 	<input type="checkbox" bind:checked={display_options.medium_airport} />

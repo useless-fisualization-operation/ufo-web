@@ -17,10 +17,28 @@
 	}
 </script>
 
-<div class={clazz}>
+<div class="{clazz} card timeslider">
+	<center><h4>Date &#128467</h4></center>
 	<input type="date" bind:value={start} on:change={update_data} />
 	<input type="date" bind:value={end} on:change={update_data} />
 </div>
 
 <style lang="scss">
+	.timeslider {
+		display: flex;
+		flex-direction: column;
+	}
+
+	h4 {
+		font-weight: bold;
+		font-size: 120%;
+	}
+
+	input[type=date] {
+		border: none;
+		margin: 0.5em;
+		padding: 0.5em;
+		border-radius: 0.5em;
+		font-family: inherit;
+	}
 </style>

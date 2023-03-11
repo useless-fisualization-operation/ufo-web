@@ -17,7 +17,7 @@
 	});
 </script>
 
-<div class="{clazz} legend">
+<div class="{clazz} legend card">
 	{#if shared_state?.display_options.religion}
 		{#each Array(5) as _, i}
 			<div style="background-color:{radialScale(i / 4)}">{(i / 4) * 100}%</div>
