@@ -2,25 +2,31 @@
 	import type { Airport } from './airport_data';
 	import type { SharedState } from './shared';
 	import type { State } from './states';
-	import type { Ufo } from './ufo_data';
+	import type { Ufos, Ufo2 } from './ufo_data2';
 
 	import { shared } from './shared';
+
+	import Modal from './Modal.svelte';
+	let showModal = false;
 
 	let clazz = '';
 	export { clazz as class };
 
 	let shared_state: SharedState | null;
-	let selected_type: 'state' | 'airport' | 'ufo' | 'none';
+	let selected_type: 'state' | 'airport' | 'ufos' | 'none';
 	let selected_state: State | null;
 	let selected_airport: Airport | null;
-	let selected_ufo: Ufo | null;
+	let selected_ufos: Ufos | null;
+	let counter = 0;
+
 
 	shared.subscribe((v) => {
 		shared_state = v;
 		selected_type = v.selected_type;
 		selected_state = v.selected_type == 'state' ? (v.selected as State) : null;
 		selected_airport = v.selected_type == 'airport' ? (v.selected as Airport) : null;
-		selected_ufo = v.selected_type == 'ufo' ? (v.selected as Ufo) : null;
+		selected_ufos = v.selected_type == 'ufos' ? (v.selected as Ufos) : null;
+		counter = 0;
 	});
 </script>
 
@@ -31,16 +37,35 @@
 		<p class="description">State: {selected_state}</p>
 		<p class="description">Population: TODO</p>
 		<p class="description">Religion: TODO</p>
-	{:else if selected_type == 'ufo'}
-		<p class="description">UFO: Location: {selected_ufo?.city}, {selected_ufo?.state}</p>
-		<p class="description">UFO: Date: {selected_ufo?.date}</p>
-		<p class="description">UFO: Shape: {selected_ufo?.shape}</p>
-		<p class="description">UFO: Duration of the Event: {selected_ufo?.duration}</p>
-		<p class="description">UFO: Summary of the Event: {selected_ufo?.summary}</p>
+	{:else if selected_type == 'ufos' && selected_ufos !== null}
+		<center><h4>UFO</h4></center>
+		<p> {counter+1}/{selected_ufos?.tot}</p>
+		<p class="description"><b>Summary of the Event:</b> {selected_ufos?.ufos[counter].summary}</p>
+		<p class="description"><b>Location:</b> {selected_ufos?.location}</p>
+		<p class="description"><b>Date:</b> {selected_ufos?.ufos[counter].date}</p>
+		<p class="description"><b>Duration of the Event:</b> {selected_ufos?.ufos[counter].duration}</p>
+		<p class="description"><b>Summary of the Event:</b> {selected_ufos?.ufos[counter].summary}</p>
+		<p class="description"><b>NUFORC Report:</b> <a href="{selected_ufos?.ufos[counter].url}">Link</a></p>
+		{#if selected_ufos?.ufos[counter].urlImage}
+			<p class="description"><b>Image:</b> </p>
+			<div style="max-height:60vh; max-width:95%">
+			<center>
+			<img src="{selected_ufos?.ufos[counter].urlImage}" alt="Ufo" width="100%" on:click={()=>showModal = true}/>
+			</center>
+			</div>
+		{/if}
+		<button on:click={()=>counter=((counter+1)%selected_ufos?.tot)}></button>
+		
 	{:else if selected_type == 'airport'}
 		<p class="description">Airport: {selected_airport?.name}</p>
 	{/if}
 </div>
+
+<Modal bind:showModal>
+	{#if selected_ufos?.ufos[counter].urlImage}
+		<img src="{selected_ufos?.ufos[counter].urlImage}" alt="Ufo" width="100%"/>
+	{/if}
+</Modal>
 
 <style lang="scss">
 	.details {
