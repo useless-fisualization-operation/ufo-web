@@ -34,6 +34,8 @@
 </main>
 
 <style lang="scss">
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
 	main {
 		height: 100vh;
 		width: 100vw;
@@ -52,6 +54,9 @@
 		& > div {
 			z-index: 10;
 		}
+
+		font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', sans-serif;
+		font-size: 1.4vh;
 	}
 
 	.header {
@@ -67,16 +72,19 @@
 	.details {
 		padding: 20px;
 		grid-area: details;
+		align-self: flex-start;
 	}
 
 	.display_options {
 		padding: 20px;
 		grid-area: display_options;
+		align-self: flex-end;
 	}
 
 	.time_slider {
 		padding: 20px;
 		grid-area: time_slider;
+		align-self: flex-start;
 	}
 
 	.footer {
@@ -87,21 +95,20 @@
 	.legend {
 		padding: 20px;
 		grid-area: legend;
+		align-self: flex-end;
 	}
 
-	:global(body, html) {
-		height: 100%;
-		width: 100%;
-		margin: 0;
-		padding: 0;
-		font-size: 1.2vh;
-		font-family: 'Roboto', sans-serif;
-		overflow: hidden;
+	:global(.card) {
+		background-color: var(--surface-1);
+		padding: 7%;
+		border-radius: 0.5em;
 	}
 
 	:global(:root) {
 		--surface-0: #f7fcf5;
 		--surface-1: #e5f5e0;
 		--accent: #00441b;
+		--button-0: #6f8968;
+		--button-0-hover: #566a50;
 	}
 </style>

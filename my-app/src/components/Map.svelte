@@ -223,6 +223,6 @@
 
 	path {
 		stroke: white;
-		stroke-width: 0.1px;
+		stroke-width: 0.5px;
 	}
 </style>
