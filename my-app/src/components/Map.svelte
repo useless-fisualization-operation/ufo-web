@@ -144,6 +144,8 @@
 					fill= "{shared_state.display_options.religion ? getStateColor(state_data[state_short]) : 'rgb(54, 57, 61)'}"
 					class="state"
 				/>
+				<!--
+					-->
 			{/each}
 			{#if selected_map_state}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->

@@ -109,12 +109,12 @@
 			</p>
 		</div>
 		{#if filterAirports}
-			{#each Object.values(AirportTypes) as airport_type}
+			{#each Object.keys(AirportTypes) as airport_type}
 				<div class="item">
 					<p>&nbsp&nbsp</p>
 					<input type=checkbox bind:checked={display_options[airport_type]}>
 					<div class="airport_legend"></div>
-					<p class="desc">{airport_type}</p>
+					<p class="desc">{AirportTypes[airport_type]}</p>
 				</div>
 			{/each}
 		{/if}
