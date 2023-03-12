@@ -244,11 +244,11 @@
 	}
 
 	svg {
-		overflow: hidden;
+		overflow: visible;
 		display: inline-block;
 		position: absolute;
-		top: 0vh;
-		left: 0vw;
+		top: 20px;
+		left: -7em;
 	}
 
 	.selected {

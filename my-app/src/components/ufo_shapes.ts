@@ -18,7 +18,7 @@ export async function getUfoShapes(verbose:boolean,
                 if(verbose) console.log("UFO row missing data: " + row);
                 return null;
             }
-            allShapes[row.Shape] = false;
+            allShapes[row.Shape] = true;
             shapes.push(
                     {
                         id: Number(row.ID),

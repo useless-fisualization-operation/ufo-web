@@ -32,7 +32,7 @@
 
 <div class="{clazz} details card">
 	{#if selected_type == 'none'}
-		<p class="description">Click on a state, airport, or UFO to see more information.</p>
+		<center><p class="description">&#128161 Click on a state, airport, or UFO to see more information.</p></center>
 	{:else if selected_type == 'state'}
 		<center><h4>State &#128205</h4></center>
 		<b>Name</b><p class="description">{selected_state}</p>

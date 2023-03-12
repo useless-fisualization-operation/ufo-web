@@ -40,16 +40,18 @@
 		height: 100vh;
 		width: 100vw;
 		display: grid;
+		background-color: var(--surface-0);
 
-		align-items: center;
 		grid-template-areas:
-			'header  			header 		header 		header'
-			'details 			map 		map 		time_slider'
-			'display_options 	map 		map 		legend'
-			'footer 			footer 		footer 		footer';
+			'header  			header 			header 			header'
+			'details 			map 			map 			display_options'
+			'details            map				map 			display_options'
+			'details          	time_slider		time_slider		legend'
+			'footer 			footer 			footer 			footer';
 
-		grid-template-rows: 20px 2fr 1fr 20px;
+		grid-template-rows: 20px 20% 40% auto 20px;
 		grid-template-columns: 1fr 2fr 2fr 1fr;
+		align-items: center;
 
 		& > div {
 			z-index: 10;
@@ -78,24 +80,31 @@
 	.display_options {
 		padding: 20px;
 		grid-area: display_options;
-		align-self: flex-end;
+		align-self: flex-start;
 	}
 
 	.time_slider {
 		padding: 20px;
 		grid-area: time_slider;
-		align-self: flex-start;
+		justify-self: center;
+		align-self: flex-end;
 	}
 
 	.footer {
-		grid-area: footer;
 		height: 20px;
+		grid-area: footer;
 	}
 
 	.legend {
 		padding: 20px;
 		grid-area: legend;
 		align-self: flex-end;
+	}
+
+	:global(html) {
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
 	}
 
 	:global(.card) {
@@ -105,8 +114,8 @@
 	}
 
 	:global(:root) {
-		--surface-0: #f7fcf5;
-		--surface-1: #e5f5e0;
+		--surface-0: #ffffff;
+		--surface-1: #e1f4dc;
 		--accent: #00441b;
 		--button-0: #6f8968;
 		--button-0-hover: #566a50;

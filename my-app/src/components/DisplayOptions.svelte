@@ -17,8 +17,9 @@
 	let filterUfoShapes = false;
 </script>
 
-<div class="{clazz} sidebar2">
+<div class="{clazz}">
 	<div class="legend">
+		<center><h4>Filter</h4></center>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div class="item" on:click={()=>filterUfo=!filterUfo}>
 			<input type=checkbox bind:checked={display_options.ufo}>
@@ -93,12 +94,15 @@
 
 <style>
 	.legend {
-		width: 80%;
 		padding: 1vh;
-		border-style: solid;
-		background-color: rgba(255,255,255,0.5);
-		border-color: rgb(231, 231, 231);
+		background-color: var(--surface-1);
 		border-radius: 1vh;
+	}
+
+	h4 {
+		font-weight: bold;
+		font-size: 120%;
+		margin: 0.5em;
 	}
 
 	.legend .item {
@@ -134,23 +138,6 @@
 	}
 	.item {
 		height: 2vh;
-	}
-
-	.sidebar2 {
-		display: flex;
-		position: absolute;
-		right:0;
-		top:0;
-		flex-direction: column;
-		align-items: center;
-		color: black;
-		border-radius: 1vh;
-		margin: 1vw;
-		padding: 2vh;
-		min-width: 20vw;
-		max-width: 20vw;
-		width: 20vw;
-		z-index: 10;
 	}
 
 </style>
