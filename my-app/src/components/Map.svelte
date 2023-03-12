@@ -72,9 +72,8 @@
 		});*/
 		ufoShapes = await getUfoShapes(false);
 		//console.log(ufoShapes.map(o=>o.type));
-		console.log(allShapes)
 	});
-	
+	console.log("all shapes:"+ufoShapes+"finished")
 	$: filteredUfoData = ufoData2.filter(o=>{
 		if(o==ufoData2[ufoData2.length-1]) console.log("I have filtered the data");
 		let con1 = false;
@@ -85,11 +84,9 @@
 		if(shared_state?.display_options.ufo_no_images && o.images!="Yes") con1 = true;
 		//if(shared_state?.display_options.ufo_hoax && o.hoax=="Yes" || !shared_state?.display_options.ufo_hoax && o.hoax!="Yes") con2 = true;
 		//if(shared_state?.display_options.ufo_madar && o.madar=="Yes" || !shared_state?.display_options.ufo_madar && o.madar!="Yes") con3 = true;
-		Object.keys(shared_state?.display_options.shapes).forEach(shape=>{
-				if(shared_state?.display_options.shapes[shape]) con4 = true;
-			});
+		if(con1 && shared_state?.display_options.shapes[ufoShapes[o.id_ref_shape]?.type]) con4 = true;  
 		
-		if(con1 && con4) return o;
+		if(con4) return o;
 	});
 	$: filteredUfoLocations = () => {
 		let visited:number[] = []
