@@ -46,7 +46,19 @@
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
 					<input type=checkbox bind:checked={display_options.ufo_no_images}>
 					<div class="ufo_legend"></div>
-					<p class="desc">With no fig.</p>
+					<p class="desc">With fig.</p>
+				</div>
+				<div class="item">
+					<p>&nbsp&nbsp&nbsp&nbsp</p>
+					<input type=checkbox bind:checked={display_options.ufo_hoax}>
+					<div class="ufo_legend"></div>
+					<p class="desc">Hoaxes</p>
+				</div>
+				<div class="item">
+					<p>&nbsp&nbsp&nbsp&nbsp</p>
+					<input type=checkbox bind:checked={display_options.madar}>
+					<div class="ufo_legend"></div>
+					<p class="desc">Madar</p>
 				</div>
 			{/if}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->

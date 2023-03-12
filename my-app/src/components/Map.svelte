@@ -45,23 +45,12 @@
 	var ufoLocations: UfoLocation[] = [];
 	let map_states: any[] = [];
 
-	$: filteredUfoData = ufoData2.filter(o=>{
-		let con1 = false;
-		let con2 = false;
-		if(shared_state?.display_options.ufo_images && o.images=="Yes") con1 = true;
-		if(shared_state?.display_options.ufo_no_images && o.images!="Yes") con1 = true;
-		if(con1){
-			Object.keys(shared_state?.display_options.shapes).forEach(shape=>{
-				if(shared_state?.display_options.shapes[shape]) con2 = true;
-			});
-		}
-		if(con1 && con2) return o;
-	});
+/*
 	$: filteredUfoLocations = ufoLocations.filter(o=>{
-		if(filteredUfoData.find(u=>u.id_ref_loc==o.id) !== undefined) return o
-	})
+		if(o==ufoLocations[ufoLocations.length-1]) console.log("I have filtered the locations");
+		if(filteredUfoData.find(u=>u.id_ref_loc==o.id)) return o
+	})*/
 
-	$: shapes = ufoShapes.map(o=>o.type);
 	onMount(async () => {
 		const us = await fetch(
 			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
@@ -75,10 +64,46 @@
 		ufoLocations = await getUfoLocations(projection, false);
 		ufoData = await getUfoData(projection, false);
 		ufoData2 = await getUfoData2(true);
+		/*
+		ufoData2.forEach((o,i)=>o.id=i);
+		ufoLocations.forEach(o=>{
+			let ufos = ufoData2.filter(u=>u.id_ref_loc==o.id);
+			o.ref_ufo = ufos.map(u=>u.id)
+		});*/
 		ufoShapes = await getUfoShapes(false);
 		//console.log(ufoShapes.map(o=>o.type));
 		console.log(allShapes)
 	});
+	
+	$: filteredUfoData = ufoData2.filter(o=>{
+		if(o==ufoData2[ufoData2.length-1]) console.log("I have filtered the data");
+		let con1 = false;
+		let con2 = false;
+		let con3 = false;
+		let con4 = false;
+		if(shared_state?.display_options.ufo_images && o.images=="Yes") con1 = true;
+		if(shared_state?.display_options.ufo_no_images && o.images!="Yes") con1 = true;
+		//if(shared_state?.display_options.ufo_hoax && o.hoax=="Yes" || !shared_state?.display_options.ufo_hoax && o.hoax!="Yes") con2 = true;
+		//if(shared_state?.display_options.ufo_madar && o.madar=="Yes" || !shared_state?.display_options.ufo_madar && o.madar!="Yes") con3 = true;
+		Object.keys(shared_state?.display_options.shapes).forEach(shape=>{
+				if(shared_state?.display_options.shapes[shape]) con4 = true;
+			});
+		
+		if(con1 && con4) return o;
+	});
+	$: filteredUfoLocations = () => {
+		let visited:number[] = []
+		let locations:UfoLocation[] = []
+		filteredUfoData.forEach(o=>{
+			if(!visited.includes(o.id_ref_loc)){
+				visited.push(o.id_ref_loc);
+				locations.push(ufoLocations[o.id_ref_loc]);
+			}
+		})
+		return locations
+		//filteredUfoLoca.filter((e,i)=>{return filteredUfoLoca.indexOf(e)!==i}); 
+	} 
+	
 
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
@@ -156,7 +181,7 @@
 				/>
 			{/if}
 			{#if shared_state?.display_options.ufo}
-				{#each filteredUfoLocations as ufo}
+				{#each filteredUfoLocations() as ufo}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<circle
 						class="ufodot"
@@ -184,6 +209,9 @@
 							selected_map_state = null;
 						}}
 					/>
+					<!--
+					{#if ufo == filteredUfoLocations[filteredUfoLocations.length-1]}{console.log("DEBUGGING")}{/if}
+						-->
 				{/each}
 			{/if}
 			{#each Object.keys(AirportTypes) as airport_type}

@@ -8,6 +8,7 @@ export type UfoLocation = {
     city: string,
     state: StateShort,
     projection: [number, number]
+    ref_ufo: number[]
 }
 
 export async function getUfoLocations(projection: d3.GeoProjection, verbose: boolean,
@@ -35,7 +36,8 @@ export async function getUfoLocations(projection: d3.GeoProjection, verbose: boo
                         id: Number(row.ID),
                         city:  row.City,
                         state: state,
-                        projection: map_coordinates
+                        projection: map_coordinates,
+                        ref_ufo: []
                     }
                 );
             }else {

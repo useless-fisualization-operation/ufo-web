@@ -36,6 +36,8 @@ export const shared: Writable<SharedState> = writable(
             ufo: true,
             ufo_images: true,
             ufo_no_images: true,
+            ufo_hoax: true,
+            ufo_madar: true,
             shapes: allShapes
             // --- For Ufo Shapes:
         },
