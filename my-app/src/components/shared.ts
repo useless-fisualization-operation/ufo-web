@@ -22,7 +22,7 @@ export const shared: Writable<SharedState> = writable(
     {
         display_options: {
             // For Airports: 
-            airport: false,
+            airport: true,
             large_airport: true,
             medium_airport: false,
             small_airport: false,
@@ -33,9 +33,9 @@ export const shared: Writable<SharedState> = writable(
             // Others:
             religion: true,
             // For Ufos:
-            ufo: false,
+            ufo: true,
             ufo_images: true,
-            ufo_no_images: false,
+            ufo_no_images: true,
             shapes: allShapes
             // --- For Ufo Shapes:
         },
