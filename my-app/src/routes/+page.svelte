@@ -9,6 +9,7 @@
 	import Legend from '../components/Legend.svelte';
 	import Chart from '../components/Chart.svelte';
 	import About from './About.svelte';
+	import Heatmap from '../components/Heatmap.svelte';
 
 	let page: SharedState['page'];
 	shared.subscribe((v) => {
@@ -48,6 +49,10 @@
 		<div class="chart">
 			<Chart />
 		</div>
+	{:else if page === 'heatmap'}
+		<div class="heatmap">
+			<Heatmap />
+		</div>
 	{/if}
 </div>
 
@@ -55,7 +60,8 @@
 	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 	.chart,
-	.about {
+	.about,
+	.heatmap {
 		position: absolute;
 		top: 20px;
 		left: 0;

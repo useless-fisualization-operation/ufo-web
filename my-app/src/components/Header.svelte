@@ -38,6 +38,15 @@
 					return v;
 				})}>About</button
 		>
+		<!-- heatmap -->
+		<button
+			class="menu-button"
+			on:click={() =>
+				shared.update((v) => {
+					v.page = 'heatmap';
+					return v;
+				})}>Heatmap</button
+		>
 	</div>
 </div>
 

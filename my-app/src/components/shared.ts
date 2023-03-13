@@ -15,7 +15,7 @@ export type SharedState = {
     n_ufos_on_state: { data: number, loc: number };
     start_date: Date | null;
     end_date: Date | null;
-    page: "map" | "chart" | "about";
+    page: "map" | "chart" | "about" | "heatmap";
 };
 
 export type DisplayOptions = {
