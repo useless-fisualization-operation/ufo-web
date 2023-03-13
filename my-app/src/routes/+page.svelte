@@ -5,37 +5,62 @@
 	import DisplayOptions from '../components/DisplayOptions.svelte';
 	import TimeSlider from '../components/TimeSlider.svelte';
 	import Footer from '../components/Footer.svelte';
-	import type { SharedState } from '../components/shared';
+	import { shared, type SharedState } from '../components/shared';
 	import Legend from '../components/Legend.svelte';
+	import Chart from '../components/Chart.svelte';
+
+	let page: SharedState['page'];
+	shared.subscribe((v) => {
+		page = v.page;
+	});
 </script>
 
-<main>
-	<div class="header">
-		<Header />
-	</div>
-	<div class="details">
-		<Details />
-	</div>
-	<div class="display_options">
-		<DisplayOptions />
-	</div>
-	<div class="time_slider">
-		<TimeSlider />
-	</div>
-	<div class="footer">
-		<Footer />
-	</div>
-	<div class="legend">
-		<Legend />
-	</div>
-	<div class="map">
-		<Map />
-	</div>
-</main>
+<div class="page">
+	<main>
+		<div class="header">
+			<Header />
+		</div>
+		<div class="details">
+			<Details />
+		</div>
+		<div class="display_options">
+			<DisplayOptions />
+		</div>
+		<div class="time_slider">
+			<TimeSlider />
+		</div>
+		<div class="footer">
+			<Footer />
+		</div>
+		<div class="legend">
+			<Legend />
+		</div>
+		<div class="map">
+			<Map />
+		</div>
+	</main>
+	{#if page === 'about'}
+		<div class="about">
+			<About />
+		</div>
+	{:else if page === 'chart'}
+		<div class="chart">
+			<Chart />
+		</div>
+	{/if}
+</div>
 
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
+	.chart {
+		position: absolute;
+		top: 20px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+	}
 	main {
 		height: 100vh;
 		width: 100vw;
@@ -57,7 +82,8 @@
 			z-index: 10;
 		}
 
-		font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', sans-serif;
+		font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode',
+			sans-serif;
 		font-size: 1.4vh;
 	}
 

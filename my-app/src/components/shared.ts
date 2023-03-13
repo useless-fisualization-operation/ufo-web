@@ -12,9 +12,10 @@ export type SharedState = {
     display_options: DisplayOptions;
     selected: City | Airport | Ufos | State | null; // the string is the location
     selected_type: "city" | "airport" | "ufos" | "state" | "none";
-    n_ufos_on_state: {data:number, loc:number};
+    n_ufos_on_state: { data: number, loc: number };
     start_date: Date | null;
     end_date: Date | null;
+    page: "map" | "chart" | "about";
 };
 
 export type DisplayOptions = {
@@ -51,10 +52,11 @@ export const shared: Writable<SharedState> = writable(
             // --- For Ufo Shapes:
         },
         shapes: null,
-        n_ufos_on_state: {data:0,loc:0},
+        n_ufos_on_state: { data: 0, loc: 0 },
         shapes_options: allShapes,
         start_date: new Date(2014, 0, 1),
         end_date: new Date(2018, 0, 1),
         selected: null,
-        selected_type: 'none'
+        selected_type: 'none',
+        page: 'map',
     });
