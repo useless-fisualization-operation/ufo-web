@@ -3,6 +3,10 @@
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { getUfoData, type Ufo } from './ufo_data';
+	import { getUfoShapes, type Shape } from './ufo_shapes';
+	import { allShapes} from './ufo_shapes';
+	import { getUfoData2, type Ufo2 } from './ufo_data2';
+	import { getUfoLocations, type UfoLocation } from './ufo_locations';
 	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
 	import { zoom, select } from 'd3';
 	import type { SharedState } from './shared';
@@ -34,7 +38,20 @@
 	var religion: ReligionData[] = getReligionData();
 	var state_data = religionDataToStateData(religion);
 	var ufoData: Ufo[] = [];
+	var ufoData2: Ufo2[] = [];
+	var ufoShapes: Shape[] = [];
+	var ufoLocations: UfoLocation[] = [];
 	let map_states: any[] = [];
+
+	$: filteredUfoData = ufoData2.filter(o=>{
+		if(shared_state?.display_options.ufo_images && o.images=="Yes") return o;
+		if(shared_state?.display_options.ufo_no_images && o.images!="Yes") return o;
+	});
+	$: filteredUfoLocations = ufoLocations.filter(o=>{
+		if(filteredUfoData.find(u=>u.id_ref_loc==o.id) !== undefined) return o
+	})
+
+	$: shapes = ufoShapes.map(o=>o.type);
 	onMount(async () => {
 		const us = await fetch(
 			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
@@ -45,7 +62,12 @@
 		if (!shared_state) {
 			throw new Error('Shared state is null');
 		}
-		ufoData = await getUfoData(projection, shared_state.start_date, shared_state.end_date);
+		ufoLocations = await getUfoLocations(projection, false);
+		ufoData = await getUfoData(projection, false);
+		ufoData2 = await getUfoData2(true);
+		ufoShapes = await getUfoShapes(false);
+		//console.log(ufoShapes.map(o=>o.type));
+		console.log(allShapes)
 	});
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
@@ -122,7 +144,7 @@
 				/>
 			{/if}
 			{#if shared_state?.display_options.ufo}
-				{#each ufoData as ufo}
+				{#each filteredUfoLocations as ufo}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<circle
 						class="ufodot"
@@ -130,9 +152,14 @@
 						cy={ufo.projection[1]}
 						r={0.4}
 						on:click={() => {
+							let ufo_on_location = filteredUfoData.filter(o=>o.id_ref_loc==ufo.id);
+							let ufo_shape = ufoShapes.filter(o=>o.id=ufo.id)
+							console.log("ID: "+ufo.id);
+							console.log(ufo_on_location);
+							if(ufo_on_location.length>0){
 							shared.update((v) => {
-								v.selected_type = 'ufo';
-								v.selected = ufo;
+								v.selected_type = 'ufos';
+								v.selected = {ufos:ufo_on_location, location:ufo.city, tot: ufo_on_location.length};
 								return v;
 							});
 
