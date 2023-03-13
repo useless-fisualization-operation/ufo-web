@@ -143,7 +143,7 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<path
 					d={path(map_state)}
-					on:click={() => {
+					on:mouseover={() => {
 						selected_map_state = map_state;
 						shared.update((v) => {
 							v.selected_type = 'state';
