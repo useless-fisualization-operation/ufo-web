@@ -13,7 +13,7 @@ export type StateData = {
 }
 
 // @ts-ignore
-const color_scale = d3.scaleLinear().range([0, 1]).range(["#f7fcf5", "#00441b"]);
+const color_scale = d3.scaleLinear().range([0, 1]).range(["#adf0dd", "#1b4237"]);
 export function getStateColor(stateData: StateData, scale: d3.ScaleLinear<number, number> = color_scale): string {
     // @ts-ignore
     return scale(stateData.value);

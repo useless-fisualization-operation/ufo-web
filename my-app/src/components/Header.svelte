@@ -10,7 +10,7 @@
 </script>
 
 <div class="header {clazz}">
-	<h1>UFO Sightings</h1>
+	<h1>Useless Fisualization Operation</h1>
 	<div class="menu">
 		<button
 			class="menu-button"
@@ -29,15 +29,6 @@
 					return v;
 				})}>Chart</button
 		>
-		<!-- about -->
-		<button
-			class="menu-button"
-			on:click={() =>
-				shared.update((v) => {
-					v.page = 'about';
-					return v;
-				})}>About</button
-		>
 		<!-- heatmap -->
 		<button
 			class="menu-button"
@@ -47,13 +38,53 @@
 					return v;
 				})}>Heatmap</button
 		>
+				<!-- about -->
+				<button
+				class="menu-button"
+				on:click={() =>
+					shared.update((v) => {
+						v.page = 'about';
+						return v;
+					})}>About</button
+			>
 	</div>
 </div>
 
 <style lang="scss">
 	.header {
 		background-color: var(--surface-1);
-		height: 20px;
 		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		height: 4em;
+		align-items: center;
+
+		h1 {
+			margin-left: 2em;
+			font-size: 140%;
+			font-weight: bold;
+			color: var(--accent);
+		}
+	}
+
+	.menu {
+		display: flex;
+		flex-direction: row;
+		margin-right: 2em;
+		justify-content: space-between;
+		gap: 1em;
+
+		button {
+			background-color: var(--button-1);
+			border: none;
+			padding: 0.5em 1em 0.5em 1em;
+			border-radius: 0.3em;
+			color: var(--accent);
+		}
+
+		button:hover {
+			background-color: var(--button-1-hover);
+			color: white;
+		}
 	}
 </style>

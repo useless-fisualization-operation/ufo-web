@@ -63,9 +63,16 @@
 	.about,
 	.heatmap {
 		position: absolute;
-		top: 20px;
+		top: 5em;
 		left: 0;
+		right: 0;
+		margin-left: auto; 
+  		margin-right: auto; 
+		width: 52em;
 		z-index: 100;
+		font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode',
+			sans-serif;
+		font-size: 1.8vh;
 	}
 	main {
 		height: 100vh;
@@ -80,8 +87,8 @@
 			'details          	time_slider		time_slider		legend'
 			'footer 			footer 			footer 			footer';
 
-		grid-template-rows: 20px 20% 40% auto 20px;
-		grid-template-columns: 1fr 2fr 2fr 1fr;
+		grid-template-rows: 4em 4fr 4fr 1fr 0;
+		grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
 		align-items: center;
 
 		& > div {
@@ -95,7 +102,6 @@
 
 	.header {
 		grid-area: header;
-		height: 20px;
 	}
 
 	.map {
@@ -146,10 +152,12 @@
 	}
 
 	:global(:root) {
-		--surface-0: #ffffff;
-		--surface-1: #e1f4dc;
-		--accent: #00441b;
-		--button-0: #6f8968;
-		--button-0-hover: #566a50;
+		--surface-0: #d2d4d9;
+		--surface-1: #ffffff;
+		--accent: #995e9f;
+		--button-0: #995e9f;
+		--button-0-hover: #784b7d;
+		--button-1: #f5f1f6;
+		--button-1-hover: #b592b9;
 	}
 </style>

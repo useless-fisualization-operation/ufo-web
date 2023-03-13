@@ -98,6 +98,10 @@
 		min-width: 100%;
 		height: 100%;
 
+		p {
+			font-size: 110%;
+		}
+
 		h4 {
 			font-size: 120%;
 			margin-bottom: 0.5em;
@@ -133,7 +137,7 @@
 		}
 
 		.next:hover {
-		background-color: var(--button-0-hover);
+			background-color: var(--button-0-hover);
 		}
 	}
 </style>

@@ -5,11 +5,13 @@
 	export { clazz as class };
 </script>
 
-<div class="footer {clazz}">footer</div>
+<div class="footer {clazz}">
+	<!--Something here?-->
+</div>
 
 <style lang="scss">
 	.footer {
-		background-color: var(--surface-1);
 		height: 20px;
+		color: white;
 	}
 </style>
