@@ -17,6 +17,7 @@
 	let selected_state: State | null;
 	let selected_airport: Airport | null;
 	let selected_ufos: Ufos | null;
+	let n_ufos: {data:number,loc:number} | null;
 	let counter = 0;
 
 
@@ -26,6 +27,7 @@
 		selected_state = v.selected_type == 'state' ? (v.selected as State) : null;
 		selected_airport = v.selected_type == 'airport' ? (v.selected as Airport) : null;
 		selected_ufos = v.selected_type == 'ufos' ? (v.selected as Ufos) : null;
+		n_ufos = v.selected_type == 'state' ? v.n_ufos_on_state : null;
 		counter = 0;
 	});
 </script>
@@ -36,6 +38,7 @@
 	{:else if selected_type == 'state'}
 		<center><h4>State &#128205</h4></center>
 		<b>Name</b><p class="description">{selected_state}</p>
+		<b>#ufos (#locations)</b><p class="description">{$shared.n_ufos_on_state.data}({$shared.n_ufos_on_state.loc})</p>
 		<b>Population</b><p class="description">TODO</p>
 		<b>Religion</b><p class="description">TODO</p>
 	{:else if selected_type == 'ufos' && selected_ufos !== null}

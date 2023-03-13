@@ -68,7 +68,7 @@
 			if((option?.ufo_images && o.images=="Yes") || (option?.ufo_no_images && o.images!="Yes")){
 				if((option?.ufo_hoax && o.hoax=="Yes") || (option?.ufo_non_hoax && o.hoax!="Yes")){
 					if((option?.ufo_madar && o.madar=="Yes") || (option?.ufo_non_madar && o.madar!="Yes")){
-						if(option?.shapes[ufoShapes[o.id_ref_shape]?.type]){
+						if(shared_state?.shapes_options[ufoShapes[o.id_ref_shape]?.type]){
 							return o;
 						}
 					}
@@ -145,7 +145,10 @@
 					d={path(map_state)}
 					on:click={() => {
 						selected_map_state = map_state;
+						//console.log("States:"+states[map_state.properties.name].short);
 						shared.update((v) => {
+							v.n_ufos_on_state.loc = filteredUfoLocations().filter(o=>o.state==states[map_state.properties.name].short).length;
+							v.n_ufos_on_state.data = filteredUfoData.filter(o=>ufoLocations[o.id_ref_loc].state == states[map_state.properties.name].short).length;
 							v.selected_type = 'state';
 							v.selected = states[map_state.properties.name].name;
 							return v;

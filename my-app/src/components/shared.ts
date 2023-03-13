@@ -6,7 +6,9 @@ import type { UfoLocation } from "./ufo_locations";
 import { writable, type Writable } from 'svelte/store';
 
 export type SharedState = {
+    shapes_options: ShapesOptions;
     display_options: DisplayOptions;
+    n_ufos_on_state: {data:number, loc:number};
     selected: Airport | Ufos | State | null; // the string is the location
     selected_type: "airport" | "ufos" | "state" | "none";
     start_date: Date | null;
@@ -14,9 +16,12 @@ export type SharedState = {
 };
 
 export type DisplayOptions = {
-    [key: string]: boolean | unknown
+    [key: string]: boolean,
 };
 
+export type ShapesOptions = {
+    [key: string]: boolean
+};
 
 export const shared: Writable<SharedState> = writable(
     {
@@ -41,9 +46,10 @@ export const shared: Writable<SharedState> = writable(
             ufo_non_hoax: true,
             ufo_madar: true,
             ufo_non_madar: true,
-            shapes: allShapes
             // --- For Ufo Shapes:
         },
+        n_ufos_on_state: {data:0,loc:0},
+        shapes_options: allShapes,
         start_date: new Date(2014, 0, 1),
         end_date: new Date(2018, 0, 1),
         selected: null,
