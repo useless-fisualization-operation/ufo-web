@@ -97,10 +97,10 @@
 				<p class="desc">{filterUfoShapes ? '▼' : '▶'}Filter Shapes</p>
 			</div>
 			{#if filterUfoShapes}
-				{#each Object.keys($shared.display_options.shapes) as shape}
+				{#each Object.keys($shared.shapes_options) as shape}
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.display_options.shapes[shape]}>
+					<input type=checkbox bind:checked={$shared.shapes_options[shape]}>
 					<div class="ufo_legend"></div>
 					<p class="desc">{shape}</p>
 				</div>
