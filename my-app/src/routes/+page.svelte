@@ -8,6 +8,7 @@
 	import { shared, type SharedState } from '../components/shared';
 	import Legend from '../components/Legend.svelte';
 	import Chart from '../components/Chart.svelte';
+	import About from './About.svelte';
 
 	let page: SharedState['page'];
 	shared.subscribe((v) => {
@@ -53,7 +54,8 @@
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
-	.chart {
+	.chart,
+	.about {
 		position: absolute;
 		top: 20px;
 		left: 0;
