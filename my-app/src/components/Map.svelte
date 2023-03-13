@@ -258,9 +258,9 @@
 
 <style lang="scss">
 	:root {
-		--ufo: rgb(255, 98, 0);
+		--ufo: #a459ac;
 		--airport: rgb(58, 230, 227);
-		--state-fill: rgb(117, 143, 169);
+		--state-fill: rgb(178, 171, 199);
 		--city: rgb(255, 230, 132);
 	}
 
@@ -277,7 +277,6 @@
 
 	.airportdot {
 		fill: var(--airport);
-		opacity: 0.9;
 	}
 
 	.ufodot {
@@ -288,12 +287,17 @@
 		fill: var(--city);
 	}
 
+	.airportdot:hover, .ufodot:hover, .citydot:hover {
+		filter: brightness(150%);
+	}
+
 	svg {
 		overflow: visible;
 		display: inline-block;
 		position: absolute;
-		top: 20px;
-		left: -7em;
+		width: 90%;
+		top: 7.5em;
+		left: -3em;
 	}
 
 	.selected {

@@ -252,5 +252,7 @@
 <style>
 	.heatmap {
 		background-color: white;
+		padding: 1em;
+		border-radius: 0.3em;
 	}
 </style>

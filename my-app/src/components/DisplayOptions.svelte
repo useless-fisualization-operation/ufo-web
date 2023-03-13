@@ -127,12 +127,12 @@
 		{/if}
 		<div class="item">
 			<input type=checkbox bind:checked={$shared.display_options.religion}>
-			<div class="religion_legend" style="background-color: green"></div>
+			<div class="religion_legend"></div>
 			<p class="desc">Importance of Religion</p>
 		</div>
 		<div class="item">
 			<input type=checkbox bind:checked={$shared.display_options.cities}>
-			<div class="religion_legend" style="background-color: rgb(255, 230, 132);"></div>
+			<div class="city_legend"></div>
 			<p class="desc">Cities</p>
 		</div>
 	</div>
@@ -164,6 +164,7 @@
 	}
 
 	.religion_legend {
+		background-color: #306153;
 		width: 1vh;
 		height: 1vh;
 	}
@@ -173,6 +174,13 @@
 		width: 1vh;
 		height: 1vh;
 		border-radius: 100%;
+	}
+
+	.city_legend {
+		width: 1vh;
+		height: 1vh;
+		border-radius: 100%;
+		background-color: rgb(255, 230, 132);
 	}
 
 	.desc {

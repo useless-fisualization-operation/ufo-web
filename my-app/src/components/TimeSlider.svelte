@@ -54,5 +54,6 @@
 		padding: 0.5em;
 		border-radius: 0.5em;
 		font-family: inherit;
+		background-color: var(--button-1);
 	}
 </style>
