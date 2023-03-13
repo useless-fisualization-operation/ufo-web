@@ -45,12 +45,6 @@
 	var ufoLocations: UfoLocation[] = [];
 	let map_states: any[] = [];
 
-/*
-	$: filteredUfoLocations = ufoLocations.filter(o=>{
-		if(o==ufoLocations[ufoLocations.length-1]) console.log("I have filtered the locations");
-		if(filteredUfoData.find(u=>u.id_ref_loc==o.id)) return o
-	})*/
-
 	onMount(async () => {
 		const us = await fetch(
 			'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/states-albers-10m.json'
@@ -64,29 +58,23 @@
 		ufoLocations = await getUfoLocations(projection, false);
 		ufoData = await getUfoData(projection, false);
 		ufoData2 = await getUfoData2(true);
-		/*
-		ufoData2.forEach((o,i)=>o.id=i);
-		ufoLocations.forEach(o=>{
-			let ufos = ufoData2.filter(u=>u.id_ref_loc==o.id);
-			o.ref_ufo = ufos.map(u=>u.id)
-		});*/
 		ufoShapes = await getUfoShapes(false);
-		//console.log(ufoShapes.map(o=>o.type));
 	});
 	console.log("all shapes:"+ufoShapes+"finished")
 	$: filteredUfoData = ufoData2.filter(o=>{
 		if(o==ufoData2[ufoData2.length-1]) console.log("I have filtered the data");
-		let con1 = false;
-		let con2 = false;
-		let con3 = false;
-		let con4 = false;
-		if(shared_state?.display_options.ufo_images && o.images=="Yes") con1 = true;
-		if(shared_state?.display_options.ufo_no_images && o.images!="Yes") con1 = true;
-		//if(shared_state?.display_options.ufo_hoax && o.hoax=="Yes" || !shared_state?.display_options.ufo_hoax && o.hoax!="Yes") con2 = true;
-		//if(shared_state?.display_options.ufo_madar && o.madar=="Yes" || !shared_state?.display_options.ufo_madar && o.madar!="Yes") con3 = true;
-		if(con1 && shared_state?.display_options.shapes[ufoShapes[o.id_ref_shape]?.type]) con4 = true;  
-		
-		if(con4) return o;
+		let option = shared_state?.display_options;
+		//if(o.date>option?.start_date && o.date<option?.end_date){
+			if((option?.ufo_images && o.images=="Yes") || (option?.ufo_no_images && o.images!="Yes")){
+				if((option?.ufo_hoax && o.hoax=="Yes") || (option?.ufo_non_hoax && o.hoax!="Yes")){
+					if((option?.ufo_madar && o.madar=="Yes") || (option?.ufo_non_madar && o.madar!="Yes")){
+						if(option?.shapes[ufoShapes[o.id_ref_shape]?.type]){
+							return o;
+						}
+					}
+				}
+			}
+		//}
 	});
 	$: filteredUfoLocations = () => {
 		let visited:number[] = []
@@ -177,6 +165,29 @@
 					class="selected"
 				/>
 			{/if}
+			{#if shared_state?.display_options.airport}
+				{#each Object.keys(AirportTypes) as airport_type}
+					{#if shared_state?.display_options[airport_type]}
+						{#each airports_by_type[airport_type] as airport}
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<circle
+								class="airportdot"
+								cx={airport.projection[0]}
+								cy={airport.projection[1]}
+								r={0.6}
+								on:click={() => {
+									shared.update((v) => {
+										v.selected_type = 'airport';
+										v.selected = airport;
+										return v;
+									});
+									selected_map_state = null;
+								}}
+							/>
+						{/each}
+					{/if}
+				{/each}
+			{/if}
 			{#if shared_state?.display_options.ufo}
 				{#each filteredUfoLocations() as ufo}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -211,27 +222,11 @@
 						-->
 				{/each}
 			{/if}
-			{#each Object.keys(AirportTypes) as airport_type}
-				{#if shared_state?.display_options[airport_type]}
-					{#each airports_by_type[airport_type] as airport}
-						<!-- svelte-ignore a11y-click-events-have-key-events -->
-						<circle
-							class="airportdot"
-							cx={airport.projection[0]}
-							cy={airport.projection[1]}
-							r={0.6}
-							on:click={() => {
-								shared.update((v) => {
-									v.selected_type = 'airport';
-									v.selected = airport;
-									return v;
-								});
-								selected_map_state = null;
-							}}
-						/>
-					{/each}
-				{/if}
-			{/each}
+			<!------------------  DISPLAY THE NAME OF THE CITIES  ---------------- -->
+			{#if shared_state?.display_options.cities}
+				<p>hello</p>
+			{/if}
+
 			<!------------------  DISPLAY SELECTED UFO ---------------- -->
 			{#if shared_state?.selected_type=='ufos'}
 				<UfoSvg x_pos={shared_state.selected.projection[0]} y_pos={shared_state.selected.projection[1]}/>	

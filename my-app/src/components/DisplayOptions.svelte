@@ -15,6 +15,8 @@
 	let filterUfo = false;
 	let filterUfoImages = false;
 	let filterUfoShapes = false;
+	let filterUfoHoax = false;
+	let filterUfoMadar = false;
 </script>
 
 <div class="{clazz}">
@@ -40,27 +42,55 @@
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
 					<input type=checkbox bind:checked={$shared.display_options.ufo_images}>
 					<div class="ufo_legend"></div>
-					<p class="desc">With fig.</p>
+					<p class="desc">With image</p>
 				</div>
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
 					<input type=checkbox bind:checked={$shared.display_options.ufo_no_images}>
 					<div class="ufo_legend"></div>
-					<p class="desc">With fig.</p>
+					<p class="desc">Without image</p>
 				</div>
+			{/if}
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div class="item" on:click={()=>filterUfoHoax=!filterUfoHoax}>
+				<p>&nbsp&nbsp</p>
+				<p class="desc">{filterUfoHoax ? '▼' : '▶'}Filter Hoax</p>
+			</div>
+			{#if filterUfoHoax}
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
 					<input type=checkbox bind:checked={$shared.display_options.ufo_hoax}>
 					<div class="ufo_legend"></div>
-					<p class="desc">Hoaxes</p>
+					<p class="desc">Hoax</p>
 				</div>
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.display_options.madar}>
+					<input type=checkbox bind:checked={$shared.display_options.ufo_non_hoax}>
 					<div class="ufo_legend"></div>
-					<p class="desc">Madar</p>
+					<p class="desc">Non Hoax</p>
 				</div>
 			{/if}
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!--
+			<div class="item" on:click={()=>filterUfoMadar=!filterUfoMadar}>
+				<p>&nbsp&nbsp</p>
+				<p class="desc">{filterUfoMadar ? '▼' : '▶'}Filter MADAR</p>
+			</div>
+			{#if filterUfoMadar}
+				<div class="item">
+					<p>&nbsp&nbsp&nbsp&nbsp</p>
+					<input type=checkbox bind:checked={$shared.display_options.ufo_madar}>
+					<div class="ufo_legend"></div>
+					<p class="desc">MADAR NODE</p>
+				</div>
+				<div class="item">
+					<p>&nbsp&nbsp&nbsp&nbsp</p>
+					<input type=checkbox bind:checked={$shared.display_options.ufo_non_madar}>
+					<div class="ufo_legend"></div>
+					<p class="desc">Non MADAR</p>
+				</div>
+			{/if}
+			-->
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="item" on:click={()=>filterUfoShapes=!filterUfoShapes}>
 				<p>&nbsp&nbsp</p>
@@ -100,7 +130,11 @@
 			<div class="religion_legend" style="background-color: green"></div>
 			<p class="desc">Importance of Religion</p>
 		</div>
-		
+		<div class="item">
+			<input type=checkbox bind:checked={$shared.display_options.cities}>
+			<div class="religion_legend" style="background-color: grey"></div>
+			<p class="desc">City names</p>
+		</div>
 	</div>
 </div>
 

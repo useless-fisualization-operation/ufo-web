@@ -32,12 +32,15 @@ export const shared: Writable<SharedState> = writable(
             closed_airport: false,
             // Others:
             religion: true,
+            cities: true,
             // For Ufos:
             ufo: true,
             ufo_images: true,
             ufo_no_images: true,
             ufo_hoax: true,
+            ufo_non_hoax: true,
             ufo_madar: true,
+            ufo_non_madar: true,
             shapes: allShapes
             // --- For Ufo Shapes:
         },
