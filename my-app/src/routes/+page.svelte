@@ -155,8 +155,8 @@
 		--surface-0: #d2d4d9;
 		--surface-1: #ffffff;
 		--accent: #995e9f;
-		--button-0: #6f8968;
-		--button-0-hover: #566a50;
+		--button-0: #995e9f;
+		--button-0-hover: #784b7d;
 		--button-1: #f5f1f6;
 		--button-1-hover: #b592b9;
 	}

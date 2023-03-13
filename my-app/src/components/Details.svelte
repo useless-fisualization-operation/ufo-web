@@ -137,7 +137,7 @@
 		}
 
 		.next:hover {
-		background-color: var(--button-0-hover);
+			background-color: var(--button-0-hover);
 		}
 	}
 </style>
