@@ -1,8 +1,8 @@
 
 import * as d3 from 'd3';
+import type {Shape} from './ufo_shapes';
 
 export type Ufo2 = {
-    id: number,
     id_ref_loc: number,
     id_ref_shape: number,
     date: Date,
@@ -19,7 +19,7 @@ export type Ufos = {
     ufos: Ufo2[],
     location: string,
     state: string,
-    projection: [number, number]
+    projection: [number, number],
     tot: number
 }
 
@@ -46,7 +46,6 @@ export async function getUfoData2(verbose:boolean,
             const ufo_date = new Date(row.Date);
             ufos.push(
                     {
-                        id: 0,
                         id_ref_loc: Number(row.ID_REF_LOC),
                         id_ref_shape: Number(row.ID_REF_SHAPE),
                         date: ufo_date,

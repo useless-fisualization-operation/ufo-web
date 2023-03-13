@@ -4,6 +4,7 @@
 	import type { State } from './states';
 	import type { Ufos, Ufo2 } from './ufo_data2';
 	import type { City } from './city_data';
+	import type { Shape } from './ufo_shapes';
 
 	import { shared } from './shared';
 
@@ -20,6 +21,7 @@
 	let selected_ufos: Ufos | null;
 	let selected_city: City | null;
 	let n_ufos: {data:number,loc:number} | null;
+	let shapes: Shape[] | null;
 	let counter = 0;
 
 
@@ -30,6 +32,7 @@
 		selected_airport = v.selected_type == 'airport' ? (v.selected as Airport) : null;
 		selected_ufos = v.selected_type == 'ufos' ? (v.selected as Ufos) : null;
 		selected_city = v.selected_type == 'city' ? (v.selected as City) : null;
+		shapes = v.selected_type == 'ufos' ? (v.shapes as Shape[]) : null;
 		n_ufos = v.selected_type == 'state' ? v.n_ufos_on_state : null;
 		counter = 0;
 	});
@@ -52,9 +55,10 @@
 				<button class="next" on:click={()=>counter=((counter+1)%selected_ufos?.tot)}>Next</button>
 			</div>
 		{/if}
-		<b>Description</b><p class="description">{selected_ufos?.ufos[counter].summary}</p>
+		<b>Description</b><p class="description">{selected_ufos?.ufos[counter].summary}...</p>
 		<p class="description"><a href="{selected_ufos?.ufos[counter].url}">Read NUFORC Report</a></p>
 		<b>Location</b><p class="description">{selected_ufos?.location}</p>
+		{#if shapes !== null}<b>Shape</b><p class="description">{shapes[selected_ufos?.ufos[counter].id_ref_shape].type}</p>{/if}
 		<b>Date</b><p class="description"> {selected_ufos?.ufos[counter].date}</p>
 		<b>Duration</b><p class="description">{selected_ufos?.ufos[counter].duration}</p>
 		{#if selected_ufos?.ufos[counter].urlImage}

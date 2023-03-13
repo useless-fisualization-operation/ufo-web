@@ -5,13 +5,13 @@
 	let clazz = '';
 	export { clazz as class };
 
-	$: start = null;
-	$: end = null;
+	let start :string  = '2020-01-01';
+	let end :string = '2023-01-01';
 
 	function update_data() {
 		shared.update((v) => {
-			v.start_date = start;
-			v.end_date = end;
+			v.start_date = new Date(start);
+			v.end_date = new Date(end);
 			return v;
 		});
 	}

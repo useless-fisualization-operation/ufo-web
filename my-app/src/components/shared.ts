@@ -2,11 +2,12 @@ import type { Airport, AirportType } from "./airport_data";
 import type { State } from "./states";
 import { allShapes } from "./ufo_shapes";
 import type { Ufos } from "./ufo_data2";
-import type { UfoLocation } from "./ufo_locations";
+import type { Shape } from "./ufo_shapes";
 import { writable, type Writable } from 'svelte/store';
 import type { City } from "./city_data";
 
 export type SharedState = {
+    shapes: Shape[] | null,
     shapes_options: ShapesOptions;
     display_options: DisplayOptions;
     selected: City | Airport | Ufos | State | null; // the string is the location
@@ -49,6 +50,7 @@ export const shared: Writable<SharedState> = writable(
             ufo_non_madar: true,
             // --- For Ufo Shapes:
         },
+        shapes: null,
         n_ufos_on_state: {data:0,loc:0},
         shapes_options: allShapes,
         start_date: new Date(2014, 0, 1),

@@ -108,7 +108,7 @@
 			{/if}
 		{/if}
 		<div class="item" on:click={()=>filterAirports=!filterAirports}>
-			<input type=checkbox bind:checked={$shared.display_options.airports}>
+			<input type=checkbox bind:checked={$shared.display_options.airport}>
 			<div class="airport_legend"></div>
 			<p class="desc">
 				{filterAirports ? '▼' : '▶'}
@@ -132,7 +132,7 @@
 		</div>
 		<div class="item">
 			<input type=checkbox bind:checked={$shared.display_options.cities}>
-			<div class="religion_legend" style="background-color: grey"></div>
+			<div class="religion_legend" style="background-color: rgb(255, 230, 132);"></div>
 			<p class="desc">Cities</p>
 		</div>
 	</div>
