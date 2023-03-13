@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+        <!-- 
+    <link rel="stylesheet" href="d3.slider.css"/>
+    <script src="d3.slider.js"></script>
+
+
+    <link rel="stylesheet" href="package/dist/style.css" />
+    <script src="package/dist/rangeslider.umd.min.js"></script>
+    <script src="d3RangeSlider.js"></script>
+    <link rel="stylesheet" href="d3RangeSlider.css" />
+    Range slider code
+   <script src="https://cdn.rawgit.com/RasmusFonseca/d3RangeSlider/master/d3RangeSlider.js"></script> -->
+   <!-- Range slider style
+   <link href="https://cdn.rawgit.com/RasmusFonseca/d3RangeSlider/master/d3RangeSlider.css" rel="stylesheet">-->
+    <title>UFO Scatterplot</title>
+  </head>
+  <body>
+    <h1>Relationship between UFO Sightings and Other Attributes</h1>
+
+    <div id="controls">
+      <p>Select UFO sightings from year <input type="number" id="button_start_year" onKeyDown="return false"> to <input type="number" id="button_end_year" onKeyDown="return false"></p>
+      <p>Select attribute for y axis:
+        <span class="yvar">
+        <select class="yvar" name="yvar"></select>
+      </span></p>
+    </div>
+
+    <svg id="scatter-container"></svg>
+
+    <!--
+    <div id="slider-container"></div>
+    <div class="main">
+      <h2>Age
+        <span id="slider3textmin">0</span> - <span id="slider3textmax">0</span>
+      </h2>
+  
+      <div id="slider3" class="d3-slider d3-slider-horizontal"></div>
+    -->
+    <script src="scatterplot.js"></script>
+  </body>
+</html>
