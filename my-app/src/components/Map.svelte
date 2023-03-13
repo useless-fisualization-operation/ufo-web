@@ -21,6 +21,7 @@
 	import { shared } from './shared';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import UfoSvg from './UfoSvg.svelte' // The svelte svg
+	import { getCityData, type City } from './city_data';
 
 	let clazz = '';
 	export { clazz as class };
@@ -43,6 +44,7 @@
 	var ufoData2: Ufo2[] = [];
 	var ufoShapes: Shape[] = [];
 	var ufoLocations: UfoLocation[] = [];
+	var cities: City[] = [];
 	let map_states: any[] = [];
 
 	onMount(async () => {
@@ -59,6 +61,7 @@
 		ufoData = await getUfoData(projection, false);
 		ufoData2 = await getUfoData2(true);
 		ufoShapes = await getUfoShapes(false);
+		cities = await getCityData(projection, false);
 	});
 	console.log("all shapes:"+ufoShapes+"finished")
 	$: filteredUfoData = ufoData2.filter(o=>{
@@ -188,43 +191,63 @@
 					{/if}
 				{/each}
 			{/if}
-			{#if shared_state?.display_options.ufo}
-				{#each filteredUfoLocations() as ufo}
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<circle
-						class="ufodot"
-						cx={ufo.projection[0]}
-						cy={ufo.projection[1]}
-						r={0.4}
-						on:click={() => {
-							let ufo_on_location = filteredUfoData.filter(o=>o.id_ref_loc==ufo.id);
-							let ufo_shape = ufoShapes.filter(o=>o.id=ufo.id)
-							console.log("ID: "+ufo.id);
-							console.log(ufo_on_location);
-							if(ufo_on_location.length>0){
-							shared.update((v) => {
-								v.selected_type = 'ufos';
-								v.selected = {
-									ufos:ufo_on_location, 
-									location:ufo.city, 
-									state:ufo.state,
-									projection:ufo.projection,
-									tot: ufo_on_location.length
-								};
-								return v;
-							});}else{console.log("ERROR from split file!")}
-							
-							selected_map_state = null;
-						}}
-					/>
-					<!--
-					{#if ufo == filteredUfoLocations[filteredUfoLocations.length-1]}{console.log("DEBUGGING")}{/if}
-						-->
-				{/each}
-			{/if}
 			<!------------------  DISPLAY THE NAME OF THE CITIES  ---------------- -->
 			{#if shared_state?.display_options.cities}
-				<text x="200" y="400" fill="white"> Hello there</text>
+			{#each cities as city}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<circle
+					class="citydot"
+					cx={city.projection[0]}
+					cy={city.projection[1]}
+					r={4}
+					on:click={() => {
+						shared.update((v) => {
+							v.selected_type = 'city';
+							v.selected = {
+								name: city.name, 
+								state: city.state, 
+								projection: city.projection,
+							};
+							return v;
+						});
+						selected_map_state = null;
+					}}
+				/>
+				<!--
+				{#if ufo == filteredUfoLocations[filteredUfoLocations.length-1]}{console.log("DEBUGGING")}{/if}
+					-->
+			{/each}
+			{/if}
+			{#if shared_state?.display_options.ufo}
+				{#each filteredUfoLocations() as ufo}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<circle
+					class="ufodot"
+					cx={ufo.projection[0]}
+					cy={ufo.projection[1]}
+					r={0.4}
+					on:click={() => {
+						let ufo_on_location = filteredUfoData.filter(o=>o.id_ref_loc==ufo.id);
+						let ufo_shape = ufoShapes.filter(o=>o.id=ufo.id)
+						console.log("ID: "+ufo.id);
+						console.log(ufo_on_location);
+						if(ufo_on_location.length>0){
+						shared.update((v) => {
+							v.selected_type = 'ufos';
+							v.selected = {
+								ufos:ufo_on_location, 
+								location:ufo.city, 
+								state:ufo.state,
+								projection:ufo.projection,
+								tot: ufo_on_location.length
+							};
+							return v;
+						});}else{console.log("ERROR from split file!")}
+						
+						selected_map_state = null;
+					}}
+				/>
+				{/each}
 			{/if}
 
 			<!------------------  DISPLAY SELECTED UFO ---------------- -->
@@ -232,6 +255,7 @@
 				<UfoSvg x_pos={shared_state.selected.projection[0]} y_pos={shared_state.selected.projection[1]}/>	
 				<circle cx={shared_state.selected.projection[0]} cy={shared_state.selected.projection[1]} r={0.4} fill="white"/>
 			{/if}
+			
 		</g>
 	</svg>
 </div>
@@ -241,6 +265,7 @@
 		--ufo: rgb(255, 98, 0);
 		--airport: rgb(58, 230, 227);
 		--state-fill: rgb(117, 143, 169);
+		--city: rgb(255, 230, 132);
 	}
 
 	.loading-screen {
@@ -261,6 +286,10 @@
 
 	.ufodot {
 		fill: var(--ufo);
+	}
+
+	.citydot {
+		fill: var(--city);
 	}
 
 	svg {

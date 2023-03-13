@@ -133,7 +133,7 @@
 		<div class="item">
 			<input type=checkbox bind:checked={$shared.display_options.cities}>
 			<div class="religion_legend" style="background-color: grey"></div>
-			<p class="desc">City names</p>
+			<p class="desc">Cities</p>
 		</div>
 	</div>
 </div>
