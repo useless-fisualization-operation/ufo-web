@@ -224,7 +224,7 @@
 			{/if}
 			<!------------------  DISPLAY THE NAME OF THE CITIES  ---------------- -->
 			{#if shared_state?.display_options.cities}
-				<p>hello</p>
+				<text x="200" y="400" fill="white"> Hello there</text>
 			{/if}
 
 			<!------------------  DISPLAY SELECTED UFO ---------------- -->
