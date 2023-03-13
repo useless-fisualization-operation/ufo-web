@@ -171,29 +171,6 @@
 					class="selected"
 				/>
 			{/if}
-			{#if shared_state?.display_options.airport}
-				{#each Object.keys(AirportTypes) as airport_type}
-					{#if shared_state?.display_options[airport_type]}
-						{#each airports_by_type[airport_type] as airport}
-							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<circle
-								class="airportdot"
-								cx={airport.projection[0]}
-								cy={airport.projection[1]}
-								r={0.6}
-								on:click={() => {
-									shared.update((v) => {
-										v.selected_type = 'airport';
-										v.selected = airport;
-										return v;
-									});
-									selected_map_state = null;
-								}}
-							/>
-						{/each}
-					{/if}
-				{/each}
-			{/if}
 			<!------------------  DISPLAY THE NAME OF THE CITIES  ---------------- -->
 			{#if shared_state?.display_options.cities}
 			{#each cities as city}
@@ -221,6 +198,30 @@
 					-->
 			{/each}
 			{/if}
+			{#if shared_state?.display_options.airport}
+				{#each Object.keys(AirportTypes) as airport_type}
+					{#if shared_state?.display_options[airport_type]}
+						{#each airports_by_type[airport_type] as airport}
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<circle
+								class="airportdot"
+								cx={airport.projection[0]}
+								cy={airport.projection[1]}
+								r={0.6}
+								on:click={() => {
+									shared.update((v) => {
+										v.selected_type = 'airport';
+										v.selected = airport;
+										return v;
+									});
+									selected_map_state = null;
+								}}
+							/>
+						{/each}
+					{/if}
+				{/each}
+			{/if}
+			
 			{#if shared_state?.display_options.ufo}
 				{#each filteredUfoLocations() as ufo}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
