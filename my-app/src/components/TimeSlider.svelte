@@ -5,8 +5,8 @@
 	let clazz = '';
 	export { clazz as class };
 
-	let start :string  = '2020-01-01';
-	let end :string = '2023-01-01';
+	let start: string = '2020-01-01';
+	let end: string = '2023-01-01';
 
 	function update_data() {
 		shared.update((v) => {
@@ -19,7 +19,7 @@
 
 <div class="{clazz} time">
 	{#if start == null && end == null}
-	<center><p>&#128161 Select a date range to filter the data</p></center>
+		<center><p>&#128161 Select a date range to filter the data</p></center>
 	{/if}
 	<div class="dates">
 		<input type="date" bind:value={start} on:change={update_data} />
@@ -34,6 +34,7 @@
 		background-color: var(--surface-1);
 		border-radius: 0.5em;
 		padding: 0.4em;
+		box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.1);
 	}
 
 	.dates {
@@ -48,7 +49,7 @@
 		font-size: 120%;
 	}
 
-	input[type=date] {
+	input[type='date'] {
 		border: none;
 		margin: 0.5em;
 		padding: 0.5em;

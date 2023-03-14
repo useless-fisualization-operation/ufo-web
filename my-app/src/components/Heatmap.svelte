@@ -254,5 +254,7 @@
 		background-color: white;
 		padding: 1em;
 		border-radius: 0.3em;
+		width: 100%;
+		height: 500px;
 	}
 </style>

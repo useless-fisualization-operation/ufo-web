@@ -2,7 +2,7 @@
 	import type { SharedState } from './shared';
 	import { shared } from './shared';
 	import { allShapes } from './ufo_shapes';
-	import {AirportTypes} from './airport_data';
+	import { AirportTypes } from './airport_data';
 
 	let clazz = '';
 	export { clazz as class };
@@ -19,13 +19,13 @@
 	let filterUfoMadar = false;
 </script>
 
-<div class="{clazz}">
+<div class="card {clazz}">
 	<div class="legend">
-		<center><h4>Filter</h4></center>
+		<center><h4 class="title">Filter</h4></center>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div class="item" on:click={()=>filterUfo=!filterUfo}>
-			<input type=checkbox bind:checked={$shared.display_options.ufo}>
-			<div class="ufo_legend"></div>
+		<div class="item" on:click={() => (filterUfo = !filterUfo)}>
+			<input type="checkbox" bind:checked={$shared.display_options.ufo} />
+			<div class="ufo_legend" />
 			<p class="desc">
 				{filterUfo ? '▼' : '▶'}
 				UFO sighting
@@ -33,40 +33,40 @@
 		</div>
 		{#if filterUfo}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="item" on:click={()=>filterUfoImages=!filterUfoImages}>
+			<div class="item" on:click={() => (filterUfoImages = !filterUfoImages)}>
 				<p>&nbsp&nbsp</p>
-				<p class="desc">{filterUfoImages ? '▼' : '▶'}Filter Images</p>
+				<p class="desc">{filterUfoImages ? '▼' : '▶'} Filter Images</p>
 			</div>
 			{#if filterUfoImages}
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.display_options.ufo_images}>
-					<div class="ufo_legend"></div>
+					<input type="checkbox" bind:checked={$shared.display_options.ufo_images} />
+					<div class="ufo_legend" />
 					<p class="desc">With image</p>
 				</div>
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.display_options.ufo_no_images}>
-					<div class="ufo_legend"></div>
+					<input type="checkbox" bind:checked={$shared.display_options.ufo_no_images} />
+					<div class="ufo_legend" />
 					<p class="desc">Without image</p>
 				</div>
 			{/if}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="item" on:click={()=>filterUfoHoax=!filterUfoHoax}>
+			<div class="item" on:click={() => (filterUfoHoax = !filterUfoHoax)}>
 				<p>&nbsp&nbsp</p>
-				<p class="desc">{filterUfoHoax ? '▼' : '▶'}Filter Hoax</p>
+				<p class="desc">{filterUfoHoax ? '▼' : '▶'} Filter Hoax</p>
 			</div>
 			{#if filterUfoHoax}
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.display_options.ufo_hoax}>
-					<div class="ufo_legend"></div>
+					<input type="checkbox" bind:checked={$shared.display_options.ufo_hoax} />
+					<div class="ufo_legend" />
 					<p class="desc">Hoax</p>
 				</div>
 				<div class="item">
 					<p>&nbsp&nbsp&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.display_options.ufo_non_hoax}>
-					<div class="ufo_legend"></div>
+					<input type="checkbox" bind:checked={$shared.display_options.ufo_non_hoax} />
+					<div class="ufo_legend" />
 					<p class="desc">Non Hoax</p>
 				</div>
 			{/if}
@@ -92,24 +92,24 @@
 			{/if}
 			-->
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="item" on:click={()=>filterUfoShapes=!filterUfoShapes}>
+			<div class="item" on:click={() => (filterUfoShapes = !filterUfoShapes)}>
 				<p>&nbsp&nbsp</p>
-				<p class="desc">{filterUfoShapes ? '▼' : '▶'}Filter Shapes</p>
+				<p class="desc">{filterUfoShapes ? '▼' : '▶'} Filter Shapes</p>
 			</div>
 			{#if filterUfoShapes}
 				{#each Object.keys($shared.shapes_options) as shape}
-				<div class="item">
-					<p>&nbsp&nbsp&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.shapes_options[shape]}>
-					<div class="ufo_legend"></div>
-					<p class="desc">{shape}</p>
-				</div>
+					<div class="item">
+						<p>&nbsp&nbsp&nbsp&nbsp</p>
+						<input type="checkbox" bind:checked={$shared.shapes_options[shape]} />
+						<div class="ufo_legend" />
+						<p class="desc">{shape}</p>
+					</div>
 				{/each}
 			{/if}
 		{/if}
-		<div class="item" on:click={()=>filterAirports=!filterAirports}>
-			<input type=checkbox bind:checked={$shared.display_options.airport}>
-			<div class="airport_legend"></div>
+		<div class="item" on:click={() => (filterAirports = !filterAirports)}>
+			<input type="checkbox" bind:checked={$shared.display_options.airport} />
+			<div class="airport_legend" />
 			<p class="desc">
 				{filterAirports ? '▼' : '▶'}
 				Airports
@@ -119,20 +119,20 @@
 			{#each Object.keys(AirportTypes) as airport_type}
 				<div class="item">
 					<p>&nbsp&nbsp</p>
-					<input type=checkbox bind:checked={$shared.display_options[airport_type]}>
-					<div class="airport_legend"></div>
+					<input type="checkbox" bind:checked={$shared.display_options[airport_type]} />
+					<div class="airport_legend" />
 					<p class="desc">{AirportTypes[airport_type]}</p>
 				</div>
 			{/each}
 		{/if}
 		<div class="item">
-			<input type=checkbox bind:checked={$shared.display_options.religion}>
-			<div class="religion_legend"></div>
+			<input type="checkbox" bind:checked={$shared.display_options.religion} />
+			<div class="religion_legend" />
 			<p class="desc">Importance of Religion</p>
 		</div>
 		<div class="item">
-			<input type=checkbox bind:checked={$shared.display_options.cities}>
-			<div class="city_legend"></div>
+			<input type="checkbox" bind:checked={$shared.display_options.cities} />
+			<div class="city_legend" />
 			<p class="desc">Cities</p>
 		</div>
 	</div>
@@ -146,9 +146,6 @@
 	}
 
 	h4 {
-		font-weight: bold;
-		font-size: 120%;
-		margin: 0.5em;
 	}
 
 	.legend .item {
@@ -193,5 +190,4 @@
 	.item {
 		height: 2vh;
 	}
-
 </style>

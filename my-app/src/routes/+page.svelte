@@ -41,19 +41,15 @@
 			<Map />
 		</div>
 	</main>
-	{#if page === 'about'}
-		<div class="about">
-			<About />
-		</div>
-	{:else if page === 'chart'}
-		<div class="chart">
-			<Chart />
-		</div>
-	{:else if page === 'heatmap'}
-		<div class="heatmap">
-			<Heatmap />
-		</div>
-	{/if}
+	<div class="about {page === 'about' ? 'active' : 'hidden'}">
+		<About />
+	</div>
+	<div class="chart {page === 'chart' ? 'active' : 'hidden'}">
+		<Chart />
+	</div>
+	<div class="heatmap {page === 'heatmap' ? 'active' : 'hidden'}">
+		<Heatmap />
+	</div>
 </div>
 
 <style lang="scss">
@@ -66,8 +62,8 @@
 		top: 5em;
 		left: 0;
 		right: 0;
-		margin-left: auto; 
-  		margin-right: auto; 
+		margin-left: auto;
+		margin-right: auto;
 		width: 52em;
 		z-index: 100;
 		font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode',
@@ -139,6 +135,21 @@
 		align-self: flex-end;
 	}
 
+	.hidden {
+		opacity: 0%;
+		pointer-events: none;
+	}
+
+	.active {
+		opacity: 100%;
+	}
+
+	.about,
+	.chart,
+	.heatmap {
+		transition: opacity 0.5s;
+	}
+
 	:global(html) {
 		overflow: hidden;
 		width: 100%;
@@ -147,8 +158,9 @@
 
 	:global(.card) {
 		background-color: var(--surface-1);
-		padding: 7%;
 		border-radius: 0.5em;
+		padding: 7%;
+		box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.1);
 	}
 
 	:global(:root) {
@@ -159,5 +171,12 @@
 		--button-0-hover: #784b7d;
 		--button-1: #f5f1f6;
 		--button-1-hover: #b592b9;
+	}
+
+	:global(.title) {
+		font-size: 1.5em;
+		font-weight: 700;
+		color: var(--accent);
+		margin-bottom: 0.4em;
 	}
 </style>

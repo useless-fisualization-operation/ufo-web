@@ -27,7 +27,7 @@
 				shared.update((v) => {
 					v.page = 'chart';
 					return v;
-				})}>Chart</button
+				})}>Relations</button
 		>
 		<!-- heatmap -->
 		<button
@@ -36,22 +36,24 @@
 				shared.update((v) => {
 					v.page = 'heatmap';
 					return v;
-				})}>Heatmap</button
+				})}
+			>Days of the year
+		</button>
+		<!-- about -->
+		<button
+			class="menu-button"
+			on:click={() =>
+				shared.update((v) => {
+					v.page = 'about';
+					return v;
+				})}>About us</button
 		>
-				<!-- about -->
-				<button
-				class="menu-button"
-				on:click={() =>
-					shared.update((v) => {
-						v.page = 'about';
-						return v;
-					})}>About</button
-			>
 	</div>
 </div>
 
 <style lang="scss">
 	.header {
+		box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.1);
 		background-color: var(--surface-1);
 		display: flex;
 		flex-direction: row;

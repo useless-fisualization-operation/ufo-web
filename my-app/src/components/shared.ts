@@ -16,6 +16,8 @@ export type SharedState = {
     start_date: Date | null;
     end_date: Date | null;
     page: "map" | "chart" | "about" | "heatmap";
+    selected_state_population: number;
+    selected_state_religion: number;
 };
 
 export type DisplayOptions = {
@@ -59,4 +61,6 @@ export const shared: Writable<SharedState> = writable(
         selected: null,
         selected_type: 'none',
         page: 'map',
+        selected_state_population: 0,
+        selected_state_religion: 0,
     });

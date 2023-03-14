@@ -4,7 +4,6 @@
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { getUfoData, type Ufo } from './ufo_data';
 	import { getUfoShapes, type Shape } from './ufo_shapes';
-	import { allShapes} from './ufo_shapes';
 	import { getUfoData2, type Ufos, type Ufo2 } from './ufo_data2';
 	import { getUfoLocations, type UfoLocation } from './ufo_locations';
 	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
@@ -19,7 +18,7 @@
 	import { states } from './states';
 	import { shared } from './shared';
 	import LoadingScreen from './LoadingScreen.svelte';
-	import UfoSvg from './UfoSvg.svelte' // The svelte svg
+	import UfoSvg from './UfoSvg.svelte'; // The svelte svg
 	import { getCityData, type City } from './city_data';
 
 	let clazz = '';
@@ -54,7 +53,7 @@
 		// @ts-ignore
 		map_states = topojson.feature(us, us.objects.states).features;
 		if (!shared_state) throw new Error('Shared state is null');
-		
+
 		ufoLocations = await getUfoLocations(projection, false); // Fetch ufo locations
 		ufoData = await getUfoData(projection, false); // Fetch ufo entire data -- NOT USED
 		ufoData2 = await getUfoData2(true); // Fetch ufo data
@@ -62,19 +61,37 @@
 		cities = await getCityData(projection, false); // Fetch cities
 		$shared.shapes = ufoShapes;
 	});
-	
-	function changeDateType(date : string){
-		return date[6]+date[7]+date[8]+date[9]+date[7]+'-'+date[0]+date[1]+'-'+date[3]+date[4]
+
+	function changeDateType(date: string) {
+		return (
+			date[6] +
+			date[7] +
+			date[8] +
+			date[9] +
+			date[7] +
+			'-' +
+			date[0] +
+			date[1] +
+			'-' +
+			date[3] +
+			date[4]
+		);
 	}
 	// Contains the filtered UFO data: Based on Date, Images, Hoax and Shape
-	$: filteredUfoData = ufoData2.filter(o=>{
-		if(o==ufoData2[ufoData2.length-1]) console.log("I have filtered the data");
+	$: filteredUfoData = ufoData2.filter((o) => {
+		if (o == ufoData2[ufoData2.length - 1]) console.log('I have filtered the data');
 		let option = shared_state?.display_options;
-		if(o.date>=shared_state?.start_date && o.date<=shared_state?.end_date){
-			if((option?.ufo_images && o.images=="Yes") || (option?.ufo_no_images && o.images!="Yes")){
-				if((option?.ufo_hoax && o.hoax=="Yes") || (option?.ufo_non_hoax && o.hoax!="Yes")){
-					if((option?.ufo_madar && o.madar=="Yes") || (option?.ufo_non_madar && o.madar!="Yes")){
-						if(shared_state?.shapes_options[ufoShapes[o.id_ref_shape]?.type]){
+		if (o.date >= shared_state?.start_date && o.date <= shared_state?.end_date) {
+			if (
+				(option?.ufo_images && o.images == 'Yes') ||
+				(option?.ufo_no_images && o.images != 'Yes')
+			) {
+				if ((option?.ufo_hoax && o.hoax == 'Yes') || (option?.ufo_non_hoax && o.hoax != 'Yes')) {
+					if (
+						(option?.ufo_madar && o.madar == 'Yes') ||
+						(option?.ufo_non_madar && o.madar != 'Yes')
+					) {
+						if (shared_state?.shapes_options[ufoShapes[o.id_ref_shape]?.type]) {
 							return o;
 						}
 					}
@@ -84,17 +101,17 @@
 	});
 	// Contains the unique locations of the filtered UFO data (Lambda function):
 	$: filteredUfoLocations = () => {
-		let visited:number[] = []
-		let locations:UfoLocation[] = []
-		filteredUfoData.forEach(o=>{
-			if(!visited.includes(o.id_ref_loc)){
+		let visited: number[] = [];
+		let locations: UfoLocation[] = [];
+		filteredUfoData.forEach((o) => {
+			if (!visited.includes(o.id_ref_loc)) {
 				visited.push(o.id_ref_loc);
 				locations.push(ufoLocations[o.id_ref_loc]);
 			}
-		})
-		return locations 
-	} 
-	
+		});
+		return locations;
+	};
+
 	const airports_by_type: { [key: string]: Airport[] } = {
 		large_airport: airports.filter((o) => o.type == AirportTypes.large_airport),
 		medium_airport: airports.filter((o) => o.type == AirportTypes.medium_airport),
@@ -104,7 +121,7 @@
 		balloonport: airports.filter((o) => o.type == AirportTypes.balloonport),
 		closed: airports.filter((o) => o.type == AirportTypes.closed)
 	};
-	
+
 	// ----------- Sidebar Info: -----------
 	let selected_map_state: any; // TODO
 
@@ -125,7 +142,6 @@
 		select(bindHandleZoom).attr('transform', e.transform);
 	}
 	$: if (bindInitZoom) select(bindInitZoom).call(zoomX);
-	
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -140,7 +156,8 @@
 		{width}
 		{height}
 		viewBox="0 0 800 800"
-		preserveAspectRatio="xMidYMid meet">
+		preserveAspectRatio="xMidYMid meet"
+	>
 		<g bind:this={bindHandleZoom}>
 			{#each map_states as map_state}
 				{@const state_short = states[map_state.properties.name].short}
@@ -151,14 +168,23 @@
 						selected_map_state = map_state;
 						//console.log("States:"+states[map_state.properties.name].short);
 						shared.update((v) => {
-							v.n_ufos_on_state.loc = filteredUfoLocations().filter(o=>o.state==states[map_state.properties.name].short).length;
-							v.n_ufos_on_state.data = filteredUfoData.filter(o=>ufoLocations[o.id_ref_loc].state == states[map_state.properties.name].short).length;
+							v.n_ufos_on_state.loc = filteredUfoLocations().filter(
+								(o) => o.state == states[map_state.properties.name].short
+							).length;
+							v.n_ufos_on_state.data = filteredUfoData.filter(
+								(o) => ufoLocations[o.id_ref_loc].state == states[map_state.properties.name].short
+							).length;
 							v.selected_type = 'state';
 							v.selected = states[map_state.properties.name].name;
+							v.selected_state_population =
+								state_data[states[map_state.properties.name].short].value;
+							v.selected_state_religion = state_data[states[map_state.properties.name].short].value;
 							return v;
 						});
 					}}
-					fill= "{shared_state?.display_options.religion ? getStateColor(state_data[state_short]) : 'rgb(54, 57, 61)'}"
+					fill={shared_state?.display_options.religion
+						? getStateColor(state_data[state_short])
+						: 'rgb(54, 57, 61)'}
 					class="state"
 				/>
 			{/each}
@@ -183,9 +209,9 @@
 							shared.update((v) => {
 								v.selected_type = 'city';
 								v.selected = {
-									name: city.name, 
-									state: city.state, 
-									projection: city.projection,
+									name: city.name,
+									state: city.state,
+									projection: city.projection
 								};
 								return v;
 							});
@@ -212,7 +238,8 @@
 										return v;
 									});
 									selected_map_state = null;
-								}}/>
+								}}
+							/>
 						{/each}
 					{/if}
 				{/each}
@@ -220,37 +247,48 @@
 			<!------------------  DISPLAY UFOS  ---------------- -->
 			{#if shared_state?.display_options.ufo}
 				{#each filteredUfoLocations() as ufo}
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<circle
-					class="ufodot"
-					cx={ufo.projection[0]}
-					cy={ufo.projection[1]}
-					r={0.4}
-					on:click={() => {
-						let ufo_on_location = filteredUfoData.filter(o=>o.id_ref_loc==ufo.id);
-						console.log(ufo_on_location);
-						if(ufo_on_location.length>0){
-							shared.update((v) => {
-								v.selected_type = 'ufos';
-								v.selected = {
-									ufos:ufo_on_location, 
-									location:ufo.city, 
-									state:ufo.state,
-									projection:ufo.projection,
-									tot: ufo_on_location.length
-								};
-								return v;
-							});
-						}else{console.log("ERROR from split file!")}
-						selected_map_state = null;
-					}}/>
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<circle
+						class="ufodot"
+						cx={ufo.projection[0]}
+						cy={ufo.projection[1]}
+						r={0.4}
+						on:click={() => {
+							let ufo_on_location = filteredUfoData.filter((o) => o.id_ref_loc == ufo.id);
+							console.log(ufo_on_location);
+							if (ufo_on_location.length > 0) {
+								shared.update((v) => {
+									v.selected_type = 'ufos';
+									v.selected = {
+										ufos: ufo_on_location,
+										location: ufo.city,
+										state: ufo.state,
+										projection: ufo.projection,
+										tot: ufo_on_location.length
+									};
+									return v;
+								});
+							} else {
+								console.log('ERROR from split file!');
+							}
+							selected_map_state = null;
+						}}
+					/>
 				{/each}
 			{/if}
 
 			<!------------------  DISPLAY SELECTED UFO ---------------- -->
-			{#if shared_state?.selected_type=='ufos'}
-				<UfoSvg x_pos={shared_state?.selected?.projection[0]} y_pos={shared_state?.selected?.projection[1]}/>	
-				<circle cx={shared_state?.selected?.projection[0]} cy={shared_state?.selected?.projection[1]} r={0.4} fill="white"/>
+			{#if shared_state?.selected_type == 'ufos'}
+				<UfoSvg
+					x_pos={shared_state?.selected?.projection[0]}
+					y_pos={shared_state?.selected?.projection[1]}
+				/>
+				<circle
+					cx={shared_state?.selected?.projection[0]}
+					cy={shared_state?.selected?.projection[1]}
+					r={0.4}
+					fill="white"
+				/>
 			{/if}
 		</g>
 	</svg>
@@ -287,7 +325,9 @@
 		fill: var(--city);
 	}
 
-	.airportdot:hover, .ufodot:hover, .citydot:hover {
+	.airportdot:hover,
+	.ufodot:hover,
+	.citydot:hover {
 		filter: brightness(150%);
 	}
 
