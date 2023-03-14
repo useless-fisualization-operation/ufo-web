@@ -230,7 +230,7 @@
 								class="airportdot"
 								cx={airport.projection[0]}
 								cy={airport.projection[1]}
-								r={0.6}
+								r={0.8}
 								on:click={() => {
 									shared.update((v) => {
 										v.selected_type = 'airport';
@@ -296,8 +296,8 @@
 
 <style lang="scss">
 	:root {
-		--ufo: hsla(294, 33%, 51%, 0.769);
-		--airport: rgba(58, 230, 227, 0.735);
+		--ufo: hsla(0, 67%, 44%, 0.769);
+		--airport: rgba(36, 229, 255, 0.68);
 		--state-fill: rgb(178, 171, 199);
 		--city: hsla(48, 100%, 76%, 0.822);
 	}
@@ -308,6 +308,9 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 1000;
+	}
+	.state {
+		transition: fill 0.15s ease-in-out;
 	}
 	.state:hover {
 		fill: var(--state-fill);

@@ -39,7 +39,7 @@
 				})}
 			>Days of the year
 		</button>
-		<!-- about -->
+		<!-- about 
 		<button
 			class="menu-button"
 			on:click={() =>
@@ -47,7 +47,7 @@
 					v.page = 'about';
 					return v;
 				})}>About us</button
-		>
+		>-->
 	</div>
 </div>
 

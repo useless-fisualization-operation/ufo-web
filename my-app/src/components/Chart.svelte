@@ -3,26 +3,22 @@
 </script>
 
 <div class="scatterplot">
-	<h1>Relationship between UFO Sightings and Other Attributes</h1>
+	<h4 class="title">Relationship between UFO Sightings and Other Attributes</h4>
 
 	<div id="controls">
 		<p>
-			Select UFO sightings from year <input
-				type="number"
-				id="button_start_year"
-				onKeyDown="return false"
-			/>
+			Sightings from year <input type="number" id="button_start_year" onKeyDown="return false" />
 			to
 			<input type="number" id="button_end_year" onKeyDown="return false" />
 		</p>
 		<p>
-			Select attribute for x axis: <!--changed for x axis-->
+			First Attribute (X axis):
 			<span class="xvar">
 				<select class="xvar" name="xvar" />
 			</span>
 		</p>
 		<p>
-			Select attribute for y axis:
+			Second Attribute (Y axis):
 			<span class="yvar">
 				<select class="yvar" name="yvar" />
 			</span>
@@ -545,11 +541,44 @@
 	</script>
 </div>
 
-<style>
+<style lang="scss">
 	.scatterplot {
+		z-index: 1000;
 		background-color: white;
 		padding: 1em;
 		border-radius: 0.3em;
-		height: 500px;
+		overflow: hidden;
+	}
+
+	p {
+		margin: 0.2em;
+	}
+
+	// Colorful
+	input {
+		// text input
+		background-color: #f2f2f2;
+		border: none;
+		color: #000000;
+		padding: 0.5em;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 0.2em;
+		border-radius: 0.3em;
+	}
+
+	select {
+		// dropdown
+		background-color: #f2f2f2;
+		border: none;
+		color: #000000;
+		padding: 0.5em;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 0.2em;
+		border-radius: 0.3em;
 	}
 </style>

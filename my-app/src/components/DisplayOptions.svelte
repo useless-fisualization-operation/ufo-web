@@ -138,7 +138,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.legend {
 		padding: 1vh;
 		background-color: var(--surface-1);
@@ -189,5 +189,30 @@
 	}
 	.item {
 		height: 2vh;
+	}
+	// cleaner checkbox
+	input {
+		appearance: none;
+		width: 1em;
+		height: 1em;
+		border: 1px solid #aaa;
+		border-radius: 0.25em;
+		transition: all 0.5s;
+	}
+
+	input:checked {
+		background-color: #995e9f;
+	}
+
+	input:checked::before {
+		content: '✔';
+		display: block;
+		color: white;
+		text-align: center;
+		line-height: 1em;
+	}
+
+	input:hover {
+		background-color: rgba(153, 94, 159, 0.42) f;
 	}
 </style>
