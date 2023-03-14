@@ -48,11 +48,15 @@
 		<center><h4 class="title">State &#128205</h4></center>
 		<b>Name</b>
 		<p class="description">{selected_state}</p>
-		<b>#ufos (#locations)</b>
-		<p class="description">{$shared.n_ufos_on_state.data}({$shared.n_ufos_on_state.loc})</p>
+		<b>Number of Ufos</b>
+		<p class="description">
+			{$shared.n_ufos_on_state.data} Ufos (in {$shared.n_ufos_on_state.loc} locations)
+		</p>
+		<!--
 		<b>Population</b>
 		<p class="description">{$shared.selected_state_population}</p>
-		<b>Religion</b>
+		-->
+		<b>Percentage of people who cosnider religion "very important"</b>
 		<p class="description">{$shared.selected_state_religion}</p>
 	{:else if selected_type == 'ufos' && selected_ufos !== null}
 		<center><h4 class="title">UFO Sighting &#128760</h4></center>

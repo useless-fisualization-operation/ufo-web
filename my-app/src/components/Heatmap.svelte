@@ -2,6 +2,8 @@
 </script>
 
 <div class="heatmap">
+	<h4 class="title">UFO sightings per day of the year</h4>
+
 	<div id="my_dataviz" />
 	<script>
 		function sleep(time) {
@@ -135,7 +137,7 @@
 
 			//Read the data
 			d3.csv(
-				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/DataSets/UfoEntireData.csv',
+				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/a5df12234acafc689853dda5715cca2c9968077a/Data.csv',
 				function (data) {
 					//data preprocessing (get frequency)
 					var tally = {};
@@ -171,14 +173,14 @@
 					// Build color scale
 					var myColor = d3
 						.scaleLinear()
-						.range(['white', '#ff6f08'])
+						.range(['white', '#995e9f'])
 						.domain([0, d3.max(data_ref, (d) => d.frequency)]);
 
 					var legend = d3
 						.legendColor()
 						.scale(myColor)
 						.labelFormat(d3.format('.0f'))
-						.title('Number of UFO Sightings');
+						.title('UFO Sightings');
 
 					svg.append('g').attr('transform', 'translate(500,100)').call(legend);
 
@@ -189,9 +191,6 @@
 						.style('opacity', 0)
 						.attr('class', 'tooltip')
 						.style('background-color', 'white')
-						.style('border', 'solid')
-						.style('border-width', '2px')
-						.style('border-radius', '5px')
 						.style('padding', '5px');
 
 					// Three function that change the tooltip when user hover / move / leave a cell
@@ -216,7 +215,7 @@
 									day +
 									' of ' +
 									month +
-									' there were <br>' +
+									' there were ' +
 									d.frequency +
 									' UFO sightings in total'
 							)
@@ -255,10 +254,16 @@
 	</script>
 </div>
 
-<style>
+<style lang="scss">
 	.heatmap {
+		box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.2);
 		background-color: white;
 		padding: 1em;
 		border-radius: 0.3em;
+
+		& > svg {
+			display: block;
+			margin: 0 auto;
+		}
 	}
 </style>

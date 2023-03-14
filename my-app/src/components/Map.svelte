@@ -297,9 +297,10 @@
 <style lang="scss">
 	:root {
 		--ufo: hsla(0, 67%, 44%, 0.769);
-		--airport: rgba(36, 229, 255, 0.68);
-		--state-fill: rgb(178, 171, 199);
-		--city: hsla(48, 100%, 76%, 0.822);
+		--airport: rgba(36, 229, 255, 0.789);
+		--state-fill-selected: rgb(178, 171, 199);
+		--state-fill: rgb(150, 143, 168);
+		--city: hsla(48, 100%, 76%, 0.919);
 	}
 
 	.loading-screen {
@@ -344,7 +345,7 @@
 	}
 
 	.selected {
-		fill: var(--state-fill);
+		fill: var(--state-fill-selected);
 	}
 
 	path {

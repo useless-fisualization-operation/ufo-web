@@ -1,8 +1,22 @@
 <script>
-	import { loop_guard } from 'svelte/internal';
 </script>
 
 <div class="scatterplot">
+	<style>
+		circle {
+			fill: var(--accent);
+			opacity: 0.6;
+		}
+
+		line {
+			stroke-width: 1px;
+			opacity: 0.6;
+		}
+
+		text {
+			font-size: 0.8em;
+		}
+	</style>
 	<h4 class="title">Relationship between UFO Sightings and Other Attributes</h4>
 
 	<div id="controls">
@@ -502,9 +516,7 @@
 					.attr('cy', function (d) {
 						return yScale(d[yvar]);
 					})
-					.style('fill', 'black')
 					.attr('r', 4)
-					.style('opacity', 0.6)
 					.append('title') // TITLE APPENDED HERE
 					.text(function (d) {
 						return longStates[d['State']];
@@ -548,6 +560,12 @@
 		padding: 1em;
 		border-radius: 0.3em;
 		overflow: hidden;
+		box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.2);
+
+		& > svg {
+			display: block;
+			margin: 2em;
+		}
 	}
 
 	p {
@@ -564,7 +582,6 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 16px;
 		margin: 0.2em;
 		border-radius: 0.3em;
 	}
@@ -577,7 +594,6 @@
 		padding: 0.5em;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 16px;
 		margin: 0.2em;
 		border-radius: 0.3em;
 	}
