@@ -59,12 +59,12 @@
 	.about,
 	.heatmap {
 		position: absolute;
-		top: 5em;
+		top: 8vh;
 		left: 0;
 		right: 0;
 		margin-left: auto;
 		margin-right: auto;
-		width: 52em;
+		width: 56vw;
 		z-index: 100;
 		font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode',
 			sans-serif;

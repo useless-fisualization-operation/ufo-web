@@ -14,7 +14,7 @@
 		}
 
 		text {
-			font-size: 0.8em;
+			font-size: 1vh;
 		}
 	</style>
 	<h4 class="title">Relationship between UFO Sightings and Other Attributes</h4>
@@ -197,11 +197,17 @@
 			let outerWidth = 600;
 			let outerHeight = 400;
 			let margins = { top: 10, bottom: 60, left: 60, right: 30 };
+			if(screen.height > 2000){
+				outerWidth *= 3
+				outerHeight *= 3
+				margins = { top: 10, bottom: 150, left: 180, right: 30 };
+			}
 			let innerWidth = outerWidth - margins.left - margins.right;
 			let innerHeight = outerHeight - margins.top - margins.bottom;
 
 			let scatterOuter = d3
 				.select('svg#scatter-container')
+				.attr("preserveAspectRatio", "xMinYMin meet")
 				.attr('width', outerWidth)
 				.attr('height', outerHeight);
 
@@ -564,7 +570,7 @@
 
 		& > svg {
 			display: block;
-			margin: 2em;
+			margin: auto;
 		}
 	}
 
@@ -584,6 +590,7 @@
 		display: inline-block;
 		margin: 0.2em;
 		border-radius: 0.3em;
+		font-size: 1.5vh;
 	}
 
 	select {
@@ -596,5 +603,10 @@
 		display: inline-block;
 		margin: 0.2em;
 		border-radius: 0.3em;
+		font-size: 1.5vh;
+	}
+
+	#scatter_container {
+		overflow: visible;
 	}
 </style>

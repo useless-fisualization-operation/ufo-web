@@ -296,11 +296,11 @@
 
 <style lang="scss">
 	:root {
-		--ufo: hsla(0, 67%, 44%, 0.769);
-		--airport: rgba(36, 229, 255, 0.789);
+		--ufo: hsla(0, 67%, 44%, 0.9);
+		--airport: rgba(36, 229, 255, 0.9);
 		--state-fill-selected: rgb(178, 171, 199);
 		--state-fill: rgb(150, 143, 168);
-		--city: hsla(48, 100%, 76%, 0.919);
+		--city: hsla(48, 100%, 76%, 0.9);
 	}
 
 	.loading-screen {
@@ -333,6 +333,7 @@
 	.ufodot:hover,
 	.citydot:hover {
 		filter: brightness(150%);
+		opacity: 1;
 	}
 
 	svg {

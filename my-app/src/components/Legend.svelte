@@ -32,6 +32,7 @@
 	.legend {
 		display: flex;
 		box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.1);
+		font-size: 1.5vh;
 
 		padding: 1px;
 

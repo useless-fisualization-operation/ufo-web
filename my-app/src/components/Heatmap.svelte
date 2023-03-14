@@ -15,10 +15,18 @@
 		}
 
 		sleep(3000).then(() => {
+			let outerWidth = 750;
+			let outerHeight = 450;
+			var margin = { top: 30, right: 120, bottom: 40, left: 50 }
+			if(screen.height > 2000){
+				outerWidth *= 2
+				outerHeight *= 2
+				margin = { top: 30, right: 120, bottom: 80, left: 80 }
+			}
+
 			// set the dimensions and margins of the graph
-			var margin = { top: 30, right: 120, bottom: 40, left: 50 },
-				width = 750 - margin.left - margin.right,
-				height = 450 - margin.top - margin.bottom;
+			var width = outerWidth - margin.left - margin.right,
+				height = outerHeight - margin.top - margin.bottom;
 
 			// append the svg object to the body of the page
 			var svg = d3
