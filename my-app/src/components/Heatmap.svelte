@@ -1,12 +1,18 @@
+<script>
+</script>
+
 <div class="heatmap">
 	<div id="my_dataviz" />
 	<script>
-		if (!localStorage.getItem('first_time_heatmap')) {
-			// first time loaded!
-			localStorage.setItem('first_time_heatmap', '1');
-		} else {
-			//heatmap tutorial: https://d3-graph-gallery.com/graph/heatmap_tooltip.html
+		function sleep(time) {
+			return new Promise((resolve) => {
+				setTimeout(() => {
+					resolve();
+				}, time);
+			});
+		}
 
+		sleep(3000).then(() => {
 			// set the dimensions and margins of the graph
 			var margin = { top: 30, right: 120, bottom: 40, left: 50 },
 				width = 750 - margin.left - margin.right,
@@ -245,7 +251,7 @@
 						.on('mouseleave', mouseleave);
 				}
 			);
-		}
+		});
 	</script>
 </div>
 
@@ -254,7 +260,5 @@
 		background-color: white;
 		padding: 1em;
 		border-radius: 0.3em;
-		width: 100%;
-		height: 500px;
 	}
 </style>

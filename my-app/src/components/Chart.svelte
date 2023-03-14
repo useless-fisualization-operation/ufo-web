@@ -42,10 +42,15 @@
     -->
 
 	<script>
-		if (!localStorage.getItem('first_time_heatmap')) {
-			// first time loaded!
-			localStorage.setItem('first_time_heatmap', '1');
-		} else {
+		function sleep(time) {
+			return new Promise((resolve) => {
+				setTimeout(() => {
+					resolve();
+				}, time);
+			});
+		}
+
+		sleep(3000).then(() => {
 			// how long transitions last (msec)
 			let transitionTime = 2000;
 			let state_indices =
@@ -536,7 +541,7 @@
 					.duration(transitionTime)
 					.text(longVars[yvar]);
 			}
-		}
+		});
 	</script>
 </div>
 

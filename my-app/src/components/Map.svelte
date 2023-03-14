@@ -296,10 +296,10 @@
 
 <style lang="scss">
 	:root {
-		--ufo: #a459ac;
-		--airport: rgb(58, 230, 227);
+		--ufo: hsla(294, 33%, 51%, 0.769);
+		--airport: rgba(58, 230, 227, 0.735);
 		--state-fill: rgb(178, 171, 199);
-		--city: rgb(255, 230, 132);
+		--city: hsla(48, 100%, 76%, 0.822);
 	}
 
 	.loading-screen {

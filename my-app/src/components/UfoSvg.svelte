@@ -89,5 +89,6 @@
 		top: 10vh;
 		left: 8vw;
 		pointer-events: none;
+		opacity: 0.9;
 	}
 </style>
