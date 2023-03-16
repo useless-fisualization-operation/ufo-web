@@ -18,7 +18,7 @@
 			// set the dimensions and margins of the graph
 			var margin = { top: 30, right: 120, bottom: 40, left: 50 },
 				width = 750 - margin.left - margin.right,
-				height = 450 - margin.top - margin.bottom;
+				height = 550 - margin.top - margin.bottom;
 
 			// append the svg object to the body of the page
 			var svg = d3
@@ -96,7 +96,7 @@
 			];
 			var x = d3
 				.scaleBand()
-				.range([0, width - 120])
+				.range([0, width - 170])
 				.domain(myGroups)
 				.padding(0.01);
 			let xAxisGenerator = d3.axisBottom(x);
@@ -137,7 +137,7 @@
 
 			//Read the data
 			d3.csv(
-				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/a5df12234acafc689853dda5715cca2c9968077a/Data.csv',
+				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/DataSets/UfoEntireData2.csv',
 				function (data) {
 					//data preprocessing (get frequency)
 					var tally = {};
@@ -152,8 +152,7 @@
 						var date = parts[0];
 						var month = date.split('/')[0];
 						var day = date.split('/')[1];
-						date = day + '/' + month; //ignore year for now
-						//console.log(date);
+						date=parseInt(day)+'/'+parseInt(month)//ignore year for now						//console.log(date);
 						tally[date] = (tally[date] || 0) + 1;
 						last_Date = date;
 					});
@@ -161,12 +160,14 @@
 					var data_ref = [];
 
 					for (var date in tally) {
-						if (tally.hasOwnProperty(date)) {
-							data_ref.push({
-								month: date.split('/')[1],
-								day: date.split('/')[0],
-								frequency: tally[date]
-							});
+						if(!isNaN(date.split('/')[1])&&!isNaN(date.split('/')[1])){
+							if (tally.hasOwnProperty(date)) {
+								data_ref.push({
+									month: date.split('/')[1],
+									day: date.split('/')[0],
+									frequency: tally[date]
+								});
+							}
 						}
 					}
 
@@ -196,6 +197,8 @@
 					// Three function that change the tooltip when user hover / move / leave a cell
 					var mouseover = function (d) {
 						tooltip.style('opacity', 1);
+						d3.select(this)
+      					.style("stroke", "black")
 					};
 					var mousemove = function (d) {
 						var day = d.day + 'th';
@@ -224,6 +227,8 @@
 					};
 					var mouseleave = function (d) {
 						tooltip.style('opacity', 0);
+						d3.select(this)
+      					.style("stroke", "none")
 					};
 
 					// add the squares
@@ -240,6 +245,8 @@
 						.attr('y', function (d) {
 							return y(d.day);
 						})
+						.attr("rx", 4)
+        				.attr("ry", 4)
 						.attr('width', x.bandwidth())
 						.attr('height', y.bandwidth())
 						.style('fill', function (d) {
