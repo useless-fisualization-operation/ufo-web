@@ -21,9 +21,9 @@
 
 	<div id="controls">
 		<p>
-			Sightings from year <input type="number" id="button_start_year" onKeyDown="return false" />
+			Sightings from year <input type="number" id="button_start_year"/>
 			to
-			<input type="number" id="button_end_year" onKeyDown="return false" />
+			<input type="number" id="button_end_year"/>
 		</p>
 		<p>
 			First Attribute (X axis):
@@ -322,12 +322,12 @@
 					.attr('value', (d) => d)
 					.text((d) => longVars[d]);
 
-				d3.select('#button_start_year').on('input', () => {
+				d3.select('#button_start_year').on('change', () => {
 					//update(d_other_global, d_sight_global); //changed for x axis
 					update(d_other_global, d_sight_global, d_sight_abs_global);
 				});
 
-				d3.select('#button_end_year').on('input', () => {
+				d3.select('#button_end_year').on('change', () => {
 					//update(d_other_global, d_sight_global);//changed for x axis
 					update(d_other_global, d_sight_global, d_sight_abs_global);
 				});
@@ -455,6 +455,18 @@
 				let yvar = d3.select('select.yvar').property('value');
 				let start_year = +d3.select('#button_start_year').property('value');
 				let end_year = +d3.select('#button_end_year').property('value');
+
+				if (start_year<min_year) { //changed for botton
+					d3.select("#button_start_year").property('value', min_year)
+				}
+				if (end_year>max_year) {
+					d3.select("#button_end_year").property('value', max_year)
+				}
+				if (start_year>end_year) {
+					d3.select("#button_start_year").property('value', end_year)
+				}
+				start_year = +d3.select("#button_start_year").property('value')
+				end_year = +d3.select("#button_end_year").property('value')
 
 				d3.select('#button_start_year').property('min', min_year);
 				d3.select('#button_start_year').property(
