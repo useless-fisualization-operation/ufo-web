@@ -20,6 +20,7 @@
 	<h4 class="title">Relationship with Other Attributes on State Level </h4>
 
 	<div id="controls">
+		<p> Hover over a dot to see which state it corresponds to! </p>
 		<p>
 			Sightings from year <input type="number" id="button_start_year"/>
 			to
@@ -203,11 +204,11 @@
 
 			// load data
 			let url_other =
-				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/scatterplot_data_full_relative_drugsincl.csv';
+				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/scatterplot_data_full_relative_drugsincl.csv';
 			let url_sight =
-				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/relative_num_sightings_per_state_per_year_timespan_rows_full.csv';
+				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/relative_num_sightings_per_state_per_year_timespan_rows.csv';
 			let url_sight_abs =
-				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/num_sightings_per_state_per_year_timespan_rows_full.csv';
+				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/num_sightings_per_state_per_year_timespan_rows.csv';
 			d3.csv(url_other, cleanup_data, function (error, d_other) {
 				if (error) {
 					console.log(error);
