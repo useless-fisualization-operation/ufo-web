@@ -289,12 +289,6 @@
 				let x_variables = ['Num_Sightings', 'Rel_Num_Sightings'];
 
 				// border around plotting region
-				/*scatterInner
-			.append('rect')
-			.attr('width', innerWidth)
-			.attr('height', innerHeight)
-			.attr('fill', 'transparent')
-
 				// populate selectors
 				d3.select('select.xvar')
 					.on('change', () => update(d_other_global, d_sight_global, d_sight_abs_global))
