@@ -1,0 +1,46 @@
+About
+
+
+Project description
+
+Have you ever wondered about extraterrestial activity on earth? Or do you think it's all made up and imagined? Or are you still torn between the two? 
+Either way, the Useless Fisualization Operation was made for you! Our objective was to allow exploring reports of UFO sightings in the USA and uncover underlying patterns. With the help of our interactive map you can investigate the locations of UFO sightings, filter them, and get detailed reports on demand as well as images if available. By including other data such as airport locations, you can decide for yourself if you think the two might be correlated. Relationships with further datasets can be explored via a scatterplot, where you can filter by years, in case you want to match the time frames of the two datasets. To further incorporate the temporal dimension of the data, we have a heatmap showing the frequency of UFO sightings per date. 
+Come see for yourself, we hope your time here is out of this world.
+
+Disclaimer: Please note that we make no claims on the validity of the reports (the hoax tags come from the NUFORC data itself) or the relationships with other data, we merely wanted to create a framework for easy and fun exploration.
+
+Data
+The main data on UFO sightings was scraped from the NATIONAL UFO Reporting Center Online Database NUFORC [1] on the 03. February 2023. We took all fields except for the image links and the date of the sighting from the summary, whereas we accessed the report itself to get the image and the complete date. We geolocated our datapoints and discarded all sightings whose location we could not pinpoint. For the heatmap, all dates not following the month/day/year convention were discarded. 
+
+@FRAWA
+A paper by Irwin [2] describes ....
+
+Therefore, we chose to include a dataset on religiosity [3], which we preprocessed by changing <1% to 0, 77% to 0.77 (?? generally ??) and setting the state names changed to state abbreviations to match the UFO data.
+
+Our population density data [5] includes time dimension with steps of decades, going from 1910 to 2020. This was preprocessed by deleting all "regions" datapoints (e.g. midwest), only keeping columns "state" and "population density", removed the comma for the thousand block, changing the attribute/column name: "name" to "state", changing state names to state abbreviations to match UFO data. Maybe TODO: map square miles to square kilometers???
+
+
+Because planes are listed as often confused with UFOs [4], we chose to include airport locations too. Our US-airport data [5] comes from October 2020. This dataset was preprocessed by discarding columns other than name, type, latitude_deg, longitude_deg, state, where state was derived from the column iso_region. Commas were changed to / in names, Deleted all U-A state abbrevs??????????, delete duplicate rows, delete rows where the lat or long coordinate where obviously outside of US territory, e.g. 0.
+
+
+Drug use etc ref!!!!!!!
+
+Team
+Pedro Burgos Gonzalo: Frontend development, UI/UX
+Albin Kempe: Frontend development, UI/UX
+Jonathan Gustaf Cilli: Frontend development, Data, UI/UX
+Frawa Vetterli: Data, Frontend development, User testing
+Annika Oehri: Data, Frontend development
+
+What did we learn and what tools did we use??????? link to repo???
+
+
+References and sources
+[1] https://nuforc.org/databank/
+[2] Irwin, Harvey. (1993). Belief in the Paranormal: A Review of the Empirical Literature. Journal of American Society for Psychical Research. 87. https://www.researchgate.net/publication/239592095_Belief_in_the_Paranormal_A_Review_of_the_Empirical_Literature
+[3] https://www.pewresearch.org/religion/religious-landscape-study/compare/importance-of-religion-in-ones-life/by/state/
+[4] https://www.livescience.com/32849-7-ways-to-generate-a-great-space-hoax.html
+[5] https://www.census.gov/data/tables/time-series/dec/density-data-text.html
+
+
+
