@@ -18,6 +18,8 @@ export type SharedState = {
     page: "map" | "chart" | "about" | "heatmap";
     selected_state_population: number;
     selected_state_religion: number;
+    selected_state_druguse: number;
+    selected_state_marijuanause: number;
 };
 
 export type DisplayOptions = {
@@ -42,6 +44,9 @@ export const shared: Writable<SharedState> = writable(
             closed_airport: false,
             // Others:
             religion: true,
+            drugs: false,
+            marijuana: false,
+            population: false,
             cities: true,
             // For Ufos:
             ufo: true,
@@ -63,4 +68,6 @@ export const shared: Writable<SharedState> = writable(
         page: 'map',
         selected_state_population: 0,
         selected_state_religion: 0,
+        selected_state_druguse: 0,
+        selected_state_marijuanause: 0,
     });

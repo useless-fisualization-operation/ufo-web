@@ -17,6 +17,7 @@
 	let filterUfoShapes = false;
 	let filterUfoHoax = false;
 	let filterUfoMadar = false;
+	let filterStateData = false;
 </script>
 
 <div class="card {clazz}">
@@ -125,11 +126,36 @@
 				</div>
 			{/each}
 		{/if}
-		<div class="item">
-			<input type="checkbox" bind:checked={$shared.display_options.religion} />
-			<div class="religion_legend" />
-			<p class="desc">Importance of Religion</p>
+		<div class="item" on:click={() => (filterStateData = !filterStateData)}>
+			<p>&nbsp&nbsp</p>
+			<p class="desc">{filterStateData ? '▼' : '▶'} State Color</p>
 		</div>
+		{#if filterStateData}
+			<div class="item">
+				<p>&nbsp&nbsp&nbsp&nbsp</p>
+				<input type="checkbox" bind:checked={$shared.display_options.religion} on:change={()=>{$shared.display_options.population=false;$shared.display_options.drugs=false;$shared.display_options.marijuana=false;}} />
+				<div class="religion_legend" />
+				<p class="desc">Importance of Religion</p>
+			</div>
+			<div class="item">
+				<p>&nbsp&nbsp&nbsp&nbsp</p>
+				<input type="checkbox" bind:checked={$shared.display_options.population} on:change={()=>{$shared.display_options.drugs=false;$shared.display_options.religion=false;$shared.display_options.marijuana=false;}} />
+				<div class="religion_legend" />
+				<p class="desc">Population Density</p>
+			</div>
+			<div class="item">
+				<p>&nbsp&nbsp&nbsp&nbsp</p>
+				<input type="checkbox" bind:checked={$shared.display_options.drugs} on:change={()=>{$shared.display_options.population=false;$shared.display_options.religion=false;$shared.display_options.marijuana=false;}}/>
+				<div class="religion_legend" />
+				<p class="desc">Illicit Drug Consumption</p>
+			</div>
+			<div class="item">
+				<p>&nbsp&nbsp&nbsp&nbsp</p>
+				<input type="checkbox" bind:checked={$shared.display_options.marijuana} on:change={()=>{$shared.display_options.population=false;$shared.display_options.religion=false;$shared.display_options.drugs=false;}}/>
+				<div class="religion_legend" />
+				<p class="desc">Marijuana Consumption</p>
+			</div>
+		{/if}
 		<div class="item">
 			<input type="checkbox" bind:checked={$shared.display_options.cities} />
 			<div class="city_legend" />

@@ -52,12 +52,14 @@
 		<p class="description">
 			{$shared.n_ufos_on_state.data} Ufos (in {$shared.n_ufos_on_state.loc} locations)
 		</p>
-		<!--
-		<b>Population</b>
-		<p class="description">{$shared.selected_state_population}</p>
-		-->
-		<b>Percentage of people who cosnider religion "very important"</b>
-		<p class="description">{$shared.selected_state_religion}</p>
+		<b>Population Density</b>
+		<p class="description">{Math.round($shared.selected_state_population*100)/100} people/km<sup>2</sup></p>
+		<b>Percentage of people who consider religion "very important"</b>
+		<p class="description">{Math.round($shared.selected_state_religion*10000)/100}%</p>
+		<b>Percentage of people who consumed illicit drugs</b>
+		<p class="description">{Math.round($shared.selected_state_druguse*10000)/100}%</p>
+		<b>Percentage of people who consumed marijuana</b>
+		<p class="description">{Math.round($shared.selected_state_marijuanause*10000)/100}%</p>
 	{:else if selected_type == 'ufos' && selected_ufos !== null}
 		<center><h4 class="title">UFO Sighting &#128760</h4></center>
 		{#if selected_ufos?.tot > 1}

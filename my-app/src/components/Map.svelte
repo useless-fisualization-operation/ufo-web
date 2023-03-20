@@ -10,10 +10,9 @@
 	import { zoom, select } from 'd3';
 	import type { SharedState } from './shared';
 	import {
-		getReligionData,
 		getStateColor,
-		religionDataToStateData,
-		type ReligionData
+		getStateData,
+		type StateData2
 	} from './state_data';
 	import { states } from './states';
 	import { shared } from './shared';
@@ -36,9 +35,10 @@
 
 	// ----------- Data: -----------
 	var airports = getAirportData(projection);
-	var religion: ReligionData[] = getReligionData();
-	var state_data = religionDataToStateData(religion);
-	var ufoData: Ufo[] = []; // not currently used
+	//var religion: ReligionData[] = getReligionData();
+	var stateData: StateData2[];
+	//var state_data = religionDataToStateData(religion);
+	//var ufoData: Ufo[] = []; // not currently used
 	var ufoData2: Ufo2[] = []; // used instead of ufoData
 	var ufoShapes: Shape[] = [];
 	var ufoLocations: UfoLocation[] = [];
@@ -54,29 +54,15 @@
 		map_states = topojson.feature(us, us.objects.states).features;
 		if (!shared_state) throw new Error('Shared state is null');
 
+		stateData = await getStateData(false);
 		ufoLocations = await getUfoLocations(projection, false); // Fetch ufo locations
-		ufoData = await getUfoData(projection, false); // Fetch ufo entire data -- NOT USED
+		//ufoData = await getUfoData(projection, false); // Fetch ufo entire data -- NOT USED
 		ufoData2 = await getUfoData2(true); // Fetch ufo data
 		ufoShapes = await getUfoShapes(false); // Fetch ufo shapes
 		cities = await getCityData(projection, false); // Fetch cities
 		$shared.shapes = ufoShapes;
 	});
-
-	function changeDateType(date: string) {
-		return (
-			date[6] +
-			date[7] +
-			date[8] +
-			date[9] +
-			date[7] +
-			'-' +
-			date[0] +
-			date[1] +
-			'-' +
-			date[3] +
-			date[4]
-		);
-	}
+	console.log(stateData);
 	// Contains the filtered UFO data: Based on Date, Images, Hoax and Shape
 	$: filteredUfoData = ufoData2.filter((o) => {
 		if (o == ufoData2[ufoData2.length - 1]) console.log('I have filtered the data');
@@ -99,6 +85,7 @@
 			}
 		}
 	});
+
 	// Contains the unique locations of the filtered UFO data (Lambda function):
 	$: filteredUfoLocations = () => {
 		let visited: number[] = [];
@@ -165,8 +152,12 @@
 				<path
 					d={path(map_state)}
 					on:click={() => {
+						//console.log(stateData)
+						//console.log(map_state)
 						selected_map_state = map_state;
 						//console.log("States:"+states[map_state.properties.name].short);
+						let s = stateData?.filter(o=>o.state == map_state.properties.name)[0];
+							
 						shared.update((v) => {
 							v.n_ufos_on_state.loc = filteredUfoLocations().filter(
 								(o) => o.state == states[map_state.properties.name].short
@@ -176,18 +167,27 @@
 							).length;
 							v.selected_type = 'state';
 							v.selected = states[map_state.properties.name].name;
-							v.selected_state_population =
-								state_data[states[map_state.properties.name].short].value;
-							v.selected_state_religion = state_data[states[map_state.properties.name].short].value;
+							v.selected_state_population = s.population;
+							//state_data[states[map_state.properties.name].short].value;
+							v.selected_state_religion = s.religion;
+							v.selected_state_druguse = s.drugs;
+							v.selected_state_marijuanause = s.marijuana;
 							return v;
 						});
 					}}
-					fill={shared_state?.display_options.religion
-						? getStateColor(state_data[state_short])
-						: 'rgb(54, 57, 61)'}
+					
+					fill={
+					shared_state?.display_options.religion ? stateData?.filter(o=>o.state == map_state.properties.name)[0].religion_color
+					: shared_state?.display_options.drugs ? stateData?.filter(o=>o.state == map_state.properties.name)[0].drugs_color
+					: shared_state?.display_options.population ? stateData?.filter(o=>o.state == map_state.properties.name)[0].population_color
+					: shared_state?.display_options.marijuana ? stateData?.filter(o=>o.state == map_state.properties.name)[0].marijuana_color
+					: 'rgb(54, 57, 61)'}
 					class="state"
 				/>
 			{/each}
+			<!--
+			
+			-->
 			{#if selected_map_state}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<path
