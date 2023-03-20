@@ -53,8 +53,8 @@
 			{$shared.n_ufos_on_state.data} Ufos (in {$shared.n_ufos_on_state.loc} locations)
 		</p>
 		<b>Population Density</b>
-		<p class="description">{Math.round($shared.selected_state_population)}</p>
-		<b>Percentage of people who cosnider religion "very important"</b>
+		<p class="description">{Math.round($shared.selected_state_population)} people/km<sup>2</sup></p>
+		<b>Percentage of people who consider religion "very important"</b>
 		<p class="description">{Math.round($shared.selected_state_religion*100)}%</p>
 		<b>Percentage of people who consumed illicit drugs</b>
 		<p class="description">{Math.round($shared.selected_state_druguse*100)}%</p>
