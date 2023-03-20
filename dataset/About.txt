@@ -30,7 +30,8 @@ Jonathan Gustaf Cilli: Frontend development, Data, UI/UX
 Frawa Vetterli: Data, Frontend development, User testing
 Annika Oehri: Data, Frontend development
 
-The source code and the used datasets can be found on GitHub [9]. In this project, we learnt to collaborate with each other and discuss our thoughts and improvements suggestions on our visualization. The presentations in the class taught us how to defend and justify our design choices and helped us get valuable feedback to improve our work further. The user study helped us see the perspective of people without computer science or visualization background.
+The source code and the used datasets can be found on GitHub [9]. In this project, we learnt to scrape websites, address geocoding and preprocess CSV files with Python and to create advanced visualizations with Svelte and Javascript. The programming collaboration was done through GitHub's branches and issues.
+We learnt to collaborate with each other and discuss our thoughts and improvements suggestions on our visualization. The presentations in the class taught us how to defend and justify our design choices and helped us get valuable feedback to improve our work. The user study helped us see the perspective of people without computer science or visualization background.
 
 
 References and sources
