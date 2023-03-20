@@ -30,9 +30,7 @@ Jonathan Gustaf Cilli: Frontend development, Data, UI/UX
 Frawa Vetterli: Data, Frontend development, User testing
 Annika Oehri: Data, Frontend development
 
-What did we learn and what tools did we use???????
-
-The source code and the used datasets can be found on GitHub [9].
+The source code and the used datasets can be found on GitHub [9]. In this project, we learnt to collaborate with each other and discuss our thoughts and improvements suggestions on our visualization. The presentations in the class taught us how to defend and justify our design choices and helped us get valuable feedback to improve our work further. The user study helped us see the perspective of people without computer science or visualization background.
 
 
 References and sources
