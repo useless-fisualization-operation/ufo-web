@@ -16,6 +16,7 @@
 			Come see for yourself, we hope your time here is out of this world.
 		</p>
 		<p class="disclaimer">Please note that we make no claims on the validity of the reports or the relationships with other data, we merely wanted to create a framework for easy and fun exploration.</p>
+		<p>The source code and the used datasets can be found on GitHub [9]. In this project, we learnt to collaborate with each other and discuss our thoughts and improvements suggestions on our visualization. The presentations in the class taught us how to defend and justify our design choices and helped us get valuable feedback to improve our work further. The user study helped us see the perspective of people without computer science or visualization background.</p>
 	</div>
 	<div class="team">
 		<h2>Team</h2>
@@ -55,6 +56,17 @@
 		<p>During discussions with other students, they said that they would also be interested in a visualization of the relationship between UFO sightings and drug use which is why different drug use metrics are also included from the Substance Abuse and Mental Health Services Administration's National Survey on Drug Use and Health (NSDUH) from 2021 [6]. The metrics include Illicit Drug Use in the Past Month, Marijuana Use in the Past Month, Illicit Drug Use Other Than Marijuana in the Past Month, Binge Alcohol Use in the Past Month, Illicit Drug Use Disorder in the Past Year, Serious Mental Illness in the Past Year and Any Mental Illness in the Past Year. All data is from people of age 18 or older and show the proportion of people which the specific metric holds for.</p>
 		<p>For all these datasets additional to the UFO dataset, we changed state names to state abbreviations to create consistent keys.</p>
 		<p>Because planes are listed as often confused with UFOs [7], we chose to include airport locations, too. Our US-airport data [8] comes from October 2020. This dataset was preprocessed by simply keeping the columns name, type, latitude_deg, longitude_deg and state, where state was derived from the column iso_region. We deleted obvious duplicate datapoints and datapoints where the latitude or longitude were obviously outside of US territory, e.g. 0.</p>
+		<div class="sources">
+			<p>[1] <a href="https://nuforc.org/databank/">https://nuforc.org/databank/</a></p>
+			<p>[2] Plaza del Olmo, Julio. (2015). A Review on the Relation between Population Density and UFO Sightings. Journal of Scientific Exploration, Vol. 29, No. 3, pp. 425-448. <a href="https://www.scientificexploration.org/docs/29/jse_29_3_PlazadelOlmo.pdf">https://www.scientificexploration.org/docs/29/jse_29_3_PlazadelOlmo.pdf</a></p>
+			<p>[3] <a href="https://www.researchgate.net/publication/239592095_Belief_in_the_Paranormal_A_Review_of_the_Empirical_Literature">https://www.census.gov/data/tables/time-series/dec/density-data-text.html</a></p>
+			<p>[4] Irwin, Harvey. (1993). Belief in the Paranormal: A Review of the Empirical Literature. Journal of American Society for Psychical Research. 87. <a href="https://www.researchgate.net/publication/239592095_Belief_in_the_Paranormal_A_Review_of_the_Empirical_Literature">https://www.researchgate.net/publication/239592095_Belief_in_the_Paranormal_A_Review_of_the_Empirical_Literature</a></p>
+			<p>[5] <a href="https://www.pewresearch.org/religion/religious-landscape-study/compare/importance-of-religion-in-ones-life/by/state/">https://www.pewresearch.org/religion/religious-landscape-study/compare/importance-of-religion-in-ones-life/by/state/</a></p>
+			<p>[6] <a href="https://www.samhsa.gov/data/report/2021-nsduh-state-prevalence-estimates">https://www.samhsa.gov/data/report/2021-nsduh-state-prevalence-estimates</a></p>
+			<p>[7] <a href="https://www.livescience.com/32849-7-ways-to-generate-a-great-space-hoax.html">https://www.livescience.com/32849-7-ways-to-generate-a-great-space-hoax.html</a></p>
+			<p>[8] <a href="https://data.world/ourairports/989444cc-447b-4030-a866-57fcd6c2d3ee">https://data.world/ourairports/989444cc-447b-4030-a866-57fcd6c2d3ee</a></p>
+			<p>[9] <a href="https://github.com/useless-fisualization-operation">https://github.com/useless-fisualization-operation</a></p>
+		</div>
 	</div>
 	
 </div>
