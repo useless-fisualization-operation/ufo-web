@@ -45,6 +45,7 @@ export type StateData2 = { // TODO: make it more generic, "state data" 0 to 1
     population_color: string,
     marijuana: number,
     marijuana_color: string,
+    
 }
 
 export async function getStateData(verbose: boolean,
@@ -58,13 +59,13 @@ export async function getStateData(verbose: boolean,
                         state: states_short[row.State].name,
                         state_short:  row.State,
                         religion: Number(row.Rel_Very_important),
-                        religion_color: color_scale(Number(row.Rel_Very_important)),
+                        religion_color: color_scale((Number(row.Rel_Very_important)-0.32)*(100/(77-32))),
                         drugs: Number(row.Illicit_Drug_Use),
-                        drugs_color: color_scale(Number(row.Illicit_Drug_Use)),
+                        drugs_color: color_scale((Number(row.Illicit_Drug_Use)-0.0903)*(100/(24.93-9.03))),
                         population: Number(row.Population_Density),
-                        population_color: color_scale(Number(row.Population_Density)/834),
+                        population_color: color_scale((Number(row.Population_Density)-0.57)/(834-0.57)),
                         marijuana: Number(row.Marijuana_Use),
-                        marijuana_color: color_scale(Number(row.Marijuana_Use))
+                        marijuana_color: color_scale((Number(row.Marijuana_Use)-0.077)*(100/(23.27-7.77)))
                     }
                 );
         });

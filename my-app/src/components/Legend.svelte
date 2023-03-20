@@ -17,14 +17,24 @@
 </script>
 
 <div class="{clazz} legend card">
+	{#if shared_state?.display_options.population}
+		<div style="background-color:{radialScale(0)}">Min: 0.6 people/km<sub>2</sub></div>
+		<div style="background-color:{radialScale(1)}; color:#adf0dd">Min: 833 people/km<sub>2</sub></div>	
+	{/if}
 	{#if shared_state?.display_options.religion}
-		{#each Array(5) as _, i}
-			{#if i < 3}
-				<div style="background-color:{radialScale(i / 4)}">{(i / 4) * 100}%</div>
-			{:else}
-				<div style="background-color:{radialScale(i / 4)}; color:#adf0dd">{(i / 4) * 100}%</div>
-			{/if}
-		{/each}
+		<div style="background-color:{radialScale(0)}">Min: 9.03%</div>
+		<div style="background-color:{radialScale(0.5)}; color:#adf0dd">16.98%</div>
+		<div style="background-color:{radialScale(1)}; color:#adf0dd">Max: 24.93%</div>	
+	{/if}
+	{#if shared_state?.display_options.drugs}
+		<div style="background-color:{radialScale(0)}">Min: 32%</div>
+		<div style="background-color:{radialScale(0.5)}; color:#adf0dd">54.5%</div>
+		<div style="background-color:{radialScale(1)}; color:#adf0dd">Max: 77%</div>	
+	{/if}
+	{#if shared_state?.display_options.marijuana}
+		<div style="background-color:{radialScale(0)}">Min: 7.77%</div>
+		<div style="background-color:{radialScale(0.5)}; color:#adf0dd">15.52%</div>
+		<div style="background-color:{radialScale(1)}; color:#adf0dd">Max: 23.27%</div>	
 	{/if}
 </div>
 
@@ -37,7 +47,7 @@
 
 		& > div {
 			font-size: 0.8em;
-			width: 20%;
+			width: 50%;
 			height: 20px;
 			display: flex;
 			align-items: center;
