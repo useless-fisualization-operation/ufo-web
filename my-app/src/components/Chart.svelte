@@ -20,9 +20,9 @@
 	<h4 class="title">Relationship with Other Attributes on State Level </h4>
 
 	<div id="controls">
-		<p> Hover over a dot to see which state it corresponds to! </p>
+		<p> Hover over a dot in the scatterplot to see which state it corresponds to! </p>
 		<p>
-			Sightings from year <input type="number" id="button_start_year"/>
+			Aggregated UFO sightings from year <input type="number" id="button_start_year"/>
 			to
 			<input type="number" id="button_end_year"/>
 		</p>
@@ -166,20 +166,20 @@
 			let longVars = {
 				Num_Sightings: 'Number of UFO sightings',
 				Rel_Num_Sightings: 'Number of UFO sightings per resident',
-				Rel_Very_important: 'Religion: very important (in %)',
-				Rel_Somewhat_important: 'Religion: somewhat important (in %)',
-				Rel_Not_too_important: 'Religion: not too important (in %)',
-				Rel_Not_at_all_important: 'Religion: not at all important (in %)',
-				Rel_Dont_know: "Religion: don't know how important (in %)",
+				Rel_Very_important: 'Religion: very important (proportion)',
+				Rel_Somewhat_important: 'Religion: somewhat important (proportion)',
+				Rel_Not_too_important: 'Religion: not too important (proportion)',
+				Rel_Not_at_all_important: 'Religion: not at all important (proportion)',
+				Rel_Dont_know: 'Religion: don't know how important (proportion)',
 				Population_Density: 'Population density (population per square mile)',
-				Total_Resident_Population: 'Total population',
-				Illicit_Drug_Use: 'Illicit Drug Use (in %)',
-				Marijuana_Use: 'Marijuana Use (in %)',
-				Illicit_Drug_Use_Other_Than_Marijuana: 'Illicit Drug Use Other Than Marijuana (in %)',
-				Binge_Alcohol_Use: 'Binge Alcohol Use (in %)',
-				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder (in %)', 
-				Serious_Mental_Illness: 'Serious Mental Illness (in %)', 
-				Any_Mental_Illness: 'Any Mental Illness (in %)'
+				Total_Resident_Population: 'Population',
+				Illicit_Drug_Use: 'Illicit Drug Use (proportion)',
+				Marijuana_Use: 'Marijuana Use (proportion)',
+				Illicit_Drug_Use_Other_Than_Marijuana: 'Illicit Drug Use Other Than Marijuana (proportion)',
+				Binge_Alcohol_Use: 'Binge Alcohol Use (proportion)',
+				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder (proportion)', 
+				Serious_Mental_Illness: 'Serious Mental Illness (proportion)', 
+				Any_Mental_Illness: 'Any Mental Illness (proportion)'
 			};
 
 			// use Margin Convention to layout the SVG with an inner plotting region
