@@ -18,8 +18,8 @@
 
 <div class="{clazz} legend card">
 	{#if shared_state?.display_options.population}
-		<div style="background-color:{radialScale(0)}">Min: 0.6 people/km<sub>2</sub></div>
-		<div style="background-color:{radialScale(1)}; color:#adf0dd">Min: 833 people/km<sub>2</sub></div>	
+		<div style="background-color:{radialScale(0)}">Min: 0.6 people/mi<sub>2</sub></div>
+		<div style="background-color:{radialScale(1)}; color:#adf0dd">Max: 833 people/mi<sub>2</sub></div>	
 	{/if}
 	{#if shared_state?.display_options.religion}
 		<div style="background-color:{radialScale(0)}">Min: 9.03%</div>
