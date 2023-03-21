@@ -6,15 +6,15 @@
 	<link rel="icon" href="/ufo-web/favicon.png" />
 	<meta name="viewport" content="width=device-width" />
 	<meta http-equiv="content-security-policy" content="">
-		<link href="/ufo-web/internal/immutable/assets/_page-ce5f9796.css" rel="stylesheet">
-		<link rel="modulepreload" href="/ufo-web/internal/immutable/start-0e88bc3a.js">
+		<link href="/ufo-web/internal/immutable/assets/_page-2520fcaf.css" rel="stylesheet">
+		<link rel="modulepreload" href="/ufo-web/internal/immutable/start-da5e6587.js">
 		<link rel="modulepreload" href="/ufo-web/internal/immutable/chunks/index-f3733c48.js">
 		<link rel="modulepreload" href="/ufo-web/internal/immutable/chunks/singletons-109ceddc.js">
 		<link rel="modulepreload" href="/ufo-web/internal/immutable/chunks/index-6e6c57e8.js">
 		<link rel="modulepreload" href="/ufo-web/internal/immutable/components/layout.svelte-f0160a83.js">
 		<link rel="modulepreload" href="/ufo-web/internal/immutable/modules/pages/_layout.js-5612100c.js">
 		<link rel="modulepreload" href="/ufo-web/internal/immutable/chunks/_layout-79cb23d1.js">
-		<link rel="modulepreload" href="/ufo-web/internal/immutable/components/pages/_page.svelte-84ab721c.js">
+		<link rel="modulepreload" href="/ufo-web/internal/immutable/components/pages/_page.svelte-fb684a1a.js">
 
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 
@@ -33,7 +33,8 @@
 		
 		<button class="menu-button svelte-1v64djn">Days of the year
 		</button>
-		</div>
+		<button class="menu-button svelte-1v64djn">About
+		</button></div>
 </div></div>
 		<div class="details svelte-1sstto3"><div class=" details card svelte-1qgkmur"><center><p class="description svelte-1qgkmur">💡 Click on a state, airport, or UFO to see more information.
 			</p></center></div>
@@ -53,55 +54,316 @@
 				UFO sighting
 			</p></div>
 		
-		<div class="item svelte-ixxw6d"><input type="checkbox" class="svelte-ixxw6d">
+		<div class="item svelte-ixxw6d"><input type="checkbox" class="svelte-ixxw6d" checked>
 			<div class="airport_legend svelte-ixxw6d"></div>
 			<p class="desc svelte-ixxw6d">▶
 				Airports
 			</p></div>
 		
+		<div class="item svelte-ixxw6d"><p>  </p>
+			<p class="desc svelte-ixxw6d">▶ State Color</p></div>
+		
 		<div class="item svelte-ixxw6d"><input type="checkbox" class="svelte-ixxw6d" checked>
-			<div class="religion_legend svelte-ixxw6d"></div>
-			<p class="desc svelte-ixxw6d">Importance of Religion</p></div>
-		<div class="item svelte-ixxw6d"><input type="checkbox" class="svelte-ixxw6d">
 			<div class="city_legend svelte-ixxw6d"></div>
 			<p class="desc svelte-ixxw6d">Cities</p></div></div>
 </div></div>
 		<div class="time_slider svelte-1sstto3"><div class=" time svelte-15f6zd5">
-	<div class="dates svelte-15f6zd5"><input type="date" class="svelte-15f6zd5" value="2020-01-01">
+	<div class="dates svelte-15f6zd5"><input type="date" class="svelte-15f6zd5" value="1721-02-01">
 		<input type="date" class="svelte-15f6zd5" value="2023-01-01"></div>
 </div></div>
 		<div class="footer svelte-1sstto3"><div class="footer  svelte-iq9fkt">
 </div></div>
-		<div class="legend svelte-1sstto3"><div class=" legend card svelte-1erw2ue"><div style="background-color:rgb(173, 240, 221)" class="svelte-1erw2ue">0%</div><div style="background-color:rgb(137, 197, 180)" class="svelte-1erw2ue">25%</div><div style="background-color:rgb(100, 153, 138)" class="svelte-1erw2ue">50%</div><div style="background-color:rgb(64, 110, 97); color:#adf0dd" class="svelte-1erw2ue">75%</div><div style="background-color:rgb(27, 66, 55); color:#adf0dd" class="svelte-1erw2ue">100%</div>
+		<div class="legend svelte-1sstto3"><div class=" legend card svelte-1utqpr3">
+	<div style="background-color:rgb(170, 170, 170)" class="svelte-1utqpr3">Min: 9.03%</div>
+		<div style="background-color:rgb(102, 102, 102); color:#ffffff" class="svelte-1utqpr3">16.98%</div>
+		<div style="background-color:rgb(34, 34, 34); color:#ffffff" class="svelte-1utqpr3">Max: 24.93%</div>
+	
+	
 </div></div>
 		<div class="map svelte-1sstto3">
 
-<div class="loading-screen svelte-194q9uk"><div class="lds-ring svelte-nabib3" style="display: block"><div class="svelte-nabib3"></div>
+<div class="loading-screen svelte-v8jz6f"><div class="lds-ring svelte-nabib3" style="display: block"><div class="svelte-nabib3"></div>
 	<div class="svelte-nabib3"></div>
 	<div class="svelte-nabib3"></div>
 	<div class="svelte-nabib3"></div>
 </div></div>
 
-<div class=" svelte-194q9uk"><svg width="0" height="0" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" class="svelte-194q9uk"><g></g></svg>
+<div class=" svelte-v8jz6f"><svg width="0" height="0" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" class="svelte-v8jz6f"><g>
+							<circle class="airportdot svelte-v8jz6f" cx="83.24531896152206" cy="364.84390747743873" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="873.8739469696839" cy="216.47300539671278" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="633.4294102934732" cy="224.22284322281337" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="714.5325946755497" cy="407.75913026849946" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="34.62083236107043" cy="265.08708481804183" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="867.1236081550693" cy="216.8268317814625" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="152.41529103380964" cy="330.11373766483655" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="478.36862913765765" cy="437.7483518417382" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="790.717398324882" cy="516.7772525475785" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="348.56229592071685" cy="271.6000173463077" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="820.6109153788002" cy="572.1791971401809" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="871.5925150001601" cy="213.78333787196811" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="820.0798652752633" cy="267.9130177397808" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="96.99880033911734" cy="49.824640291016294" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="198.3385626494661" cy="400.27674359674666" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="909.5140175499788" cy="166.75969747539818" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="853.3599568337797" cy="239.2299668752437" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="510.9514867044096" cy="504.14093980699647" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="773.5635142079661" cy="363.01049243576915" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="827.6651411174935" cy="268.55528775011817" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="708.4830080030883" cy="210.62824604244895" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="542.6078275576431" cy="163.15786886888645" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="99.29906669604162" cy="396.94826027403406" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="822.3741469979238" cy="565.5155990191499" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="227.1408878194511" cy="234.38763579568047" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="596.6295137870178" cy="300.9961493700615" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="636.3536958501957" cy="228.38894789138374" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="265.5577123870968" cy="548.8763538704368" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="832.5028660012104" cy="260.0082636544869" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="81.08599564395718" cy="89.04013034891955" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="767.9478496654851" cy="530.5556133172856" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="695.3298732217722" cy="285.26585926620805" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="610.6681623265642" cy="500.5775399353661" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="37.89580686292743" cy="263.5805657698743" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="766.482628981702" cy="241.68621301259543" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="465.3239403410486" cy="499.1254267697342" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="40.67694812161568" cy="272.90101010477076" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="809.8700608759555" cy="341.37484889196753" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="667.0109573742541" cy="355.7426382886441" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="608.8855032898398" cy="385.29514086902384" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="449.2742506030536" cy="513.7841241130926" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="91.67089465119011" cy="373.1099139268176" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="520.3899359056927" cy="291.19197116626583" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="512.2368536562254" cy="511.8287631314855" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="736.0449345081943" cy="225.20087117058995" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="665.5546084740704" cy="273.16933043690403" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="481.88388225306034" cy="438.91798207927104" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="303.0240535782998" cy="377.96524330417003" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="631.6827214329552" cy="202.17290886957142" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="723.0789333486139" cy="259.75879017866464" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="213.50175668744436" cy="433.25872779025497" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="781.6507827946778" cy="182.1908735858225" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="111.93452599285037" cy="544.6478314102062" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="776.1994702713312" cy="471.6185050622978" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="884.8265431566762" cy="183.21381337369996" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="821.2429265466155" cy="551.7686807755641" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="468.6766184538765" cy="380.53551509304316" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="54.61611360316209" cy="245.08058371955133" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="851.2755728218083" cy="309.469919700323" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="90.07146502726755" cy="235.45147816596602" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="678.9665210447649" cy="307.29554110453864" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="98.5046537715545" cy="365.7754618274472" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="823.3834791944049" cy="169.95693344723998" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="798.7766849611244" cy="412.5040348892318" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="671.3427699813071" cy="414.2046690606154" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="828.8528016425962" cy="299.7916026112249" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="798.0683436787399" cy="174.93754127742875" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="779.7984675548516" cy="433.42599589314466" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="700.6808010983115" cy="264.9161861243009" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="169.25622373171592" cy="64.4287182753942" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="169.53778271025374" cy="158.71955762012794" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="899.2707450428093" cy="156.06495503672306" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="788.2773830000713" cy="560.3944856448751" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="912.8846145183203" cy="135.52104662987358" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="472.52836050409445" cy="328.9006522634703" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="97.6016310254193" cy="48.09752166434987" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="607.6511262649309" cy="199.63397373108626" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="537.4041821719167" cy="239.67153260059922" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="345.8701206328518" cy="295.63989077031624" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="567.8294029963939" cy="394.58426874003135" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="788.3962463269917" cy="340.0521666683808" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="500.0517616000549" cy="362.34286346673866" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="716.3455253268759" cy="357.40750978101164" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="725.012143165987" cy="480.8929288248579" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="769.3735438829318" cy="543.5892397728081" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="928.7134766258023" cy="103.51733971543717" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="751.4403038551624" cy="373.7614048574536" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="699.176158604671" cy="308.16305686300063" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="793.0135334957472" cy="499.2066258288903" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="388.90973299149334" cy="416.9976609158956" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="393.2343229752481" cy="381.61207510571387" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="696.4586865204674" cy="377.689150573432" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="774.9102273769797" cy="392.3313596908257" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="300.0458234883098" cy="129.7149805829232" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="668.5589527274118" cy="389.79768227165266" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="569.9261340512677" cy="230.51604245615863" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="624.9500888335702" cy="167.57549577139048" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="743.7970221557927" cy="362.36602586536924" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="790.9107277267087" cy="508.7674486057391" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="117.39620804829062" cy="515.1657868232978" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="544.7267418163976" cy="337.71192365399054" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="648.8329064136366" cy="481.96273388028067" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="660.5263762848384" cy="227.8768719532884" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="555.0025916449385" cy="184.91393545807534" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="750.8336634400155" cy="293.3252942704245" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="681.1776028687697" cy="242.43886503522708" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="633.2495050639609" cy="489.6440708323173" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="592.5677165260851" cy="489.3007749332029" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="610.9495837338152" cy="447.6983839317893" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="590.6542324890031" cy="239.43339369817681" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="782.9949094893911" cy="312.44465530886" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="702.7923902081498" cy="225.79648699648055" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="472.20180047976226" cy="439.42837775881014" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="467.7593279641701" cy="554.1071475604925" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="845.0352394767335" cy="305.22426654385015" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="557.3225473899442" cy="118.19734175549229" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="605.556762295832" cy="256.48370289461195" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="742.8438064588315" cy="338.46787805590293" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="619.1077416983023" cy="259.8202836843202" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="613.1629743407157" cy="220.85629333804343" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="539.4238047618742" cy="447.6565027115339" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="325.4658372362029" cy="199.26025996647627" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="527.974183617508" cy="381.8186511188927" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="680.9666838704811" cy="442.2077988091355" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="761.2177041211465" cy="407.5826304489152" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="451.4993615142843" cy="412.2983650169783" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="607.0667939597827" cy="275.198966302985" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="491.6235354697085" cy="220.29367174458798" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="692.6936829321742" cy="182.29279379139086" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="576.5583076128712" cy="497.50927808302754" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="591.8073447205758" cy="303.262173193113" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="573.3901276905514" cy="445.09190072643366" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="586.038669043594" cy="217.86997765918397" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="682.59173237956" cy="483.64342319490504" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="723.0446799137792" cy="264.02172911258856" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="473.0810951034588" cy="435.60965497697316" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="761.4452103945601" cy="205.62171291555785" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="524.9160986931454" cy="340.29246492719835" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="830.7817910888461" cy="268.8876877294691" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="46.26760320909284" cy="253.0501187970891" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="703.8278537690926" cy="266.2821510453782" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="734.0411102878983" cy="295.9514937174316" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="92.58794947004708" cy="55.8704588104431" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="606.2860922880614" cy="305.06737354194524" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="546.8631695301397" cy="106.28031303584362" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="853.2155991048892" cy="256.6744195707678" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="97.79646123959026" cy="345.6631661008373" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="639.5864362103999" cy="415.16336073501407" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="847.5890897547519" cy="305.8375768663576" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="472.6086501521552" cy="380.1028414847225" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="768.589963404447" cy="533.3453982182185" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="437.57222774508557" cy="396.3573819159401" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="306.9075231332664" cy="428.6957751588275" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="542.4940007218956" cy="446.3238847573782" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="191.85756093745874" cy="396.8268929373679" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="712.1227566996214" cy="401.63595159517945" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="702.0561788560851" cy="491.04972453620667" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="167.40141489408745" cy="64.11087312847303" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="733.0547028212966" cy="428.3511731382607" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="453.03925911479405" cy="513.9690284377391" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="362.13653402437325" cy="398.6624317228285" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="424.6179187284169" cy="447.2300834857766" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="403.5467813763557" cy="515.9943303040752" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="48.477553930819056" cy="337.3243131774859" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="172.68995732421115" cy="171.5397477752664" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="786.7532457708996" cy="389.6354896333148" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="463.324715238037" cy="358.76949717487287" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="826.9998814276461" cy="350.6975227866652" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="541.0009490863009" cy="303.78455986914594" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="59.89019636272633" cy="236.0604707830464" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="665.7982057504958" cy="251.7213875317234" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="853.3166892052659" cy="239.2192487380487" r="0.8"></circle>
+							<circle class="airportdot svelte-v8jz6f" cx="716.9123734716986" cy="418.9553777246027" r="0.8"></circle></g></svg>
 </div></div></main>
-	<div class="about hidden svelte-1sstto3"><div class="about card svelte-121ajr9"><h1 class="svelte-121ajr9">About</h1>
-	<div><div class="projectdesc svelte-121ajr9">Ufos. This is us.
-		</div>
-		<div class="groupmembers svelte-121ajr9"><div class="member svelte-121ajr9"><img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/alien.png" class="svelte-121ajr9">
-				<p>Albin Kempe</p></div>
-			<div class="member svelte-121ajr9"><img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/alien.png" class="svelte-121ajr9">
-				<p>Jonathan Cilli</p></div>
-			<div class="member svelte-121ajr9"><img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/alien.png" class="svelte-121ajr9">
-				<p>Pedro Burgos</p></div>
-			<div class="member svelte-121ajr9"><img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/alien.png" class="svelte-121ajr9">
-				<p>Annika Oehri</p></div>
-			<div class="member svelte-121ajr9"><img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/alien.png" class="svelte-121ajr9">
-				<p>Frawa Vetterli</p></div></div></div>
-	
+	<div class="about hidden svelte-1sstto3"><div class="about card svelte-xqtvp8"><h1 class="title svelte-xqtvp8">About</h1>
+	<div class="projectdesc svelte-xqtvp8"><h2 class="svelte-xqtvp8">Project Description</h2>
+		<p class="svelte-xqtvp8">Have you ever wondered about extraterrestial activity on earth? Or do you think it&#39;s all made
+			up and imagined? Or are you still torn between the two? Either way, the Useless Fisualization
+			Operation was made for you! Our objective was to allow exploring reports of UFO sightings in
+			the USA and uncover underlying patterns.
+		</p>
+		<p class="svelte-xqtvp8">With the help of our interactive map you can investigate the locations of UFO sightings,
+			filter them, and get detailed reports on demand as well as images if available. By including
+			other data such as airport locations, you can decide for yourself if you think the two might
+			be correlated. Relationships with further datasets can be explored via a scatterplot, where
+			you can filter by years, in case you want to match the time frames of the two datasets.
+		</p>
+		<p class="svelte-xqtvp8">To further incorporate the temporal dimension of the data, we have a heatmap showing the
+			frequency of UFO sightings per date. Come see for yourself, we hope your time here is out of
+			this world.
+		</p>
+		<p class="disclaimer svelte-xqtvp8">Please note that we make no claims on the validity of the reports or the relationships with
+			other data, we merely wanted to create a framework for easy and fun exploration.
+		</p></div>
+	<div class="team svelte-xqtvp8"><h2 class="svelte-xqtvp8">Team</h2>
+		<div class="groupmembers svelte-xqtvp8"><div class="member svelte-xqtvp8"><img src="albin.png" class="svelte-xqtvp8">
+				<p class="name svelte-xqtvp8">Albin Kempe</p>
+				<p class="role svelte-xqtvp8">Front-End Developer <br> UX/UI Designer</p></div>
+			<div class="member svelte-xqtvp8"><img src="annika.png" class="svelte-xqtvp8">
+				<p class="name svelte-xqtvp8">Annika Oehri</p>
+				<p class="role svelte-xqtvp8">Data Engineer <br> Front-End Developer</p></div>
+			<div class="member svelte-xqtvp8"><img src="frawa.png" class="svelte-xqtvp8">
+				<p class="name svelte-xqtvp8">Frawa Vetterli</p>
+				<p class="role svelte-xqtvp8">Data Engineer <br>Front-End Developer <br> UX/UI Designer</p></div>
+			<div class="member svelte-xqtvp8"><img src="jonathan.jpeg" class="svelte-xqtvp8">
+				<p class="name svelte-xqtvp8">Jonathan Cilli</p>
+				<p class="role svelte-xqtvp8">Data Engineer <br> Front-End Developer <br> UX/UI Designer</p></div>
+			<div class="member svelte-xqtvp8"><img src="pedro.jpeg" class="svelte-xqtvp8">
+				<p class="name svelte-xqtvp8">Pedro Burgos</p>
+				<p class="role svelte-xqtvp8">Front-End Developer <br> UX/UI Designer</p></div></div></div>
+	<div class="data svelte-xqtvp8"><h2 class="svelte-xqtvp8">Data</h2>
+		<p class="svelte-xqtvp8">The main data on UFO sightings was scraped from the NATIONAL UFO Reporting Center Online
+			Database NUFORC [1] on 3th February 2023. We took all fields except for the image links and
+			the date of the sighting from the summary, whereas we accessed the report itself to get the
+			image and the complete date. We geolocated our datapoints and discarded all sightings whose
+			location we could not pinpoint. For the scatter plot and the heatmap, all dates not following
+			the month/day/year convention were discarded.
+		</p>
+		<p class="svelte-xqtvp8">A paper by Plaza del Olmo [2] states that their is a sublineal relationship between UFO
+			sightings and population density. Based on that, we decided to incorporate absolute population
+			and population density data from the United Sates Census Bureau [3] into our visualization.
+			The data includes a time dimension with steps of decades, going from 1910 to 2020. It was
+			preprocessed by deleting all &quot;regions&quot; datapoints (e.g. midwest) and only keeping columns
+			&quot;state&quot;, &quot;resident population&quot; and &quot;population density&quot; where the latter is given as number of
+			residents per square mile. For the scatterplot, the average between all decades was taken. For
+			calculating the number of UFO sightings per person, state and year, we used the interpolated
+			values for years originally not in the dataset.
+		</p>
+		<p class="svelte-xqtvp8">Furthermore, a paper by Irwin [4] describes that their might be some relationship between UFO
+			sightings and religiosity, although not a proportional one. Therefore, we chose to include a
+			dataset on religiosity from 2014 [5] which contains the percentage of people that find
+			religion very important, somewhat important, not too important, not at all important and don&#39;t
+			know how important. Preprocessing was done by changing &lt; 1% to 0 and changing percentages
+			to proportions in general (eg. 77% to 0.77).
+		</p>
+		<p class="svelte-xqtvp8">During discussions with other students, they said that they would also be interested in a
+			visualization of the relationship between UFO sightings and drug use which is why different
+			drug use metrics are also included from the Substance Abuse and Mental Health Services
+			Administration&#39;s National Survey on Drug Use and Health (NSDUH) from 2021 [6]. The metrics
+			include Illicit Drug Use in the Past Month, Marijuana Use in the Past Month, Illicit Drug Use
+			Other Than Marijuana in the Past Month, Binge Alcohol Use in the Past Month, Illicit Drug Use
+			Disorder in the Past Year, Serious Mental Illness in the Past Year and Any Mental Illness in
+			the Past Year. All data is from people of age 18 or older and show the proportion of people
+			which the specific metric holds for.
+		</p>
+		<p class="svelte-xqtvp8">For all these datasets additional to the UFO dataset, we changed state names to state
+			abbreviations to create consistent keys.
+		</p>
+		<p class="svelte-xqtvp8">Because planes are listed as often confused with UFOs [7], we chose to include airport
+			locations, too. Our US-airport data [8] comes from October 2020. This dataset was preprocessed
+			by simply keeping the columns name, type, latitude_deg, longitude_deg and state, where state
+			was derived from the column iso_region. We deleted obvious duplicate datapoints and datapoints
+			where the latitude or longitude were obviously outside of US territory, e.g. 0.
+		</p>
+		<p class="svelte-xqtvp8">The source code and the used datasets can be found on GitHub [9]. In this project, we learnt
+			to collaborate with each other and discuss our thoughts and improvements suggestions on our
+			visualization. The presentations in the class taught us how to defend and justify our design
+			choices and helped us get valuable feedback to improve our work further. The user study helped
+			us see the perspective of people without computer science or visualization background.
+		</p>
+		<div class="sources svelte-xqtvp8"><p class="svelte-xqtvp8">[1] <a href="https://nuforc.org/databank/">https://nuforc.org/databank/</a></p>
+			<p class="svelte-xqtvp8">[2] Plaza del Olmo, Julio. (2015). A Review on the Relation between Population Density and
+				UFO Sightings. Journal of Scientific Exploration, Vol. 29, No. 3, pp. 425-448. <a href="https://www.scientificexploration.org/docs/29/jse_29_3_PlazadelOlmo.pdf">https://www.scientificexploration.org/docs/29/jse_29_3_PlazadelOlmo.pdf</a></p>
+			<p class="svelte-xqtvp8">[3] <a href="https://www.researchgate.net/publication/239592095_Belief_in_the_Paranormal_A_Review_of_the_Empirical_Literature">https://www.census.gov/data/tables/time-series/dec/density-data-text.html</a></p>
+			<p class="svelte-xqtvp8">[4] Irwin, Harvey. (1993). Belief in the Paranormal: A Review of the Empirical Literature.
+				Journal of American Society for Psychical Research. 87. <a href="https://www.researchgate.net/publication/239592095_Belief_in_the_Paranormal_A_Review_of_the_Empirical_Literature">https://www.researchgate.net/publication/239592095_Belief_in_the_Paranormal_A_Review_of_the_Empirical_Literature</a></p>
+			<p class="svelte-xqtvp8">[5] <a href="https://www.pewresearch.org/religion/religious-landscape-study/compare/importance-of-religion-in-ones-life/by/state/">https://www.pewresearch.org/religion/religious-landscape-study/compare/importance-of-religion-in-ones-life/by/state/</a></p>
+			<p class="svelte-xqtvp8">[6] <a href="https://www.samhsa.gov/data/report/2021-nsduh-state-prevalence-estimates">https://www.samhsa.gov/data/report/2021-nsduh-state-prevalence-estimates</a></p>
+			<p class="svelte-xqtvp8">[7] <a href="https://www.livescience.com/32849-7-ways-to-generate-a-great-space-hoax.html">https://www.livescience.com/32849-7-ways-to-generate-a-great-space-hoax.html</a></p>
+			<p class="svelte-xqtvp8">[8] <a href="https://data.world/ourairports/989444cc-447b-4030-a866-57fcd6c2d3ee">https://data.world/ourairports/989444cc-447b-4030-a866-57fcd6c2d3ee</a></p>
+			<p class="svelte-xqtvp8">[9] <a href="https://github.com/useless-fisualization-operation">https://github.com/useless-fisualization-operation</a></p></div></div>
 </div></div>
 	<div class="chart hidden svelte-1sstto3"><div class="scatterplot svelte-w7lv0o"><style>circle {
 			fill: var(--accent);
-			opacity: 0.6;
+			opacity: 0.8;
 		}
 
 		line {
@@ -113,19 +375,18 @@
 			font-size: 0.8em;
 		}
 	</style>
-	<h4 class="title">Relationship between UFO Sightings and Other Attributes</h4>
+	<h4 class="title">Relationship with Other Attributes on State Level</h4>
 
-	<div id="controls"><p class="svelte-w7lv0o">Sightings from year <input type="number" id="button_start_year" onkeydown="return false" class="svelte-w7lv0o">
+	<div id="controls"><p class="svelte-w7lv0o">Hover over a dot in the scatterplot to see which state it corresponds to!</p>
+		<p class="svelte-w7lv0o">Aggregated UFO sightings from year <input type="number" id="button_start_year" class="svelte-w7lv0o">
 			to
-			<input type="number" id="button_end_year" onkeydown="return false" class="svelte-w7lv0o"></p>
+			<input type="number" id="button_end_year" class="svelte-w7lv0o"></p>
 		<p class="svelte-w7lv0o">First Attribute (X axis):
 			<span class="xvar"><select class="xvar svelte-w7lv0o" name="xvar"></select></span></p>
 		<p class="svelte-w7lv0o">Second Attribute (Y axis):
 			<span class="yvar"><select class="yvar svelte-w7lv0o" name="yvar"></select></span></p></div>
 
 	<svg id="scatter-container" class="svelte-w7lv0o"></svg>
-
-	
 
 	<script>function sleep(time) {
 			return new Promise((resolve) => {
@@ -138,61 +399,59 @@
 		sleep(3000).then(() => {
 			// how long transitions last (msec)
 			let transitionTime = 2000;
-			let state_indices =
-				//changed for full rel
-				[
-					'AK',
-					'AL',
-					'AR',
-					'AZ',
-					'CA',
-					'CO',
-					'CT',
-					'DC',
-					'DE',
-					'FL',
-					'GA',
-					'HI',
-					'IA',
-					'ID',
-					'IL',
-					'IN',
-					'KS',
-					'KY',
-					'LA',
-					'MA',
-					'MD',
-					'ME',
-					'MI',
-					'MN',
-					'MO',
-					'MS',
-					'MT',
-					'NC',
-					'ND',
-					'NE',
-					'NH',
-					'NJ',
-					'NM',
-					'NV',
-					'NY',
-					'OH',
-					'OK',
-					'OR',
-					'PA',
-					'RI',
-					'SC',
-					'SD',
-					'TN',
-					'TX',
-					'UT',
-					'VA',
-					'VT',
-					'WA',
-					'WI',
-					'WV',
-					'WY'
-				];
+			let state_indices = [
+				'AK',
+				'AL',
+				'AR',
+				'AZ',
+				'CA',
+				'CO',
+				'CT',
+				'DC',
+				'DE',
+				'FL',
+				'GA',
+				'HI',
+				'IA',
+				'ID',
+				'IL',
+				'IN',
+				'KS',
+				'KY',
+				'LA',
+				'MA',
+				'MD',
+				'ME',
+				'MI',
+				'MN',
+				'MO',
+				'MS',
+				'MT',
+				'NC',
+				'ND',
+				'NE',
+				'NH',
+				'NJ',
+				'NM',
+				'NV',
+				'NY',
+				'OH',
+				'OK',
+				'OR',
+				'PA',
+				'RI',
+				'SC',
+				'SD',
+				'TN',
+				'TX',
+				'UT',
+				'VA',
+				'VT',
+				'WA',
+				'WI',
+				'WV',
+				'WY'
+			];
 
 			let longStates = {
 				AL: 'Alabama',
@@ -249,22 +508,23 @@
 			};
 
 			let longVars = {
-				Num_Sightings: 'Number of UFO sightings',
-				Rel_Num_Sightings: 'Number of UFO sightings per resident', //changed for full rel
-				Rel_Very_important: 'Religion: very important',
-				Rel_Somewhat_important: 'Religion: somewhat important',
-				Rel_Not_too_important: 'Religion: not too important',
-				Rel_Not_at_all_important: 'Religion: not at all important',
-				Rel_Dont_know: "Religion: don't know how important",
-				Population_Density: 'Population density',
-				Total_Resident_Population: 'Total population',
-				Illicit_Drug_Use: 'Illicit Drug Use', //changed for full rel
-				Marijuana_Use: 'Marijuana Use', //changed for full rel
-				Illicit_Drug_Use_Other_Than_Marijuana: 'Illicit Drug Use Other Than Marijuana', //changed for full rel
-				Binge_Alcohol_Use: 'Binge Alcohol Use', //changed for full rel
-				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder', //changed for full rel
-				Serious_Mental_Illness: 'Serious Mental Illness', //changed for full rel
-				Any_Mental_Illness: 'Any Mental Illness' //changed for full rel
+				Num_Sightings: 'Number of UFO sightings per state',
+				Rel_Num_Sightings: 'Number of UFO sightings per resident',
+				Rel_Very_important: 'Religion: very important (proportion of people)',
+				Rel_Somewhat_important: 'Religion: somewhat important (proportion of people)',
+				Rel_Not_too_important: 'Religion: not too important (proportion of people)',
+				Rel_Not_at_all_important: 'Religion: not at all important (proportion of people)',
+				Rel_Dont_know: "Religion: don't know how important (proportion of people)",
+				Population_Density: 'Population density (population per square mile)',
+				Total_Resident_Population: 'Population',
+				Illicit_Drug_Use: 'Illicit Drug Use (proportion of people)',
+				Marijuana_Use: 'Marijuana Use (proportion of people)',
+				Illicit_Drug_Use_Other_Than_Marijuana:
+					'Illicit Drug Use Other Than Marijuana (proportion of people)',
+				Binge_Alcohol_Use: 'Binge Alcohol Use (proportion of people)',
+				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder (proportion of people)',
+				Serious_Mental_Illness: 'Serious Mental Illness (proportion of people)',
+				Any_Mental_Illness: 'Any Mental Illness (proportion of people)'
 			};
 
 			// use Margin Convention to layout the SVG with an inner plotting region
@@ -290,14 +550,10 @@
 			// load data
 			let url_other =
 				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/scatterplot_data_full_relative_drugsincl.csv';
-			//let url_other = "https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/scatterplot_data_full_relative.csv"
-			//let url_other = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/scatterplot_data.csv"
-			//let url_sight = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/num_sightings_per_state_per_year.csv"
-			//let url_sight = "https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/num_sightings_per_state_per_year.csv"
 			let url_sight =
 				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/relative_num_sightings_per_state_per_year_timespan_rows_full.csv';
 			let url_sight_abs =
-				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/num_sightings_per_state_per_year_timespan_rows_full.csv'; //changed for x axis
+				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/num_sightings_per_state_per_year_timespan_rows_full.csv';
 			d3.csv(url_other, cleanup_data, function (error, d_other) {
 				if (error) {
 					console.log(error);
@@ -319,7 +575,7 @@
 				});
 			});
 
-			// d3.csv() reads in everything as a string.  convert all string numbers to numbers.
+			//convert all strings that represent numbers to numbers.
 			function cleanup_data(d) {
 				for (k of Object.keys(d)) {
 					if (k != 'State') d[k] = +d[k];
@@ -330,14 +586,13 @@
 			// declare some variables that will be assigned in functions below
 			let d_other_global = [];
 			let d_sight_global = [];
-			let d_sight_abs_global = []; //changed for x axis
+			let d_sight_abs_global = [];
 			let xScale, yScale;
 			let xAxis, yAxis;
 			let min_year = 1910,
 				max_year = 2023;
 
 			function get_state_year_idx(state, start_year, end_year) {
-				//changed for full rel
 				state_idx = state_indices.indexOf(state);
 				start_year_idx = start_year - min_year;
 				end_year_idx = end_year - min_year;
@@ -349,37 +604,41 @@
 				);
 			}
 
+			const f = (formatValue = d3.format('.3s'));
+
+			function axis_label_format(d) {
+				if (d == 0) {
+					return 0;
+				}
+				if (d >= 1000000) {
+					return d / 1000000 + ' M.';
+				}
+				if (d <= 0.001) {
+					return f(d);
+				}
+				return d;
+			}
+
 			// setup() is for setting up plot elements once at the beginning
 			// update() will be used for the initial draw and for redrawing upon change
-			//function setup(d_other, d_sight) {
 			function setup(d_other, d_sight, d_sight_abs) {
-				//changed for x axis
 				d_other_global = d_other;
 				d_sight_global = d_sight;
-				d_sight_abs_global = d_sight_abs; //changed for x axis
+				d_sight_abs_global = d_sight_abs;
 
 				//State is not quantitative, so it shouldn't be selected
-				//let variables = Object.keys(d_other[0]).filter(d => d != 'model')
-				//let variables = Object.keys(d_other[0]).filter(d => d != 'State' && d!="Rel_Sample_size" & d!="Num_Sightings")
 				let variables = Object.keys(d_other[0]).filter(
 					(d) =>
 						d != 'State' &&
 						(d != 'Rel_Sample_size') & (d != 'Num_Sightings') & (d != 'Rel_Num_Sightings')
-				); //changed for full rel
-				let x_variables = ['Num_Sightings', 'Rel_Num_Sightings']; //changed for x axis
+				);
+				let x_variables = ['Num_Sightings', 'Rel_Num_Sightings'];
 
 				// border around plotting region
-				/*scatterInner
-			.append('rect')
-			.attr('width', innerWidth)
-			.attr('height', innerHeight)
-			.attr('fill', 'transparent')
-			//.attr('stroke', 'black')*/
 
 				// populate selectors
-				d3.select('select.xvar') //changed for x axis
-					//.on('change', () => update(d_other_global, d_sight_global)) // make sure .on() is above .selectAll()
-					.on('change', () => update(d_other_global, d_sight_global, d_sight_abs_global)) //changed for x axis
+				d3.select('select.xvar')
+					.on('change', () => update(d_other_global, d_sight_global, d_sight_abs_global))
 					.selectAll('option')
 					.data(x_variables)
 					.enter()
@@ -388,8 +647,7 @@
 					.text((d) => longVars[d]);
 
 				d3.select('select.yvar')
-					//.on('change', () => update(d_other_global, d_sight_global)) // make sure .on() is above .selectAll()
-					.on('change', () => update(d_other_global, d_sight_global, d_sight_abs_global)) //changed for x axis
+					.on('change', () => update(d_other_global, d_sight_global, d_sight_abs_global))
 					.selectAll('option')
 					.data(variables)
 					.enter()
@@ -397,18 +655,16 @@
 					.attr('value', (d) => d)
 					.text((d) => longVars[d]);
 
-				d3.select('#button_start_year').on('input', () => {
-					//update(d_other_global, d_sight_global); //changed for x axis
+				d3.select('#button_start_year').on('change', () => {
 					update(d_other_global, d_sight_global, d_sight_abs_global);
 				});
 
-				d3.select('#button_end_year').on('input', () => {
-					//update(d_other_global, d_sight_global);//changed for x axis
+				d3.select('#button_end_year').on('change', () => {
 					update(d_other_global, d_sight_global, d_sight_abs_global);
 				});
 
 				// initialize values of select elements.
-				d3.select('select.xvar').property('value', 'Rel_Num_Sightings'); //changed for x axis
+				d3.select('select.xvar').property('value', 'Rel_Num_Sightings');
 				d3.select('select.yvar').property('value', 'Population_Density');
 				d3.select('#button_start_year').property('value', min_year);
 				d3.select('#button_end_year').property('value', max_year);
@@ -425,59 +681,44 @@
 				d3.select('#button_end_year').property('max', max_year);
 
 				// read current selections
-				//let xvar = 'Num_Sightings'
-				//let xvar = 'Rel_Num_Sightings' //changed for full rel
-				let xvar = d3.select('select.xvar').property('value'); //changed for x axis
+				let xvar = d3.select('select.xvar').property('value');
 				let yvar = d3.select('select.yvar').property('value');
 				let start_year = +d3.select('#button_start_year').property('value');
 				let end_year = +d3.select('#button_end_year').property('value');
 
 				//change Num_sightings in d_other s.t. they reflect the chosen year range
 				d_other.map((d) => {
-					//d_sight_curr = d_sight.filter(d_s => d_s["Year"] == start_year && d_s["State"]==d["State"]);
-					//d_sight_curr = d_sight.filter(d_s => d_s["Start_Year"] == start_year && d_s["Stop_Year"] == end_year && d_s["State"]==d["State"]);
-					//d_sight_curr = [d_sight[get_state_year_idx(d["State"], start_year, end_year)]]//changed for full rel
 					if (xvar == 'Num_Sightings') {
-						//changed for x axis
 						d_sight_curr = [d_sight_abs[get_state_year_idx(d['State'], start_year, end_year)]];
 					} else {
 						d_sight_curr = [d_sight[get_state_year_idx(d['State'], start_year, end_year)]];
 					}
-
-					//d["Num_Sightings"] = d_sight_curr[0]["Num_Sightings"];
-					//d["Rel_Num_Sightings"] = d_sight_curr[0]["Rel_Num_Sightings"]; //changed for full rel
-					d['Rel_Num_Sightings'] = d_sight_curr[0][xvar]; //changed for x axis
+					d['Rel_Num_Sightings'] = d_sight_curr[0][xvar];
 					return;
 				});
 
 				// create scales based on selections
 				// the domain will be modified when selections change
 				if (xvar == 'Num_Sightings') {
-					//changed for x axis
 					x_domain_max = d3.max([1, d3.max(d_other.map((d) => d['Rel_Num_Sightings']))]);
 				} else {
 					x_domain_max = d3.max(d_other.map((d) => d['Rel_Num_Sightings']));
 				}
 
-				xScale = d3
-					.scaleLinear()
-					//.domain([0, d3.max([1, d3.max(d_other.map(d => d[xvar]))])])//changed for full rel
-					//.domain([0, 1, d3.max(d_other.map(d => d[xvar]))]) //changed for x axis, evtl Fehler drin und man müsste 1 sowieso rausnehmen
-					.domain([0, x_domain_max]) //changed for x axis
-					.range([0, innerWidth]);
-				xAxis = d3.axisBottom(xScale).tickSize(-innerHeight);
+				xScale = d3.scaleLinear().domain([0, x_domain_max]).range([0, innerWidth]);
+				xAxis = d3.axisBottom(xScale).tickSize(-innerHeight).tickFormat(axis_label_format);
 
 				yScale = d3
 					.scaleLinear()
 					.domain([0, d3.max(d_other.map((d) => d[yvar]))])
 					.range([0, innerHeight].reverse());
-				yAxis = d3.axisLeft(yScale).tickSize(-innerWidth);
+				yAxis = d3.axisLeft(yScale).tickSize(-innerWidth).tickFormat(axis_label_format);
 
 				// create axes
 				scatterInner
 					.append('g')
 					.attr('transform', 'translate(' + 0 + ', ' + innerHeight + ')')
-					.attr('class', 'x axis') // note: two classes; handy!
+					.attr('class', 'x axis')
 					.call(xAxis);
 
 				scatterInner.append('g').attr('class', 'y axis').call(yAxis);
@@ -498,38 +739,30 @@
 					.attr('text-anchor', 'middle')
 					.attr('transform', `rotate(-90 ${margins.left / 2} ${margins.top + innerHeight / 2})`)
 					.text(longVars[yvar]);
-
-				//var slider = createD3RangeSlider(0, 10, "#slider-container");
-				/*
-			rangeSlider(document.querySelector('#slider-container'), {
-			//orientation: 'vertical'
-			// min value
-			min: 1910,
-			// max value
-			max: 2023,
-			
-			// step size
-			step: 1,
-			});
-
-			d3.select("div#slider3")
-						.call(d3.slider().axis(true).min(0).max(10).value([2,4])
-						.on("slide", function(evt,value) {
-							dispatch.filter(value);
-							d3.select("#slider3textmin").text(Math.floor(value[0]));
-							d3.select("#slider3textmax").text(Math.floor(value[1]))
-						}))*/
 			}
 
 			// update elements that get modified when selections change
-			//function update(d_other, d_sight) {
 			function update(d_other, d_sight, d_sight_abs) {
-				//let xvar = 'Num_Sightings'
-				//let xvar = 'Rel_Num_Sightings' //changed for full res
-				let xvar = d3.select('select.xvar').property('value'); //changed for x axis
+				let xvar = d3.select('select.xvar').property('value');
 				let yvar = d3.select('select.yvar').property('value');
 				let start_year = +d3.select('#button_start_year').property('value');
 				let end_year = +d3.select('#button_end_year').property('value');
+
+				if (start_year < min_year) {
+					d3.select('#button_start_year').property('value', min_year);
+				}
+				if (end_year > max_year) {
+					d3.select('#button_end_year').property('value', max_year);
+				}
+				if (start_year > end_year && end_year >= min_year) {
+					d3.select('#button_start_year').property('value', end_year);
+				}
+				if (start_year > end_year && end_year < min_year) {
+					d3.select('#button_start_year').property('value', min_year);
+					d3.select('#button_end_year').property('value', min_year);
+				}
+				start_year = +d3.select('#button_start_year').property('value');
+				end_year = +d3.select('#button_end_year').property('value');
 
 				d3.select('#button_start_year').property('min', min_year);
 				d3.select('#button_start_year').property(
@@ -542,37 +775,26 @@
 				);
 				d3.select('#button_end_year').property('max', max_year);
 
-				//change Num_sightings in d_other s.t. they refelct the chosen year range
+				//change Num_sightings in d_other s.t. they reflect the chosen year range
 				d_other.map((d) => {
-					//d_sight_curr = d_sight.filter(d_s => d_s["Year"] == start_year && d_s["State"]==d["State"]);
-					//d_sight_curr = d_sight.filter(d_s => d_s["Start_Year"] == start_year && d_s["Stop_Year"] == end_year && d_s["State"]==d["State"]);
-					//d_sight_curr = [d_sight[get_state_year_idx(d["State"], start_year, end_year)]]//changed for full rel
-
 					if (xvar == 'Num_Sightings') {
-						//changed for x axis
 						d_sight_curr = [d_sight_abs[get_state_year_idx(d['State'], start_year, end_year)]];
 					} else {
 						d_sight_curr = [d_sight[get_state_year_idx(d['State'], start_year, end_year)]];
 					}
-
-					//d["Num_Sightings"] = d_sight_curr[0]["Num_Sightings"];
-					//d["Rel_Num_Sightings"] = d_sight_curr[0]["Rel_Num_Sightings"];//changed for full res
-					d['Rel_Num_Sightings'] = d_sight_curr[0][xvar]; //changed for x axis
+					d['Rel_Num_Sightings'] = d_sight_curr[0][xvar];
 					return;
 				});
 
 				// update scales
 				// the domain will be modified when selections change
 				if (xvar == 'Num_Sightings') {
-					//changed for x axis
 					x_domain_max = d3.max([1, d3.max(d_other.map((d) => d['Rel_Num_Sightings']))]);
 				} else {
 					x_domain_max = d3.max(d_other.map((d) => d['Rel_Num_Sightings']));
 				}
 
-				//xScale.domain([0, d3.max([1, d3.max(d_other.map(d => d[xvar]))])])//changed for full rel
-				//xScale.domain([0, d3.max(d_other.map(d => d[xvar]))])
-				xScale.domain([0, x_domain_max]); //changed for x axis
+				xScale.domain([0, x_domain_max]);
 				yScale.domain([0, d3.max(d_other.map((d) => d[yvar]))]);
 
 				// update axes
@@ -587,12 +809,12 @@
 					.append('circle')
 					.attr('cx', function (d) {
 						return xScale(d['Rel_Num_Sightings']);
-					}) // changed for x axis
+					})
 					.attr('cy', function (d) {
 						return yScale(d[yvar]);
 					})
 					.attr('r', 4)
-					.append('title') // TITLE APPENDED HERE
+					.append('title') // display state name when hovering over point
 					.text(function (d) {
 						return longStates[d['State']];
 					});
@@ -606,13 +828,13 @@
 					.duration(transitionTime)
 					.attr('cx', function (d) {
 						return xScale(d['Rel_Num_Sightings']);
-					}) // changed for x axis
+					})
 					.attr('cy', function (d) {
 						return yScale(d[yvar]);
 					});
 
 				// axis labels
-				scatterOuter //changed for x axis
+				scatterOuter
 					.selectAll('text.x.axis') // select text elements with two both classes
 					.transition()
 					.duration(transitionTime)
@@ -628,8 +850,13 @@
 	</script>
 </div></div>
 	<div class="heatmap hidden svelte-1sstto3"><div class="heatmap svelte-t347tn"><h4 class="title">UFO sightings per day of the year</h4>
-
+	Hover over a day or use filters to find out more!
 	<div id="my_dataviz"></div>
+	year: <input type="string" id="year_txt"> (&quot;all&quot; for all)
+	<br>
+	<select class="stateDrop" name="stateDrop"></select>
+
+	
 	<script>function sleep(time) {
 			return new Promise((resolve) => {
 				setTimeout(() => {
@@ -642,7 +869,7 @@
 			// set the dimensions and margins of the graph
 			var margin = { top: 30, right: 120, bottom: 40, left: 50 },
 				width = 750 - margin.left - margin.right,
-				height = 450 - margin.top - margin.bottom;
+				height = 550 - margin.top - margin.bottom;
 
 			// append the svg object to the body of the page
 			var svg = d3
@@ -655,7 +882,6 @@
 
 			// Labels of row and columns
 			var myGroups = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-			var months = ['Jan', 'Feb', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 			var myVars = [
 				'1',
 				'2',
@@ -718,9 +944,120 @@
 				'November',
 				'December'
 			];
+			let days_per_month=[31,29,31,30,31,30,31,31,30,31,30,31]
+			let state_indices =
+				//changed for full rel
+				[
+					'AK',
+					'AL',
+					'AR',
+					'AZ',
+					'CA',
+					'CO',
+					'CT',
+					'DC',
+					'DE',
+					'FL',
+					'GA',
+					'HI',
+					'IA',
+					'ID',
+					'IL',
+					'IN',
+					'KS',
+					'KY',
+					'LA',
+					'MA',
+					'MD',
+					'ME',
+					'MI',
+					'MN',
+					'MO',
+					'MS',
+					'MT',
+					'NC',
+					'ND',
+					'NE',
+					'NH',
+					'NJ',
+					'NM',
+					'NV',
+					'NY',
+					'OH',
+					'OK',
+					'OR',
+					'PA',
+					'RI',
+					'SC',
+					'SD',
+					'TN',
+					'TX',
+					'UT',
+					'VA',
+					'VT',
+					'WA',
+					'WI',
+					'WV',
+					'WY',
+          			'all'
+				];
+  			let longStates = {
+				AL: 'Alabama',
+				AK: 'Alaska',
+				AZ: 'Arizona',
+				AR: 'Arkansas',
+				CA: 'California',
+				CO: 'Colorado',
+				CT: 'Connecticut',
+				DE: 'Delaware',
+				DC: 'District of Columbia',
+				FL: 'Florida',
+				GA: 'Georgia',
+				HI: 'Hawaii',
+				ID: 'Idaho',
+				IL: 'Illinois',
+				IN: 'Indiana',
+				IA: 'Iowa',
+				KS: 'Kansas',
+				KY: 'Kentucky',
+				LA: 'Louisiana',
+				ME: 'Maine',
+				MD: 'Maryland',
+				MA: 'Massachusetts',
+				MI: 'Michigan',
+				MN: 'Minnesota',
+				MS: 'Mississippi',
+				MO: 'Missouri',
+				MT: 'Montana',
+				NE: 'Nevada',
+				NV: 'Nebraska',
+				NH: 'New Hampshire',
+				NJ: 'New Jersey',
+				NM: 'New Mexico',
+				NY: 'New York',
+				NC: 'North Carolina',
+				ND: 'North Dakota',
+				OH: 'Ohio',
+				OK: 'Oklahoma',
+				OR: 'Oregon',
+				PA: 'Pennsylvania',
+				RI: 'Rhode Island',
+				SC: 'South Carolina',
+				SD: 'South Dakota',
+				TN: 'Tennessee',
+				TX: 'Texas',
+				UT: 'Utah',
+				VT: 'Vermont',
+				VA: 'Virginia',
+				WA: 'Washington',
+				WV: 'West Virginia',
+				WI: 'Wisconsin',
+				WY: 'Wyoming',
+       			 all: 'All States'
+			};
 			var x = d3
 				.scaleBand()
-				.range([0, width - 120])
+				.range([0, width - 170])
 				.domain(myGroups)
 				.padding(0.01);
 			let xAxisGenerator = d3.axisBottom(x);
@@ -730,14 +1067,6 @@
 				.attr('transform', 'translate(0,' + height + ')')
 				.call(xAxisGenerator);
 
-			// Build X scales and axis:
-			/*   var x = d3.scaleBand()
-    .range([ 0, width-120 ])
-    .domain(myGroups)
-    .padding(0.01);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x)) */
 
 			// Build y scales and axis:
 			var y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
@@ -759,135 +1088,191 @@
 				.style('text-anchor', 'middle')
 				.text('Day');
 
-			//Read the data
-			d3.csv(
-				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/a5df12234acafc689853dda5715cca2c9968077a/Data.csv',
-				function (data) {
-					//data preprocessing (get frequency)
-					var tally = {};
-					var last_Date = '';
+			let myColor
+ 			let legend
 
-					data.forEach(function (line) {
-						var parts = line['Date'].split(' ');
-						//console.log(parts[0]);//parts 0 has date, parts 1 has time
-						//var datetime = formatDate.parse(parts[0]);
-						//console.log(datetime);
-						//var date = formatDate(datetime).split(' ')[0];
-						var date = parts[0];
-						var month = date.split('/')[0];
-						var day = date.split('/')[1];
-						date = day + '/' + month; //ignore year for now
-						//console.log(date);
-						tally[date] = (tally[date] || 0) + 1;
-						last_Date = date;
-					});
-
-					var data_ref = [];
-
-					for (var date in tally) {
-						if (tally.hasOwnProperty(date)) {
-							data_ref.push({
-								month: date.split('/')[1],
-								day: date.split('/')[0],
-								frequency: tally[date]
-							});
-						}
-					}
-
-					// Build color scale
-					var myColor = d3
-						.scaleLinear()
-						.range(['white', '#995e9f'])
-						.domain([0, d3.max(data_ref, (d) => d.frequency)]);
-
-					var legend = d3
-						.legendColor()
-						.scale(myColor)
-						.labelFormat(d3.format('.0f'))
-						.title('UFO Sightings');
-
-					svg.append('g').attr('transform', 'translate(500,100)').call(legend);
-
-					// create a tooltip
-					var tooltip = d3
-						.select('#my_dataviz')
-						.append('div')
-						.style('opacity', 0)
-						.attr('class', 'tooltip')
-						.style('background-color', 'white')
-						.style('padding', '5px');
-
-					// Three function that change the tooltip when user hover / move / leave a cell
-					var mouseover = function (d) {
-						tooltip.style('opacity', 1);
-					};
-					var mousemove = function (d) {
-						var day = d.day + 'th';
-						if (d.day == 1 || d.day == 21 || d.day == 31) {
-							day = d.day + 'st';
-						}
-						if (d.day == 2 || d.day == 22) {
-							day = d.day + 'nd';
-						}
-						if (d.day == 3 || d.day == 23) {
-							day = d.day + 'rd';
-						}
-						var month = fullmonths[d.month - 1];
-						tooltip
-							.html(
-								'On the ' +
-									day +
-									' of ' +
-									month +
-									' there were ' +
-									d.frequency +
-									' UFO sightings in total'
-							)
-							.style('left', d3.mouse(this)[0] + 70 + 'px')
-							.style('top', d3.mouse(this)[1] + 'px');
-					};
-					var mouseleave = function (d) {
-						tooltip.style('opacity', 0);
-					};
-
-					// add the squares
-					svg
-						.selectAll()
-						.data(data_ref, function (d) {
-							return d.month + ':' + d.day;
-						})
-						.enter()
-						.append('rect')
-						.attr('x', function (d) {
-							return x(d.month);
-						})
-						.attr('y', function (d) {
-							return y(d.day);
-						})
-						.attr('width', x.bandwidth())
-						.attr('height', y.bandwidth())
-						.style('fill', function (d) {
-							return myColor(d.frequency);
-						})
-						.on('mouseover', mouseover)
-						.on('mousemove', mousemove)
-						.on('mouseleave', mouseleave);
+			// create a tooltip
+			let tooltip = d3.select("#my_dataviz")
+			.append("div")
+			.style("opacity", 0)
+			.attr("class", "tooltip")
+			.style("background-color", "white")
+			.style("border", "solid")
+			.style("border-width", "2px")
+			.style("border-radius", "5px")
+			.style("padding", "5px")
+  
+			// Three function that change the tooltip when user hover / move / leave a cell
+			let mouseover = function(d) {
+				tooltip.style("opacity", 1)
+				d3.select(this)
+				.style("stroke", "black")
+			}
+			let mousemove = function(d) {
+				var day=d.day+"th"
+				if(d.day==1||d.day==21||d.day==31){
+				day=d.day+"st"
 				}
-			);
+				if(d.day==2||d.day==22){
+				day=d.day+"nd"
+				}
+				if(d.day==3||d.day==23){
+				day=d.day+"rd"
+				}
+				var month=fullmonths[d.month-1]
+				var year=d3.select('#year_txt').property('value')
+				var text="On the "+day+" of "+month+" there were <br>" + d.frequency+" UFO sightings in year "+year
+				if(year=="all"){
+					text="On the "+day+" of "+month+" there were <br>" + d.frequency+" UFO sightings in total"
+				}
+				if(year!="all"){
+					if(isNaN(parseInt(year)) || parseInt(year)<1639 || parseInt(year)>2023){
+						text="Please enter a year between 1639 and 2023 or \"all\" to see the UFO sighting frequency displayed"
+					}
+				}
+				tooltip
+				.html(text)
+				.style("left", (d3.mouse(this)[0]+70) + "px")
+				.style("top", (d3.mouse(this)[1]) + "px")
+			}
+			let mouseleave = function(d) {
+				tooltip.style("opacity", 0)
+				d3.select(this)
+				.style("stroke", "none")
+			}
+
+			//Read the data
+			d3.csv("https://raw.githubusercontent.com/useless-fisualization-operation/ufo-datasets/main/DataSets/UfoEntireData2.csv", function(data) {
+    d3.select('select.stateDrop')
+    .on('change', ()=>update(data))
+    .selectAll('option')
+    .data(state_indices)
+    .enter()
+    .append('option')
+    .attr('value', d=>d)
+    .text(d=>longStates[d])
+
+    d3.select('select.stateDrop')
+    .property('value','all')
+
+	d3.select('#year_txt').on('change', () => {
+					update(data);
+				});
+
+	d3.select('#year_txt').property('value', "all");
+
+    myColor = d3.scaleLinear()
+      .range(["white", "#ff6f08"])
+      .domain([0,2082])
+      //.domain([0,d3.max(data_ref, d => d.frequency)])
+
+    legend = d3.legendColor()
+      .scale(myColor)
+      .labelFormat(d3.format(".0f"))
+      .title("Number of UFO Sightings");
+
+	//legend.labels(["hi", "70"])
+
+    svg.append("g")
+    .attr("class","legendClass")
+      .attr("transform", "translate(500,100)")
+      .call(legend);
+	
+	legend.labels(["hi", "70"])
+
+	svg.select("g").select("legendClass").remove()
+
+
+    update(data)
+  })
+
+  function update(data){
+    //data preprocessing (get frequency)
+    var state=d3.select('select.stateDrop').property('value')
+	var year=d3.select('#year_txt').property('value')
+    var tally = {};
+    var last_Date='';
+    data.forEach(function(line) {
+      if(state=='all' || line['State']==state){
+        var parts = line['Date'].split(' ');
+        var date=parts[0];
+        var month=date.split('/')[0]
+        var day=date.split('/')[1]
+		var yr=date.split('/')[2]
+		if(year=='all' || parseInt(yr)==parseInt(year)){
+			date=parseInt(day)+'/'+parseInt(month)
+			tally[date] = (tally[date]||0) + 1;
+			last_Date=date;
+		}
+      }
+    });
+
+    var data_ref = [];
+	//reset to 0 first so no undefined and no old values that mean svg wont be overwritten
+	for(let monthh=1; monthh<13; monthh++){
+		for(let dayy = 1; dayy < days_per_month[monthh-1]+1; dayy++) { 
+			var fr=0
+			console.log(dayy+'/'+monthh)
+			if(!isNaN(parseInt(tally[dayy+'/'+monthh]))){//this date is in data
+			fr=tally[dayy+'/'+monthh]
+			}
+			data_ref.push({
+					month: monthh,
+					day: dayy,
+					frequency: fr
+			});
+      }
+    }
+
+	myColor = d3.scaleLinear()
+      .range(["white", "#995e9f"])
+      .domain([0,d3.max(data_ref, d => d.frequency)])
+
+	svg.selectAll("rect").remove()
+
+    svg.select("g.legendClass").remove()
+
+    legend = d3.legendColor()
+      .scale(myColor)
+      .labelFormat(d3.format(".0f"))
+      .title("Number of UFO Sightings");
+
+    svg.append("g")
+    .attr("class","legendClass")
+      .attr("transform", "translate(500,100)")
+      .call(legend);
+  
+    // add the squares
+    svg.selectAll()
+      .data(data_ref, function(d) {return d.month+':'+d.day;})
+      .enter()
+      .append("rect")
+        .attr("x", function(d) { return x(d.month) })
+        .attr("y", function(d) { return y(d.day) })
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .style("stroke-width", 2)
+        .attr("width", x.bandwidth() )
+        .attr("height", y.bandwidth() )
+        .style("fill", function(d) { return myColor(d.frequency)} )
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+  }
 		});
 	</script>
 </div></div>
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="irqanq">
-			import { start } from "/ufo-web/internal/immutable/start-0e88bc3a.js";
+		<script type="module" data-sveltekit-hydrate="4ao8yq">
+			import { start } from "/ufo-web/internal/immutable/start-da5e6587.js";
 
 			start({
 				assets: "/ufo-web",
 				env: {},
-				target: document.querySelector('[data-sveltekit-hydrate="irqanq"]').parentNode,
-				version: "1678798708926",
+				target: document.querySelector('[data-sveltekit-hydrate="4ao8yq"]').parentNode,
+				version: "1679414980679",
 				hydrate: {
 					node_ids: [0, 2],
 					data: [null,null],
