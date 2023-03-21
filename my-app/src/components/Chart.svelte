@@ -163,7 +163,7 @@
 			};
 
 			let longVars = {
-				Num_Sightings: 'Number of UFO sightings per state',
+				Num_Sightings: 'Number of UFO sightings',
 				Rel_Num_Sightings: 'Number of UFO sightings per resident',
 				Rel_Very_important: 'Religion: very important (proportion of people)',
 				Rel_Somewhat_important: 'Religion: somewhat important (proportion of people)',
