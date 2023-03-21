@@ -79,7 +79,7 @@
 	
 	<div>
 		<video
-			src="src/assets/ufo_demo_2.mp4"
+			src="ufo_demo_2.mp4"
 			on:mousemove={handleMove}
 			on:touchmove|preventDefault={handleMove}
 			on:mousedown={handleMousedown}
