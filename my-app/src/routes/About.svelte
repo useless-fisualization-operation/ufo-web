@@ -299,7 +299,7 @@
 	}
 
 	.member {
-		width: 9vw;
+		width: 8.5vw;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
