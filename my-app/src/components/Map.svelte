@@ -9,11 +9,7 @@
 	import { getAirportData, AirportTypes, type Airport, type AirportType } from './airport_data';
 	import { zoom, select } from 'd3';
 	import type { SharedState } from './shared';
-	import {
-		getStateColor,
-		getStateData,
-		type StateData2
-	} from './state_data';
+	import { getStateColor, getStateData, type StateData2 } from './state_data';
 	import { states } from './states';
 	import { shared } from './shared';
 	import LoadingScreen from './LoadingScreen.svelte';
@@ -156,8 +152,8 @@
 						//console.log(map_state)
 						selected_map_state = map_state;
 						//console.log("States:"+states[map_state.properties.name].short);
-						let s = stateData?.filter(o=>o.state == map_state.properties.name)[0];
-							
+						let s = stateData?.filter((o) => o.state == map_state.properties.name)[0];
+
 						shared.update((v) => {
 							v.n_ufos_on_state.loc = filteredUfoLocations().filter(
 								(o) => o.state == states[map_state.properties.name].short
@@ -175,13 +171,15 @@
 							return v;
 						});
 					}}
-					
-					fill={
-					shared_state?.display_options.religion ? stateData?.filter(o=>o.state == map_state.properties.name)[0].religion_color
-					: shared_state?.display_options.drugs ? stateData?.filter(o=>o.state == map_state.properties.name)[0].drugs_color
-					: shared_state?.display_options.population ? stateData?.filter(o=>o.state == map_state.properties.name)[0].population_color
-					: shared_state?.display_options.marijuana ? stateData?.filter(o=>o.state == map_state.properties.name)[0].marijuana_color
-					: 'rgb(54, 57, 61)'}
+					fill={shared_state?.display_options.religion
+						? stateData?.filter((o) => o.state == map_state.properties.name)[0].religion_color
+						: shared_state?.display_options.drugs
+						? stateData?.filter((o) => o.state == map_state.properties.name)[0].drugs_color
+						: shared_state?.display_options.population
+						? stateData?.filter((o) => o.state == map_state.properties.name)[0].population_color
+						: shared_state?.display_options.marijuana
+						? stateData?.filter((o) => o.state == map_state.properties.name)[0].marijuana_color
+						: 'rgb(54, 57, 61)'}
 					class="state"
 				/>
 			{/each}
@@ -296,11 +294,11 @@
 
 <style lang="scss">
 	:root {
-		--ufo: hsla(0, 67%, 44%, 0.769);
-		--airport: rgba(36, 229, 255, 0.789);
-		--state-fill-selected: rgb(178, 171, 199);
-		--state-fill: rgb(150, 143, 168);
-		--city: hsla(48, 100%, 76%, 0.919);
+		--ufo: hsla(310, 100%, 73%, 0.999);
+		--airport: rgba(104, 250, 93, 0.999);
+		--state-fill-selected: rgb(102, 113, 128);
+		--state-fill: rgb(82, 93, 112);
+		--city: hsla(48, 100%, 71%, 0.999);
 	}
 
 	.loading-screen {

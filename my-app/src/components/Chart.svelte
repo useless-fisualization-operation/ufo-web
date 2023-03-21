@@ -5,7 +5,7 @@
 	<style>
 		circle {
 			fill: var(--accent);
-			opacity: 0.6;
+			opacity: 0.8;
 		}
 
 		line {
@@ -17,14 +17,14 @@
 			font-size: 0.8em;
 		}
 	</style>
-	<h4 class="title">Relationship with Other Attributes on State Level </h4>
+	<h4 class="title">Relationship with Other Attributes on State Level</h4>
 
 	<div id="controls">
-		<p> Hover over a dot in the scatterplot to see which state it corresponds to! </p>
+		<p>Hover over a dot in the scatterplot to see which state it corresponds to!</p>
 		<p>
-			Aggregated UFO sightings from year <input type="number" id="button_start_year"/>
+			Aggregated UFO sightings from year <input type="number" id="button_start_year" />
 			to
-			<input type="number" id="button_end_year"/>
+			<input type="number" id="button_end_year" />
 		</p>
 		<p>
 			First Attribute (X axis):
@@ -54,60 +54,59 @@
 		sleep(3000).then(() => {
 			// how long transitions last (msec)
 			let transitionTime = 2000;
-			let state_indices =
-				[
-					'AK',
-					'AL',
-					'AR',
-					'AZ',
-					'CA',
-					'CO',
-					'CT',
-					'DC',
-					'DE',
-					'FL',
-					'GA',
-					'HI',
-					'IA',
-					'ID',
-					'IL',
-					'IN',
-					'KS',
-					'KY',
-					'LA',
-					'MA',
-					'MD',
-					'ME',
-					'MI',
-					'MN',
-					'MO',
-					'MS',
-					'MT',
-					'NC',
-					'ND',
-					'NE',
-					'NH',
-					'NJ',
-					'NM',
-					'NV',
-					'NY',
-					'OH',
-					'OK',
-					'OR',
-					'PA',
-					'RI',
-					'SC',
-					'SD',
-					'TN',
-					'TX',
-					'UT',
-					'VA',
-					'VT',
-					'WA',
-					'WI',
-					'WV',
-					'WY'
-				];
+			let state_indices = [
+				'AK',
+				'AL',
+				'AR',
+				'AZ',
+				'CA',
+				'CO',
+				'CT',
+				'DC',
+				'DE',
+				'FL',
+				'GA',
+				'HI',
+				'IA',
+				'ID',
+				'IL',
+				'IN',
+				'KS',
+				'KY',
+				'LA',
+				'MA',
+				'MD',
+				'ME',
+				'MI',
+				'MN',
+				'MO',
+				'MS',
+				'MT',
+				'NC',
+				'ND',
+				'NE',
+				'NH',
+				'NJ',
+				'NM',
+				'NV',
+				'NY',
+				'OH',
+				'OK',
+				'OR',
+				'PA',
+				'RI',
+				'SC',
+				'SD',
+				'TN',
+				'TX',
+				'UT',
+				'VA',
+				'VT',
+				'WA',
+				'WI',
+				'WV',
+				'WY'
+			];
 
 			let longStates = {
 				AL: 'Alabama',
@@ -175,10 +174,11 @@
 				Total_Resident_Population: 'Population',
 				Illicit_Drug_Use: 'Illicit Drug Use (proportion of people)',
 				Marijuana_Use: 'Marijuana Use (proportion of people)',
-				Illicit_Drug_Use_Other_Than_Marijuana: 'Illicit Drug Use Other Than Marijuana (proportion of people)',
+				Illicit_Drug_Use_Other_Than_Marijuana:
+					'Illicit Drug Use Other Than Marijuana (proportion of people)',
 				Binge_Alcohol_Use: 'Binge Alcohol Use (proportion of people)',
-				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder (proportion of people)', 
-				Serious_Mental_Illness: 'Serious Mental Illness (proportion of people)', 
+				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder (proportion of people)',
+				Serious_Mental_Illness: 'Serious Mental Illness (proportion of people)',
 				Any_Mental_Illness: 'Any Mental Illness (proportion of people)'
 			};
 
@@ -259,19 +259,19 @@
 				);
 			}
 
-			const f = formatValue = d3.format(".3s");
+			const f = (formatValue = d3.format('.3s'));
 
 			function axis_label_format(d) {
-			if (d==0) {
-				return 0;
-			}
-			if (d >= 1000000) {
-				return d/1000000 + " M.";
-			}
-			if (d<=0.001) {
-				return f(d)
-			}
-			return d;
+				if (d == 0) {
+					return 0;
+				}
+				if (d >= 1000000) {
+					return d / 1000000 + ' M.';
+				}
+				if (d <= 0.001) {
+					return f(d);
+				}
+				return d;
 			}
 
 			// setup() is for setting up plot elements once at the beginning
@@ -360,10 +360,7 @@
 					x_domain_max = d3.max(d_other.map((d) => d['Rel_Num_Sightings']));
 				}
 
-				xScale = d3
-					.scaleLinear()
-					.domain([0, x_domain_max])
-					.range([0, innerWidth]);
+				xScale = d3.scaleLinear().domain([0, x_domain_max]).range([0, innerWidth]);
 				xAxis = d3.axisBottom(xScale).tickSize(-innerHeight).tickFormat(axis_label_format);
 
 				yScale = d3
@@ -406,21 +403,21 @@
 				let start_year = +d3.select('#button_start_year').property('value');
 				let end_year = +d3.select('#button_end_year').property('value');
 
-				if (start_year<min_year) {
-					d3.select("#button_start_year").property('value', min_year)
+				if (start_year < min_year) {
+					d3.select('#button_start_year').property('value', min_year);
 				}
-				if (end_year>max_year) {
-					d3.select("#button_end_year").property('value', max_year)
+				if (end_year > max_year) {
+					d3.select('#button_end_year').property('value', max_year);
 				}
-				if (start_year>end_year && end_year>=min_year) {
-					d3.select("#button_start_year").property('value', end_year)
+				if (start_year > end_year && end_year >= min_year) {
+					d3.select('#button_start_year').property('value', end_year);
 				}
-				if (start_year>end_year && end_year<min_year) {
-					d3.select("#button_start_year").property('value', min_year)
-					d3.select("#button_end_year").property('value', min_year)
+				if (start_year > end_year && end_year < min_year) {
+					d3.select('#button_start_year').property('value', min_year);
+					d3.select('#button_end_year').property('value', min_year);
 				}
-				start_year = +d3.select("#button_start_year").property('value')
-				end_year = +d3.select("#button_end_year").property('value')
+				start_year = +d3.select('#button_start_year').property('value');
+				end_year = +d3.select('#button_end_year').property('value');
 
 				d3.select('#button_start_year').property('min', min_year);
 				d3.select('#button_start_year').property(
