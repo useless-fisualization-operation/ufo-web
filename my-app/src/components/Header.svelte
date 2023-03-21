@@ -39,15 +39,14 @@
 				})}
 			>Days of the year
 		</button>
-		<!-- about 
 		<button
 			class="menu-button"
 			on:click={() =>
 				shared.update((v) => {
 					v.page = 'about';
 					return v;
-				})}>About us</button
-		>-->
+				})}>About
+		</button>
 	</div>
 </div>
 
