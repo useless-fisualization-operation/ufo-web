@@ -164,22 +164,22 @@
 			};
 
 			let longVars = {
-				Num_Sightings: 'Number of UFO sightings',
+				Num_Sightings: 'Number of UFO sightings per state',
 				Rel_Num_Sightings: 'Number of UFO sightings per resident',
-				Rel_Very_important: 'Religion: very important (proportion)',
-				Rel_Somewhat_important: 'Religion: somewhat important (proportion)',
-				Rel_Not_too_important: 'Religion: not too important (proportion)',
-				Rel_Not_at_all_important: 'Religion: not at all important (proportion)',
-				Rel_Dont_know: 'Religion: don't know how important (proportion)',
+				Rel_Very_important: 'Religion: very important (proportion of people)',
+				Rel_Somewhat_important: 'Religion: somewhat important (proportion of people)',
+				Rel_Not_too_important: 'Religion: not too important (proportion of people)',
+				Rel_Not_at_all_important: 'Religion: not at all important (proportion of people)',
+				Rel_Dont_know: "Religion: don't know how important (proportion of people)",
 				Population_Density: 'Population density (population per square mile)',
 				Total_Resident_Population: 'Population',
-				Illicit_Drug_Use: 'Illicit Drug Use (proportion)',
-				Marijuana_Use: 'Marijuana Use (proportion)',
-				Illicit_Drug_Use_Other_Than_Marijuana: 'Illicit Drug Use Other Than Marijuana (proportion)',
-				Binge_Alcohol_Use: 'Binge Alcohol Use (proportion)',
-				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder (proportion)', 
-				Serious_Mental_Illness: 'Serious Mental Illness (proportion)', 
-				Any_Mental_Illness: 'Any Mental Illness (proportion)'
+				Illicit_Drug_Use: 'Illicit Drug Use (proportion of people)',
+				Marijuana_Use: 'Marijuana Use (proportion of people)',
+				Illicit_Drug_Use_Other_Than_Marijuana: 'Illicit Drug Use Other Than Marijuana (proportion of people)',
+				Binge_Alcohol_Use: 'Binge Alcohol Use (proportion of people)',
+				Illicit_Drug_Use_Disorder: 'Illicit Drug Use Disorder (proportion of people)', 
+				Serious_Mental_Illness: 'Serious Mental Illness (proportion of people)', 
+				Any_Mental_Illness: 'Any Mental Illness (proportion of people)'
 			};
 
 			// use Margin Convention to layout the SVG with an inner plotting region
@@ -204,11 +204,11 @@
 
 			// load data
 			let url_other =
-				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/scatterplot_data_full_relative_drugsincl.csv';
+				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/scatterplot_data_full_relative_drugsincl.csv';
 			let url_sight =
-				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/relative_num_sightings_per_state_per_year_timespan_rows.csv';
+				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/relative_num_sightings_per_state_per_year_timespan_rows_full.csv';
 			let url_sight_abs =
-				'https://raw.githubusercontent.com/useless-fisualization-operation/ufo-web/main/dataset/num_sightings_per_state_per_year_timespan_rows.csv';
+				'https://raw.githubusercontent.com/vfrawa/vfrawa.github.io/main/num_sightings_per_state_per_year_timespan_rows_full.csv';
 			d3.csv(url_other, cleanup_data, function (error, d_other) {
 				if (error) {
 					console.log(error);
@@ -290,6 +290,7 @@
 				let x_variables = ['Num_Sightings', 'Rel_Num_Sightings'];
 
 				// border around plotting region
+
 				// populate selectors
 				d3.select('select.xvar')
 					.on('change', () => update(d_other_global, d_sight_global, d_sight_abs_global))
