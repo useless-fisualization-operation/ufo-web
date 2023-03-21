@@ -98,6 +98,14 @@
 				<p class="desc">{filterUfoShapes ? '▼' : '▶'} Filter Shapes</p>
 			</div>
 			{#if filterUfoShapes}
+			<div class="item">
+				<p>&nbsp&nbsp&nbsp&nbsp</p>
+				<div class="ufo_legend" />
+				<p class="desc; but" on:click={()=>
+					Object.keys($shared.shapes_options).forEach(s=>
+					$shared.shapes_options[s]=false)
+					} >Clear all shapes</p>
+			</div>
 				{#each Object.keys($shared.shapes_options) as shape}
 					<div class="item">
 						<p>&nbsp&nbsp&nbsp&nbsp</p>
@@ -174,6 +182,12 @@
 	h4 {
 	}
 
+	.but{
+		background-color: rgb(189, 184, 177);
+	}
+	.but:hover{
+		background-color: rgb(139, 137, 134);
+	}
 	.legend .item {
 		display: flex;
 		align-items: center;
