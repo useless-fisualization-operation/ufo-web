@@ -95,7 +95,7 @@
 	
 			<div class="info">
 				<span class="time">{format(time)}</span>
-				<span>click anywhere to {paused ? 'play' : 'pause'} / drag to seek</span>
+				<span>{paused ? 'play' : 'pause'}</span>
 				<span class="time">{format(duration)}</span>
 			</div>
 		</div>
@@ -328,7 +328,6 @@
 
 	
 	.controls {
-		position: absolute;
 		top: 0;
 		width: 100%;
 		transition: opacity 1s;
