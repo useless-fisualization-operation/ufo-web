@@ -5,7 +5,7 @@
 	let clazz = '';
 	export { clazz as class };
 
-	let start: string = '1721-02-01';
+	let start: string = '1721-02-02';
 	let end: string = '2023-01-01';
 
 	function update_data() {
