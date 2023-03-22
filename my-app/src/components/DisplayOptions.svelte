@@ -100,11 +100,17 @@
 			{#if filterUfoShapes}
 			<div class="item">
 				<p>&nbsp&nbsp&nbsp&nbsp</p>
-				<div class="ufo_legend" />
 				<p class="desc; but" on:click={()=>
 					Object.keys($shared.shapes_options).forEach(s=>
 					$shared.shapes_options[s]=false)
-					} >Clear all shapes</p>
+					} >* Clear all shapes *</p>
+			</div>
+			<div class="item">
+				<p>&nbsp&nbsp&nbsp&nbsp</p>
+				<p class="desc; but" on:click={()=>
+					Object.keys($shared.shapes_options).forEach(s=>
+					$shared.shapes_options[s]=true)
+					} >* Select all shapes *</p>
 			</div>
 				{#each Object.keys($shared.shapes_options) as shape}
 					<div class="item">
