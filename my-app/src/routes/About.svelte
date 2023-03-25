@@ -113,6 +113,7 @@
 			was derived from the column iso_region. We deleted obvious duplicate datapoints and datapoints
 			where the latitude or longitude were obviously outside of US territory, e.g. 0.
 		</p>
+		<h2>Learning Goals</h2>
 		<p>
 			The source code and the used datasets can be found on GitHub [9]. In this project, we learnt
 			to collaborate with each other and discuss our thoughts and improvements suggestions on our
